@@ -6,6 +6,11 @@ ruby '2.3.7'
 gem 'devise'
 gem 'omniauth-twitter'
 
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rbenv'
+gem 'capistrano-rails'
+
 gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
