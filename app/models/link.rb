@@ -38,8 +38,8 @@ class Link < ApplicationRecord
       when /nijie/
         url.sub!(/sp.nijie/, 'nijie')
         url.sub(/view_popup/, 'view')
-      when /melon/
-        url + '&adult_view=1'
+      when /melonbooks.co.jp\/detail\/detail.php\?product_id=(\d+)/
+        'https://www.melonbooks.co.jp/detail/detail.php?product_id=' + $1 + '&adult_view=1'
       when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
         'https://komiflo.com/comics/' + $1
       when /pixiv\.net\/member_illust.php?.*illust_id=(\d+)/
