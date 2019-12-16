@@ -77,6 +77,14 @@ class LinkTest < ActiveSupport::TestCase
     assert_match 'DWU', @link.title
     assert_match '浅瀬', @link.description
     assert_equal 'https://pixiv.cat/75871400-1.jpg', @link.image
+
+    # URLの形式変わってるやんけ
+    url = 'https://www.pixiv.net/artworks/78296385'
+    @link = Link.create(url: url)
+
+    assert_match '女子大生セッッ', @link.title
+    assert_match 'ノポン人', @link.description
+    assert_equal 'https://pixiv.cat/78296385-1.jpg', @link.url
   end
 
   test 'fetch melonbooks correctly' do
