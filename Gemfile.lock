@@ -119,7 +119,7 @@ GEM
     ed25519 (1.2.4)
     equalizer (0.0.11)
     erubi (1.9.0)
-    excon (0.67.0)
+    excon (0.71.0)
     execjs (2.7.0)
     faker (2.4.0)
       i18n (~> 1.6.0)
