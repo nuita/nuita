@@ -6,4 +6,11 @@ namespace :link_task do
       p link
     end
   end
+
+  task refetch_pixiv: :environment do
+    Link.where("url LIKE '%pixiv%'").find_each do |link|
+      link.refetch
+      p link
+    end
+  end
 end
