@@ -42,8 +42,8 @@ class Link < ApplicationRecord
         'https://www.melonbooks.co.jp/detail/detail.php?product_id=' + $1 + '&adult_view=1'
       when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
         'https://komiflo.com/comics/' + $1
-      when /pixiv\.net\/member_illust.php?.*illust_id=(\d+)/
-        'https://pixiv.net/member_illust.php?mode=medium&illust_id=' + $1
+      when /pixiv\.net\/(member_illust.php?.*illust_id=|artworks\/)(\d+)/
+        'https://pixiv.net/member_illust.php?mode=medium&illust_id=' + $2
       else
         url
       end
@@ -118,12 +118,12 @@ class Link < ApplicationRecord
         else
           page.css('//meta[property="og:image"]/@content').first.to_s
         end
-      when /pixiv.*[^fanbox]illust_id=(\d+)/
-        proxy_url = "https://pixiv.cat/#{$1}.jpg"
+      when /pixiv.*[^fanbox](illust_id=|artworks\/)(\d+)/
+        proxy_url = "https://pixiv.cat/#{$2}.jpg"
         # ↑で404だったら複数絵かも
         case Net::HTTP.get_response(URI.parse(proxy_url))
         when Net::HTTPNotFound
-          proxy_url = "https://pixiv.cat/#{$1}-1.jpg"
+          proxy_url = "https://pixiv.cat/#{$2}-1.jpg"
         end
 
         proxy_url
