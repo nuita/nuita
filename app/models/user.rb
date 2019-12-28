@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :censored_categories, through: :censorings, source: :category
 
   has_and_belongs_to_many :badges
-  
+
   # begin christmas
   has_many :stamps, dependent: :destroy
 
@@ -126,6 +126,11 @@ class User < ApplicationRecord
     end
 
     self.censorings.find_by(category_id: category.id).destroy
+  end
+
+  def add_badge(badge)
+    # バッジは名前で指定することなくない？
+    self.badges << badge
   end
 
   def censoring?(category)

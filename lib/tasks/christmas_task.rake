@@ -19,4 +19,25 @@ namespace :christmas_task do
       p like.user.add_stamp_by_like(like)
     end
   end
+
+  desc 'give badges for Advent Calendar'
+  task give_badges: :environment do
+    badge = Badge.find_by(name: 'ホワイトクリスマス')
+
+    User.all.find_each do |user|
+      badge_eligible = true
+      (Date.new(2019, 12, 1)..Date.new(2019, 12, 25)).each do |date|
+        unless user.stamps.where(targeted_at: date.beginning_of_day..date.end_of_day).present?
+          badge_eligible = false
+        end
+      end
+
+      if badge_eligible
+        user.add_badge(badge)
+      end
+
+      puts "#{user.id} #{user.stamps.count} #{user.has_christmas_badge?}"
+    end
+
+  end
 end
