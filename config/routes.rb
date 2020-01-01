@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get '/links/recommend', :to=> 'links#recommend'
 
   get '/christmas', :to => 'christmas#show', as: 'christmas'
-  get '/christmas/about', :to => 'christmas#about'
 
   resources :users, except: [:index], param: :url_digest do
     member do

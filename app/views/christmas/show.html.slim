@@ -2,6 +2,9 @@
 - provide(:custom_header, 'christmas_header')
 
 .container.not-so-jumbo.wider-margintop
+  .alert.alert-warning.p-1.mb-2
+    = icon 'far', 'calendar-alt'
+    span.pl-2 このイベントは2019年12月25日に終了しました。
   .christmas-jumbotron.col.pt-0.pb-2
     = image_tag 'christmas/logo_ac.png', alt: 'Nuita Advent Calendar', class: 'img-fluid'
     h6.font-weight-bold あなたの進捗状況
