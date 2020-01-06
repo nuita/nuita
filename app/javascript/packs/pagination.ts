@@ -3,25 +3,11 @@ document.addEventListener('turbolinks:load', function(){
   let pageNumber = 1;
 
   if(paginateContainer){
-    const getCsrfToken = () => {
-      const metaCollection = document.getElementsByTagName('meta');
-      const metas = Array.from(metaCollection);
-
-      for(let meta of metas){
-        if(meta.getAttribute('name') === 'csrf-token') {
-          console.log(meta.getAttribute('content'));
-          return meta.getAttribute('content');
-        }
-      }
-      return '';
-    }
-
     const fetchOptions:RequestInit = {
       method: 'GET',
       mode: 'same-origin',
       credentials: 'same-origin',
       headers: {
-        'X-CSRF-Token': getCsrfToken(),
         'X-Requested-With': 'XMLHttpRequest'
       }
     }
