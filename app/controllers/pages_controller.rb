@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  protect_from_forgery except: :home # 大丈夫？？
-
   def home
     if user_signed_in?
       if params[:success] == 'true'
@@ -11,11 +9,8 @@ class PagesController < ApplicationController
       @feed_items = current_user.timeline.paginate(page: params[:page])
       @timeline = true
 
-      respond_to do |format|
-        format.js{
-          render partial: 'nweets/nweet', collection: current_user.timeline.paginate(page: params[:page])
-        }
-        format.html
+      if request.xhr?
+        render partial: 'nweets/nweet', collection: current_user.timeline.paginate(page: params[:page])
       end
     end
   end

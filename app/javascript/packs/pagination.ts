@@ -21,7 +21,8 @@ document.addEventListener('turbolinks:load', function(){
       mode: 'same-origin',
       credentials: 'same-origin',
       headers: {
-        'X-CSRF-Token': getCsrfToken()
+        'X-CSRF-Token': getCsrfToken(),
+        'X-Requested-With': 'XMLHttpRequest'
       }
     }
 
