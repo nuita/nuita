@@ -28,7 +28,12 @@ document.addEventListener('turbolinks:load', function(){
             return response.text();
           }).then((partial:string) => {
             let timelineContainer = document.querySelector('.nweets-list');
-            timelineContainer.insertAdjacentHTML('beforeend', partial);
+            // なぜか表示するヌイートもうないときにresponse.text()は半角空白を返す
+            if(!partial || partial == " "){
+              observer.unobserve(document.querySelector('#willPaginateContainer'));
+            }else{
+              timelineContainer.insertAdjacentHTML('beforeend', partial);
+            }
           });
         }
       }
