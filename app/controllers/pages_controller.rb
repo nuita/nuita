@@ -10,13 +10,9 @@ class PagesController < ApplicationController
       @timeline = true
 
       if request.xhr?
-        render partial: 'nweets/nweet', collection: current_user.timeline.paginate(page: params[:page])
+        render partial: 'nweets/nweet', collection: @feed_items
       end
     end
-  end
-
-  def likes
-    @feed_items = current_user.liked_nweets.paginate(page: params[:page])
   end
 
   def about

@@ -1,6 +1,5 @@
 document.addEventListener('turbolinks:load', function(){
   let paginateContainer = document.getElementById('willPaginateContainer');
-  let pageNumber = 1;
 
   if(paginateContainer){
     const fetchOptions:RequestInit = {
@@ -14,16 +13,18 @@ document.addEventListener('turbolinks:load', function(){
 
     const observerOptions = {
       root: null,
-      rootMargin: '240px',
+      rootMargin: '120px',
       threshold: [1.0]
     };
 
+    let pageNumber = 1;
+
     const observer = new IntersectionObserver((entries) => {
+      let morePostsUrl:string = location.pathname + '?page=' + ++pageNumber;
+
       for(const e of entries){
-        let more_posts_url:string = location.pathname + '?page=' + ++pageNumber;
-        console.log(more_posts_url);
-        if(more_posts_url){
-          fetch(more_posts_url, fetchOptions).then((response) => {
+        if(morePostsUrl){
+          fetch(morePostsUrl, fetchOptions).then((response) => {
             return response.text();
           }).then((partial:string) => {
             let timelineContainer = document.querySelector('.nweets-list');
