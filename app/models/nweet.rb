@@ -29,6 +29,7 @@ class Nweet < ApplicationRecord
   validate :have_enough_interval?, on: :create
 
   default_scope -> { order(did_at: :desc) }
+  self.per_page = 10
 
   def did_at_past?
     if did_at # did at is not nil

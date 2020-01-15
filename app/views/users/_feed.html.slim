@@ -4,7 +4,8 @@
       = @user.nweets.count
       | 件のヌイート
     ol.nweets-list
-      = render @nweets
-    = will_paginate @nweets
+      = render @feed_items
+    #willPaginateContainer
+      .d-none = will_paginate @feed_items
   - else
     p まだヌイートはありません (T_T)
