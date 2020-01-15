@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       @feed_items = current_user.timeline.paginate(page: params[:page])
       @timeline = true
 
-      if request.xhr?
+      if params[:scroll]
         render partial: 'nweets/nweet', collection: @feed_items
       end
     end

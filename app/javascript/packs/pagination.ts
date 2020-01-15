@@ -20,11 +20,14 @@ document.addEventListener('turbolinks:load', function(){
     let pageNumber = 1;
 
     const observer = new IntersectionObserver((entries) => {
-      let morePostsUrl:string = location.pathname + '?page=' + ++pageNumber;
+      let morePostsUrl = new URL(location.href);
+      morePostsUrl.searchParams.set('scroll', '1');
+      morePostsUrl.searchParams.set('page', pageNumber.toString());
+      pageNumber++;
 
       for(const e of entries){
-        if(morePostsUrl){
-          fetch(morePostsUrl, fetchOptions).then((response) => {
+        if(morePostsUrl.href){
+          fetch(morePostsUrl.href, fetchOptions).then((response) => {
             return response.text();
           }).then((partial:string) => {
             let timelineContainer = document.querySelector('.nweets-list');
