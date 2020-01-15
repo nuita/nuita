@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+export function setFollowIcons(){
   document.querySelectorAll('.follow-icon-link').forEach((a:Element) => {
     a.addEventListener('ajax:success',() => {
       var span = a.firstElementChild;
@@ -22,4 +22,8 @@ document.addEventListener('turbolinks:load', () => {
       span.classList.toggle('unfollowable');
     });
   });
+};
+
+document.addEventListener('turbolinks:load', () => {
+  setFollowIcons();
 });
