@@ -13,7 +13,7 @@ document.addEventListener('turbolinks:load', function(){
 
     const observerOptions = {
       root: null,
-      rootMargin: '120px',
+      rootMargin: '240px',
       threshold: [1.0]
     };
 
