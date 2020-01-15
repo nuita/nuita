@@ -4,15 +4,23 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(url_digest: params[:url_digest])
     if params[:date]
-      @nweets = @user.nweets_at_date(params[:date].to_time).paginate(page: params[:page])
+      @feed_items = @user.nweets_at_date(params[:date].to_time).paginate(page: params[:page])
     else
-      @nweets = @user.nweets.paginate(page: params[:page], per_page: 50)
+      @feed_items = @user.nweets.paginate(page: params[:page])
+    end
+
+    if params[:scroll]
+      render partial: 'nweets/nweet', collection: @feed_items
     end
   end
 
   def likes
     @user = User.find_by(url_digest: params[:url_digest])
-    @feed_items = @user.liked_nweets.paginate(page: params[:page], per_page: 100)
+    @feed_items = @user.liked_nweets.paginate(page: params[:page])
+
+    if params[:scroll]
+      render partial: 'nweets/nweet', collection: @feed_items
+    end
   end
 
   def followers

@@ -5,6 +5,7 @@
       | 件のいいね
     ol.nweets-list
       = render @feed_items
-    = will_paginate @feed_items
+    #willPaginateContainer
+      .d-none = will_paginate @feed_items
   - else
     p まだ「いいね！」した投稿はありません (T_T)
