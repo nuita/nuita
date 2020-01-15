@@ -1,3 +1,6 @@
+import {setFollowIcons} from './follow_icon';
+import {setLikeButtons} from './nweets';
+
 document.addEventListener('turbolinks:load', function(){
   let paginateContainer = document.getElementById('willPaginateContainer');
 
@@ -40,6 +43,8 @@ document.addEventListener('turbolinks:load', function(){
           });
         }
       }
+      setFollowIcons();
+      setLikeButtons();
     }, observerOptions);
 
     observer.observe(document.querySelector('#willPaginateContainer'));
