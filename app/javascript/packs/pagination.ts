@@ -21,8 +21,14 @@ document.addEventListener('turbolinks:load', function(){
     };
 
     let pageNumber = 1;
+    let isLoading = false;
 
     const observer = new IntersectionObserver((entries) => {
+      if(isLoading){
+        return;
+      }
+
+      isLoading = true;
       let morePostsUrl = new URL(location.href);
       morePostsUrl.searchParams.set('scroll', '1');
       morePostsUrl.searchParams.set('page', pageNumber.toString());
@@ -45,6 +51,8 @@ document.addEventListener('turbolinks:load', function(){
       }
       setFollowIcons();
       setLikeButtons();
+
+      isLoading = false;
     }, observerOptions);
 
     observer.observe(document.querySelector('#willPaginateContainer'));
