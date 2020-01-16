@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', function(){
       threshold: [1.0]
     };
 
-    let pageNumber = 1;
+    let pageNumber = 2;
     let isLoading = false;
 
     const observer = new IntersectionObserver((entries) => {
