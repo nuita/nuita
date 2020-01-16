@@ -12,7 +12,7 @@ div id="collapseVertical#{link.id}" class="#{'collapse' if tags.any?}"
     .row.no-gutters.align-items-center
       - if link.image?
         .col-md-6.p-0
-          = image_tag link.image, class: 'card-img'
+          img.card-img loading = 'lazy' src = link.image
       .col.p-0
         .card-body
           h5.card-title = link.title
