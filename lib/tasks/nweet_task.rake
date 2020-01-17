@@ -9,10 +9,16 @@ namespace :nweet_task do
     end
   end
 
-  desc 'Refresh (and create) links on existing nweets'
+  desc 'Refresh (and create) links on existing nweets. Use when there are changes in URL columns'
   task :refresh_link => :environment do
-    Nweet.all.each do |nweet|
-      nweet.create_link
+    Nweet.all.find_each do |nweet|
+      begin
+        nweet.create_link
+      rescue => e
+        puts e
+      ensure
+        p nweet.links.first
+      end
     end
   end
 
