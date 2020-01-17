@@ -10,7 +10,7 @@
 div id="collapseHorizontal#{link.id}" class="#{'collapse' if tags.any?}"
   = link_to link.url, target: '_blank', class: 'card my-1' do
     - if link.image?
-      img.card-img-top loading = 'lazy' src = link.image
+      img.card-img-top.h-100 loading='lazy' src = link.image height = link&.image_height width = link&.image_width
     .card-body
       h5.card-title = link.title
       p.card-text = link.description

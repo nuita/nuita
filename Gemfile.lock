@@ -123,6 +123,7 @@ GEM
     execjs (2.7.0)
     faker (2.4.0)
       i18n (~> 1.6.0)
+    fastimage (2.1.7)
     ffi (1.11.1)
     fog-aws (3.5.2)
       fog-core (~> 2.1)
@@ -377,6 +378,7 @@ DEPENDENCIES
   devise (>= 4.7.1)
   ed25519
   faker
+  fastimage
   fog-aws
   font-awesome-sass (~> 5.9.0)
   google-analytics-rails

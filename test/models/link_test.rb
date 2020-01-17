@@ -53,6 +53,8 @@ class LinkTest < ActiveSupport::TestCase
     @link = Link.create(url: url)
 
     assert_equal 'https://pic.nijie.net/05/nijie_picture/3965_20190710041444_0.png', @link.image
+    assert_equal 1764, @link.image_width
+    assert_equal 1876, @link.image_height
   end
 
   test 'fetch pixiv correctly' do
