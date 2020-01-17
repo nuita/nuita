@@ -67,6 +67,7 @@ class Link < ApplicationRecord
           self.title = parse_title(page)
           self.description = parse_description(page)
           self.image = parse_image(page)
+          set_imagesizes
         rescue
           self.title = self.url
         end
@@ -153,6 +154,14 @@ class Link < ApplicationRecord
         self.image = 'https://t.komiflo.com/564_mobile_large_3x/' + json['content']['named_imgs']['cover']['filename'];
       rescue
         self.title = self.url
+      end
+    end
+
+    def set_imagesizes
+      begin
+        self.image_width, self.image_height = FastImage.size(self.image)
+      rescue
+        logger.debug('failed to set image sizes in #{link.url}')
       end
     end
 end
