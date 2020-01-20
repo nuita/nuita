@@ -1,6 +1,8 @@
 require 'uri'
 
 class Nweet < ApplicationRecord
+  enum privacy: [:public, :follower, :friend, :private]
+
   before_create :set_url_digest
 
   # statementはeditで編集されるのでafter_createではだめ
