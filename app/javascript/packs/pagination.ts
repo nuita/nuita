@@ -56,5 +56,8 @@ document.addEventListener('turbolinks:load', function(){
     }, observerOptions);
 
     observer.observe(document.querySelector('#willPaginateContainer'));
+  }else{
+    setFollowIcons();
+    setLikeButtons();    
   }
 });
