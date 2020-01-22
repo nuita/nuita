@@ -6,7 +6,7 @@ set :application, 'nuita'
 
 # cloneするgitのレポジトリ
 # 1-3で設定したリモートリポジトリのurl
-set :repo_url, 'git@github.com:kypkyp/nuita.git'
+set :repo_url, 'git@github.com:nuita/nuita.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
