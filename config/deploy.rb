@@ -1,3 +1,5 @@
+require File.expand_path("./environment", __dir__)
+
 # capistranoのバージョン固定
 lock "3.11.1"
 
@@ -51,7 +53,7 @@ namespace :deploy do
                   sql = "CREATE DATABASE IF NOT EXISTS nuita_production;"
                   # クエリの実行。
                 # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=root --password=change_this_PW_before_comm1t! -e '#{sql}'"
+                execute "mysql --user=#{Rails.application.credentials.mysql[:username]} --password=#{Rails.application.credentials.mysql[:password]} -e '#{sql}'"
 
         end
       end

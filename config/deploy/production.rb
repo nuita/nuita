@@ -1,4 +1,3 @@
-server 'nuita.net', user: 'kyp', roles: %w{app db web}, port: 22
+server 'nuita.net', user: Rails.application.credentials.deploy[:username], roles: %w{app db web}, port: 22
 
-#デプロイするサーバーにsshログインする鍵の情報。サーバー編で作成した鍵のパス
-set :ssh_options, keys: '~/.ssh/id_rsa'
+set :ssh_options, keys: Rails.application.credentials.deploy[:ssh_key_path]
