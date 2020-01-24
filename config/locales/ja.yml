@@ -9,6 +9,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       users: ユーザー
+      nweets: ヌイート
     attributes:
       user:
         handle_name: "ハンドルネーム"
@@ -19,6 +20,13 @@ ja:
         password_confirmation: "パスワード(確認)"
         icon: "アイコン"
         biography: "ひとこと"
+      nweet:
+        privacy: "公開設定"
+      nweet/privacy:
+        to_everyone: "全員に公開"
+        to_followers: "フォロワーのみ"
+        to_friends: "相互フォローのみ"
+        to_author_only: "自分のみ"
   date:
     abbr_day_names:
     - 日
