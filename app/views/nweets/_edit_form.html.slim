@@ -7,7 +7,7 @@
     .col.form-check.form-check-inline
       - Category.pluck(:name).each do |category|
         = button_tag type: 'button', class: 'toggle-tag-link tag-link not-button' do
-          span class="badge badge-tag mx-1 #{'active' if 1 == 2}"
+          span class="badge badge-tag mx-1"
             span.small = icon 'fas', 'hashtag'
             span.pr-1 = category
             span.small.delete_icon = icon 'fas', 'plus'

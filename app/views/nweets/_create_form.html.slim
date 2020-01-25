@@ -1,4 +1,3 @@
 = form_with(model: @nweet, html: {class: 'nuita-form'}) do |f|
-  /= render 'shared/error_messages', object: f.object
-  .field
+  .field.mx-2.mx-md-0
     = f.submit "#nuita!", class: "btn btn-nuita btn-block wider-margintop wider-marginbottom", id: "button-nuita"
