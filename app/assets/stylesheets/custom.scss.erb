@@ -382,7 +382,7 @@ body{
   border-radius: 0.3rem;
 }
 
-a.tag-link{
+.tag-link{
   .badge-tag{
     background-color: #fcfcfc;
     border: 1px solid $brand-color;
@@ -973,4 +973,14 @@ table.table-contribution.detailed-true{
 
 .x-small{
   font-size: x-small;
+}
+
+button{
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+button:focus:not(.focus-visible) {
+  outline: none;
 }
