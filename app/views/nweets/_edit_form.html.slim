@@ -1,5 +1,16 @@
 = form_with(model: @nweet, html: {class: 'nuita-form'}) do |f|
-  = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita wider-margintop", id: "button-nuita"
-  .statement-label コメント
-  = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control", placeholder: '感想・使用したオカズを入力'
-  = f.submit "情報を更新する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"
+  .row.mx-2.mx-md-0
+    = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita wider-margintop", id: "button-nuita"
+  .row.mx-2.mx-md-0
+    = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control col", placeholder: '感想・使用したオカズを入力'
+  .row.mx-2.mx-md-0
+    .col.form-check.form-check-inline
+      - Category.pluck(:name).each do |category|
+        = link_to root_path, method: :get, remote: true, class: 'tag-link' do
+          span class="badge badge-tag mx-1 #{'active' if 1 == 2}"
+            span.small = icon 'fas', 'hashtag'
+            span.pr-1 = category
+            span.small.delete_icon = icon 'fas', 'plus'
+          = hidden_field_tag "categories[#{category}]", 0
+  .row.mx-2.mx-md-0
+    = f.submit "投稿する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"

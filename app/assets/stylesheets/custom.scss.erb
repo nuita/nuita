@@ -139,13 +139,6 @@ $contribution-color-more: rgb(25, 97, 39);
   }
 }
 
-@media screen and (max-width: 768px){
-  .nuita-form{
-    width: 95%;
-    margin: 0 auto;
-  }
-}
-
 body{
   padding-top: 48px;
   font-family: "Questrial", sans-serif;
@@ -693,7 +686,7 @@ a.tag-link{
   margin: 30px auto;
 }
 
-/* edit */
+/* nweets#new */
 .statement-textbox {
   margin: 0.125rem auto;
 	border: 1px solid $brand-color-light;
@@ -709,6 +702,18 @@ a.tag-link{
 
 .statement-label {
   font-size: small;
+}
+
+.nuita-selectbox {
+  margin: auto;
+  border: 1px solid $brand-color-light;
+  border-radius: 10px;
+  resize: none;
+
+  &:focus {
+    border: 2px solid $brand-color-light;
+    outline: 0;
+  }
 }
 
 .like-color{
