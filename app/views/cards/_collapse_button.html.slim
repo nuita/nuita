@@ -1,0 +1,8 @@
+div id="collapseButton#{link.id}"
+  - if tags.any?
+    .small.pb-1
+      span.pr-1 = icon('fas', 'exclamation-triangle')
+      - tags.each do |tag|
+        span.font-weight-bold.pr-1 = tag
+      span.collapse-button
+        a href= "#collapse#{type}#{link.id}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseHorizontal#{link.id}" 展開
