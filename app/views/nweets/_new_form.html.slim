@@ -12,5 +12,6 @@
             span.pr-1 = category
             span.small.delete_icon = icon 'fas', 'plus'
           = hidden_field_tag "categories[#{category}]", 0
+  = f.hidden_field :did_at, value: @nweet.did_at
   .row.mx-2.mx-md-0
     = f.submit "投稿する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"
