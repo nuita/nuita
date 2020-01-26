@@ -16,6 +16,9 @@ class NweetsController < ApplicationController
     @nweet = current_user.nweets.build(new_nweet_params)
     if @nweet.save
       flash[:success] = 'ヌイートを投稿しました！'
+      if @nweet.links.any?
+        set_categories(@nweet.links.first)
+      end
       tweet if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
@@ -36,6 +39,7 @@ class NweetsController < ApplicationController
     redirect_to root_url
   end
 
+  # obsolete
   def update
     @nweet = Nweet.find_by(url_digest: params[:url_digest])
 
@@ -61,5 +65,12 @@ class NweetsController < ApplicationController
     def correct_user
       @nweet = current_user.nweets.find_by(url_digest: params[:url_digest])
       redirect_to root_url if @nweet.nil?
+    end
+
+    def set_categories(link)
+      # 正直カテゴリーの中身mass assignmentされても何の脆弱性もないたぶん
+      params.permit(categories: {}).to_hash["categories"].each do |category_name, value|
+        link.set_category(category_name) if value == '1'
+      end
     end
 end
