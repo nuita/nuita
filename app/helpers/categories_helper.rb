@@ -9,4 +9,20 @@ module CategoriesHelper
       link.categories.where(censored_by_default: true).pluck(:name)
     end
   end
+
+  def category_method(is_existing)
+    if is_existing
+      :delete
+    else
+      :post
+    end
+  end
+
+  def category_icon(is_existing)
+    if is_existing
+      "times"
+    else
+      "plus"
+    end
+  end
 end
