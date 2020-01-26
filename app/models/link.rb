@@ -21,8 +21,7 @@ class Link < ApplicationRecord
   end
 
   def set_category(name)
-    name.upcase!
-    if c = Category.find_by(name: name)
+    if c = Category.find_by(name: name.upcase)
       self.categories << c
     end
   end
