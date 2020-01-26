@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :nweets, only: [:create, :update, :destroy, :show], param: :url_digest
+  resources :nweets, except: [:index], param: :url_digest
   resource :category, only: [:create, :destroy]
   resource :like, only: [:create, :destroy]
   resource :link, only: [:create]

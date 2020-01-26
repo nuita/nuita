@@ -139,13 +139,6 @@ $contribution-color-more: rgb(25, 97, 39);
   }
 }
 
-@media screen and (max-width: 768px){
-  .nuita-form{
-    width: 95%;
-    margin: 0 auto;
-  }
-}
-
 body{
   padding-top: 48px;
   font-family: "Questrial", sans-serif;
@@ -204,8 +197,12 @@ body{
   }
 }
 
-  .wider-margintop{
-  margin-top: 30px;
+.wider-margintop{
+  margin-top: 30px !important;
+}
+
+.wider-marginbottom{
+  margin-bottom: 20px !important;
 }
 
 .btn.btn-unfollow{
@@ -385,26 +382,24 @@ body{
   border-radius: 0.3rem;
 }
 
-.badge-tag{
-  background-color: #fcfcfc;
-  border: 1px solid $brand-color;
-  color: $brand-color;
-  a{
-    color: inherit;
+.tag-link{
+  .badge-tag{
+    background-color: #fcfcfc;
+    border: 1px solid $brand-color;
+    color: $brand-color;
     text-decoration: none;
   }
-}
 
-.badge-tag.active{
-  background-color: $brand-color;
-  color: #fff;
-  a{
-    color: inherit;
+  .badge-tag.active{
+    background-color: $brand-color;
+    color: #fff;
     text-decoration: none;
 
     .delete_icon{
       color: $brand-color-light;
-      &:hover{
+    }
+    &:hover{
+      .delete_icon{
         color: white;
       }
     }
@@ -652,8 +647,8 @@ body{
 
 .btn.btn-block.btn-nuita {
   font-size: larger;
-  margin: 30px auto;
-  padding: 10px 30px 10px 30px;
+  margin: 10px auto;
+  padding: 10px 30px;
   border-radius: 10px;
   text-decoration: none;
   background-color: $brand-color;/*ボタン色*/
@@ -691,9 +686,9 @@ body{
   margin: 30px auto;
 }
 
-/* edit */
-.statement {
-  margin: 10px auto;
+/* nweets#new */
+.statement-textbox {
+  margin: 0.125rem auto;
 	border: 1px solid $brand-color-light;
 	border-radius: 10px;
 	width: 100%;
@@ -702,11 +697,25 @@ body{
   &:focus {
     border: 2px solid $brand-color-light;
     outline: 0;
+    box-shadow: none;
+    padding: calc(0.375rem - 1px) calc(0.75rem - 1px);
   }
 }
 
 .statement-label {
+  font-size: small;
+}
 
+.nuita-selectbox {
+  margin: auto;
+  border: 1px solid $brand-color-light;
+  border-radius: 10px;
+  resize: none;
+
+  &:focus {
+    border: 2px solid $brand-color-light;
+    outline: 0;
+  }
 }
 
 .like-color{
@@ -968,4 +977,14 @@ table.table-contribution.detailed-true{
 
 .x-small{
   font-size: x-small;
+}
+
+button{
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+button:focus:not(.focus-visible) {
+  outline: none;
 }

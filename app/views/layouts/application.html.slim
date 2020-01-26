@@ -18,7 +18,7 @@ html
     = favicon_link_tag('favicon.ico')
     link rel="manifest" href="/manifest.json"
     link rel="apple-touch-icon" href="#{asset_url('logomark_color.png')}"
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
     = javascript_pack_tag 'header'
@@ -29,6 +29,7 @@ html
     = javascript_pack_tag 'notification'
     = javascript_pack_tag 'christmas'
     = javascript_pack_tag 'pagination'
+    = javascript_pack_tag 'categories'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'

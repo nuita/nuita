@@ -1,14 +1,8 @@
 .mt-0.mb-2
   - Category.pluck(:name).each do |category|
-    - if link.categories.exists?(name: category)
-      span.badge.badge-tag.active.mx-1
+    - is_link_categorized = link.categories.exists?(name: category)
+    = link_to category_path(link_id: link.id, category_name: category), method: category_method(is_link_categorized), remote: true, class: 'tag-link nweet-tag-link' do
+      span class="badge badge-tag mx-1 #{'active' if is_link_categorized = link.categories.exists?(name: category)}"
         span.small = icon 'fas', 'hashtag'
         span.pr-1 = category
-        = link_to category_path(link_id: link.id, category_name: category), method: :delete do
-          span.small.delete_icon = icon 'fas', 'times'
-    - else
-      span.badge.badge-tag.mx-1
-        span.small = icon 'fas', 'hashtag'
-        span.pr-1 = category
-        = link_to category_path(link_id: link.id, category_name: category), method: :post do
-          span.small.delete_icon = icon 'fas', 'plus'
+        span.small.delete_icon = icon 'fas', category_icon(is_link_categorized)

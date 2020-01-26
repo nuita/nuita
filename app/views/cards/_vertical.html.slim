@@ -1,11 +1,5 @@
 - tags = censored_tags(link)
-- if tags.any?
-  .small.pb-1
-    span.pr-1 = icon('fas', 'exclamation-triangle')
-    - tags.each do |tag|
-      span.font-weight-bold.pr-1 = tag
-    span.collapse-button
-      a href= "#collapseVertical#{link.id}" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseVertical#{link.id}" 展開
+= render 'cards/collapse_button', type: "Vertical", link: link, tags: tags
 
 div id="collapseVertical#{link.id}" class="#{'collapse' if tags.any?}"
   = link_to link.url, target: '_blank', class: 'card my-1' do

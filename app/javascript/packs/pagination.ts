@@ -1,5 +1,6 @@
 import {setFollowIcons} from './follow_icon';
 import {setLikeButtons} from './nweets';
+import {setCategoryButtons} from './categories';
 
 document.addEventListener('turbolinks:load', function(){
   let paginateContainer = document.getElementById('willPaginateContainer');
@@ -51,6 +52,7 @@ document.addEventListener('turbolinks:load', function(){
       }
       setFollowIcons();
       setLikeButtons();
+      setCategoryButtons();
 
       isLoading = false;
     }, observerOptions);
@@ -58,6 +60,7 @@ document.addEventListener('turbolinks:load', function(){
     observer.observe(document.querySelector('#willPaginateContainer'));
   }else{
     setFollowIcons();
-    setLikeButtons();    
+    setLikeButtons();
+    setCategoryButtons();
   }
 });
