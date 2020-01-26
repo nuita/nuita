@@ -1,0 +1,19 @@
+= form_with(model: @nweet, html: {class: 'nuita-form'}) do |f|
+  .row.mx-2.mx-md-0
+    = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita wider-margintop", id: "button-nuita"
+  .row.mx-2.mx-md-0
+    = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control col", placeholder: '感想・使用したオカズを入力'
+  .row.mx-2.mx-md-0
+    .col.form-check.form-check-inline
+      - Category.pluck(:name).each do |category|
+        = button_tag type: 'button', class: 'toggle-tag-link tag-link not-button' do
+          span class="badge badge-tag mx-1"
+            span.small = icon 'fas', 'hashtag'
+            span.pr-1 = category
+            span.small.delete_icon = icon 'fas', 'plus'
+          = hidden_field_tag "categories[#{category}]", 0
+    .col-auto.pr-0
+      = f.select :privacy, Nweet.privacies.map{ |k, v| [Nweet.human_attribute_name("privacy.#{k}"), v] }, {}, {class: "form-control form-control-sm nuita-selectbox mt-2"}
+  = f.hidden_field :did_at, value: @nweet.did_at
+  .row.mx-2.mx-md-0
+    = f.submit "投稿する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"

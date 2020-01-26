@@ -1,16 +1,27 @@
 class NweetsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :correct_user, only: [:destroy, :update]
+  before_action :authenticate_user!, except: [:show]
+  before_action :correct_user, only: [:update, :destroy]
+
+  def new
+    @nweet = current_user.nweets.build(did_at: Time.zone.now)
+    @feed_items = current_user.timeline.paginate(page: params[:page])
+    @timeline = true
+
+    if params[:scroll]
+      render partial: 'nweets/nweet', collection: @feed_items
+    end
+  end
 
   def create
-    @nweet = current_user.nweets.build(did_at: Time.zone.now)
+    @nweet = current_user.nweets.build(new_nweet_params)
     if @nweet.save # edit に移すべきかも
-      redirect_to root_url(success: true, url_digest: @nweet.url_digest)
+      flash[:success] = 'ヌイートを投稿しました！'
       tweet if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
-      redirect_to root_url(success: false)
     end
+
+    redirect_to root_url
   end
 
   def show
@@ -39,6 +50,10 @@ class NweetsController < ApplicationController
 
   private
     # strong parameters
+    def new_nweet_params
+      params.require(:nweet).permit(:statement, :did_at)
+    end
+
     def edit_nweet_params
       params.require(:nweet).permit(:statement)
     end
