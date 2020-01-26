@@ -1,7 +1,8 @@
 require 'uri'
 
 class Nweet < ApplicationRecord
-  enum privacy: [:to_everyone, :to_followers, :to_friends, :to_author_only]
+  enum privacy: {to_everyone: 0, to_followers: 1, to_author_only: 3}
+  # to_friends: 2 is not used for now
 
   before_create :set_url_digest
 
