@@ -1,5 +1,5 @@
 // 既に投稿されたオカズにタグつけるやつ (category#createとかに送る)
-let setIndividualCategoryButton = (event:Event) => {
+export let setIndividualCategoryButton = (event:Event) => {
   let a = <HTMLElement>event.currentTarget;
 
   let badge = <HTMLElement>a.firstChild;
