@@ -12,7 +12,7 @@ class NweetsController < ApplicationController
     end
   end
 
-  def create
+  def create 
     @nweet = current_user.nweets.build(new_nweet_params)
     if @nweet.save # edit に移すべきかも
       flash[:success] = 'ヌイートを投稿しました！'
@@ -55,7 +55,7 @@ class NweetsController < ApplicationController
   private
     # strong parameters
     def new_nweet_params
-      params.require(:nweet).permit(:statement, :did_at)
+      params.require(:nweet).permit(:statement, :did_at, :privacy)
     end
 
     def edit_nweet_params

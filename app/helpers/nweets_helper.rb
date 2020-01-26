@@ -24,4 +24,15 @@ module NweetsHelper
       nil
     end
   end
+
+  def link_visible?(nweet)
+    case nweet.privacy.to_sym
+    when :to_everyone
+      true
+    when :to_followers
+      current_user && followee_or_self?(nweet.user)
+    when :to_author_only
+      current_user && current_user == nweet.user
+    end
+  end
 end

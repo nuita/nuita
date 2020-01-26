@@ -13,7 +13,7 @@
             span.small.delete_icon = icon 'fas', 'plus'
           = hidden_field_tag "categories[#{category}]", 0
     .col-auto.pr-0
-      = f.select :privacy, Nweet.privacies.map{ |k, v| [Nweet.human_attribute_name("privacy.#{k}"), v] }, {}, {class: "form-control form-control-sm nuita-selectbox mt-2"}
+      = f.select :privacy, Nweet.privacies.map{ |k, v| [Nweet.human_attribute_name("privacy.#{k}"), k.to_s] }, {}, {class: "form-control form-control-sm nuita-selectbox mt-2"}
   = f.hidden_field :did_at, value: @nweet.did_at
   .row.mx-2.mx-md-0
     = f.submit "投稿する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"

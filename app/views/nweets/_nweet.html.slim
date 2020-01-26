@@ -19,10 +19,19 @@ li.nweet id="nweet#{nweet.url_digest}" class="cb-#{nweet.user.has_christmas_badg
           = link_to '', christmas_path, class: 'christmas-badge-icon'
         - else
           | 。
-      - if nweet.links.any?
-        = render 'cards/vertical', link: nweet.links.first
-      - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))
-        .quote = text_url_to_link(nweet.statement).html_safe
+        - unless nweet.to_everyone?
+          .ml-1.badge.badge-secondary = "#{Nweet.human_attribute_name("privacy.#{nweet.privacy.to_s}")}"
+      - if link_visible?(nweet)
+        - if nweet.links.any?
+          = render 'cards/vertical', link: nweet.links.first
+        - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))
+          .quote = text_url_to_link(nweet.statement).html_safe
+      - else
+        - if nweet.to_followers?
+          .p-1.text-small.alert.alert-secondary
+            | このユーザーを
+            = link_to 'フォロー', user_path(nweet.user)
+            | して詳細を確認しましょう
       .nweet-bottom
         .float-left
           - if user_signed_in?

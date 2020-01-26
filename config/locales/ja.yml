@@ -24,9 +24,9 @@ ja:
         privacy: "公開設定"
       nweet/privacy:
         to_everyone: "全員に公開"
-        to_followers: "フォロワーのみ"
-        to_friends: "相互フォローのみ"
-        to_author_only: "自分のみ"
+        to_followers: "フォロワー限定"
+        to_friends: "相互フォロー限定"
+        to_author_only: "非公開"
   date:
     abbr_day_names:
     - 日
