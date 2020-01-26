@@ -5,21 +5,13 @@ class CategoriesController < ApplicationController
     link = Link.find(params[:link_id])
     link.set_category(params[:category_name])
 
-    if request.xhr?
-      head :no_content
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     link = Link.find(params[:link_id])
     link.remove_category(params[:category_name])
 
-    if request.xhr?
-      head :no_content
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path)
   end
 end
