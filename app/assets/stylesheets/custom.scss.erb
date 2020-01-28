@@ -146,6 +146,13 @@ body{
   color: $dark-shades;
 }
 
+a{
+  color: $brand-color;
+  &:hover{
+    color: $brand-color-hover;
+  }
+}
+
 .logo-font{
   font-family: "Questrial", sans-serif;
 }
@@ -332,6 +339,9 @@ body{
     a{
       text-decoration: none;
       color: $brand-color;
+      &:hover{
+        color: $brand-color-hover;
+      }
     }
     i{
       color: $dark-shades;
@@ -403,6 +413,10 @@ body{
         color: white;
       }
     }
+  }
+
+  &:hover{
+    color: $brand-color-hover;
   }
 }
 
