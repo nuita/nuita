@@ -6,7 +6,7 @@ $dark-accent: #9C712E;
 $dark-shades: #1C2826;
 
 $brand-color: #5FC10C;
-$brand-color-hover: #6fc724;
+$brand-color-hover: #7ecd3c;
 $brand-color-dark: #55ad0a;
 $brand-color-light: #8fd354;
 $brand-color-white: #EFF8E6;
@@ -144,6 +144,13 @@ body{
   font-family: "Questrial", sans-serif;
   background-color: $light-shades;
   color: $dark-shades;
+}
+
+a{
+  color: $brand-color;
+  &:hover{
+    color: $brand-color-hover;
+  }
 }
 
 .logo-font{
@@ -332,6 +339,9 @@ body{
     a{
       text-decoration: none;
       color: $brand-color;
+      &:hover{
+        color: $brand-color-hover;
+      }
     }
     i{
       color: $dark-shades;
@@ -388,6 +398,11 @@ body{
     border: 1px solid $brand-color;
     color: $brand-color;
     text-decoration: none;
+
+    &:hover{
+      color: $brand-color-hover;
+      border-color: $brand-color-hover;
+    }
   }
 
   .badge-tag.active{
@@ -403,6 +418,10 @@ body{
         color: white;
       }
     }
+  }
+
+  &:hover{
+    color: $brand-color-hover;
   }
 }
 
@@ -443,10 +462,6 @@ body{
       font-style: italic;
       color: #444;
       border-left: 1px solid $brand-color-light;
-
-      a{
-        color: $brand-color;
-      }
     }
 
     .nweet-bottom{
@@ -987,4 +1002,8 @@ button{
 
 button:focus:not(.focus-visible) {
   outline: none;
+}
+
+.turbolinks-progress-bar{
+  background-color: $brand-color-light;
 }
