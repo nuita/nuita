@@ -6,15 +6,6 @@ class Nweet < ApplicationRecord
   # statementはeditで編集されるのでafter_createではだめ
   after_save :create_link, :create_category
 
-  # begin christmas
-  after_create do
-    self.stamps.create(targeted_at: self.did_at, action: :nweet, user: self.user)
-  end
-
-  has_many :stamps, dependent: :destroy
-
-  # end christmas
-
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user

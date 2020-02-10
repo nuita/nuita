@@ -12,10 +12,6 @@ $brand-color-light: #8fd354;
 $brand-color-white: #EFF8E6;
 $brand-color-black: #132602;
 
-$christmas-color: #c64041;
-$christmas-color-light: #cd5859;
-$christmas-secondary-color: #165b33;
-
 $twitter-color: #00acee;
 
 $like-color: #c73b31;
@@ -814,38 +810,6 @@ a.card{
     }
   }
 
-  td.christmas{
-    height: 2rem;
-    background-color: $christmas-color;
-    color: #fff;
-
-    &:hover{
-      border: 2px solid #fcfcfc;
-    }
-
-    .day{
-      font-size: large;
-      font-family: 'Playfair Display', serif;
-      font-weight: bold;
-      text-align: center;
-      vertical-align: middle;
-    }
-  }
-
-  td.christmas.val-0{
-    background-color: #bbb;
-    color: $dark-shades;
-  }
-
-  td.christmas.not-yet{
-    background-color: #ddd;
-    color: #aaa;
-  }
-
-  td.christmas.today{
-    border-color: $christmas-secondary-color;
-  }
-
   td.active{
     border: 4px;
   }
@@ -857,10 +821,6 @@ a.card{
 
 h3.label-calendar{
   font-size: normal;
-}
-
-.christmas-col{
-  background-color: white;
 }
 
 /* footer */
@@ -907,60 +867,6 @@ footer{
   }
 }
 
-/* christmas */
-.nav-christmas{
-  background-color: $christmas-color;
-}
-
-.dropdown-item.nav-item-christmas{
-  background-color: $christmas-color;
-  &:hover{
-    background-color: $christmas-color-light;
-  }
-}
-
-.christmas-bg{
-  background-image: url(<%= asset_path("christmas/christmas_bg") %>)
-}
-
-.christmas-jumbotron{
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-}
-
-.christmas-minifaq{
-  a{
-    color: $christmas-color;
-    &:hover{
-      text-decoration: underline;
-      color: $christmas-color-light;
-    }
-  }
-}
-
-.christmas-badge-icon::before{
-  display: inline-block;
-  content: '';
-  background-image: url(image_path('christmas/face_ac'));
-  background-size: contain;
-  vertical-align: text-bottom;
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.cb-true{
-  .screen_name{
-    color: $christmas-color;
-    a{
-      color: $christmas-color;
-    }
-  }
-
-  .quote{
-    border-left: 1px solid $christmas-color-light !important;
-  }
-}
-
 table.table-contribution.detailed-true{
   td{
     vertical-align: top;
@@ -968,10 +874,6 @@ table.table-contribution.detailed-true{
     height: 5rem;
     font-size: large;
   }
-}
-
-#christmasFaqList{
-  list-style: none;
 }
 
 /* utility */

@@ -93,11 +93,7 @@ class UserTest < ActiveSupport::TestCase
     @user.badges << badge
     assert @user.badges.exists?
 
-    assert @user.has_christmas_badge? #christmas
-
     @user.badges.destroy(badge)
     assert_not @user.badges.exists?
-
-    assert_not @user.has_christmas_badge? #christmas
   end
 end

@@ -31,25 +31,7 @@ class User < ApplicationRecord
   has_many :censored_categories, through: :censorings, source: :category
 
   has_and_belongs_to_many :badges
-
-  # begin christmas
-  has_many :stamps, dependent: :destroy
-
-  def stamps_at_date(date)
-    stamps.where(did_at: date.beginning_of_day...date.end_of_day).reorder(did_at: :asc)
-  end
-
-  def add_stamp_by_like(like)
-    self.stamps.create(action: :like, targeted_at: like.nweet.did_at, nweet: like.nweet, like: like)
-  end
-
-  # do not delete this function until 2020.3
-  def has_christmas_badge?
-    self.badges.exists?(name: 'ホワイトクリスマス')
-  end
-
-  # end christmas
-
+  
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)

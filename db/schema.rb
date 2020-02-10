@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_162634) do
+ActiveRecord::Schema.define(version: 2020_02_10_183407) do
 
   create_table "badges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -124,19 +124,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_162634) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "stamps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "targeted_at", null: false
-    t.bigint "user_id", null: false
-    t.integer "action", null: false
-    t.bigint "nweet_id"
-    t.bigint "like_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["like_id"], name: "index_stamps_on_like_id"
-    t.index ["nweet_id"], name: "index_stamps_on_nweet_id"
-    t.index ["user_id"], name: "index_stamps_on_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -184,7 +171,4 @@ ActiveRecord::Schema.define(version: 2020_01_17_162634) do
   add_foreign_key "nweets", "users"
   add_foreign_key "preferences", "categories"
   add_foreign_key "preferences", "users"
-  add_foreign_key "stamps", "likes"
-  add_foreign_key "stamps", "nweets"
-  add_foreign_key "stamps", "users"
 end
