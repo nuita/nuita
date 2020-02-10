@@ -1,4 +1,4 @@
-li.nweet id="nweet#{nweet.url_digest}" class="cb-#{nweet.user.has_christmas_badge?}"
+li.nweet id="nweet#{nweet.url_digest}"
   div class="icon"
     = link_to icon_for(nweet.user, size: 50), nweet.user
   .right
@@ -14,11 +14,7 @@ li.nweet id="nweet#{nweet.url_digest}" class="cb-#{nweet.user.has_christmas_badg
     .content
       .maincontent
         span.time = time_ago_in_japanese(nweet.did_at)
-        | に射精しました
-        - if nweet.user.has_christmas_badge?
-          = link_to '', christmas_path, class: 'christmas-badge-icon'
-        - else
-          | 。
+        | に射精しました。
       - if nweet.links.any?
         = render 'cards/vertical', link: nweet.links.first
       - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))

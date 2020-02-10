@@ -8,5 +8,9 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.1"
+  },
+  "scripts": {
+    "dev": "webpack --progress",
+    "watch": "webpack --progress --watch"
   }
 }
