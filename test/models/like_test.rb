@@ -47,19 +47,4 @@ class LikeTest < ActiveSupport::TestCase
     like = @user.likes.create!(nweet: nweet)
     assert_nil like.notification
   end
-
-  # christmas
-  test 'create and remove stamps' do
-    like = @user.likes.create!(nweet: @other_nweet)
-    stamp = like.stamp
-
-    assert stamp.like?
-    assert_equal like.nweet.did_at, stamp.targeted_at
-    assert_equal like.user, stamp.user
-    assert_equal like.nweet, stamp.nweet
-
-    assert_difference 'Stamp.count', -1 do
-      like.destroy
-    end
-  end
 end

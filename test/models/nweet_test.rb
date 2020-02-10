@@ -88,14 +88,4 @@ class NweetTest < ActiveSupport::TestCase
 
     assert_not link.categories.exists?(name: 'pixiv')
   end
-
-  # christmas
-  test 'stamp must be generated' do
-    new_nweet = @user.nweets.create(did_at: Time.zone.now)
-
-    stamp = new_nweet.stamps.first
-    assert stamp.valid?
-    assert_equal @user, stamp.user
-    assert_equal new_nweet.did_at.in_time_zone('Tokyo'), stamp.targeted_at
-  end
 end
