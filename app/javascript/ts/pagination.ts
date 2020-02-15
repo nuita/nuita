@@ -2,7 +2,7 @@ import {setFollowIcons} from './follow_icon';
 import {setLikeButtons} from './nweets';
 import {setCategoryButtons} from './categories';
 
-document.addEventListener('DOMContentLoaded', function(){
+export default function setPagination(){
   let paginateContainer = document.getElementById('willPaginateContainer');
 
   if(paginateContainer){
@@ -63,4 +63,4 @@ document.addEventListener('DOMContentLoaded', function(){
     setLikeButtons();
     setCategoryButtons();
   }
-});
+}

@@ -16,10 +16,10 @@ function fetchNotificationCount(){
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export default function fetchNotification(){
   if(document.getElementById("badgeUnreadNotifications")){
     const intervalSec:number = 30;
     fetchNotificationCount();
     setInterval(fetchNotificationCount, intervalSec * 1000);
   }
-});
+};

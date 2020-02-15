@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+export default function setRecommendButton(){
   let recommendButton = document.getElementById("buttonRenewRecommend");
   if(recommendButton){
     recommendButton.addEventListener("click", () => {
@@ -13,4 +13,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-});
+}
