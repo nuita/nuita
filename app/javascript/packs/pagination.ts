@@ -2,7 +2,7 @@ import {setFollowIcons} from './follow_icon';
 import {setLikeButtons} from './nweets';
 import {setCategoryButtons} from './categories';
 
-document.addEventListener('turbolinks:load', function(){
+document.addEventListener('DOMContentLoaded', function(){
   let paginateContainer = document.getElementById('willPaginateContainer');
 
   if(paginateContainer){

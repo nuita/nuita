@@ -2,7 +2,7 @@
 // like app/views/layouts/application.html.erb.
 
 // ロゴを押すとトップへ戻る
-document.addEventListener('turbolinks:load', ():void=>{
+document.addEventListener('DOMContentLoaded', ():void=>{
   let topButton = document.getElementById('navbarBrandIcon');
 
   if(topButton){

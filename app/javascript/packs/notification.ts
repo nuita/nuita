@@ -16,7 +16,7 @@ function fetchNotificationCount(){
   });
 }
 
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   if(document.getElementById("badgeUnreadNotifications")){
     const intervalSec:number = 30;
     fetchNotificationCount();

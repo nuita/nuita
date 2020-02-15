@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   let recommendButton = document.getElementById("buttonRenewRecommend");
   if(recommendButton){
     recommendButton.addEventListener("click", () => {
