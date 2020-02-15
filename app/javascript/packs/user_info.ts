@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   var pathname:string = location.pathname;
   var element:HTMLElement;
   var matchData:string[]
@@ -24,7 +24,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 });
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   var btn = document.getElementById('buttonUnfollow');
 
   if(btn){

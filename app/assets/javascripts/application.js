@@ -17,7 +17,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-document.addEventListener('turbolinks:load', function(){
+document.addEventListener('DOMContentLoaded', function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
 //= require serviceworker-companion
