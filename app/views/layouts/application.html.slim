@@ -21,14 +21,6 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'
-    = javascript_pack_tag 'header'
-    = javascript_pack_tag 'nweets'
-    = javascript_pack_tag 'follow_icon'
-    = javascript_pack_tag 'user_info'
-    = javascript_pack_tag 'recommend'
-    = javascript_pack_tag 'notification'
-    = javascript_pack_tag 'pagination'
-    = javascript_pack_tag 'categories'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'

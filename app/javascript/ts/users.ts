@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+export default function setUserInfoButtons(){
+  /* 左カラムの/users/以下で白抜きになるボタンの設定 */
   var pathname:string = location.pathname;
   var element:HTMLElement;
   var matchData:string[]
@@ -22,20 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if(element){
     element.classList.add('active');
   }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-  var btn = document.getElementById('buttonUnfollow');
+  /* フォローボタンの設定 */
+  var followBtn = document.getElementById('buttonUnfollow');
 
-  if(btn){
-    btn.addEventListener('click', () => {
-      btn.innerText = 'フォローする';
+  if(followBtn){
+    followBtn.addEventListener('click', () => {
+      followBtn.innerText = 'フォローする';
     }, false);
-    btn.addEventListener('mouseover', () => {
-      btn.innerText = 'フォロー解除';
+    followBtn.addEventListener('mouseover', () => {
+      followBtn.innerText = 'フォロー解除';
     }, false);
-    btn.addEventListener('mouseout', () => {
-      btn.innerText = 'フォロー中';
+    followBtn.addEventListener('mouseout', () => {
+      followBtn.innerText = 'フォロー中';
     }, false);
   }
-});
+}
