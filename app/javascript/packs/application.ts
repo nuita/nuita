@@ -1,11 +1,11 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import setHeaderButton from "../ts/header";
-import fetchNotification from "../ts/notification";
-import setRecommendButton from "../ts/recommend";
-import setPagination from "../ts/pagination";
-import setUserButtons from "../ts/users";
+import setHeaderButton from "../src/header";
+import fetchNotification from "../src/notification";
+import setRecommendButton from "../src/recommend";
+import setPagination from "../src/pagination";
+import setUserButtons from "../src/users";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   setHeaderButton();
