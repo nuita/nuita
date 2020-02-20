@@ -3,7 +3,7 @@
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
     h1.mb-4 Nuitaに登録する
-    = form_for(resource, as: resource_name, html: {class: "form-group"}, url: registration_path(resource_name)) do |f|
+    = form_with(model: resource, as: resource_name, local: true, class: "form-group", url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.row.align-items-center
         .col-md-3

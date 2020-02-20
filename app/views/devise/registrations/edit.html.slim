@@ -3,7 +3,7 @@
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
     h1 プロフィールを編集する
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-group" }) do |f|
+    = form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, local: true, class: "form-group") do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.row.align-items-center
         .col-md-3
