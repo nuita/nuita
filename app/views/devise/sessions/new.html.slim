@@ -3,7 +3,7 @@
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
     h1.mb-4 ログイン
-    = form_for(resource, html: {class: 'form-group'}, as: resource_name, url: session_path(resource_name)) do |f|
+    = form_with(model: resource, class: 'form-group', as: resource_name, local: true, url: session_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group.row
         .col-md-3
