@@ -89,7 +89,7 @@
       p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter", method: :post
     h3.pt-4 その他のオプション
     h5 検閲カテゴリ
-    = form_with url: censoring_path(current_user), method: :put, class: "form-group" do |f|
+    = form_with url: censoring_path(current_user), method: :put, class: "form-group", local: true do |f|
       .form-group
         - Category.pluck(:name).each do |category_name|
           .form-check.form-check-inline

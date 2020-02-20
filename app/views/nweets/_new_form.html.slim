@@ -1,4 +1,4 @@
-= form_with(model: @nweet, html: {class: 'nuita-form'}) do |f|
+= form_with(model: @nweet, html: {class: 'nuita-form'}, local: true) do |f|
   .row.mx-2.mx-md-0
     = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita wider-margintop", id: "button-nuita"
   .row.mx-2.mx-md-0
