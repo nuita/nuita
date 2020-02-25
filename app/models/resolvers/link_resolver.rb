@@ -9,7 +9,9 @@ class LinkResolver
       attributes[:title] = parse_title(page)
       attributes[:description] = parse_description(page)
       attributes[:image] = parse_image(page)
-      attributes[:image_width], attributes[:image_height] = set_imagesizes(atrtibutes[:image])
+      if attributes[:image]
+        attributes[:image_width], attributes[:image_height] = set_imagesizes(attributes[:image])
+      end
     rescue
       attributes[:title] = @url
     end
