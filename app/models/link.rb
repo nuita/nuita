@@ -34,9 +34,8 @@ class Link < ApplicationRecord
       Link.offset(rand(Link.count)).first
     end
 
-    # Create or find a record from (potentially not canonical) URL.
-    # Use this instead of standard Link.create or Link.find_by(url: ...)
-    def fetch_from(url, refetch_existing_url: true)
+    # URLを正規化してfind_or_initialize_by + fetchしてくる
+    def fetch_from(url)
       page = Nokogiri::HTML.parse(open(url).read)
       resolver = select_resolver(url)
 
