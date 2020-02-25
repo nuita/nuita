@@ -121,7 +121,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test 'link can have category' do
-    link = Link.fetch_from(url: 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
+    link = Link.fetch_from('https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
     assert link.valid?
 
     category = link.categories.create!(name: 'R-18G')
@@ -135,7 +135,7 @@ class LinkTest < ActiveSupport::TestCase
     link.set_category('R18G')
     assert link.categories.exists?(name: 'R18G')
 
-    other_link = Link.fetch_from(url: 'https://twitter.com/hidesys/status/1162036947939807232')
+    other_link = Link.fetch_from('https://twitter.com/hidesys/status/1162036947939807232')
     assert_no_difference 'Category.count' do
       other_link.set_category('R18G')
     end
