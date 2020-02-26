@@ -1,6 +1,3 @@
-require 'json'
-require 'net/http'
-
 class Link < ApplicationRecord
   has_many :nweet_links, dependent: :destroy
   has_many :nweets, through: :nweet_links
@@ -47,7 +44,12 @@ class Link < ApplicationRecord
     end
 
     def select_resolver(url)
-      LinkResolver
+      case(url)
+      when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
+        KomifloResolver
+      else
+        LinkResolver
+      end
     end
   end
 end
