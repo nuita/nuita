@@ -1,14 +1,16 @@
 class LinkResolver
-  def initialize(url)
+  def initialize(url, page)
     @url = url
+    @page = page
   end
 
-  def fetch(page)
+  def fetch
     attributes = Hash.new
     begin
-      attributes[:title] = parse_title(page)
-      attributes[:description] = parse_description(page)
-      attributes[:image] = parse_image(page)
+      attributes[:title] = parse_title
+      attributes[:description] = parse_description
+      attributes[:image] = parse_image
+
       if attributes[:image]
         attributes[:image_width], attributes[:image_height] = set_imagesizes(attributes[:image])
       end
@@ -39,40 +41,40 @@ class LinkResolver
 
   private
 
-    def parse_title(page)
-      if page.css('//meta[property="og:title"]/@content').empty?
-        page.title.to_s.truncate(50)
+    def parse_title
+      if @page.css('//meta[property="og:title"]/@content').empty?
+        @page.title.to_s.truncate(50)
       else
-        page.css('//meta[property="og:title"]/@content').to_s.truncate(50)
+        @page.css('//meta[property="og:title"]/@content').to_s.truncate(50)
       end
     end
 
-    def parse_description(page)
+    def parse_description
       case @url
       when /melonbooks/
         # スタッフの紹介文でidが分岐
-        special_description = page.xpath('//div[@id="special_description"]//p/text()')
+        special_description = @page.xpath('//div[@id="special_description"]//p/text()')
         if special_description.any?
           special_description.first.to_s.truncate(90)
         else
-          description = page.xpath('//div[@id="description"]//p/text()')
+          description = @page.xpath('//div[@id="description"]//p/text()')
           description.first.to_s.truncate(90)
         end
       else
-        if page.css('//meta[property="og:description"]/@content').empty?
-          page.css('//meta[name$="description"]/@content').to_s.truncate(90)
+        if @page.css('//meta[property="og:description"]/@content').empty?
+          @page.css('//meta[name$="description"]/@content').to_s.truncate(90)
         else
-          page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
+          @page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
         end
       end
     end
 
-    def parse_image(page)
+    def parse_image
       case @url
       when /dlsite/
-        page.css('//meta[property="og:image"]/@content').first.to_s.sub(/sam/, 'main')
+        @page.css('//meta[property="og:image"]/@content').first.to_s.sub(/sam/, 'main')
       when /nijie/
-        str = page.css('//script[@type="application/ld+json"]/text()').first.to_s
+        str = @page.css('//script[@type="application/ld+json"]/text()').first.to_s
 
         if s = str.match(/https:\/\/pic.nijie.(net|info)\/(?<servername>\d+)\/[^\/]+\/nijie_picture\/(?<imagename>[^"]+)/)
           # 動画は容量大きすぎるし取らない
@@ -82,7 +84,7 @@ class LinkResolver
             s[0]
           end
         else
-          page.css('//meta[property="og:image"]/@content').first.to_s
+          @page.css('//meta[property="og:image"]/@content').first.to_s
         end
       when /pixiv.*[^fanbox](illust_id=|artworks\/)(\d+)/
         proxy_url = "https://pixiv.cat/#{$2}.jpg"
@@ -94,9 +96,9 @@ class LinkResolver
 
         proxy_url
       when /melonbooks/
-        str = page.css('//meta[property="og:image"]/@content').first.to_s.sub(/&c=1/, '')
+        str = @page.css('//meta[property="og:image"]/@content').first.to_s.sub(/&c=1/, '')
       else
-        page.css('//meta[property="og:image"]/@content').first.to_s
+        @page.css('//meta[property="og:image"]/@content').first.to_s
       end
     end
 

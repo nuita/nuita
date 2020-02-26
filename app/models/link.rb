@@ -41,7 +41,7 @@ class Link < ApplicationRecord
 
       canonical_url = resolver.fetch_cannonical_url(url)
       link = Link.find_or_initialize_by(url: canonical_url)
-      link.update_attributes(resolver.new(canonical_url).fetch(page))
+      link.update_attributes(resolver.new(canonical_url, page).fetch)
 
       link
     end
