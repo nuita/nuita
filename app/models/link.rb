@@ -33,10 +33,11 @@ class Link < ApplicationRecord
 
     # URLを正規化してfind_or_initialize_by + fetchしてくる
     def fetch_from(url)
-      page = Nokogiri::HTML.parse(open(url).read)
       resolver = select_resolver(url)
 
-      canonical_url = resolver.fetch_cannonical_url(url)
+      canonical_url = resolver.fetch_canonical_url(url)
+      page = Nokogiri::HTML.parse(open(canonical_url).read)
+
       link = Link.find_or_initialize_by(url: canonical_url)
       link.update_attributes(resolver.new(canonical_url, page).fetch)
 

@@ -27,7 +27,7 @@ class KomifloResolver < LinkResolver
   end
 
   class << self
-    def fetch_cannonical_url(url)
+    def fetch_canonical_url(url)
       id = url.slice(/komiflo\.com(?:\/#!)?\/comics\/(\d+)/, 1)
       'https://komiflo.com/comics/' + id
     end

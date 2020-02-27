@@ -28,6 +28,17 @@ class LinkTest < ActiveSupport::TestCase
     assert_empty @link.description
   end
 
+  test 'fetch canonical url' do
+    url = 'https://blog.hubspot.jp/canonical-url?hogehoge=1'
+    @link = Link.fetch_from(url)
+    assert_equal 'https://blog.hubspot.jp/canonical-url', @link.url
+
+    # it's ok if you don't have canonical url
+    url = 'https://example.com/'
+    @link = Link.fetch_from(url)
+    assert_equal 'https://example.com/', @link.url
+  end
+
   test 'fetch nijie correctly' do
     url = 'https://sp.nijie.info/view_popup.php?id=319985'
     @link = Link.fetch_from(url)
@@ -87,9 +98,9 @@ class LinkTest < ActiveSupport::TestCase
 
   test 'fetch melonbooks correctly' do
     url = 'https://www.melonbooks.co.jp/detail/detail.php?product_id=319663'
-    @link = Link.fetch_from(url)
 
-    assert_match 'adult_view', @link.url
+    @link = Link.fetch_from(url)
+    assert_match 'https://www.melonbooks.co.jp/detail/detail.php?product_id=319663&adult_view=1', @link.url
     assert_match 'めちゃシコごちうさアソート', @link.title
     assert_match 'image=212001143963.jpg', @link.image
     assert_no_match 'c=1', @link.image

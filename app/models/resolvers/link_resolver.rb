@@ -22,17 +22,13 @@ class LinkResolver
   end
 
   class << self
-    def fetch_cannonical_url(url)
-      case url
-      when /nijie/
-        url.sub!(/sp.nijie/, 'nijie')
-        url.sub(/view_popup/, 'view')
-      when /melonbooks.co.jp\/detail\/detail.php\?product_id=(\d+)/
-        'https://www.melonbooks.co.jp/detail/detail.php?product_id=' + $1 + '&adult_view=1'
-      when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
-        'https://komiflo.com/comics/' + $1
-      when /pixiv\.net\/(member_illust.php?.*illust_id=|artworks\/)(\d+)/
-        'https://pixiv.net/member_illust.php?mode=medium&illust_id=' + $2
+    # LinkResolverではヘッダーのcanonicalURL取得するだけ
+    # 子クラスで個別にオーバーライドしてクッションページを取り除く必要あり
+    def fetch_canonical_url(url)
+      page = Nokogiri::HTML.parse(open(url).read)
+
+      if (canonical_url = page.css('//link[rel="canonical"]/@href')).any?
+        canonical_url.to_s
       else
         url
       end
@@ -50,22 +46,10 @@ class LinkResolver
     end
 
     def parse_description
-      case @url
-      when /melonbooks/
-        # スタッフの紹介文でidが分岐
-        special_description = @page.xpath('//div[@id="special_description"]//p/text()')
-        if special_description.any?
-          special_description.first.to_s.truncate(90)
-        else
-          description = @page.xpath('//div[@id="description"]//p/text()')
-          description.first.to_s.truncate(90)
-        end
+      if @page.css('//meta[property="og:description"]/@content').empty?
+        @page.css('//meta[name$="description"]/@content').to_s.truncate(90)
       else
-        if @page.css('//meta[property="og:description"]/@content').empty?
-          @page.css('//meta[name$="description"]/@content').to_s.truncate(90)
-        else
-          @page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
-        end
+        @page.css('//meta[property="og:description"]/@content').to_s.truncate(90)
       end
     end
 
@@ -95,8 +79,6 @@ class LinkResolver
         end
 
         proxy_url
-      when /melonbooks/
-        str = @page.css('//meta[property="og:image"]/@content').first.to_s.sub(/&c=1/, '')
       else
         @page.css('//meta[property="og:image"]/@content').first.to_s
       end
