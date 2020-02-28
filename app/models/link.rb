@@ -48,6 +48,8 @@ class Link < ApplicationRecord
       case(url)
       when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
         KomifloResolver
+      when /melonbooks.co.jp\/detail\/detail.php\?product_id=(\d+)/
+        MelonbooksResolver
       else
         LinkResolver
       end
