@@ -54,12 +54,7 @@ class LinkResolver
     end
 
     def parse_image
-      case @url
-      when /dlsite/
-        @page.css('//meta[property="og:image"]/@content').first.to_s.sub(/sam/, 'main')
-      else
-        @page.css('//meta[property="og:image"]/@content').first.to_s
-      end
+      @page.css('//meta[property="og:image"]/@content').first.to_s
     end
 
     def set_imagesizes(image)

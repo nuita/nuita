@@ -54,6 +54,8 @@ class Link < ApplicationRecord
         PixivResolver
       when /nijie.*view.*id=\d+/
         NijieResolver
+      when /dlsite/
+        DlsiteResolver
       else
         LinkResolver
       end
