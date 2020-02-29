@@ -52,6 +52,8 @@ class Link < ApplicationRecord
         MelonbooksResolver
       when /pixiv\.net\/(member_illust.php?.*illust_id=|artworks\/)(\d+)/
         PixivResolver
+      when /nijie.*view.*id=\d+/
+        NijieResolver
       else
         LinkResolver
       end
