@@ -70,15 +70,6 @@ class LinkResolver
         else
           @page.css('//meta[property="og:image"]/@content').first.to_s
         end
-      when /pixiv.*[^fanbox](illust_id=|artworks\/)(\d+)/
-        proxy_url = "https://pixiv.cat/#{$2}.jpg"
-        # ↑で404だったら複数絵かも
-        case Net::HTTP.get_response(URI.parse(proxy_url))
-        when Net::HTTPNotFound
-          proxy_url = "https://pixiv.cat/#{$2}-1.jpg"
-        end
-
-        proxy_url
       else
         @page.css('//meta[property="og:image"]/@content').first.to_s
       end

@@ -93,7 +93,7 @@ class LinkTest < ActiveSupport::TestCase
 
     assert_match '女子大生セッッ', @link.title
     assert_match 'ノポン人', @link.description
-    assert_equal 'https://pixiv.cat/78296385-1.jpg', @link.url
+    assert_equal 'https://pixiv.cat/78296385-1.jpg', @link.image
   end
 
   test 'fetch melonbooks correctly' do

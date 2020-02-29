@@ -50,6 +50,8 @@ class Link < ApplicationRecord
         KomifloResolver
       when /melonbooks.co.jp\/detail\/detail.php\?product_id=(\d+)/
         MelonbooksResolver
+      when /pixiv\.net\/(member_illust.php?.*illust_id=|artworks\/)(\d+)/
+        PixivResolver
       else
         LinkResolver
       end
