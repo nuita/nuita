@@ -27,6 +27,6 @@ production:
   encoding: utf8mb4
   pool: 5
   database: nuita_production
-  username: <%= Rails.application.credentials.mysql[:username] %>
-  password: <%= Rails.application.credentials.mysql[:password] %>
+  username: <%= Rails.application.credentials.mysql.try(:[], :username) %>
+  password: <%= Rails.application.credentials.mysql.try(:[], :password) %>
   socket: /var/lib/mysql/mysql.sock
