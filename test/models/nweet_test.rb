@@ -62,12 +62,14 @@ class NweetTest < ActiveSupport::TestCase
 
   test 'url infos in nweet must be fetched' do
     url = 'https://www.youtube.com/user/HikakinTV'
+    canonical_url = 'https://www.youtube.com/channel/UCZf__ehlCEBPop-_sldpBUQ'
+
     assert_difference 'Link.count', 1 do
       @user.nweets.create(did_at: 10.minutes.ago, statement: url)
     end
 
-    link = Link.find_by(url: url)
-    assert_equal url, link.url
+    link = Link.find_by(url: canonical_url)
+    assert_equal canonical_url, link.url
     assert_match 'Hikakin', link.title
     assert_match 'ヒカキン', link.description
 
