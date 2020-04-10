@@ -4,7 +4,7 @@ class LinkTest < ActiveSupport::TestCase
   test 'fetch data correctly as created' do
     # hikakinTV
     url = 'https://www.youtube.com/user/HikakinTV'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
     assert_not_nil @link
 
     assert_equal 'HikakinTV', @link.title
@@ -13,7 +13,7 @@ class LinkTest < ActiveSupport::TestCase
 
     # instagram
     url = 'https://www.instagram.com/'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
     assert_not_nil @link
 
     assert_equal 'Instagram', @link.title
@@ -22,35 +22,42 @@ class LinkTest < ActiveSupport::TestCase
 
     # example.com (カード情報ない)
     url = 'http://example.com'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
     assert_not_nil @link
     assert_equal 'Example Domain', @link.title
     assert_empty @link.description
   end
 
+  test 'fetch canonical url' do
+    url = 'https://blog.hubspot.jp/canonical-url?hogehoge=1'
+    @link = Link.fetch_from(url)
+    assert_equal 'https://blog.hubspot.jp/canonical-url', @link.url
+
+    # it's ok if you don't have canonical url
+    url = 'https://example.com/'
+    @link = Link.fetch_from(url)
+    assert_equal 'https://example.com/', @link.url
+  end
+
   test 'fetch nijie correctly' do
     url = 'https://sp.nijie.info/view_popup.php?id=319985'
-    url = Link.normalize_url(url)
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_equal 'https://nijie.info/view.php?id=319985', @link.url
     assert_match '発情めめめ', @link.title
 
     url = 'https://nijie.info/view.php?id=319985'
-    url = Link.normalize_url(url)
     assert_match @link.url, url
 
     # アニメはサムネに留めておく
     url = 'http://nijie.info/view.php?id=177736'
-    url = Link.normalize_url(url)
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_match '__rs_l160x160', @link.image
 
     # cf: issue #59
     url = 'https://nijie.info/view.php?id=322323'
-    url = Link.normalize_url(url)
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_equal 'https://pic.nijie.net/05/nijie_picture/3965_20190710041444_0.png', @link.image
     assert_equal 1764, @link.image_width
@@ -59,14 +66,14 @@ class LinkTest < ActiveSupport::TestCase
 
   test 'fetch pixiv correctly' do
     url = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75763842'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_match '地鶏', @link.title
     assert_equal 'https://pixiv.cat/75763842.jpg', @link.image
 
     # これは完全に冗長なテストだけどかわいいから見て
     url = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=73718144'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_match 'んあー・・・', @link.title
     assert_match 'ん？あげませんよ！', @link.description
@@ -74,7 +81,7 @@ class LinkTest < ActiveSupport::TestCase
 
     # manga. これで抜く人いなそう
     url = 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75871400'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_match 'DWU', @link.title
     assert_match '浅瀬', @link.description
@@ -82,19 +89,18 @@ class LinkTest < ActiveSupport::TestCase
 
     # URLの形式変わってるやんけ
     url = 'https://www.pixiv.net/artworks/78296385'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_match '女子大生セッッ', @link.title
     assert_match 'ノポン人', @link.description
-    assert_equal 'https://pixiv.cat/78296385-1.jpg', @link.url
+    assert_equal 'https://pixiv.cat/78296385-1.jpg', @link.image
   end
 
   test 'fetch melonbooks correctly' do
     url = 'https://www.melonbooks.co.jp/detail/detail.php?product_id=319663'
-    url = Link.normalize_url(url)
-    @link = Link.create(url: url)
 
-    assert_match 'adult_view', @link.url
+    @link = Link.fetch_from(url)
+    assert_match 'https://www.melonbooks.co.jp/detail/detail.php?product_id=319663&adult_view=1', @link.url
     assert_match 'めちゃシコごちうさアソート', @link.title
     assert_match 'image=212001143963.jpg', @link.image
     assert_no_match 'c=1', @link.image
@@ -102,8 +108,7 @@ class LinkTest < ActiveSupport::TestCase
 
     # スタッフの推薦文ない作品は構造変わるからテスト
     url = 'https://www.melonbooks.co.jp/detail/detail.php?product_id=242938'
-    url = Link.normalize_url(url)
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_match 'ぬめぬめ', @link.title
     assert_match '諏訪子様にショタがいじめられる話です。', @link.description #かわいそう…
@@ -111,8 +116,7 @@ class LinkTest < ActiveSupport::TestCase
 
   test 'fetch komiflo correctly' do
     url = 'https://komiflo.com/#!/comics/4635/read/page/3'
-    url = Link.normalize_url(url)
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_equal 'https://komiflo.com/comics/4635', @link.url
     assert_match '晴れ時々露出予報', @link.title
@@ -122,13 +126,13 @@ class LinkTest < ActiveSupport::TestCase
 
   test 'deal correctly with incorrect url' do
     url = 'http://not-val.id/'
-    @link = Link.create(url: url)
+    @link = Link.fetch_from(url)
 
     assert_equal @link.url, @link.title
   end
 
   test 'link can have category' do
-    link = Link.create(url: 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
+    link = Link.fetch_from('https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
     assert link.valid?
 
     category = link.categories.create!(name: 'R-18G')
@@ -137,12 +141,12 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test 'link can set and remove category' do
-    link = Link.create(url: 'https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
+    link = Link.fetch_from('https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
 
     link.set_category('R18G')
     assert link.categories.exists?(name: 'R18G')
 
-    other_link = Link.create(url: 'https://twitter.com/hidesys/status/1162036947939807232')
+    other_link = Link.fetch_from('https://twitter.com/hidesys/status/1162036947939807232')
     assert_no_difference 'Category.count' do
       other_link.set_category('R18G')
     end
