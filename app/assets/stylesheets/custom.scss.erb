@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial|Playfair+Display&display=swap');
 
-$light-shades: #F4F3EF;
+$light-shades: #f0f0f0;
 $light-accent: #85A394;
 $dark-accent: #9C712E;
 $dark-shades: #1C2826;
 
-$brand-color: #5FC10C;
-$brand-color-hover: #7ecd3c;
-$brand-color-dark: #55ad0a;
-$brand-color-light: #8fd354;
-$brand-color-white: #EFF8E6;
+$brand-color: #36ca6c;
+$brand-color-hover: #5ac981;
+$brand-color-dark: #299950;
+$brand-color-light: #5ff395;
+$brand-color-white: #9effb3;
 $brand-color-black: #132602;
 
 $twitter-color: #00acee;
@@ -21,66 +21,76 @@ $contribution-color-zero: rgb(235, 237, 240);
 $contribution-color-one: rgb(123, 201, 111);
 $contribution-color-more: rgb(25, 97, 39);
 
-.navbar{
-  background-color: $brand-color;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+.navbar {
+  background-color: #fcfcfc;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   height: 56px;
 
-  .navbar-brand{
+  .navbar-brand {
     font-size: 1rem;
     margin-right: 0;
   }
 
-  .navbar-nav{
+  .navbar-nav {
     margin-left: auto;
     margin-right: 0;
-    .nav-link{
-      color: #f0f0f0;
+
+    .nav-link {
+      color: $brand-color;
       font-size: 1rem;
-      &:hover{
-        color: #fff;
+
+      &:hover {
+        color: $brand-color-hover;
+        transition: 0.2s;
       }
     }
   }
 
-  .navbar-center{
+  .navbar-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: -2px;
   }
 
-  .dropdown-menu{
-    background-color: $brand-color;
+  .dropdown-menu {
+    color: #000;
     position: absolute;
     right: 0;
     left: auto;
   }
 
-  .dropdown-item{
-    background-color: $brand-color;
-    &:hover{
-      background-color: $brand-color-hover;
-    }
-    &:active{
-      background-color: $brand-color-hover;
+  .dropdown-item {
+    background-color: #fff;
+
+    .nav-link {
+      color: #000;
+
+      &:hover {
+        color: $brand-color-dark;
+      }
+
+      &:active {
+        color: $brand-color;
+      }
     }
   }
 
-  .mode-nav{
+  .mode-nav {
     font-size: 1.4rem;
     box-sizing: border-box;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 
-    li{
+    li {
       padding-right: 1rem;
 
-      a{
-        color: white;
-        &:hover{
-          color: $brand-color-white;
+      a {
+        color: #ddd;
+
+        &:hover {
+          color: #aaa;
           transition-duration: 0.2s;
         }
       }
@@ -88,162 +98,170 @@ $contribution-color-more: rgb(25, 97, 39);
 
   }
 
-  #navbarNav{
+  #navbarNav {
     margin-left: auto;
     margin-right: 0px;
     position: inherit;
-    #navbarDropdownMenuLink{
+
+    #navbarDropdownMenuLink {
       text-align: right;
       padding-right: 0;
+      color: #ddd;
     }
   }
 
-  #badgeUnreadNotifications{
+  #badgeUnreadNotifications {
     font-size: small;
     color: #fff;
     background-color: $brand-color-dark;
   }
 }
 
-@media screen and (max-width: 575px){
-  .navbar{
-    #navbarNav{
+@media screen and (max-width: 575px) {
+  .navbar {
+    #navbarNav {
       position: absolute;
       right: 8px;
       top: 0;
-      #navbarDropdownMenuLink{
+
+      #navbarDropdownMenuLink {
         text-align: right;
         padding-right: 0.5rem;
       }
     }
 
-    .dropdown-menu{
+    .dropdown-menu {
       transform: none;
     }
   }
 
-  .timestamp{
+  .timestamp {
     display: none;
   }
 
-  .landing{
+  .landing {
     margin: 60px 0 0 0 !important;
 
-    h1{
+    h1 {
       margin-bottom: 1rem !important;
     }
   }
 }
 
-body{
+body {
   padding-top: 48px;
   font-family: "Questrial", sans-serif;
   background-color: $light-shades;
   color: $dark-shades;
 }
 
-a{
+a {
   color: $brand-color;
-  &:hover{
+
+  &:hover {
     color: $brand-color-hover;
   }
 }
 
-.logo-font{
+.logo-font {
   font-family: "Questrial", sans-serif;
 }
 
-.notice{
+.notice {
   margin: 0px;
   padding: 0px;
 }
 
-.alert{
+.alert {
   margin: 0px;
   padding: 0px;
 }
 
-.jumbotron{
+.jumbotron {
   background-color: #fcfcfa;
   padding-top: 2rem;
 }
 
-#landingContainer{
+#landingContainer {
   background-image: url(<%= asset_path("landing_background") %>);
+  min-height: 820px;
+  width: 100vw;
   background-size: cover;
-  background-color: rgba(0,0,40,0.4)
+  background-color: rgba(0, 0, 40, 0.4)
 }
 
-.full-height{
+.full-height {
   height: 600px;
 }
 
-.landing{
+.landing {
   margin: 120px 0 0 60px;
 
-  h1{
+  h1 {
     margin-bottom: 3rem;
   }
-  .lead{
+
+  .lead {
     font-size: normal;
   }
+
   color: #fff;
 }
 
-.container-landing{
-  background-color: rgba(255,255,255,0.9)
+.container-landing {
+  background-color: rgba(255, 255, 255, 0.9)
 }
 
-.form-group{
-  i{
+.form-group {
+  i {
     font-size: small;
   }
 }
 
-.wider-margintop{
+.wider-margintop {
   margin-top: 30px !important;
 }
 
-.wider-marginbottom{
+.wider-marginbottom {
   margin-bottom: 20px !important;
 }
 
-.btn.btn-unfollow{
+.btn.btn-unfollow {
   border-color: $brand-color;
   color: white;
   background-color: $brand-color;
 
-  &:hover{
+  &:hover {
     border-color: $brand-color;
     color: $brand-color;
     background-color: white;
   }
 }
 
-.btn.btn-unfollow{
+.btn.btn-unfollow {
   border: 1px solid $brand-color;
   color: white;
   background-color: $brand-color;
 
-  &:hover{
+  &:hover {
     border-color: $brand-color;
     color: $brand-color;
     background-color: white;
   }
 }
 
-.btn.btn-follow{
+.btn.btn-follow {
   border-color: $brand-color;
   color: $brand-color;
   background-color: white;
 
-  &:hover{
+  &:hover {
     border: 1px solid $brand-color;
     color: white;
     background-color: $brand-color;
   }
 
-  &:active{
+  &:active {
     border: 1px solid $brand-color-light;
     color: white;
     background-color: $brand-color-light;
@@ -251,68 +269,69 @@ a{
 }
 
 /* show user */
-.usericon{
+.usericon {
   border-radius: 50%;
 }
 
-.side-section{
+.side-section {
   padding: 10px 10px 10px 10px;
   margin-top: 30px;
   top: 77px;
   border-radius: 10px;
   background-color: #fcfcfc;
 
-  .usericon{
+  .usericon {
     float: left;
     margin-right: 10px;
   }
 
-  .screen_name{
-    color: $dark-accent;
+  .screen_name {
+    color: #666;
     padding-bottom: 0.4rem;
   }
 
-  h3{
+  h3 {
     margin: 2px 0px 0px 0px;
   }
 
-  h3.handle_name{
+  h3.handle_name {
     font-size: 1.25rem;
     padding: 0px;
   }
 
-  a{
+  a {
     text-decoration: none;
     color: inherit;
   }
 
-  .badge-brand{
+  .badge-brand {
     background-color: $brand-color;
     color: #fff;
     font-size: 1rem;
 
-    &:hover{
+    &:hover {
       background-color: $brand-color-hover;
     }
   }
 
-  .badge-brand.active{
+  .badge-brand.active {
     background-color: #fff;
     color: $brand-color;
     position: relative;
 
-    &:after{
+    &:after {
       border: 1px solid $brand-color;
       content: '';
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       display: block;
       border: 2px solid $brand-color;
       border-radius: 10rem;
 
-      &:hover{
+      &:hover {
         background-color: #fff;
         color: $brand-color-light;
         border: 2px solid $brand-color-light;
@@ -320,67 +339,73 @@ a{
     }
   }
 
-  .list-group-item{
+  .list-group-item {
     background-color: #fcfcfc;
     padding: 0.25rem 0;
     border: none;
-    &:hover{
+
+    &:hover {
       color: #132602;
       transition: 0.2s;
     }
   }
 
-  .user_links{
+  .user_links {
     clear: both;
-    a{
+
+    a {
       text-decoration: none;
       color: $brand-color;
-      &:hover{
+
+      &:hover {
         color: $brand-color-hover;
       }
     }
-    i{
+
+    i {
       color: $dark-shades;
     }
+
     box-sizing: border-box;
     padding-left: 0px;
   }
 }
 
-.handle_name{
+.handle_name {
   padding-right: 5px;
+
   a {
     text-decoration: none;
     color: $dark-shades;
   }
 }
 
-.screen_name{
+.screen_name {
   font-size: 12px;
   font-weight: normal;
   font-family: "Questrial", sans-serif;
-  color: $dark-accent;
+  color: #666;
 
-  a{
+  a {
     text-decoration: none;
-    color: $dark-accent;
+    color: #666;
   }
 }
 
-.timestamp{
+.timestamp {
   font-size: x-small;
   padding-top: 10px;
   color: #aaaaaa;
   float: right;
 }
 
-.flash-container{
+.flash-container {
   padding-top: 1rem;
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
 
-.label-muted{
+.label-muted {
   background-color: #eee;
   color: #999;
   font-size: small;
@@ -388,64 +413,65 @@ a{
   border-radius: 0.3rem;
 }
 
-.tag-link{
-  .badge-tag{
+.tag-link {
+  .badge-tag {
     background-color: #fcfcfc;
     border: 1px solid $brand-color;
     color: $brand-color;
     text-decoration: none;
 
-    &:hover{
+    &:hover {
       color: $brand-color-hover;
       border-color: $brand-color-hover;
     }
   }
 
-  .badge-tag.active{
+  .badge-tag.active {
     background-color: $brand-color;
     color: #fff;
     text-decoration: none;
 
-    .delete_icon{
+    .delete_icon {
       color: $brand-color-light;
     }
-    &:hover{
-      .delete_icon{
+
+    &:hover {
+      .delete_icon {
         color: white;
       }
     }
   }
 
-  &:hover{
+  &:hover {
     color: $brand-color-hover;
   }
 }
 
 /* feed */
-.nweet-feed{
+.nweet-feed {
   width: 100%;
   border-radius: 10px;
   background-color: #fcfcfc;
 
-  .nweet-count{
+  .nweet-count {
     border-bottom: $light-accent, 1px, solid;
     font-size: small;
     text-align: right;
     color: $dark-accent;
   }
 
-  .nweets-list{
+  .nweets-list {
     list-style: none;
     padding: 0px 0rem 0px 1rem;
   }
 
-  .nweet{
+  .nweet {
     padding: 15px 0px 0px 0px;
     margin-right: 10px;
     display: block;
     border-bottom: 1px solid #eee;
 
-    .content{
+    .content {
       font-size: normal;
       padding-bottom: 5px;
     }
@@ -460,60 +486,64 @@ a{
       border-left: 1px solid $brand-color-light;
     }
 
-    .nweet-bottom{
+    .nweet-bottom {
       margin-bottom: 0px;
       margin-top: 0.5rem;
       padding: 0;
       color: #aaaaaa;
       overflow: hidden;
 
-      .like-btn{
+      .like-btn {
         margin: 0;
 
-        a.btn{
+        a.btn {
           color: #aaa;
-          &:hover{
+
+          &:hover {
             color: $like-color;
           }
-          &:focus{
+
+          &:focus {
             outline: none;
             box-shadow: none;
           }
+
           padding-left: 0;
         }
 
-        .btn.liked{
+        .btn.liked {
           color: $like-color;
-          &:hover{
+
+          &:hover {
             color: $like-color-light;
           }
         }
 
-        #likeFlash{
+        #likeFlash {
           font-size: small;
           color: $like-color;
         }
 
-        #latestLikedTime{
+        #latestLikedTime {
           font-size: small;
         }
       }
 
-      .text-right{
+      .text-right {
         line-height: 1rem;
       }
 
-      .btn{
+      .btn {
         outline: none;
         box-shadow: none;
       }
     }
 
-    .maincontent{
+    .maincontent {
       padding-bottom: 5px;
     }
 
-    .user_info{
+    .user_info {
       margin-top: 5px;
       margin-bottom: 5px;
       border-bottom: $light-accent, 1px, solid;
@@ -525,45 +555,50 @@ a{
       float: left;
       margin-right: 1em;
       margin-top: 5px;
+
       img {
         width: 100%;
         object-fit: cover;
       }
     }
 
-    a.nweet-delete{
+    a.nweet-delete {
       color: #ddd;
-      &:hover{
+
+      &:hover {
+        transition: all 0.2s;
         color: #bbb;
       }
     }
 
-    .follow-icon{
+    .follow-icon {
       padding-left: 0.5rem;
       font-size: small;
-      color: #aaa;
-      &:hover{
+      color: #ddd;
+
+      &:hover {
+        transition: all 0.2s;
         color: $brand-color-hover;
       }
     }
 
-    .follow-icon.unfollowable:hover{
+    .follow-icon.unfollowable:hover {
       color: $like-color-light;
     }
   }
 }
 
 @media screen and (min-width: 480px) {
-  .nweet-feed{
-    .nweet{
+  .nweet-feed {
+    .nweet {
       margin-right: 30px;
 
-      .quote{
+      .quote {
         padding-left: 1rem;
       }
     }
 
-    .right{
+    .right {
       overflow: hidden;
     }
   }
@@ -571,7 +606,7 @@ a{
 }
 
 @media screen and (max-width: 766px) {
-  .container{
+  .container {
     width: 100%;
     padding-left: 0;
     padding-right: 0;
@@ -580,20 +615,21 @@ a{
 }
 
 @media screen and (min-width: 766px) {
-  .not-so-jumbo{
+  .not-so-jumbo {
     width: 766px;
   }
 
-  .side-section{
-    .media{
+  .side-section {
+    .media {
       flex-direction: column;
     }
-    .list-group{
+
+    .list-group {
       font-size: small;
     }
   }
 
-  .label-calendar{
+  .label-calendar {
     font-size: small;
   }
 }
@@ -610,47 +646,48 @@ a{
 
 @media screen and (min-width: 1200px) {
   .container-fluid {
-    padding-right: 2rem;
-    padding-left: 2rem;
+    width: 1200px;
     margin-right: auto;
     margin-left: auto;
   }
 }
 
-.section-title{
+.section-title {
   font-size: small;
-  button{
+
+  button {
     font-size: x-small;
     border: none;
   }
 }
 
-.registration_button{
+.registration_button {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-.btn-brandcolor{
+.btn-brandcolor {
   background-color: $brand-color;
   color: white;
 
-  &:hover{
-    background-color: $brand-color-dark;
+  &:hover {
+    background-color: $brand-color-hover;
     color: white;
   }
 }
 
-.btn-brandcolor-hover{
-  &:hover{
+.btn-brandcolor-hover {
+  &:hover {
     background-color: $brand-color;
     color: white;
   }
 }
 
-.btn-twitter{
+.btn-twitter {
   background-color: $twitter-color;
   color: white;
-  &:hover{
+
+  &:hover {
     color: white;
     background-color: #00a2e0;
   }
@@ -660,49 +697,56 @@ a{
   font-size: larger;
   margin: 10px auto;
   padding: 10px 30px;
-  border-radius: 10px;
+  border-radius: 100%;
   text-decoration: none;
-  background-color: $brand-color;/*ボタン色*/
+  background-color: $brand-color;
+  /*ボタン色*/
   color: #fff;
   border-bottom: solid 3px #627295;
   border-radius: 2px;
+
   &:hover {
     background-color: $brand-color-hover;
     color: #fff;
   }
+
   &:active {
     /*ボタンを押したとき*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    /*影を小さく*/
     border-bottom: none;
   }
-  &:disabled{
+
+  &:disabled {
     transition: all 0.2s;
-    background-color: #aaaaaa ;/*ボタン色*/
+    background-color: #aaaaaa;
+    /*ボタン色*/
     color: #fff;
-    &:hover{
+
+    &:hover {
       color: #fff;
     }
   }
 }
 
-.btn-link{
+.btn-link {
   color: $brand-color;
 }
 
-.btn-edit{
+.btn-edit {
   margin-top: 10px;
 }
 
-.row_top{
+.row_top {
   margin: 30px auto;
 }
 
 /* nweets#new */
 .statement-textbox {
   margin: 0.125rem auto;
-	border: 1px solid $brand-color-light;
-	border-radius: 10px;
-	width: 100%;
+  border: 1px solid $brand-color-light;
+  border-radius: 10px;
+  width: 100%;
   resize: none;
 
   &:focus {
@@ -729,60 +773,64 @@ a{
   }
 }
 
-.like-color{
+.like-color {
   color: $like-color;
 }
 
-.notification{
-  .action-icon{
+.notification {
+  .action-icon {
     float: left;
     margin-top: 0.25rem;
     margin-right: 0.5rem;
     font-size: large;
   }
 
-  .handle-name{
+  .handle-name {
     font-weight: bold;
-    a{
+
+    a {
       color: inherit;
-      &:hover{
+
+      &:hover {
         text-decoration: none;
       }
-    };
+    }
+
+    ;
   }
 
-  .user-icon{
+  .user-icon {
     border-radius: 50%;
   }
 
-  a.quoted-nweet{
+  a.quoted-nweet {
     color: #aaa;
     text-decoration: none;
 
-    .quote{
+    .quote {
       color: #aaa;
       border-color: #aaa;
     }
   }
 }
 
-textarea{
+textarea {
   resize: none;
 }
 
-a.card{
+a.card {
   text-decoration: none;
   color: inherit;
 }
 
 /* contribution graph */
-.table-contribution{
+.table-contribution {
   font-size: x-small;
   margin: 0 auto;
   border-collapse: separate;
   border-spacing: 1px;
 
-  td{
+  td {
     width: 1.5rem;
     height: 1.5rem;
     margin: 0px;
@@ -790,85 +838,94 @@ a.card{
     border: 2px solid #fcfcfc;
     background-color: $contribution-color-more;
 
-    a{
+    a {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    &:hover{
+    &:hover {
       border: 2px;
     }
   }
-  td.val-1{
+
+  td.val-1 {
     background-color: $contribution-color-one;
   }
-  td.val-0{
+
+  td.val-0 {
     background-color: $contribution-color-zero;
-    &:hover{
+
+    &:hover {
       border: 2px solid #fcfcfc;
     }
   }
 
-  td.active{
+  td.active {
     border: 4px;
   }
 
-  tr{
+  tr {
     margin: 0;
   }
 }
 
-h3.label-calendar{
+h3.label-calendar {
   font-size: normal;
 }
 
 /* footer */
-footer{
-  .text-muted{
-    a{
+footer {
+  .text-muted {
+    a {
       color: $dark-accent;
     }
   }
 }
 
-.collapse-button{
+.collapse-button {
   padding: 0 0.125rem;
   font-size: small;
-  a{
+
+  a {
     color: $dark-shades;
-    &:hover{
+
+    &:hover {
       color: $brand-color-black;
       text-decoration: none;
     }
-    &:active{
+
+    &:active {
       color: $dark-shades;
     }
   }
 }
 
-#badgeBadge:hover{
+#badgeBadge:hover {
   background-color: $brand-color;
 }
 
-#badgeList{
+#badgeList {
   margin-left: 0.125rem;
   padding-left: 0rem;
-  li.media{
+
+  li.media {
     list-style: none;
     flex-direction: row;
-    img{
+
+    img {
       border-radius: 100%;
     }
-    .badge-name{
+
+    .badge-name {
       font-size: small;
       font-weight: bold;
     }
   }
 }
 
-table.table-contribution.detailed-true{
-  td{
+table.table-contribution.detailed-true {
+  td {
     vertical-align: top;
     text-align: center;
     height: 5rem;
@@ -877,26 +934,32 @@ table.table-contribution.detailed-true{
 }
 
 /* utility */
-.bg-brand{
+.bg-brand {
   background-color: $brand-color;
   border-color: $brand-color-dark;
 
-  &:hover{
-    background-color: $brand-color-dark;
+  &:hover {
+    background-color: $brand-color-hover;
     border-color: $brand-color-dark;
   }
 
-  &:active{
-    background-color: $brand-color-light;
+  &:active {
+    background-color: $brand-color-light !important;
     border-color: $brand-color;
+  }
+
+  &:focus {
+    background-color: $brand-color-light !important;
+    border-color: $brand-color;
+    outline: 0 !important;
   }
 }
 
-.x-small{
+.x-small {
   font-size: x-small;
 }
 
-button{
+button {
   background: transparent;
   padding: 0;
   border: none;

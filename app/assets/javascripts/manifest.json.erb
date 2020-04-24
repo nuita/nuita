@@ -1,4 +1,4 @@
-<% icon_sizes = [32, 48, 72, 128, 192, 256, 512] %>
+<% icon_sizes = [16, 24, 32, 48, 64, 128, 256, 512] %>
 {
   "name": "Nuita",
   "short_name": "Nuita",
@@ -6,15 +6,15 @@
   "icons": [
   <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
     {
-      "src": "<%= image_path "serviceworker-rails/icon-#{dim}.png" %>",
+      "src": "<%= image_path "serviceworker-rails/favicon-#{dim}.png" %>",
       "sizes": "<%= dim %>",
       "type": "image/png",
       "purpose": "maskable any"
     }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
   <% end %>
   ],
-  "theme_color": "#5FC10C",
-  "background_color": "#5FC10C",
+  "theme_color": "#36ca6c",
+  "background_color": "#36ca6c",
   "display": "standalone",
   "orientation": "portrait",
   "share_target": {
