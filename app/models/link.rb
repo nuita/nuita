@@ -10,6 +10,8 @@ class Link < ApplicationRecord
 
   validates :url, :url => true
 
+  scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:categories).where(categories: {censored_by_default: nil}) }
+
   def refetch
     fetch_infos
     save
@@ -27,8 +29,14 @@ class Link < ApplicationRecord
   end
 
   class << self
-    def recommend
-      Link.offset(rand(Link.count)).first
+    def recommend(displayable: false)
+      if(displayable)
+        link = Link.displayable  
+      else
+        link = Link.all
+      end
+      
+      link.offset(rand(link.count)).first
     end
 
     # URLを正規化してfind_or_initialize_by + fetchしてくる
