@@ -6,7 +6,7 @@ div id="collapseVertical#{link.id}" class="#{'collapse' if tags.any?}"
     .row.no-gutters.align-items-center
       - if link.image?
         .col-md-6.p-0
-          img.card-img.h-100 loading='lazy' src = camo(link.image) width=link&.image_width height = link&.image_height
+          img.card-img.h-100 loading='lazy' src = camo_url(link.image) width=link&.image_width height = link&.image_height
       .col.p-0
         .card-body
           h5.card-title = link.title

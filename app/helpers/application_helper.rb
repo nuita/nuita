@@ -25,4 +25,12 @@ module ApplicationHelper
     end
   end
 
+  # returns camo url only in production mode
+  def camo_url(url)
+    if Rails.env.production?
+      camo(url)
+    else
+      url
+    end
+  end
 end
