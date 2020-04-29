@@ -20,7 +20,6 @@ gem 'faker'
 gem "nokogiri", ">= 1.10.4"
 gem 'valid_url'
 gem 'fastimage'
-gem 'camo'
 
 gem 'mysql2'
 
@@ -88,6 +87,7 @@ end
 group :production, :staging do
   gem 'unicorn'
   gem 'google-analytics-rails'
+  gem 'camo'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
