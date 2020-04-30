@@ -83,6 +83,12 @@ class NweetTest < ActiveSupport::TestCase
     assert_equal link, nweet_again.links.first
   end
 
+  test 'nweet must be created even if url is not valid' do
+    assert_difference 'Nweet.count', 1 do
+      @user.nweets.create(did_at: 1.minutes.ago, statement: "I like this vid! http://not-val.id/")
+    end
+  end
+
   test 'tags in nweet must NOT be generated as category' do
     str = "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75609372 #pixiv"
     nweet = @user.nweets.create(did_at: Time.zone.now, statement: str)
