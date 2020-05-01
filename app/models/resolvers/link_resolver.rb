@@ -15,7 +15,7 @@ class LinkResolver
         attributes[:image_width], attributes[:image_height] = set_imagesizes(attributes[:image])
       end
     rescue
-      attributes[:title] = @url
+      attributes[:title] = @url unless attributes[:title]
     end
 
     attributes
