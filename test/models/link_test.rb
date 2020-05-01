@@ -124,6 +124,15 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 'https://t.komiflo.com/564_mobile_large_3x/contents/cdcfb81ea67a74519b8ad9dea6de8c5d4cec9f9f.jpg', @link.image
   end
 
+  test 'fetch dlsite correctly' do
+    url = 'https://www.dlsite.com/maniax-touch/dlaf/=/t/p/link/work/aid/miuuu/id/RJ255695.html'
+    @link = Link.fetch_from(url)
+
+    assert_match '性欲処理される生活。', @link.title
+    assert_match '事務的な双子メイドが、両耳から囁きながら、ご主人様のおちんぽのお世話をしてくれます♪', @link.description
+    assert_equal 'https://img.dlsite.jp/modpub/images2/work/doujin/RJ256000/RJ255695_img_main.jpg', @link.image
+  end
+
   test 'link can have category' do
     link = Link.fetch_from('https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
     assert link.valid?
