@@ -124,13 +124,6 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 'https://t.komiflo.com/564_mobile_large_3x/contents/cdcfb81ea67a74519b8ad9dea6de8c5d4cec9f9f.jpg', @link.image
   end
 
-  test 'deal correctly with incorrect url' do
-    url = 'http://not-val.id/'
-    @link = Link.fetch_from(url)
-
-    assert_equal @link.url, @link.title
-  end
-
   test 'link can have category' do
     link = Link.fetch_from('https://www.pixiv.net/member_illust.php?mode=medium&illust_id=76477824')
     assert link.valid?

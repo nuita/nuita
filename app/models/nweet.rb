@@ -45,7 +45,11 @@ class Nweet < ApplicationRecord
   def create_link
     if self.statement
       URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
-        self.links << Link.fetch_from(url)
+        begin
+          self.links << l if l = Link.fetch_from(url)
+        rescue
+          logger.debug "Creating Link for #{url} has failed."
+        end
       end
     end
   end
