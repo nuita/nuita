@@ -13,12 +13,12 @@ class CensoringTest < ActionDispatch::IntegrationTest
     nweet = nweets(:r18g)
     link = nweet.links.first
     get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseVertical#{link.id}"
+    assert_select "a[href=?]", "#collapseHorizontal#{link.id}"
 
     nweet = nweets(:kemo)
     link = nweet.links.first
     get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseVertical#{link.id}", false
+    assert_select "a[href=?]", "#collapseHorizontal#{link.id}", false
   end
 
   test 'censoring test (for user)' do
@@ -27,19 +27,19 @@ class CensoringTest < ActionDispatch::IntegrationTest
     nweet = nweets(:kemo)
     link = nweet.links.first
     get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseVertical#{link.id}", false
+    assert_select "a[href=?]", "#collapseHorizontal#{link.id}", false
 
     put censoring_path(@user), params: {"R18G": 1, "KEMO": 1}
     get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseVertical#{link.id}"
+    assert_select "a[href=?]", "#collapseHorizontal#{link.id}"
 
     nweet = nweets(:r18g)
     link = nweet.links.first
     get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseVertical#{link.id}"
+    assert_select "a[href=?]", "#collapseHorizontal#{link.id}"
 
     put censoring_path(@user), params: {"R18G": "0", "KEMO": "0"}
     get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseVertical#{link.id}", false
+    assert_select "a[href=?]", "#collapseHorizontal#{link.id}", false
   end
 end
