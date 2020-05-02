@@ -1,7 +1,7 @@
 require File.expand_path("./environment", __dir__)
 
 # capistranoのバージョン固定
-lock "3.11.1"
+lock "3.13.0"
 
 # デプロイするアプリケーション名
 set :application, 'nuita'

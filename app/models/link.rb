@@ -12,8 +12,17 @@ class Link < ApplicationRecord
 
   scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:categories).where(categories: {censored_by_default: nil}) }
 
+  # Should be used only in link_task:refetch_all
   def refetch
-    fetch_infos
+    resolver = select_resolver(url)
+    canonical_url = resolver.fetch_canonical_url(url)
+
+    # 現在のURLが取得したcanonical_urlとは異なるのに、レコードにその記録がある場合は、
+    # 保存するとURL重複となるためスルーする
+    return if url != canonical_url && Link.find_by(url: canonical_url)
+
+    page = Nokogiri::HTML.parse(open(canonical_url).read)
+    update_attributes(resolver.new(canonical_url, page).fetch)
     save
   end
 
