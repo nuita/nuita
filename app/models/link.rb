@@ -14,7 +14,7 @@ class Link < ApplicationRecord
 
   # Should be used only in link_task:refetch_all
   def refetch
-    resolver = select_resolver(url)
+    resolver = Link.select_resolver(url)
     canonical_url = resolver.fetch_canonical_url(url)
 
     # 現在のURLが取得したcanonical_urlとは異なるのに、レコードにその記録がある場合は、
