@@ -56,6 +56,7 @@ class Link < ApplicationRecord
       page = Nokogiri::HTML.parse(open(canonical_url).read)
 
       link = Link.find_or_initialize_by(url: canonical_url)
+      binding.pry
       link.update_attributes(resolver.new(canonical_url, page).fetch)
 
       link

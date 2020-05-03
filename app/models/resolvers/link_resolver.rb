@@ -10,6 +10,7 @@ class LinkResolver
       attributes[:title] = parse_title
       attributes[:description] = parse_description
       attributes[:image] = parse_image
+      attributes[:tags] = parse_tags
 
       if attributes[:image]
         attributes[:image_width], attributes[:image_height] = set_imagesizes(attributes[:image])
