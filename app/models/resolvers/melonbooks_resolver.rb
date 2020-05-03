@@ -22,4 +22,8 @@ class MelonbooksResolver < LinkResolver
     def parse_image
       @page.css('//meta[property="og:image"]/@content').first.to_s.sub(/&c=1/, '')
     end
+
+    def parse_tags
+      @tags = @page.css('#related_tags').css('.clearfix').children.children.map(&:text)
+    end
 end
