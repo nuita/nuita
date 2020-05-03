@@ -65,4 +65,8 @@ class LinkResolver
         logger.debug('failed to set image sizes in #{link.url}')
       end
     end
+
+    def parse_tags
+      []
+    end
 end
