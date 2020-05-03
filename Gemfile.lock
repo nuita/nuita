@@ -108,6 +108,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     devise (4.7.1)
@@ -229,6 +230,12 @@ GEM
       rack
     orm_adapter (0.5.0)
     popper_js (1.16.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-byebug (3.9.0)
+      byebug (~> 11.0)
+      pry (~> 0.13.0)
     public_suffix (4.0.4)
     puma (3.12.4)
     rack (2.2.2)
@@ -398,6 +405,7 @@ DEPENDENCIES
   omniauth (~> 1.9)
   omniauth-rails_csrf_protection (~> 0.1)
   omniauth-twitter
+  pry-byebug
   puma (~> 3.12)
   rails (~> 5.2.3)
   sass-rails (~> 5.0)

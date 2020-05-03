@@ -26,6 +26,10 @@ class KomifloResolver < LinkResolver
     @description += " / #{parent}" if parent
   end
 
+  def parse_tags
+    @tags = @json['content']['attributes']['tags']['children'].map{ |content| content['data']['name'] }
+  end
+
   class << self
     def fetch_canonical_url(url)
       id = url.slice(/komiflo\.com(?:\/#!)?\/comics\/(\d+)/, 1)

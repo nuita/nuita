@@ -75,6 +75,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-rake'
+  gem 'pry-byebug'
 end
 
 group :test do
