@@ -58,15 +58,15 @@ class LinkResolver
       @page.css('//meta[property="og:image"]/@content').first.to_s
     end
 
+    def parse_tags
+      []
+    end
+
     def set_imagesizes(image)
       begin
         FastImage.size(image)
       rescue
         logger.debug('failed to set image sizes in #{link.url}')
       end
-    end
-
-    def parse_tags
-      []
     end
 end
