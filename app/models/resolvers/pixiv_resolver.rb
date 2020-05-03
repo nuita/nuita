@@ -2,6 +2,9 @@ class PixivResolver < LinkResolver
   def initialize(url, page)
     super(url, page)
     @illust_id = url.slice(/pixiv\.net\/(member_illust.php?.*illust_id=|artworks\/)(\d+)/, 2)
+
+    json_uri = URI.parse("https://www.pixiv.net/ajax/illust/#{@illust_id}")
+    @json = JSON.parse(Net::HTTP.get(json_uri))
   end
 
   class << self
@@ -26,5 +29,9 @@ class PixivResolver < LinkResolver
       rescue
         @page.css('//meta[property="og:image"]/@content').first.to_s
       end
+    end
+
+    def parse_tags
+      @tags = @json['body']['tags']['tags'].map{|content| content['tag']}
     end
 end

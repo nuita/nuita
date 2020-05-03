@@ -6,6 +6,6 @@ class DlsiteResolver < LinkResolver
     end
 
     def parse_tags
-      @page.css('.main_genre').children.children.map(&:text)
+      @tags = @page.css('.main_genre').children.children.map(&:text)
     end
 end

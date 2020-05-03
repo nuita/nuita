@@ -8,6 +8,8 @@ class KomifloResolver < LinkResolver
     @json = JSON.parse(Net::HTTP.get(json_uri))
   end
 
+  private
+
   # KomifloはJSON経由でfetchするか
   def parse_title
     comic_title = @json['content']['data']['title']
@@ -27,7 +29,7 @@ class KomifloResolver < LinkResolver
   end
 
   def parse_tags
-    @tags = @json['content']['attributes']['tags']['children'].map{ |content| content['data']['name'] }
+    @tags = @json['content']['attributes']['tags']['children'].map{|content| content['data']['name']}
   end
 
   class << self
