@@ -22,4 +22,8 @@ class NijieResolver < LinkResolver
         @page.css('//meta[property="og:image"]/@content').first.to_s
       end
     end
+
+    def parse_tags
+      @tags = @page.css('#view-tag span.tag_name').map(&:text)
+    end
 end
