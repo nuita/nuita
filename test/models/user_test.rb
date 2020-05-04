@@ -62,16 +62,16 @@ class UserTest < ActiveSupport::TestCase
     assert_not @new_user.followee?(@user)
   end
 
-  test 'should censor and uncensor category' do
-    category = categories(:r18g)
-    @user.censor(category)
-    assert @user.censoring?(category.name)
+  test 'should censor and uncensor tag' do
+    tag = tags(:r18g)
+    @user.censor(tag)
+    assert @user.censoring?(tag.name)
 
-    @user.uncensor(category)
-    assert_not @user.censoring?(category.name)
+    @user.uncensor(tag)
+    assert_not @user.censoring?(tag.name)
 
-    @user.censor(category.name)
-    assert @user.censoring?(category)
+    @user.censor(tag.name)
+    assert @user.censoring?(tag)
   end
 
   test 'can announce' do

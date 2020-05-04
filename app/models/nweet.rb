@@ -3,8 +3,7 @@ require 'uri'
 class Nweet < ApplicationRecord
   before_create :set_url_digest
 
-  # statementはeditで編集されるのでafter_createではだめ
-  after_save :create_link, :create_category
+  after_save :create_link, :create_tag
 
   belongs_to :user
   has_many :likes, dependent: :destroy
@@ -54,12 +53,12 @@ class Nweet < ApplicationRecord
     end
   end
 
-  def create_category
+  def create_tag
     if links.any?
       # 本当は空白に置換したかったけどコールバックの前後関係で無理そう
       self.statement.scan(/\s#\S*/) do |tag|
         links.each do |link|
-          link.set_category(tag[2..-1])
+          link.set_tag(tag[2..-1])
         end
       end
     end

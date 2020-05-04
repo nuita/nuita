@@ -1,0 +1,8 @@
+.mt-0.mb-2
+  - Tag.pluck(:name).each do |tag|
+    - is_tagged = link.tags.exists?(name: tag)
+    = link_to tag_path(link_id: link.id, tag_name: tag), method: tag_method(is_tagged), class: 'tag-link nweet-tag-link' do
+      span class="badge badge-tag mx-1 #{'active' if is_tagged = link.tags.exists?(name: tag)}"
+        span.small = icon 'fas', 'hashtag'
+        span.pr-1 = tag
+        span.small.delete_icon = icon 'fas', tag_icon(is_tagged)

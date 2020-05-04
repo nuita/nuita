@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LinkCategoryTest < ActiveSupport::TestCase
+class LinkTagTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

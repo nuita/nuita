@@ -1,12 +1,12 @@
-import {setFollowIcons} from './follow_icon';
-import {setLikeButtons} from './nweets';
-import {setCategoryButtons} from './categories';
+import { setFollowIcons } from './follow_icon';
+import { setLikeButtons } from './nweets';
+import { setTagButtons } from './tags';
 
-export default function setPagination(){
+export default function setPagination() {
   let paginateContainer = document.getElementById('willPaginateContainer');
 
-  if(paginateContainer){
-    const fetchOptions:RequestInit = {
+  if (paginateContainer) {
+    const fetchOptions: RequestInit = {
       method: 'GET',
       mode: 'same-origin',
       credentials: 'same-origin',
@@ -25,7 +25,7 @@ export default function setPagination(){
     let isLoading = false;
 
     const observer = new IntersectionObserver((entries) => {
-      if(isLoading){
+      if (isLoading) {
         return;
       }
 
@@ -35,16 +35,16 @@ export default function setPagination(){
       morePostsUrl.searchParams.set('page', pageNumber.toString());
       pageNumber++;
 
-      for(const e of entries){
-        if(morePostsUrl.href){
+      for (const e of entries) {
+        if (morePostsUrl.href) {
           fetch(morePostsUrl.href, fetchOptions).then((response) => {
             return response.text();
-          }).then((partial:string) => {
+          }).then((partial: string) => {
             let timelineContainer = document.querySelector('.nweets-list');
             // なぜか表示するヌイートもうないときにresponse.text()は半角空白を返す
-            if(!partial || partial == " "){
+            if (!partial || partial == " ") {
               observer.unobserve(document.querySelector('#willPaginateContainer'));
-            }else{
+            } else {
               timelineContainer.insertAdjacentHTML('beforeend', partial);
             }
           });
@@ -52,15 +52,15 @@ export default function setPagination(){
       }
       setFollowIcons();
       setLikeButtons();
-      setCategoryButtons();
+      setTagButtons();
 
       isLoading = false;
     }, observerOptions);
 
     observer.observe(document.querySelector('#willPaginateContainer'));
-  }else{
+  } else {
     setFollowIcons();
     setLikeButtons();
-    setCategoryButtons();
+    setTagButtons();
   }
 }

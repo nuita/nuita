@@ -9,4 +9,4 @@ div id="collapseHorizontal#{link.id}" class="#{'collapse' if tags.any?}"
       h5.card-title = link.title
       p.card-text = link.description
   - unless local_assigns[:genre_hidden?]
-    = render 'cards/categories', link: link
+    = render 'cards/tags', link: link

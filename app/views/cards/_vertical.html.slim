@@ -13,4 +13,4 @@ div id="collapseVertical#{link.id}" class="#{'collapse' if tags.any?}"
           p.card-text = link.description
 
   - unless local_assigns[:genre_hidden?]
-    = render 'cards/categories', link: link
+    = render 'cards/tags', link: link

@@ -5,13 +5,13 @@
     = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control col", placeholder: '感想・使用したオカズを入力', value: params[:text]
   .row.mx-2.mx-md-0
     .col.form-check.form-check-inline
-      - Category.pluck(:name).each do |category|
+      - Tag.pluck(:name).each do |tag|
         = button_tag type: 'button', class: 'toggle-tag-link tag-link not-button' do
           span class="badge badge-tag mx-1"
             span.small = icon 'fas', 'hashtag'
-            span.pr-1 = category
+            span.pr-1 = tag
             span.small.delete_icon = icon 'fas', 'plus'
-          = hidden_field_tag "categories[#{category}]", 0
+          = hidden_field_tag "tags[#{tag}]", 0
   = f.hidden_field :did_at, value: @nweet.did_at
   .row.mx-2.mx-md-0
     = f.submit "投稿する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"

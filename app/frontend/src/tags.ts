@@ -10,17 +10,17 @@ let setIndividualToggleTagButton = (event: Event) => {
   let badge = <HTMLElement>a.firstChild;
   let i = <HTMLElement>badge.childNodes[2].firstChild;
 
-  if(i.classList.contains('fa-plus')){
+  if (i.classList.contains('fa-plus')) {
     i.classList.replace('fa-plus', 'fa-times');
-  }else{
+  } else {
     i.classList.replace('fa-times', 'fa-plus');
   }
 
   badge.classList.toggle('active');
 };
 
-export function setCategoryButtons(){
-  document.querySelectorAll('.toggle-tag-link').forEach(function(div){
+export function setTagButtons() {
+  document.querySelectorAll('.toggle-tag-link').forEach(function (div) {
     div.addEventListener('click', setIndividualToggleTagButton);
   });
 };
