@@ -18,18 +18,4 @@ class NotificationControllerTest < ActionDispatch::IntegrationTest
     get notifications_path
     assert_response :success
   end
-
-  test "should count unread notifications" do
-    c = @other_user.passive_notifications.where(checked: false).count
-
-    login_as(@user)
-    post like_path, params: {nweet: @nweet.url_digest}
-
-    login_as(@other_user)
-    get root_url
-    assert_select "#badgeUnreadNotifications", (c + 1).to_s
-
-    get notifications_path
-    assert_select "#badgeUnreadNotifications", false
-  end
 end
