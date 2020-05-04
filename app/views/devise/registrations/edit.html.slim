@@ -91,10 +91,10 @@
     h5 検閲カテゴリ
     = form_with url: censoring_path(current_user), method: :put, class: "form-group", local: true do |f|
       .form-group
-        - Category.pluck(:name).each do |category_name|
+        - Tag.pluck(:name).each do |tag_name|
           .form-check.form-check-inline
-            = f.check_box "#{category_name}", {:checked => current_user.censoring?(category_name), class: 'form-check-input'}
-            label.form-check-label = category_name
+            = f.check_box "#{tag_name}", {:checked => current_user.censoring?(tag_name), class: 'form-check-input'}
+            label.form-check-label = tag_name
         = f.submit "検閲カテゴリを更新", class: 'btn btn-follow'
     p = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
     = link_to "戻る", :back
