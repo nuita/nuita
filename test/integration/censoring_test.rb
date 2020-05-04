@@ -8,7 +8,7 @@ class CensoringTest < ActionDispatch::IntegrationTest
     @user = users(:chikuwa)
   end
 
-  # censor by 'Category.censored_by_default' when not logged-in
+  # censor by 'Tag.censored_by_default' when not logged-in
   test 'censoring test (for guest)' do
     nweet = nweets(:r18g)
     link = nweet.links.first

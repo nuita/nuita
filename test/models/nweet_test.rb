@@ -89,11 +89,11 @@ class NweetTest < ActiveSupport::TestCase
     end
   end
 
-  test 'tags in nweet must NOT be generated as category' do
+  test 'tags in nweet must NOT be generated as tag' do
     str = "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=75609372 #pixiv"
     nweet = @user.nweets.create(did_at: Time.zone.now, statement: str)
     link = nweet.links.first
 
-    assert_not link.categories.exists?(name: 'pixiv')
+    assert_not link.tags.exists?(name: 'pixiv')
   end
 end
