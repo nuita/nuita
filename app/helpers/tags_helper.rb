@@ -1,16 +1,16 @@
-module CategoriesHelper
+module TagsHelper
   # 検閲されてるタグの名前を返す. ないなら空集合返ってくる
   def censored_tags(link)
     if user_signed_in?
-      link.categories.pluck(:name).select do |category|
-        current_user.censoring?(category)
+      link.tags.pluck(:name).select do |tag|
+        current_user.censoring?(tag)
       end
     else
-      link.categories.where(censored_by_default: true).pluck(:name)
+      link.tags.where(censored_by_default: true).pluck(:name)
     end
   end
 
-  def category_method(is_existing)
+  def tag_method(is_existing)
     if is_existing
       :delete
     else
@@ -18,7 +18,7 @@ module CategoriesHelper
     end
   end
 
-  def category_icon(is_existing)
+  def tag_icon(is_existing)
     if is_existing
       "times"
     else
