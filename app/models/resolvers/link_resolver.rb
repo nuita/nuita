@@ -59,7 +59,7 @@ class LinkResolver
     end
 
     def parse_tags
-      []
+      @tags = []
     end
 
     def set_imagesizes(image)
