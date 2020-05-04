@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_141554) do
+ActiveRecord::Schema.define(version: 2020_05_04_150925) do
 
   create_table "badges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 2020_05_04_141554) do
 
   create_table "link_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "link_id"
-    t.bigint "category_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_link_tags_on_category_id"
-    t.index ["link_id", "category_id"], name: "index_link_tags_on_link_id_and_category_id", unique: true
+    t.index ["link_id", "tag_id"], name: "index_link_tags_on_link_id_and_tag_id", unique: true
     t.index ["link_id"], name: "index_link_tags_on_link_id"
+    t.index ["tag_id"], name: "index_link_tags_on_tag_id"
   end
 
   create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_141554) do
 
   create_table "preferences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "category_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_preferences_on_category_id"
+    t.index ["tag_id"], name: "index_preferences_on_tag_id"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
@@ -165,10 +165,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_141554) do
   add_foreign_key "likes", "nweets"
   add_foreign_key "likes", "users"
   add_foreign_key "link_tags", "links"
-  add_foreign_key "link_tags", "tags", column: "category_id"
+  add_foreign_key "link_tags", "tags"
   add_foreign_key "nweet_links", "links"
   add_foreign_key "nweet_links", "nweets"
   add_foreign_key "nweets", "users"
-  add_foreign_key "preferences", "tags", column: "category_id"
+  add_foreign_key "preferences", "tags"
   add_foreign_key "preferences", "users"
 end
