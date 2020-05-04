@@ -24,6 +24,6 @@ class MelonbooksResolver < LinkResolver
     end
 
     def parse_tags
-      @tags = @page.css('#related_tags').css('.clearfix').children.children.map(&:text)
+      @tags = @page.css('#related_tags .clearfix').children.children.map(&:text)
     end
 end
