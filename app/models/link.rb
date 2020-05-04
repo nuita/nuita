@@ -2,15 +2,15 @@ class Link < ApplicationRecord
   has_many :nweet_links, dependent: :destroy
   has_many :nweets, through: :nweet_links
 
-  has_many :link_categories, dependent: :destroy
-  has_many :categories, through: :link_categories
+  has_many :link_tags, dependent: :destroy
+  has_many :tags, through: :link_tags
 
   validates :title, length: {maximum: 100}
   validates :description, length: {maximum: 500}
 
   validates :url, :url => true
 
-  scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:categories).where(categories: {censored_by_default: nil}) }
+  scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:tags).where(tags: {censored_by_default: nil}) }
 
   # Should be used only in link_task:refetch_all
   def refetch
@@ -26,15 +26,15 @@ class Link < ApplicationRecord
     save
   end
 
-  def set_category(name)
-    if c = Category.find_by(name: name.upcase)
-      self.categories << c
+  def set_tag(name)
+    if t = Tag.find_by(name: name.upcase)
+      self.tags << t
     end
   end
 
-  def remove_category(name)
+  def remove_tag(name)
     name.upcase!
-    categories.delete(Category.find_by(name: name))
+    tags.delete(Tag.find_by(name: name))
   end
 
   class << self

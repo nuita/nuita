@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
   has_many :censorings, class_name: 'Preference', dependent: :destroy
-  has_many :censored_categories, through: :censorings, source: :category
+  has_many :censored_tags, through: :censorings, source: :tag
 
   has_and_belongs_to_many :badges
   
@@ -93,21 +93,21 @@ class User < ApplicationRecord
     self.followers.include?(other_user)
   end
 
-  # censor, uncensor, censoring? can take both instances of String and Category
-  def censor(category)
-    if category.instance_of?(String)
-      category = Category.find_by(name: category)
+  # censor, uncensor, censoring? can take both instances of String and Tag
+  def censor(tag)
+    if tag.instance_of?(String)
+      tag = Tag.find_by(name: tag)
     end
 
-    self.censored_categories << category
+    self.censored_tags << tag
   end
 
-  def uncensor(category)
-    if category.instance_of?(String)
-      category = Category.find_by(name: category)
+  def uncensor(tag)
+    if tag.instance_of?(String)
+      tag = Tag.find_by(name: tag)
     end
 
-    self.censorings.find_by(category_id: category.id).destroy
+    self.censorings.find_by(tag_id: tag.id).destroy
   end
 
   def add_badge(badge)
@@ -115,12 +115,12 @@ class User < ApplicationRecord
     self.badges << badge
   end
 
-  def censoring?(category)
-    if category.instance_of?(Category)
-      category = category.name
+  def censoring?(tag)
+    if tag.instance_of?(Tag)
+      tag = tag.name
     end
 
-    self.censored_categories.exists?(name: category)
+    self.censored_tags.exists?(name: tag)
   end
 
   def liked?(nweet)
@@ -148,8 +148,8 @@ class User < ApplicationRecord
     end
 
     def set_default_censoring
-      Category.where(censored_by_default: true).each do |category|
-        self.censor(category)
+      Tag.where(censored_by_default: true).each do |tag|
+        self.censor(tag)
       end
     end
 end
