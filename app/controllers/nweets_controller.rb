@@ -17,7 +17,7 @@ class NweetsController < ApplicationController
     if @nweet.save
       flash[:success] = 'ヌイートを投稿しました！'
       if @nweet.links.any?
-        set_categories(@nweet.links.first)
+        set_tags(@nweet.links.first)
       end
       tweet if current_user.autotweet_enabled
     else
@@ -67,10 +67,10 @@ class NweetsController < ApplicationController
       redirect_to root_url if @nweet.nil?
     end
 
-    def set_categories(link)
+    def set_tags(link)
       # 正直カテゴリーの中身mass assignmentされても何の脆弱性もないたぶん
-      params.permit(categories: {}).to_hash["categories"].each do |category_name, value|
-        link.set_category(category_name) if value == '1'
+      params.permit(tags: {}).to_hash["tags"].each do |tag_name, value|
+        link.set_tag(tag_name) if value == '1'
       end
     end
 end

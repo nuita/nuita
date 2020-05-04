@@ -3,11 +3,11 @@ class CensoringsController < ApplicationController
 
   def update
     begin
-      Category.pluck(:name).each do |category_name|
-        if current_user.censoring?(category_name)
-          current_user.uncensor(category_name) if params[category_name] == '0'
+      Tag.pluck(:name).each do |tag_name|
+        if current_user.censoring?(tag_name)
+          current_user.uncensor(tag_name) if params[tag_name] == '0'
         else
-          current_user.censor(category_name) if params[category_name] == '1'
+          current_user.censor(tag_name) if params[tag_name] == '1'
         end
       end
       flash[:success] = '検閲カテゴリの設定に成功しました'
