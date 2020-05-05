@@ -91,7 +91,7 @@
     h5 検閲カテゴリ
     = form_with url: censoring_path(current_user), method: :put, class: "form-group", local: true do |f|
       .form-group
-        - Tag.pluck(:name).each do |tag_name|
+        - visible_tags.each do |tag_name|
           .form-check.form-check-inline
             = f.check_box "#{tag_name}", {:checked => current_user.censoring?(tag_name), class: 'form-check-input'}
             label.form-check-label = tag_name

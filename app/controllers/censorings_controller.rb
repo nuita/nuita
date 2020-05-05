@@ -1,9 +1,11 @@
 class CensoringsController < ApplicationController
+  include TagsHelper
+
   before_action :authenticate_user!
 
   def update
     begin
-      Tag.pluck(:name).each do |tag_name|
+      visible_tags.each do |tag_name|
         if current_user.censoring?(tag_name)
           current_user.uncensor(tag_name) if params[tag_name] == '0'
         else
