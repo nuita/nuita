@@ -5,7 +5,7 @@
     = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control col", placeholder: '感想・使用したオカズを入力', value: params[:text]
   .row.mx-2.mx-md-0
     .col.form-check.form-check-inline
-      - Tag.pluck(:name).each do |tag|
+      - visible_tags.each do |tag|
         = button_tag type: 'button', class: 'toggle-tag-link tag-link not-button' do
           span class="badge badge-tag mx-1"
             span.small = icon 'fas', 'hashtag'
