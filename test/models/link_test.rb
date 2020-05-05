@@ -155,5 +155,17 @@ class LinkTest < ActiveSupport::TestCase
 
     link.remove_tag('R18G')
     assert_not link.tags.exists?(name: 'R18G')
+
+    # how about multiple tags?
+    link.set_tags(["R18G", "ふたなり"])
+    assert link.tags.exists?(name: 'ふたなり')
+    assert link.tags.exists?(name: 'R18G')
+
+    link.set_tags(["リョナ"], destroy_existing_tags: false)
+    assert link.tags.exists?(name: 'リョナ')
+    assert link.tags.exists?(name: 'ふたなり')
+
+    link.remove_tags
+    assert_equal 0, link.tags.count
   end
 end
