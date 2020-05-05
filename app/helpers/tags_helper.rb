@@ -10,6 +10,11 @@ module TagsHelper
     end
   end
 
+  # R18G, 3D以外のタグは現状表示しない
+  def visible_tags
+    ['3D', 'R18G']
+  end
+
   def tag_method(is_existing)
     if is_existing
       :delete

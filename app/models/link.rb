@@ -27,7 +27,7 @@ class Link < ApplicationRecord
   end
 
   def set_tag(name)
-    if t = Tag.find_by(name: name.upcase)
+    if t = Tag.find_or_create_by(name: name.upcase)
       self.tags << t
     end
   end
@@ -35,6 +35,16 @@ class Link < ApplicationRecord
   def remove_tag(name)
     name.upcase!
     tags.delete(Tag.find_by(name: name))
+  end
+
+  def set_tags(names, destroy_existing_tags: true)
+    remove_tags if destroy_existing_tags
+    
+    names.each{|name| set_tag(name)}
+  end
+
+  def remove_tags
+    link_tags.destroy_all
   end
 
   class << self
