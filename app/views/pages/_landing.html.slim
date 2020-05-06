@@ -1,8 +1,8 @@
 - provide(:title, '射精報告SNS Nuitaへようこそ!')
 
 .container-fluid#landingContainer
-  .row.h-100.pb-4
-    .col.col-md-6.offset-md-1
+  .row.h-100.pb-4.max-1200
+    .col.col-md-7
       .landing
         h1 賢者のためのSNS。
         .lead 好みの作品を見つけたとき。
@@ -18,6 +18,6 @@
           | をはじめよう。
         .lead.mt-3
           = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg bg-brand'
-    .col-md-3.offset-md-1.my-0
-      = render 'pages/recommend', landing?: true
+    .col-md-4.my-0.pt-4
+        = render 'pages/recommend', landing?: true
 / TODO: 登録フォームをhome内右端に作る
