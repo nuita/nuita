@@ -17,7 +17,7 @@ li.nweet id="nweet#{nweet.url_digest}"
         | に射精しました。
       - if nweet.links.any?
         = render 'cards/horizontal', link: nweet.links.first
-      - if nweet.statement? && (!@timeline || followee_or_self?(nweet.user))
+      - if nweet.statement?
         .quote = text_url_to_link(nweet.statement).html_safe
       .nweet-bottom
         .float-left
