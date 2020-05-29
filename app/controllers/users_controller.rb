@@ -3,23 +3,37 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
-    if params[:date]
-      @feed_items = @user.nweets_at_date(params[:date].to_time).paginate(page: params[:page])
-    else
-      @feed_items = @user.nweets.paginate(page: params[:page])
-    end
 
-    if params[:scroll]
-      render partial: 'nweets/nweet', collection: @feed_items
+    if params[:date]
+      @feed_items = @user.nweets_at_date(params[:date].to_time)
+      if params[:before]
+        @before = Nweet.find_by(url_digest: params[:before])
+        @feed_items = @feed_items.where('did_at > ?', @before.did_at).limit(10)
+        render partial: 'nweets/nweet', collection: @feed_items
+      else
+        @feed_items = @feed_items.limit(10)
+      end
+    else
+      @feed_items = @user.nweets
+      if params[:before]
+        @before = Nweet.find_by(url_digest: params[:before])
+        @feed_items = @feed_items.where('did_at < ?', @before.did_at).limit(10)
+        render partial: 'nweets/nweet', collection: @feed_items
+      else
+        @feed_items = @feed_items.limit(10)
+      end
     end
   end
 
   def likes
     @user = User.find_by(url_digest: params[:url_digest])
-    @feed_items = @user.liked_nweets.paginate(page: params[:page])
 
-    if params[:scroll]
+    if params[:before]
+      @before = Nweet.find_by(url_digest: params[:before])
+      @feed_items = @user.liked_nweets.where('did_at < ?', @before.did_at).limit(10)
       render partial: 'nweets/nweet', collection: @feed_items
+    else
+      @feed_items = @user.liked_nweets.limit(10)
     end
   end
 
