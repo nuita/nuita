@@ -5,23 +5,19 @@ class UsersController < ApplicationController
     @user = User.find_by(url_digest: params[:url_digest])
 
     if params[:date]
-      @feed_items = @user.nweets_at_date(params[:date].to_time)
-      if params[:before]
-        @before = Nweet.find_by(url_digest: params[:before])
-        @feed_items = @feed_items.where('did_at > ?', @before.did_at).limit(10)
-        render partial: 'nweets/nweet', collection: @feed_items
-      else
-        @feed_items = @feed_items.limit(10)
-      end
+      @all_feed_items = @user.nweets_at_date(params[:date].to_time)
+      query = 'did_at > ?'
     else
-      @feed_items = @user.nweets
-      if params[:before]
-        @before = Nweet.find_by(url_digest: params[:before])
-        @feed_items = @feed_items.where('did_at < ?', @before.did_at).limit(10)
-        render partial: 'nweets/nweet', collection: @feed_items
-      else
-        @feed_items = @feed_items.limit(10)
-      end
+      @all_feed_items = @user.nweets
+      query = 'did_at < ?'
+    end
+
+    if params[:before]
+      @before = Nweet.find_by(url_digest: params[:before])
+      @feed_items = @all_feed_items.where(query, @before.did_at).limit(10)
+      render partial: 'nweets/nweet', collection: @feed_items
+    else
+      @feed_items = @all_feed_items.limit(10)
     end
   end
 
