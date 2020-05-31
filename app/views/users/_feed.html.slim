@@ -5,7 +5,6 @@
       | 件のヌイート
     ol.nweets-list
       = render @feed_items
-    #willPaginateContainer
-      .d-none = will_paginate @feed_items
+    #infiniteScrollContainer
   - else
     p まだヌイートはありません (T_T)
