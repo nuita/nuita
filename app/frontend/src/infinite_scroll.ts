@@ -44,21 +44,17 @@ export default function setInfiniteScroll() {
               observer.unobserve(document.querySelector('#infiniteScrollContainer'));
             } else {
               timelineContainer.insertAdjacentHTML('beforeend', partial);
+              setFollowIcons();
+              setLikeButtons();
+              setTagButtons();
             }
           });
         }
       }
-      setFollowIcons();
-      setLikeButtons();
-      setTagButtons();
 
       isLoading = false;
     }, observerOptions);
 
     observer.observe(document.querySelector('#infiniteScrollContainer'));
-  } else {
-    setFollowIcons();
-    setLikeButtons();
-    setTagButtons();
   }
 }
