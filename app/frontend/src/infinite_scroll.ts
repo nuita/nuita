@@ -5,10 +5,6 @@ import { setTagButtons } from './tags';
 export default function setInfiniteScroll() {
   let container = document.getElementById('infiniteScrollContainer');
 
-  setFollowIcons();
-  setLikeButtons();
-  setTagButtons();
-
   if (container) {
     const fetchOptions: RequestInit = {
       method: 'GET',

@@ -6,6 +6,9 @@ import fetchNotification from "../src/notification";
 import setRecommendButton from "../src/recommend";
 import setInfiniteScroll from "../src/infinite_scroll";
 import setUserButtons from "../src/users";
+import { setFollowIcons } from "../src/follow_icon";
+import { setLikeButtons } from "../src/nweets";
+import { setTagButtons } from "../src/tags";
 
 window.addEventListener("DOMContentLoaded", (event) => {
   setHeaderButton();
@@ -13,4 +16,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setRecommendButton();
   setInfiniteScroll();
   setUserButtons();
+  setFollowIcons();
+  setLikeButtons();
+  setTagButtons();
 });
