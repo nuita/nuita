@@ -1,6 +1,6 @@
-= form_with(model: @nweet, html: {class: 'nuita-form'}, local: true) do |f|
+= form_with(model: @nweet, html: {class: 'nuita-form'}) do |f|
   .row.mx-2.mx-md-0
-    = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita wider-margintop", id: "button-nuita"
+    = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita wider-margintop"
   .row.mx-2.mx-md-0
     = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control col", placeholder: '感想・使用したオカズを入力', value: params[:text]
   .row.mx-2.mx-md-0
