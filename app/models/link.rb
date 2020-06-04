@@ -14,9 +14,6 @@ class Link < ApplicationRecord
 
   # Should be used only in link_task:refetch_all
   def refetch
-    resolver = Link.select_resolver(url)
-    canonical_url = resolver.fetch_canonical_url(url)
-
     panchira = Panchira.fetch(url)
     canonical_url = panchira.canonical_url
 
@@ -24,7 +21,7 @@ class Link < ApplicationRecord
     # 保存するとURL重複となるためスルーする
     return if url != canonical_url && Link.find_by(url: canonical_url)
 
-    update_attributes(hash_panchira(panchira))
+    update_attributes(self.class.hash_panchira(panchira))
     save
   end
 
