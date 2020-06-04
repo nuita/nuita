@@ -7,8 +7,12 @@ class NweetsController < ApplicationController
     @feed_items = current_user.timeline.paginate(page: params[:page])
     @timeline = true
 
-    if params[:scroll]
+    if params[:before]
+      @before = Nweet.find_by(url_digest: params[:before])
+      @feed_items = current_user.timeline.where('did_at < ?', @before.did_at).limit(10)
       render partial: 'nweets/nweet', collection: @feed_items
+    else
+      @feed_items = current_user.timeline.limit(10)
     end
   end
 
