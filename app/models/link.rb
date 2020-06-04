@@ -17,12 +17,14 @@ class Link < ApplicationRecord
     resolver = Link.select_resolver(url)
     canonical_url = resolver.fetch_canonical_url(url)
 
+    panchira = Panchira.fetch(url)
+    canonical_url = panchira.canonical_url
+
     # 現在のURLが取得したcanonical_urlとは異なるのに、レコードにその記録がある場合は、
     # 保存するとURL重複となるためスルーする
     return if url != canonical_url && Link.find_by(url: canonical_url)
 
-    page = Nokogiri::HTML.parse(open(canonical_url).read)
-    update_attributes(resolver.new(canonical_url, page).fetch)
+    update_attributes(hash_panchira(panchira))
     save
   end
 
