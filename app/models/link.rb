@@ -17,12 +17,14 @@ class Link < ApplicationRecord
     resolver = Link.select_resolver(url)
     canonical_url = resolver.fetch_canonical_url(url)
 
+    panchira = Panchira.fetch(url)
+    canonical_url = panchira.canonical_url
+
     # 現在のURLが取得したcanonical_urlとは異なるのに、レコードにその記録がある場合は、
     # 保存するとURL重複となるためスルーする
     return if url != canonical_url && Link.find_by(url: canonical_url)
 
-    page = Nokogiri::HTML.parse(open(canonical_url).read)
-    update_attributes(resolver.new(canonical_url, page).fetch)
+    update_attributes(hash_panchira(panchira))
     save
   end
 
@@ -60,32 +62,25 @@ class Link < ApplicationRecord
 
     # URLを正規化してfind_or_initialize_by + fetchしてくる
     def fetch_from(url)
-      resolver = select_resolver(url)
-
-      canonical_url = resolver.fetch_canonical_url(url)
-      page = Nokogiri::HTML.parse(open(canonical_url).read)
-
+      panchira = Panchira.fetch(url)
+      canonical_url = panchira.canonical_url
       link = Link.find_or_initialize_by(url: canonical_url)
-      link.update_attributes(resolver.new(canonical_url, page).fetch)
+
+      link.update_attributes(hash_panchira(panchira))
 
       link
     end
 
-    def select_resolver(url)
-      case(url)
-      when /komiflo\.com(?:\/#!)?\/comics\/(\d+)/
-        KomifloResolver
-      when /melonbooks.co.jp\/detail\/detail.php\?product_id=(\d+)/
-        MelonbooksResolver
-      when /pixiv\.net\/(member_illust.php?.*illust_id=|artworks\/)(\d+)/
-        PixivResolver
-      when /nijie.*view.*id=\d+/
-        NijieResolver
-      when /dlsite/
-        DlsiteResolver
-      else
-        LinkResolver
-      end
+    # Convert PanchiraResult to Link attributes
+    def hash_panchira(panchira)
+      {
+        title: panchira.title,
+        description: panchira.description,
+        image: panchira.image.url,
+        image_width: panchira.image.width,
+        image_height: panchira.image.height,
+        url: panchira.canonical_url
+      }
     end
   end
 end
