@@ -41,6 +41,7 @@ gem 'bcrypt_pbkdf'
 
 gem 'slim-rails'
 gem 'html2slim'
+gem 'turbolinks', '~> 5.2.0'
 
 gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
