@@ -10,7 +10,7 @@ import { setFollowIcons } from "../src/follow_icon";
 import { setLikeButtons } from "../src/nweets";
 import { setTagButtons } from "../src/tags";
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("turbolinks:load", (event) => {
   setHeaderButton();
   fetchNotification();
   setRecommendButton();

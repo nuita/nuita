@@ -15,9 +15,10 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require turbolinks
 //= require_tree .
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('turbolinks:load', function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 //= require serviceworker-companion
