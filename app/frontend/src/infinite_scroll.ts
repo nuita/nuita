@@ -3,9 +3,9 @@ import { setLikeButtons } from './nweets';
 import { setTagButtons } from './tags';
 
 export default function setInfiniteScroll() {
-  let container = document.getElementById('infiniteScrollContainer');
+  let scroll = document.getElementById('infiniteScrollContainer');
 
-  if (container) {
+  if (scroll) {
     const fetchOptions: RequestInit = {
       method: 'GET',
       mode: 'same-origin',
@@ -21,29 +21,27 @@ export default function setInfiniteScroll() {
       threshold: [1.0]
     };
 
-    let isLoading = false;
-
     const observer = new IntersectionObserver((entries) => {
-      if (isLoading) {
-        return;
+      let morePostsUrl = new URL(location.href);
+
+      // #infiniteScrollContainerのdata属性をクエリに乗せる
+      for (const [key, value] of Object.entries(scroll.dataset)) {
+        morePostsUrl.searchParams.set(key, value)
       }
 
-      isLoading = true;
-      let morePostsUrl = new URL(location.href);
-      const lastNweet = document.querySelector('.nweets-list').lastElementChild;
-      morePostsUrl.searchParams.set('before', lastNweet.id.slice(5));
-
       for (const e of entries) {
+        if (!e.isIntersecting) continue;
+
         if (morePostsUrl.href) {
           fetch(morePostsUrl.href, fetchOptions).then((response) => {
             return response.text();
           }).then((partial: string) => {
-            let timelineContainer = document.querySelector('.nweets-list');
+            const container = scroll.parentElement
+            container.removeChild(scroll);
             // なぜか表示するヌイートもうないときにresponse.text()は半角空白を返す
-            if (!partial || partial == " ") {
-              observer.unobserve(document.querySelector('#infiniteScrollContainer'));
-            } else {
-              timelineContainer.insertAdjacentHTML('beforeend', partial);
+            if (partial && partial != " ") {
+              container.insertAdjacentHTML('beforeend', partial);
+              setInfiniteScroll();
               setFollowIcons();
               setLikeButtons();
               setTagButtons();
@@ -51,10 +49,8 @@ export default function setInfiniteScroll() {
           });
         }
       }
-
-      isLoading = false;
     }, observerOptions);
 
-    observer.observe(document.querySelector('#infiniteScrollContainer'));
+    observer.observe(scroll);
   }
 }

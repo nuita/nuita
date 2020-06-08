@@ -2,7 +2,6 @@
   - if current_user.nweets.any?
     /.nweet-count タイムライン
     ol.nweets-list
-      = render @feed_items
-    #infiniteScrollContainer
+      = render "nweets/nweets"
   - else
     p まだヌイートはありません(T_T)
