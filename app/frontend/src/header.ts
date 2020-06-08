@@ -3,7 +3,8 @@ export default function setHeaderButton() {
   let topButton = document.getElementById('navbarBrandIcon');
 
   if (topButton) {
-    topButton.addEventListener('click', (): void => {
+    topButton.addEventListener('click', (event): void => {
+      event.preventDefault();
       document.body.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
