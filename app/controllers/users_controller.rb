@@ -55,11 +55,11 @@ class UsersController < ApplicationController
       if params[:before]
         date = Time.at(params[:before].to_i)
         @feed_items = nweets.where(query, date).limit(10)
-        @before = @feed_items.last&.did_at.to_i
+        @before = @feed_items.last&.did_at&.to_i
         render partial: 'nweets/nweets'
       else
         @feed_items = nweets.limit(10)
-        @before = @feed_items.last&.did_at.to_i
+        @before = @feed_items.last&.did_at&.to_i
       end
     end
 end
