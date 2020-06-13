@@ -41,21 +41,21 @@
         div
           | Currently waiting confirmation for:
           = resource.unconfirmed_email
-      /  .field
-          = f.label :password
-          i
-            | (変更したくない場合は空欄のままにしてください)
-          br
-          = f.password_field :password, autocomplete: "new-password"
+      .form-group.row
+        .col-md-3
+          = f.label :password, class: "col-form-label"
           - if @minimum_password_length
-            br
-            em
-              = @minimum_password_length
-              |  文字以下
-        .field
-          = f.label :password_confirmation
-          br
-          = f.password_field :password_confirmation, autocomplete: "new-password"
+            i
+              | (#{@minimum_password_length} 文字以上)
+        .col-md-9
+          = f.password_field :password, autocomplete: "new-password", class: "form-control"
+          em
+            | 変更したくない場合は空欄のままにしてください
+      .form-group.row
+        .col-md-3
+          = f.label :password_confirmation, class: "col-form-label"
+        .col-md-9
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
       - if current_user.twitter_screen_name.present?
         h5.font-weight-bold.pt-2 Twitter連携
         .form-group.row.align-items-center
