@@ -34,5 +34,6 @@ html
       - flash.each do |key, value|
         - key = "info" if key == "notice"
         - key = "error" if key == "alert" || key == "danger"
-        javascript:
-          toastr['#{key}']('#{j value.to_s}');
+        - [value].flatten.each do |message|
+          javascript:
+            toastr['#{j key}']('#{j message}');
