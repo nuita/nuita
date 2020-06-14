@@ -4,7 +4,6 @@
       = @user.nweets.count
       | 件のヌイート
     ol.nweets-list
-      = render @feed_items
-    #infiniteScrollContainer
+      = render "nweets/nweets"
   - else
     p まだヌイートはありません (T_T)

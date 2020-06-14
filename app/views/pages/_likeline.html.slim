@@ -4,7 +4,6 @@
       = @user.liked_nweets.count
       | 件のいいね
     ol.nweets-list
-      = render @feed_items
-    #infiniteScrollContainer
+      = render "nweets/nweets"
   - else
     p まだ「いいね！」した投稿はありません (T_T)
