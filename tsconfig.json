@@ -4,7 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
-      "es2019",
+      "esnext",
       "dom",
     ],
     "module": "es6",
