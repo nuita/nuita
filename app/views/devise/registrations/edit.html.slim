@@ -41,21 +41,6 @@
         div
           | Currently waiting confirmation for:
           = resource.unconfirmed_email
-      .form-group.row
-        .col-md-3
-          = f.label :password, class: "col-form-label"
-          - if @minimum_password_length
-            i
-              | (#{@minimum_password_length} 文字以上)
-        .col-md-9
-          = f.password_field :password, autocomplete: "new-password", class: "form-control"
-          em
-            | 変更したくない場合は空欄のままにしてください
-      .form-group.row
-        .col-md-3
-          = f.label :password_confirmation, class: "col-form-label"
-        .col-md-9
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
       - if current_user.twitter_screen_name.present?
         h5.font-weight-bold.pt-2 Twitter連携
         .form-group.row.align-items-center
@@ -87,6 +72,33 @@
         = f.submit "更新する", class: "btn btn-brandcolor registration_button"
     - if current_user.twitter_screen_name.nil?
       p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter", method: :post
+
+    h3.pt-4 パスワードの変更
+    = form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, local: true, class: "form-group") do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .form-group.row
+        .col-md-3
+          = f.label :password, class: "col-form-label"
+          - if @minimum_password_length
+            i
+              | (#{@minimum_password_length} 文字以上)
+        .col-md-9
+          = f.password_field :password, autocomplete: "new-password", class: "form-control"
+      .form-group.row
+        .col-md-3
+          = f.label :password_confirmation, class: "col-form-label"
+        .col-md-9
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+      .form-group.row
+        .col-md-3
+          = f.label :current_password, class: "col-form-label"
+          i
+            | (必須)
+        .col-md-9
+          = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
+      .actions
+        = f.submit "更新する", class: "btn btn-brandcolor registration_button"
+
     h3.pt-4 その他のオプション
     h5 検閲カテゴリ
     = form_with url: censoring_path(current_user), method: :put, class: "form-group", local: true do |f|
