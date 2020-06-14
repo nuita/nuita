@@ -14,15 +14,6 @@ https://scrapbox.io/nuita/Nuitaを起動するまで
 プルリク・イシュー・コードレビュー等々大歓迎です。
 抜いて喜びます。
 
-## Nuita_2
-- RailsをAPIサーバー化し、フロントエンドをReactで動かすプロジェクトが進行中です。
-  - 作業ブランチ: [nuita_2](https://github.com/nuita/nuita/tree/nuita_2)
-  - リリースできるようになった段階でmasterへと移します。
-- このため、masterブランチにあるビュー層・コントローラー層のソースコードは今後大部分が切り捨てられます。PRとか書かないほうがいいかも
-- nuita_2ブランチへのPRは大募集中です！
-
 ## panchira
-- オカズのカード用データ収集機能(現`app/model/resolvers`)はgemへの切り出し作業が進行中です。
-  - レポジトリ: [panchira](https://github.com/nuita/panchira)
-- panchiraがv1.0.0をリリースした段階でNuitaのresolversは削除し、Panchiraを利用する形に変わります。
-- Resolversに関するPR・イシューは[panchira](https://github.com/nuita/panchira)へ！
+- オカズのプレビュー用データ収集機能(旧`app/model/resolvers`)は[Panchira](https://github.com/nuita/panchira)へ移行しました。
+- プレビュー機能に関する要望・PR等は上記レポジトリにお願いします！
