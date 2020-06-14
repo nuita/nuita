@@ -3,12 +3,18 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
+    "lib": [
+      "es2019",
+      "dom",
+    ],
     "module": "es6",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-        "*": ["node_modules/*", "app/javascript/*"]
+      "*": [
+        "node_modules/*",
+        "app/frontend/*",
+      ]
     },
     "sourceMap": true,
     "target": "es5"
@@ -17,7 +23,7 @@
     "**/*.spec.ts",
     "node_modules",
     "vendor",
-    "public"
+    "public",
   ],
   "compileOnSave": false
 }
