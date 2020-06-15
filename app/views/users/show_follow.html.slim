@@ -4,7 +4,7 @@
   .row
     .d-md-block.col-md-3
       = render 'users/user_info', {user: @user}
-    .col.p-0.nweet-feed.row_top
+    .col-md.p-0.nweet-feed.row_top
       - if @users.any?
         .nweet-count
           = @users.count
