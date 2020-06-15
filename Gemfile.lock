@@ -371,7 +371,7 @@ DEPENDENCIES
   bootstrap (>= 4.3.1)
   byebug
   camo
-  capistrano
+  capistrano (= 3.14.1)
   capistrano-bundler
   capistrano-rails
   capistrano-rake
