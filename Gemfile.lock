@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/nuita/panchira.git
+  revision: c27f9169792d53b039f7df44efc2c80da39e707b
+  ref: c27f916
+  specs:
+    panchira (0.3.0)
+      fastimage (~> 2.1.7)
+      nokogiri (~> 1.10.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -218,9 +227,6 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
-    panchira (0.3.0)
-      fastimage (~> 2.1.7)
-      nokogiri (~> 1.10.9)
     popper_js (1.16.0)
     public_suffix (4.0.5)
     puma (3.12.6)
@@ -398,7 +404,7 @@ DEPENDENCIES
   omniauth (~> 1.9)
   omniauth-rails_csrf_protection (~> 0.1)
   omniauth-twitter
-  panchira (>= 0.3.0)
+  panchira!
   puma (~> 3.12)
   rails (~> 5.2.3)
   sass-rails (~> 5.0)
