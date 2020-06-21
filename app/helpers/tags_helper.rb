@@ -2,9 +2,7 @@ module TagsHelper
   # 検閲されてるタグの名前を返す. ないなら空集合返ってくる
   def censored_tags(link)
     if user_signed_in?
-      link.tags.pluck(:name).select do |tag|
-        current_user.censoring?(tag)
-      end
+      current_user.censoring_tags?(link.tags.pluck(:name))
     else
       link.tags.where(censored_by_default: true).pluck(:name)
     end

@@ -31,7 +31,7 @@ class User < ApplicationRecord
   has_many :censored_tags, through: :censorings, source: :tag
 
   has_and_belongs_to_many :badges
-  
+
   # list nweets shown in timeline.
   def timeline
     Nweet.all # currently it is global! (since FF is not implemented)
@@ -121,6 +121,16 @@ class User < ApplicationRecord
     end
 
     self.censored_tags.exists?(name: tag)
+  end
+
+  def censoring_tags?(tags)
+    tags.map! do |tag|
+      if tag.instance_of?(Tag)
+        tag = tag.name
+      end
+    end
+
+    self.censored_tags.pluck(:name) & tags
   end
 
   def liked?(nweet)
