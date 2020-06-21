@@ -6,9 +6,9 @@
         span.small = icon 'fas', 'hashtag'
         span.pr-1 = tag
         span.small.delete_icon = icon 'fas', tag_icon(is_tagged)
-  - link.tags.each do |tag|
-    - unless visible_tags.include?(tag.name)
+  - link.tags.pluck(:name).each do |tag_name|
+    - unless visible_tags.include?(tag_name)
       span.tag-link.nweet-tag-link
         span.badge.badge-light.badge-tag.mx-1.active
           span.small = icon 'fas', 'hashtag'
-          span.pr-1 = tag.name
+          span.pr-1 = tag_name
