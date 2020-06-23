@@ -116,21 +116,17 @@ class User < ApplicationRecord
   end
 
   def censoring?(tag)
-    if tag.instance_of?(Tag)
-      tag = tag.name
-    end
+    tag_name = tag.respond_to?(:name) ? tag.name : tag
 
-    self.censored_tags.exists?(name: tag)
+    self.censored_tags.exists?(name: tag_name)
   end
 
   def censoring_tags?(tags)
-    tags.map! do |tag|
-      if tag.instance_of?(Tag)
-        tag = tag.name
-      end
+    tag_names = tags.map do |tag|
+      tag.respond_to?(:name) ? tag.name : tag
     end
 
-    self.censored_tags.pluck(:name) & tags
+    self.censored_tags.pluck(:name) & tag_names
   end
 
   def liked?(nweet)
