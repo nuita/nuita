@@ -15,11 +15,8 @@
               = icon 'fas', 'plus'
         h6.mb-2 既存のタグ
         - link.tags.pluck(:name).each do |tag_name|
-          .input-group.mb-2
-            .btn.btn-sm.btn-secondary
-              span.pr-2 = tag_name
-              = icon 'fas', 'times'
-      .modal-footer
-        .btn.btn-outline-secondary data-dismiss="modal" 閉じる
+          .btn.btn-sm.btn-secondary.mr-2.mb-2
+            span.pr-2 = tag_name
+            = icon 'fas', 'times'
 
     
