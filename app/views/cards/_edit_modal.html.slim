@@ -1,0 +1,25 @@
+.modal tabindex="-1" role="dialog" id="cardEditModal#{link.id}"
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5.modal-title タグを編集
+        button.close type="buttton" data-dismiss="modal"
+          span &times;
+      .modal-body
+        .input-group.mb-4
+          .input-group-prepend
+            span.input-group-text = icon 'fas', 'hashtag'
+          = text_field_tag 'tag_name', nil, {placeholder: 'タグ名', class: 'form-control'}
+          .input-group-append
+            = button_tag type: 'button', class: 'btn btn-brandcolor' do
+              = icon 'fas', 'plus'
+        h6.mb-2 既存のタグ
+        - link.tags.pluck(:name).each do |tag_name|
+          .input-group.mb-2
+            .btn.btn-sm.btn-secondary
+              span.pr-2 = tag_name
+              = icon 'fas', 'times'
+      .modal-footer
+        .btn.btn-outline-secondary data-dismiss="modal" 閉じる
+
+    
