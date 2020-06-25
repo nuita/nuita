@@ -2,16 +2,16 @@ class TagsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    link = Link.find(params[:link_id])
-    link.set_tag(params[:tag_name])
+    link = Link.find(params[:link])
+    link.set_tag(params[:name])
 
-    redirect_back(fallback_location: root_path)
+    render partial: 'cards/renew_modal_tags', locals: {link: link}
   end
 
   def destroy
-    link = Link.find(params[:link_id])
-    link.remove_tag(params[:tag_name])
+    link = Link.find(params[:link])
+    link.remove_tag(params[:name])
 
-    redirect_back(fallback_location: root_path)
+    render partial: 'cards/renew_modal_tags', locals: {link: link}
   end
 end

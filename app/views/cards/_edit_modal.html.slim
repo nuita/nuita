@@ -6,17 +6,14 @@
         button.close type="buttton" data-dismiss="modal"
           span &times;
       .modal-body
-        .input-group.mb-4
-          .input-group-prepend
-            span.input-group-text = icon 'fas', 'hashtag'
-          = text_field_tag 'tag_name', nil, {placeholder: 'タグ名', class: 'form-control'}
-          .input-group-append
-            = button_tag type: 'button', class: 'btn btn-brandcolor' do
-              = icon 'fas', 'plus'
+        = form_with url: tag_path(link: link), remote: true do |f|  
+          .input-group.mb-4
+            .input-group-prepend
+              span.input-group-text = icon 'fas', 'hashtag'
+            = f.text_field :name, {placeholder: 'タグ名', class: 'form-control'}
+            .input-group-append
+              = f.submit class: 'btn btn-brandcolor' do
+                = icon 'fas', 'plus'
         h6.mb-2 既存のタグ
-        - link.tags.pluck(:name).each do |tag_name|
-          .btn.btn-sm.btn-secondary.mr-2.mb-2
-            span.pr-2 = tag_name
-            = icon 'fas', 'times'
-
-    
+        .edit-modal-tag-list id="editModalTagList#{link.id}"
+          = render 'cards/edit_modal_tags', link: link
