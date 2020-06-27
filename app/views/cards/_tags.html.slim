@@ -6,7 +6,9 @@
         span.small = icon 'fas', 'hashtag'
         span.pr-1 = tag
         span.small.delete_icon = icon 'fas', tag_icon(is_tagged)
-  button class="badge badge-tag mx-1" data-toggle="modal" data-target="#cardEditModal#{link.id}"
-    span.small = icon 'fas', 'plus'
+  - if user_signed_in?
+    button class="badge badge-tag mx-1" data-toggle="modal" data-target="#cardEditModal#{link.id}"
+      span.small = icon 'fas', 'plus'
 
-= render 'cards/edit_modal', link: link
+- if user_signed_in?
+  = render 'cards/edit_modal', link: link
