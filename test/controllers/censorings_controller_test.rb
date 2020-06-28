@@ -8,12 +8,22 @@ class CensoringsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:chikuwa)
   end
 
-  test "editing censoring require log in" do
-    put censoring_path, params: {'r18g': '0', '3d': '0'}
-    assert_redirected_to new_user_session_url
+  test 'can add and delete censoring' do
+    assert_no_difference 'Preference.count' do
+      post censoring_path(tag: 'ふたなり'), xhr: true
+    end
 
     login_as(@user)
-    put censoring_path, params: {'r18g': '0', '3d': '0'}
-    assert_redirected_to edit_user_registration_path(@user) # とりあえず成功してるってことで……
+    post censoring_path(tag: 'ふたなり'), xhr: true
+    assert @user.censoring?('ふたなり')
+
+    delete censoring_path(tag: 'ふたなり'), xhr: true
+    assert_not @user.censoring?('ふたなり')
+  end
+
+  test 'cannot delete censoring when not logged-in' do
+    assert_no_difference 'Preference.count' do
+      delete censoring_path(tag: 'R18G'), xhr: true
+    end
   end
 end
