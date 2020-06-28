@@ -29,16 +29,11 @@ class CensoringTest < ActionDispatch::IntegrationTest
     get nweet_path(nweet)
     assert_select "a[href=?]", "#collapseHorizontal#{link.id}", false
 
-    put censoring_path(@user), params: {"R18G": 1, "KEMO": 1}
+    post censoring_path(tag: 'KEMO'), xhr: true
     get nweet_path(nweet)
     assert_select "a[href=?]", "#collapseHorizontal#{link.id}"
 
-    nweet = nweets(:r18g)
-    link = nweet.links.first
-    get nweet_path(nweet)
-    assert_select "a[href=?]", "#collapseHorizontal#{link.id}"
-
-    put censoring_path(@user), params: {"R18G": "0", "KEMO": "0"}
+    delete censoring_path(tag: 'KEMO'), xhr: true
     get nweet_path(nweet)
     assert_select "a[href=?]", "#collapseHorizontal#{link.id}", false
   end
