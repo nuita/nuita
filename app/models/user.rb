@@ -95,8 +95,8 @@ class User < ApplicationRecord
 
   # censor, uncensor, censoring? can take both instances of String and Tag
   def censor(tag)
-    if tag.instance_of?(String)
-      tag = Tag.find_by(name: tag)
+    unless tag.instance_of?(Tag)
+      tag = Tag.find_or_create_by(name: tag.upcase)
     end
 
     self.censored_tags << tag

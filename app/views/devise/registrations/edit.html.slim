@@ -88,13 +88,8 @@
     - if current_user.twitter_screen_name.nil?
       p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter", method: :post
     h3.pt-4 その他のオプション
-    h5 検閲カテゴリ
-    = form_with url: censoring_path(current_user), method: :put, class: "form-group", local: true do |f|
-      .form-group
-        - visible_tags.each do |tag_name|
-          .form-check.form-check-inline
-            = f.check_box "#{tag_name}", {:checked => current_user.censoring?(tag_name), class: 'form-check-input'}
-            label.form-check-label = tag_name
-        = f.submit "検閲カテゴリを更新", class: 'btn btn-follow'
+    button class="btn btn-follow" data-toggle="modal" data-target="#editCensoringModal"
+      span.small 検閲カテゴリを編集
+    = render 'edit_censoring_modal'
     p = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
     = link_to "戻る", :back

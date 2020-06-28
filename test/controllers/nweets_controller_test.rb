@@ -66,14 +66,4 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
     @friend_nweet.reload
     assert_not_equal '誰だ今の', @friend_nweet.statement
   end
-
-  test 'can set tags when create nweet' do
-    login_as(@user)
-
-    gro_url = 'https://dic.pixiv.net/a/R-18G'
-    post nweets_path, params: {nweet: {statement: gro_url, did_at: 1.minute.ago}, tags: {'R18G': '1', '3D': '0'} }
-    link = Link.find_by(url: gro_url)
-    assert link.tags.exists?(name: 'R18G')
-    assert_not link.tags.exists?(name: '3D')
-  end
 end
