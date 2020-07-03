@@ -10,7 +10,8 @@ class Tag < ApplicationRecord
   private
 
     def set_censored_by_default
-      censor_list = ['R18G', '3D']
+      # こんなのハードコーディングすべきじゃない気がする
+      censor_list = ['R18G', '3D', 'R-18G', 'スカトロ']
 
       if censor_list.include?(name)
         self.censored_by_default = true
