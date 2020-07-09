@@ -54,4 +54,17 @@ namespace :link_task do
       end
     end
   end
+
+  desc "[temporary] change tag names and censorings"
+  task change_censoring: :environment do
+    Tag.find_by(name: 'R-18G')&.destroy
+    Tag.find_by(name: 'R18G')&.update_attribute(:name, 'R-18G')
+    
+    Tag.find_by(name: '3次元')&.destroy
+    Tag.find_by(name: '3D')&.update_attribute(:name, '3次元')
+
+    User.find_each do |user|
+      user.censor 'スカトロ'
+    end
+  end
 end

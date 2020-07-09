@@ -4,6 +4,7 @@ class PreferenceTest < ActiveSupport::TestCase
   def setup
     @user = users(:chikuwa)
     @tag = tags(:r18g)
+    @another_tag = tags(:three_d)
   end
 
   test "user and tag have to be present, but don't have to be unique" do
@@ -18,5 +19,17 @@ class PreferenceTest < ActiveSupport::TestCase
 
     dup_preference = Preference.new(user: @user, tag: @tag)
     assert dup_preference.valid?
+  end
+
+  test 'destroy when tag or user is destroyed' do
+    Preference.create(user: @user, tag: @tag)
+    assert_difference 'Preference.count', -1 do
+      @tag.destroy
+    end
+
+    Preference.create(user: @user, tag: @another_tag)
+    assert_difference 'Preference.count', -1 do
+      @user.destroy
+    end    
   end
 end

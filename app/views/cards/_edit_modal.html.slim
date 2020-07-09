@@ -1,0 +1,18 @@
+.modal tabindex="-1" role="dialog" id="cardEditModal#{link.id}"
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5.modal-title タグを編集
+        button.close type="buttton" data-dismiss="modal"
+          span &times;
+      .modal-body
+        = form_with url: tag_path(link: link), remote: true do |f|  
+          .input-group.mb-4
+            .input-group-prepend
+              span.input-group-text = icon 'fas', 'hashtag'
+            = f.text_field :name, {placeholder: 'タグ名', class: 'form-control'}
+            .input-group-append
+              = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-brandcolor'
+        h6.mb-2 既存のタグ
+        .edit-modal-tag-list id="editModalTagList#{link.id}"
+          = render 'cards/edit_modal_tags', link: link

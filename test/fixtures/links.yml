@@ -1,5 +1,10 @@
 kanikama:
   url: 'https://www.pixiv.net/artworks/59554738'
+  title: 'ツイッター絵詰め'
+  description: '色々詰めVer'
+  image: 'https://pixiv.cat/59554738-1.jpg'
+  image_width: 700
+  image_height: 480
 
 kemo:
   url: 'https://twitter.com/aoi_nishimata/status/831825876899635200'
