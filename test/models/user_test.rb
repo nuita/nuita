@@ -97,7 +97,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.badges.exists?
   end
 
-  test 'censoring must be unique' do
+  test 'cannot censor a tag twice' do
     @user.censor 'ふたなり'
 
     assert_no_difference '@user.censorings.count' do
