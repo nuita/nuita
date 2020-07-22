@@ -1,11 +1,16 @@
-h2
-  | Forgot your password?
-= form_with(model: resource, as: resource_name, url: password_path(resource_name), method: :put, local: true) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+- provide(:title, "パスワードを忘れた")
+
+.container.wider-margintop
+  .jumbotron.not-so-jumbo.mx-auto
+    h1.mb-2 パスワードを忘れた？
+    .mb-4 ご安心ください。メールからパスワードを再設定しましょう。
+    = form_with(model: resource, as: resource_name, url: password_path(resource_name), method: :post, local: true) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .form-group.row.align-items-center
+        .col-md-3
+          = f.label :email, class: "col-form-label"
+        .col-md-9
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+      .actions
+        = f.submit "確認メールを送信", class: "btn btn-brandcolor registration_button"
+    = render "devise/shared/links"

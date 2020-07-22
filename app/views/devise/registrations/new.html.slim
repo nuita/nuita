@@ -34,7 +34,7 @@
         .col-md-3
           = f.label :password, class: "col-form-label"
           - if @minimum_password_length
-            em
+            span.small.pl-1
               | (
               = @minimum_password_length
               |  文字以上)

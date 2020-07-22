@@ -1,22 +1,27 @@
-h2
-  | Change your password
-= form_with(model: resource, as: resource_name, url: password_path(resource_name), method: :put, local: true) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  = f.hidden_field :reset_password_token
-  .field
-    = f.label :password, "New password"
-    br
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-      br
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "Confirm new password"
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Change my password"
-= render "devise/shared/links"
+- provide(:title, "パスワード再設定")
+
+.container.wider-margintop
+  .jumbotron.not-so-jumbo.mx-auto
+    h1.mb-2 パスワードを再設定する
+    .mb-4 お帰りなさい！あと少しで再登録が完了します。
+    = form_with(model: resource, as: resource_name, url: password_path(resource_name), method: :put, class: "form-group", local: true) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      = f.hidden_field :reset_password_token
+      .form-group.row
+        .col-md-3
+          = f.label :password, class: "col-form-label"
+          - if @minimum_password_length
+            span.small.pl-1
+              | (
+              = @minimum_password_length
+              |  文字以上)
+        .col-md-9
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"
+      .form-group.row
+        .col-md-3
+          = f.label :password_confirmation, class: "col-form-label"
+        .col-md-9
+          = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+      .actions
+        = f.submit "パスワードを変更する", class: "btn btn-brandcolor registration_button"
+    = render "devise/shared/links"
