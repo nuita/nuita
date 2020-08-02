@@ -4,13 +4,15 @@ require "open-uri"
 
 module ApplicationHelper
   def text_url_to_link(text)
-    URI.extract(text, ['http', 'https']).uniq.each do |url|
+    safe_text = h(text)
+
+    URI.extract(safe_text, ['http', 'https']).uniq.each do |url|
       sub_text = ""
       sub_text << "<a href=" << url << " target='_blank'>" << url << "</a>"
 
-      text.gsub!(url, sub_text)
+      safe_text.gsub!(url, sub_text)
     end
-    text
+    safe_text
   end
 
   # contribution graph用
