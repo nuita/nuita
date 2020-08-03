@@ -29,7 +29,7 @@ module ApplicationHelper
 
   # returns camo url only in production mode
   def camo_url(url)
-    if Rails.env.production?
+    if Rails.env.production? && /http:\/\// =~ url 
       camo(url)
     else
       url
