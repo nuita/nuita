@@ -16,7 +16,7 @@ section.side-section
   - if user.biography
       .my-2
         = text_url_to_link(user.biography).html_safe
-  .list-group
+  .list-group.userinfo-nav-list
     = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
       |  ヌイート
       span.badge.badge-brand.badge-pill#badgeNweets = user.nweets.count
