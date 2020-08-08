@@ -1,10 +1,6 @@
-/ イベント終わったらこの条件分けは削除
-- if content_for?(:custom_header)
-  = render "layouts/#{yield(:custom_header)}"
-- else
-  nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.class_selector.navbar-dark.py-0
-    .container-fluid
-      - if user_signed_in?
-        = render 'layouts/user_header'
-      - else
-        = render 'layouts/guest_header'
+nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.navbar-dark.py-0
+  .container-fluid
+    - if user_signed_in?
+      = render 'layouts/user_header'
+    - else
+      = render 'layouts/guest_header'
