@@ -10,4 +10,10 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def find
+    @timeline = true
+
+    render_nweets(Nweet.global_feed, 'did_at < ?')
+  end
 end

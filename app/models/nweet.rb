@@ -64,6 +64,12 @@ class Nweet < ApplicationRecord
     end
   end
 
+  class << self
+    def global_feed
+      Nweet.all
+    end
+  end
+
   private
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
