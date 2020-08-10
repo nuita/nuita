@@ -20,6 +20,6 @@ ul.nav.navbar-nav.mx-auto.navbar-center
         = icon_for(current_user, size: 40)
       .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
         .dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
-        .dropdown-item = link_to 'いいねした投稿', likes_user_path(current_user), class: 'nav-link'
         .dropdown-item = link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link'
+        .dropdown-item = link_to '設定', settings_path, class: 'nav-link'
         .dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'
