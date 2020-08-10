@@ -32,9 +32,18 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :badges
 
-  # list nweets shown in timeline.
   def timeline
-    Nweet.all # currently it is global! (since FF is not implemented)
+    mode = :followees # TBC
+    case mode
+    when :followees
+      followees_feed
+    when :global
+      global_feed
+    end
+  end
+
+  def followees_feed
+    Nweet.where("user_id IN (?) OR user_id = ?", followee_ids, id) 
   end
 
   def nweets_at_date(date)

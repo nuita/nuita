@@ -19,6 +19,14 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'show followees tweet only in timeline' do
+    login_as(@user)
+
+    get root_path
+    assert_match @followee.handle_name, response.body
+    assert_no_match @not_followee.handle_name, response.body
+  end
+
   test 'show every tweet in global timeline' do
     login_as(@user)
 
