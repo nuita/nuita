@@ -1,11 +1,11 @@
 ul.nav.mode-nav.ml-0
-  li.nav-item#home-nav
+  li.nav-item.user-nav-item#homeNav
     = link_to root_url do
       = icon 'fas', 'home'
-  li.nav-item#find-nav
+  li.nav-item.user-nav-item#exploreNav
     = link_to explore_path do
       = icon 'fas', 'globe'
-  li.nav-item#notifications-nav
+  li.nav-item.user-nav-item#notificationsNav
     = link_to notifications_path do
       = icon 'fas', 'bell'
       / ここには"notification.ts"が動いています！
