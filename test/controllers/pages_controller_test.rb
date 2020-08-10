@@ -22,7 +22,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   test 'show every tweet in global timeline' do
     login_as(@user)
 
-    get find_path
+    get explore_path
     assert_match @followee.handle_name, response.body
     assert_match @not_followee.handle_name, response.body
   end
