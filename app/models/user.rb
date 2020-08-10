@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          #:confirmable, :lockable, :timeoutable #,
          #:omniauthable, omniauth_providers: [:twitter]
+         
+  enum feed_scope: [:followees, :global]
 
   has_many :nweets, dependent: :destroy
   has_many :likes, dependent: :destroy
