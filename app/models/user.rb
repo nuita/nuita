@@ -35,12 +35,11 @@ class User < ApplicationRecord
   has_and_belongs_to_many :badges
 
   def timeline
-    mode = :followees # TBC
-    case mode
-    when :followees
+    case feed_scope
+    when "followees"
       followees_feed
-    when :global
-      global_feed
+    when "global"
+      Nweet.global_feed
     end
   end
 

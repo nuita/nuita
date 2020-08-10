@@ -104,4 +104,24 @@ class UserTest < ActiveSupport::TestCase
       @user.censor 'ふたなり'
     end
   end
+
+  test 'can change timeline content based on feed_scope' do
+    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    new_user.save
+
+    # Feed scope should be set followees only by default, thus you can't see nweets by the others.
+    @not_followee = users(:shinji)
+    assert_empty new_user.timeline.where(user: @not_followee)
+
+    # So, if you follow someone, you can see their nweets.
+    @followee = users(:emiya)
+    new_user.follow(@followee)
+
+    assert_not_empty new_user.timeline.where(user: @followee)
+
+    # And you can set feed scope global. Then you will have all nweets in the world.
+
+    new_user.update_attribute(:feed_scope, :global)
+    assert_not_empty new_user.timeline.where(user: @not_followee)
+  end
 end
