@@ -1,5 +1,5 @@
 .nweet-feed
-  - if current_user.nweets.any?
+  - if @feed_items.any?
     /.nweet-count タイムライン
     ol.nweets-list
       = render "nweets/nweets"
