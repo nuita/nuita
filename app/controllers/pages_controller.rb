@@ -4,15 +4,7 @@ class PagesController < ApplicationController
       @nweet = current_user.nweets.build
       @timeline = true
 
-      if params[:before]
-        date = Time.zone.at(params[:before].to_i)
-        @feed_items = current_user.timeline.where('did_at < ?', date).limit(10)
-        @before = @feed_items.last&.did_at&.to_i
-        render partial: 'nweets/nweets'
-      else
-        @feed_items = current_user.timeline.limit(10)
-        @before = @feed_items.last&.did_at&.to_i
-      end
+      render_nweets(current_user.timeline, 'did_at < ?')
     end
   end
 

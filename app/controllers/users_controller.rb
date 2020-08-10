@@ -50,16 +50,4 @@ class UsersController < ApplicationController
         redirect_to(new_user_session_url)
       end
     end
-
-    def render_nweets(nweets, query)
-      if params[:before]
-        date = Time.zone.at(params[:before].to_i)
-        @feed_items = nweets.where(query, date).limit(10)
-        @before = @feed_items.last&.did_at&.to_i
-        render partial: 'nweets/nweets'
-      else
-        @feed_items = nweets.limit(10)
-        @before = @feed_items.last&.did_at&.to_i
-      end
-    end
 end
