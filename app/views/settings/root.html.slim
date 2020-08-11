@@ -3,10 +3,11 @@
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
     h1 設定
-    h3.pt-4 検閲と非表示の設定
-    / button class="btn btn-follow" data-toggle="modal" data-target="#editCensoringModal"
-    /   span.small 検閲カテゴリを編集
-    / = render 'edit_censoring_modal'
-    / p = button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
-    / = link_to "戻る", :back
+    h3.pt-4 検閲設定
+    button class="btn btn-follow" data-toggle="modal" data-target="#editCensoringModal"
+      span.small 検閲カテゴリを編集
+    = render 'edit_censoring_modal'
+    h3.pt-4 アカウント設定
+    p = button_to "アカウント削除", user_path(current_user), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
+    = link_to "戻る", :back
 
