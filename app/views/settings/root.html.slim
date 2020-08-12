@@ -3,11 +3,14 @@
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
     h1 設定
-    h3.pt-4 検閲設定
-    button class="btn btn-follow" data-toggle="modal" data-target="#editCensoringModal"
-      span.small 検閲カテゴリを編集
-    = render 'edit_censoring_modal'
-    h3.pt-4 アカウント設定
-    p = button_to "アカウント削除", user_path(current_user), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger"
+    ul.settings-list
+      li.settings-list-item
+        h5.settings-label.pt-4 検閲カテゴリ
+        .settings-description.mb-2 指定したタグのついたオカズを非表示にします。
+        = render 'edit_censoring_modal'
+      li.settings-list-item
+        h5.settings-label.pt-2 アカウント設定
+        .settings-description.mb-2 すべての投稿と思い出が削除されます。この操作は取り消しできません。
+        = link_to "アカウントを削除する", user_path(current_user), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-outline-danger"
     = link_to "戻る", :back
 
