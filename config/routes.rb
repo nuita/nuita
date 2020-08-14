@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       get :likes
       get :followers, :followees
+      patch :tweak
     end
   end
 
