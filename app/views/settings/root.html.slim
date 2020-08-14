@@ -2,14 +2,20 @@
 
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
-    h1 設定
+    h1.mb-2 設定
     ul.settings-list
       li.settings-list-item
-        h5.settings-label.pt-4 検閲カテゴリ
+        h5.settings-label タイムライン設定
+        = form_with(model: current_user, url: tweak_user_path(current_user)) do |f|
+          .form-group
+            = f.label :feed_scope
+            = f.select :feed_scope, feed_scope_options, {value: current_user.feed_scope}, {class: 'form-control', onchange: "this.form.submit();"}
+      li.settings-list-item
+        h5.settings-label 検閲カテゴリ
         .settings-description.mb-2 指定したタグのついたオカズを非表示にします。
         = render 'edit_censoring_modal'
       li.settings-list-item
-        h5.settings-label.pt-2 アカウント設定
+        h5.settings-label アカウント設定
         .settings-description.mb-2 すべての投稿と思い出が削除されます。この操作は取り消しできません。
         = link_to "アカウントを削除する", user_path(current_user), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-outline-danger"
     = link_to "戻る", :back

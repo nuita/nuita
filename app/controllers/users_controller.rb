@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.find_by(url_digest: params[:url_digest])
     @user.update_attributes(tweak_params)
     
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: settings_path)
   end
 
   private
