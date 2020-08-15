@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  # Update user without password confirmation. 
+  def tweak
+    current_user.update_attributes(tweak_params)
+    
+    redirect_back(fallback_location: settings_path)
+  end
+
   private
 
     def friend_user
@@ -51,15 +58,8 @@ class UsersController < ApplicationController
       end
     end
 
-    def render_nweets(nweets, query)
-      if params[:before]
-        date = Time.zone.at(params[:before].to_i)
-        @feed_items = nweets.where(query, date).limit(10)
-        @before = @feed_items.last&.did_at&.to_i
-        render partial: 'nweets/nweets'
-      else
-        @feed_items = nweets.limit(10)
-        @before = @feed_items.last&.did_at&.to_i
-      end
+    # Strong parameters. They can be set without password, so be careful.
+    def tweak_params
+      params.require(:user).permit(:feed_scope)
     end
 end

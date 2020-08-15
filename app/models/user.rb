@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          #:confirmable, :lockable, :timeoutable #,
          #:omniauthable, omniauth_providers: [:twitter]
+         
+  enum feed_scope: [:followees, :global]
 
   has_many :nweets, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -32,9 +34,17 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :badges
 
-  # list nweets shown in timeline.
   def timeline
-    Nweet.all # currently it is global! (since FF is not implemented)
+    case feed_scope
+    when "followees"
+      followees_feed
+    when "global"
+      Nweet.global_feed
+    end
+  end
+
+  def followees_feed
+    Nweet.where("user_id IN (?) OR user_id = ?", followee_ids, id) 
   end
 
   def nweets_at_date(date)

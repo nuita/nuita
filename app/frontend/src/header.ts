@@ -13,18 +13,24 @@ export default function setHeaderButton() {
   }
 
   let pathname: string = location.pathname;
-  let homeNav = document.getElementById("home-nav");
-  let notificationsNav = document.getElementById("notifications-nav");
+  let userNavItems = document.getElementsByClassName("user-home-nav")
 
-  if (homeNav && notificationsNav) {
+  if (userNavItems) {
+    let homeNav = document.getElementById("homeNav");
+    let exploreNav = document.getElementById("exploreNav")
+    let notificationsNav = document.getElementById("notificationsNav");
+
+    Array.from(userNavItems).forEach(e => {
+      e.classList.remove("active")
+    });
+
     if (pathname == "/") {
       homeNav.classList.add("active");
-      notificationsNav.classList.remove("active");
+    } else if (pathname == "/explore") {
+      exploreNav.classList.add("active");
     } else if (pathname == "/notifications") {
-      homeNav.classList.remove("active");
       notificationsNav.classList.add("active");
     } else {
-      homeNav.classList.remove("active");
       notificationsNav.classList.remove("active");
     }
   }

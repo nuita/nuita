@@ -24,4 +24,16 @@ class ApplicationController < ActionController::Base
     def render_tweet(nweet)
       current_user.autotweet_content.gsub(/\[LINK\]/, nweet_url(@nweet))
     end
+
+    def render_nweets(nweets, query)
+      if params[:before]
+        date = Time.zone.at(params[:before].to_i)
+        @feed_items = nweets.where(query, date).limit(10)
+        @before = @feed_items.last&.did_at&.to_i
+        render partial: 'nweets/nweets'
+      else
+        @feed_items = nweets.limit(10)
+        @before = @feed_items.last&.did_at&.to_i
+      end
+    end
 end

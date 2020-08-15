@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'pages/home'
   get 'pages/about'
+  get '/explore', :to => 'pages#explore'
+  get '/settings', :to => 'settings#root'
   get '/auth/twitter/callback', :to => 'twitters#create'
   post '/auth/twitter/callback', :to => 'twitters#create'
   delete '/auth/twitter', :to => 'twitters#destroy'
@@ -14,6 +16,9 @@ Rails.application.routes.draw do
     member do
       get :likes
       get :followers, :followees
+    end
+    collection do
+      patch :tweak
     end
   end
 
