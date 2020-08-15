@@ -88,4 +88,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get user_path(@user, date: "2017-12-25".to_time)
     assert_match '😢', response.body
   end
+
+  test 'can tweak settings' do
+    login_as @user
+
+    patch tweak_users_path, params: {user: {feed_scope: :global}}
+    assert @user.global?
+  end
 end
