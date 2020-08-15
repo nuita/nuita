@@ -6,7 +6,7 @@
     ul.settings-list
       li.settings-list-item
         h5.settings-label タイムライン設定
-        = form_with(model: current_user, url: tweak_user_path(current_user)) do |f|
+        = form_with(model: current_user, url: tweak_users_path) do |f|
           .form-group
             = f.label :feed_scope
             = f.select :feed_scope, feed_scope_options, {value: current_user.feed_scope}, {class: 'form-control', onchange: "this.form.submit();"}

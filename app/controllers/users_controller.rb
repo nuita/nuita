@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :friend_user, only: [:likes, :followers, :followees]
-  before_action :correct_user, only: [:tweak]
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
@@ -38,8 +37,7 @@ class UsersController < ApplicationController
 
   # Update user without password confirmation. 
   def tweak
-    @user = User.find_by(url_digest: params[:url_digest])
-    @user.update_attributes(tweak_params)
+    current_user.update_attributes(tweak_params)
     
     redirect_back(fallback_location: settings_path)
   end
