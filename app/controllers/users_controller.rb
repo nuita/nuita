@@ -24,15 +24,17 @@ class UsersController < ApplicationController
   def followers
     @topic = 'フォロワー'
     @user = User.find_by(url_digest: params[:url_digest])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    users = @user.followers.paginate(page: params[:page])
+
+    render_users(users)
   end
 
   def followees
     @topic = 'フォロー'
     @user = User.find_by(url_digest: params[:url_digest])
-    @users = @user.followees.paginate(page: params[:page])
-    render 'show_follow'
+    users = @user.followees.paginate(page: params[:page])
+
+    render_users(users)
   end
 
   # Update user without password confirmation. 
@@ -61,5 +63,17 @@ class UsersController < ApplicationController
     # Strong parameters. They can be set without password, so be careful.
     def tweak_params
       params.require(:user).permit(:feed_scope)
+    end
+
+    def render_users(users)
+      @feed_items = users.paginate(page: params[:page])
+
+      if params[:page]
+        @page = params[:page].to_i + 1
+        render partial: 'users/users'
+      else
+        @page = 1
+        render 'show_follow'
+      end
     end
 end
