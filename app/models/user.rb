@@ -22,9 +22,9 @@ class User < ApplicationRecord
   validates :biography, length: {maximum: 30}
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followees, through: :active_relationships
+  has_many :followees, -> {order('relationships.created_at DESC')}, through: :active_relationships
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
-  has_many :followers, through: :passive_relationships
+  has_many :followers, -> {order('relationships.created_at DESC')}, through: :passive_relationships
 
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
