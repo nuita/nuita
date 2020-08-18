@@ -5,7 +5,10 @@
     .d-md-block.col-md-3
       = render 'users/user_info', {user: @user}
     .col-md.p-0.nweet-feed.row_top
-      ul.nweets-list
-        = render 'users/users'
+      - if @feed_items.any?
+        ul.nweets-list
+          = render 'users/users'
+      - else
+        = render 'pages/empty_feed'
     .d-none.d-lg-block.col-lg-3
       = render 'pages/recommend'
