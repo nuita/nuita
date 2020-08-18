@@ -13,6 +13,7 @@ emiya:
   screen_name: "emiya_shiro"
   email: "shiro@emiya.com"
   url_digest: "idQ0cqViHdxUxTRF"
+  created_at: <%= 2.years.ago %>
 
 shinji:
   handle_name: "S. Mato"
@@ -21,8 +22,16 @@ shinji:
   url_digest: "bJUPf2DQrGHlxqVB"
   biography: "こんにちは〜"
 
+zoken:
+  handle_name: "zoken"
+  screen_name: "zoken"
+  email: "zoken@example.com"
+  url_digest: "Z9Q15NQsZ7tubbJk"
+  created_at: <%= 10.years.ago %>
+
 # no nweets, no likes... because he is a girl.
 girl:
   handle_name: "girl"
   screen_name: "i_am@girl.com"
   url_digest: "mrFKjWLgvntmDviE"
+  created_at: <%= 3.years.ago %>

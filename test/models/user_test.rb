@@ -5,6 +5,9 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:chikuwa)
     @nweet = nweets(:today)
     @new_user = users(:girl)
+    @not_followee = users(:shinji)
+    @followee = users(:emiya)
+    @old_user = users(:zoken)
   end
 
   test 'should be valid' do
@@ -110,11 +113,9 @@ class UserTest < ActiveSupport::TestCase
     new_user.save
 
     # Feed scope should be set followees only by default, thus you can't see nweets by the others.
-    @not_followee = users(:shinji)
     assert_empty new_user.timeline.where(user: @not_followee)
 
     # So, if you follow someone, you can see their nweets.
-    @followee = users(:emiya)
     new_user.follow(@followee)
 
     assert_not_empty new_user.timeline.where(user: @followee)
@@ -123,5 +124,15 @@ class UserTest < ActiveSupport::TestCase
 
     new_user.update_attribute(:feed_scope, :global)
     assert_not_empty new_user.timeline.where(user: @not_followee)
+  end
+
+  test 'new follower should be first' do
+    # followee and follower should be ordered by when the follow was made,
+    # not by when the users themselves were created.
+    assert_equal @old_user, @user.followees.first
+    assert_equal @followee, @user.followees.second
+
+    assert_equal @old_user, @user.followers.first
+    assert_equal @followee, @user.followers.second
   end
 end
