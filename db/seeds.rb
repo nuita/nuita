@@ -19,7 +19,7 @@ end
 
 User.all.map do |user|
   10.times do
-    user.nweets.create(did_at: Faker::Time.backward(50))
+    user.nweets.create(did_at: Faker::Time.backward(days: 50))
   end
 end
 
@@ -34,3 +34,5 @@ confident_users = users[9..30]
 confident_users.each do |user|
   user.update_attribute(:biography, Faker::Lorem.sentence.truncate(29))
 end
+
+Rake::Task["tag_task:init"].execute
