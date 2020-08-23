@@ -18,19 +18,27 @@ Faker::Config.locale = :en
 end
 
 User.all.map do |user|
-  10.times do
-    user.nweets.create(did_at: Faker::Time.backward(50))
+  5.times do
+    user.nweets.create(did_at: Faker::Time.backward(days: 50), statement: Faker::Lorem.sentence)
+    user.nweets.create(did_at: Faker::Time.backward(days: 50))
   end
 end
 
 users = User.all
-user  = users.first
+first_user  = users.first
+nweet = first_user.nweets.create(did_at: Time.zone.now, statement: 'https://www.pixiv.net/artworks/55434358')
+
 followees = users[2..50]
 followers = users[3..40]
-followees.each { |followee| user.follow(followee) }
-followers.each { |follower| follower.follow(user) }
+followees.each { |followee| first_user.follow(followee) }
+followers.each { |follower| follower.follow(first_user) }
 
 confident_users = users[9..30]
 confident_users.each do |user|
   user.update_attribute(:biography, Faker::Lorem.sentence.truncate(29))
+  user.liked_nweets << nweet
+  first_user.liked_nweets << user.nweets.first
 end
+
+
+Rake::Task["tag_task:init"].execute

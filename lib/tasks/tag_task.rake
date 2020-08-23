@@ -4,8 +4,8 @@ namespace :tag_task do
     Preference.destroy_all
     Tag.destroy_all
 
-    Tag.create(name: 'R18G', description: '猟奇的・残酷な描写')
-    Tag.create(name: '3D', description: '撮影された動画や画像')
+    Tag.create(name: 'R-18G')
+    Tag.create(name: 'スカトロ')
 
     Tag.where(censored_by_default: true).each do |tag|
       puts "censoring #{tag.name}..."
