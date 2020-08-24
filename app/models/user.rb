@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_create :set_url_digest
-  after_create :set_default_censoring
+  after_commit :set_default_censoring, on: :create
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
-  has_many :censorings, class_name: 'Preference', dependent: :destroy
+  has_many :censorings, -> {where "context = #{Preference.contexts[:censoring]}"}, class_name: 'Preference', dependent: :destroy
   has_many :censored_tags, through: :censorings, source: :tag
 
   has_and_belongs_to_many :badges
