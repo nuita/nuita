@@ -9,13 +9,12 @@ class Tag < ApplicationRecord
   before_save :set_censored_by_default
   before_validation { name.upcase! }
 
+  CENSORED_TAG_NAMES = ['R-18G', 'スカトロ']
+
   private
 
     def set_censored_by_default
-      # こんなのハードコーディングすべきじゃない気がする
-      censor_list = ['R-18G', 'スカトロ']
-
-      if censor_list.include?(name)
+      if CENSORED_TAG_NAMES.include?(name)
         self.censored_by_default = true
       end
     end
