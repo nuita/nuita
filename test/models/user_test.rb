@@ -74,6 +74,18 @@ class UserTest < ActiveSupport::TestCase
     assert @user.censoring?(tag)
   end
 
+  test 'should prefer and disprefer tag' do
+    tag = tags(:kemo)
+    @user.prefer(tag)
+    assert @user.preferring?(tag.name)
+
+    @user.disprefer(tag)
+    assert_not @user.preferring?(tag.name)
+
+    @user.prefer(tag.name)
+    assert @user.preferring?(tag)
+  end
+
   test 'can announce' do
     str = '<h6>寄付のお願い</h6><p>詳細は<a href="https://google.com">こちら</a></p>'
     notification = @user.announce(str)

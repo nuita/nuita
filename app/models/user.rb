@@ -29,8 +29,11 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
-  has_many :censorings, -> {where "context = #{Preference.contexts[:censoring]}"}, class_name: 'Preference', dependent: :destroy
+  has_many :censorings, -> {where context: Preference.contexts[:censoring]}, class_name: 'Preference', dependent: :destroy
   has_many :censored_tags, through: :censorings, source: :tag
+
+  has_many :preferrings, -> {where context: Preference.contexts[:preferring]}, class_name: 'Preference', dependent: :destroy
+  has_many :preferred_tags, through: :preferrings, source: :tag
 
   has_and_belongs_to_many :badges
 
@@ -105,28 +108,17 @@ class User < ApplicationRecord
 
   # censor, uncensor, censoring? can take both instances of String and Tag
   def censor(tag)
-    unless self.censoring?(tag)
-      unless tag.instance_of?(Tag)
-        tag = Tag.find_or_create_by(name: tag.upcase)
-      end
+    return if censoring?(tag)
 
-      self.censored_tags << tag
-    end
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    censored_tags << tag
   end
 
   def uncensor(tag)
-    if self.censoring?(tag)
-      if tag.instance_of?(String)
-        tag = Tag.find_by(name: tag)
-      end
+    return unless censoring?(tag)
 
-      self.censorings.find_by(tag_id: tag.id).destroy
-    end
-  end
-
-  def add_badge(badge)
-    # バッジは名前で指定することなくない？
-    self.badges << badge
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    self.censorings.find_by(tag_id: tag.id).destroy
   end
 
   def censoring?(tag)
@@ -141,6 +133,39 @@ class User < ApplicationRecord
     end
 
     self.censored_tags.pluck(:name) & tag_names
+  end
+
+  def prefer(tag)
+    return if preferring?(tag)
+
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    self.preferred_tags << tag
+  end
+
+  def disprefer(tag)
+    return unless preferring?(tag)
+
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    self.preferrings.find_by(tag_id: tag.id).destroy
+  end
+
+  def preferring?(tag)
+    tag_name = tag.respond_to?(:name) ? tag.name : tag
+
+    self.preferred_tags.exists?(name: tag_name)
+  end
+
+  def preferring_tags?(tags)
+    tag_names = tags.map do |tag|
+      tag.respond_to?(:name) ? tag.name : tag
+    end
+
+    self.preferred_tags.pluck(:name) & tag_names
+  end
+
+  def add_badge(badge)
+    # バッジは名前で指定することなくない？
+    self.badges << badge
   end
 
   def liked?(nweet)
