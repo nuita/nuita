@@ -74,7 +74,7 @@ class UserTest < ActiveSupport::TestCase
     assert @user.censoring?(tag)
   end
 
-  test 'should prefer and disprefer tag' do
+  test 'can prefer and disprefer tag' do
     tag = tags(:kemo)
     @user.prefer(tag)
     assert @user.preferring?(tag.name)
@@ -84,6 +84,14 @@ class UserTest < ActiveSupport::TestCase
 
     @user.prefer(tag.name)
     assert @user.preferring?(tag)
+  end
+
+  test 'followees feed should include preferred tags' do
+    n = @new_user.nweets.create(did_at: Time.zone.now, statement: 'https://example.com/ #KEMO')
+    assert_not @user.followees_feed.include?(n)
+
+    @user.prefer('KEMO')
+    assert @user.followees_feed.include?(n)
   end
 
   test 'can announce' do
