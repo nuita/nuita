@@ -94,6 +94,11 @@ class UserTest < ActiveSupport::TestCase
     assert @user.followees_feed.include?(n)
   end
 
+  test 'nweets in timeline and followees feed must be distinct' do
+    assert_equal Nweet.global_feed, Nweet.global_feed.uniq
+    assert_equal @user.followees_feed, @user.followees_feed.uniq
+  end
+
   test 'can announce' do
     str = '<h6>寄付のお願い</h6><p>詳細は<a href="https://google.com">こちら</a></p>'
     notification = @user.announce(str)

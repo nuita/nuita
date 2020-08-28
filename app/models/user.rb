@@ -47,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def followees_feed
-    Nweet.joins(links: :tags).where("user_id IN (?) OR user_id = ? OR tags.id IN (?)", followee_ids, id, preferred_tag_ids)
+    Nweet.includes(links: :tags).joins(links: :tags).where("user_id IN (?) OR user_id = ? OR tags.id IN (?)", followee_ids, id, preferred_tag_ids)
   end
 
   def nweets_at_date(date)
