@@ -13,7 +13,7 @@
       li.settings-list-item
         h5.settings-label 検閲カテゴリ
         .settings-description.mb-2 指定したタグのついたオカズを非表示にします。
-        = render 'edit_censoring_modal'
+        = render 'tags_form', context: 'censoring'
       li.settings-list-item
         h5.settings-label アカウント設定
         .settings-description.mb-2 すべての投稿と思い出が削除されます。この操作は取り消しできません。
