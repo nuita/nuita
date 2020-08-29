@@ -11,16 +11,16 @@
             = f.label :feed_scope
             = f.select :feed_scope, feed_scope_options, {value: current_user.feed_scope}, {class: 'form-control', onchange: "this.form.submit();"}
       li.settings-list-item
-        h5.settings-label お気に入りのカテゴリ
-        .settings-description.mb-2 指定したタグのついたオカズを非表示にします。
+        h5.settings-label お気に入りのタグ
+        .settings-description.mb-2 好きなタグのついた投稿をたくさん表示できます。
         = render 'tags_form', context: :preferring
       li.settings-list-item
-        h5.settings-label 検閲カテゴリ
-        .settings-description.mb-2 指定したタグのついたオカズを非表示にします。
+        h5.settings-label 検閲タグ
+        .settings-description.mb-2 苦手なタグのついた投稿を展開表示にできます。
         = render 'tags_form', context: :censoring
       li.settings-list-item
         h5.settings-label アカウント設定
-        .settings-description.mb-2 すべての投稿と思い出が削除されます。この操作は取り消しできません。
+        .settings-description.mb-2 すべての投稿（と思い出）が削除されます。この操作は取り消しできません。
         = link_to "アカウントを削除する", user_path(current_user), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-outline-danger"
     = link_to "戻る", :back
 
