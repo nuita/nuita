@@ -10,4 +10,13 @@ module SettingsHelper
   def tags_form_path(context, tag = nil)
     "/#{context}" + (tag ? "?tag=#{tag}" : "")
   end
+
+  def tags_form_items(context)
+    case context
+    when :preferring
+      current_user.preferred_tags
+    when :censoring
+      current_user.censored_tags
+    end
+  end
 end

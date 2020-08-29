@@ -7,4 +7,4 @@
       .input-group-append
         = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-brandcolor'
   div id = taglist_id(context)
-    = render 'tags_form_taglist', context: context, tags: current_user.censored_tags
+    = render 'tags_form_taglist', context: context

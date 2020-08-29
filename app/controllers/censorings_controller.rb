@@ -16,6 +16,6 @@ class CensoringsController < ApplicationController
   private
 
     def renew_tags_form
-      render partial: 'settings/renew_tags_form', locals: {context: 'censoring', tags: current_user.censored_tags}
+      render partial: 'settings/renew_tags_form', locals: {context: :censoring}
     end
 end
