@@ -10,7 +10,7 @@
           .input-group.mb-4
             .input-group-prepend
               span.input-group-text = icon 'fas', 'hashtag'
-            = f.text_field :name, {placeholder: 'タグ名', class: 'form-control', id: 'modalNewTagTextField'}
+            = f.text_field :name, {placeholder: 'タグ名', class: 'form-control', id: "modalNewTagTextField#{link.id}"}
             .input-group-append
               = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-brandcolor'
         h6.mb-2 既存のタグ
