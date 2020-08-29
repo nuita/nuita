@@ -7,27 +7,30 @@ class PreferenceTest < ActiveSupport::TestCase
     @another_tag = tags(:three_d)
   end
 
-  test "user and tag have to be present, but don't have to be unique" do
-    preference = Preference.create(user: @user, tag: @tag)
+  test "user and tag have to be present and unique, regardless of what the context is" do
+    preference = Preference.create(user: @user, tag: @tag, context: :censoring)
     assert preference.valid?
 
-    no_user_preference = Preference.new(tag: @tag)
-    assert_not no_user_preference.valid?
+    preference = Preference.new(tag: @tag, context: :censoring)
+    assert_not preference.valid?
 
-    no_tag_preference = Preference.new(user: @user)
-    assert_not no_tag_preference.valid?
+    preference = Preference.new(user: @user, context: :censoring)
+    assert_not preference.valid?
 
-    dup_preference = Preference.new(user: @user, tag: @tag)
-    assert dup_preference.valid?
+    preference = Preference.new(user: @user, tag: @tag, context: :censoring)
+    assert_not preference.valid?
+    
+    preference = Preference.new(user: @user, tag: @tag, context: :preferring)
+    assert_not preference.valid?
   end
 
   test 'destroy when tag or user is destroyed' do
-    Preference.create(user: @user, tag: @tag)
+    Preference.create(user: @user, tag: @tag, context: :censoring)
     assert_difference 'Preference.count', -1 do
       @tag.destroy
     end
 
-    Preference.create(user: @user, tag: @another_tag)
+    Preference.create(user: @user, tag: @another_tag, context: :censoring)
     assert_difference 'Preference.count', -1 do
       @user.destroy
     end    

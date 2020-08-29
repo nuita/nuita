@@ -4,12 +4,18 @@ class CensoringsController < ApplicationController
   def create
     current_user.censor(params[:tag])
 
-    render partial: 'settings/renew_modal_tags', locals: {tags: current_user.censored_tags}
+    renew_tags_form
   end
 
   def destroy
     current_user.uncensor(params[:tag])
 
-    render partial: 'settings/renew_modal_tags', locals: {tags: current_user.censored_tags}
+    renew_tags_form
   end
+
+  private
+
+    def renew_tags_form
+      render partial: 'settings/renew_tags_form', locals: {context: :censoring}
+    end
 end

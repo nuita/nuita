@@ -77,6 +77,31 @@ class UserTest < ActiveSupport::TestCase
     assert @user.censoring?(tag)
   end
 
+  test 'can prefer and disprefer tag' do
+    tag = tags(:kemo)
+    @user.prefer(tag)
+    assert @user.preferring?(tag.name)
+
+    @user.disprefer(tag)
+    assert_not @user.preferring?(tag.name)
+
+    @user.prefer(tag.name)
+    assert @user.preferring?(tag)
+  end
+
+  test 'followees feed should include preferred tags' do
+    n = @new_user.nweets.create(did_at: Time.zone.now, statement: 'https://example.com/ #KEMO')
+    assert_not @user.followees_feed.include?(n)
+
+    @user.prefer('KEMO')
+    assert @user.followees_feed.include?(n)
+  end
+
+  test 'nweets in timeline and followees feed must be distinct' do
+    assert_equal Nweet.global_feed, Nweet.global_feed.uniq
+    assert_equal @user.followees_feed, @user.followees_feed.uniq
+  end
+
   test 'can announce' do
     str = '<h6>寄付のお願い</h6><p>詳細は<a href="https://google.com">こちら</a></p>'
     notification = @user.announce(str)
@@ -87,7 +112,7 @@ class UserTest < ActiveSupport::TestCase
   test 'create censoring when a user is created' do
     user = User.create(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
 
-    assert user.censoring?('R18G')
+    assert user.censoring?('R-18G')
     assert_not user.censoring?('KEMO')
   end
 
