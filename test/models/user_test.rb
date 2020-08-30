@@ -151,6 +151,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not_empty new_user.timeline.where(user: @not_followee)
   end
 
+  test 'followees feed can be include nweets without link' do
+    nweet = @followee.nweets.create(did_at: Time.zone.now)
+    assert @user.followees_feed.include?(nweet) 
+  end
+
   test 'new follower should be first' do
     # followee and follower should be ordered by when the follow was made,
     # not by when the users themselves were created.
