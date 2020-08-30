@@ -30,7 +30,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   test 'delete tags' do
     login_as(@user)
-    delete tag_path(link: @link, name: 'R18G'), xhr: true
-    assert_not @link.tags.exists?(name: 'R18G')
+    delete tag_path(link: @link, name: 'R-18G'), xhr: true
+    assert_not @link.tags.exists?(name: 'R-18G')
   end
 end

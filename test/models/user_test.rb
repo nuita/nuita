@@ -5,6 +5,9 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:chikuwa)
     @nweet = nweets(:today)
     @new_user = users(:girl)
+    @not_followee = users(:shinji)
+    @followee = users(:emiya)
+    @old_user = users(:zoken)
   end
 
   test 'should be valid' do
@@ -74,6 +77,31 @@ class UserTest < ActiveSupport::TestCase
     assert @user.censoring?(tag)
   end
 
+  test 'can prefer and disprefer tag' do
+    tag = tags(:kemo)
+    @user.prefer(tag)
+    assert @user.preferring?(tag.name)
+
+    @user.disprefer(tag)
+    assert_not @user.preferring?(tag.name)
+
+    @user.prefer(tag.name)
+    assert @user.preferring?(tag)
+  end
+
+  test 'followees feed should include preferred tags' do
+    n = @new_user.nweets.create(did_at: Time.zone.now, statement: 'https://example.com/ #KEMO')
+    assert_not @user.followees_feed.include?(n)
+
+    @user.prefer('KEMO')
+    assert @user.followees_feed.include?(n)
+  end
+
+  test 'nweets in timeline and followees feed must be distinct' do
+    assert_equal Nweet.global_feed, Nweet.global_feed.uniq
+    assert_equal @user.followees_feed, @user.followees_feed.uniq
+  end
+
   test 'can announce' do
     str = '<h6>寄付のお願い</h6><p>詳細は<a href="https://google.com">こちら</a></p>'
     notification = @user.announce(str)
@@ -103,5 +131,33 @@ class UserTest < ActiveSupport::TestCase
     assert_no_difference '@user.censorings.count' do
       @user.censor 'ふたなり'
     end
+  end
+
+  test 'can change timeline content based on feed_scope' do
+    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    new_user.save
+
+    # Feed scope should be set followees only by default, thus you can't see nweets by the others.
+    assert_empty new_user.timeline.where(user: @not_followee)
+
+    # So, if you follow someone, you can see their nweets.
+    new_user.follow(@followee)
+
+    assert_not_empty new_user.timeline.where(user: @followee)
+
+    # And you can set feed scope global. Then you will have all nweets in the world.
+
+    new_user.update_attribute(:feed_scope, :global)
+    assert_not_empty new_user.timeline.where(user: @not_followee)
+  end
+
+  test 'new follower should be first' do
+    # followee and follower should be ordered by when the follow was made,
+    # not by when the users themselves were created.
+    assert_equal @old_user, @user.followees.first
+    assert_equal @followee, @user.followees.second
+
+    assert_equal @old_user, @user.followers.first
+    assert_equal @followee, @user.followers.second
   end
 end

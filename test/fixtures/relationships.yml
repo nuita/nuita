@@ -1,3 +1,24 @@
 one:
   follower: shinji
   followee: chikuwa
+  created_at: <%= 1.year.ago %>
+
+two:
+  follower: emiya
+  followee: chikuwa
+  created_at: <%= 10.days.ago %>
+
+three:
+  follower: chikuwa
+  followee: emiya
+  created_at: <%= 10.days.ago %>
+
+four:
+  follower: chikuwa
+  followee: zoken
+  created_at: <%= 1.seconds.ago %>
+
+five:
+  follower: zoken
+  followee: chikuwa
+  created_at: <%= 1.seconds.ago %>

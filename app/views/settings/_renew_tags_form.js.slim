@@ -1,0 +1,3 @@
+| var id = "#{taglist_id(context)}";
+| document.getElementById(id).innerHTML = "#{j render(partial: 'settings/tags_form_taglist', locals: {context: context})}";
+| document.getElementById("modalNewTagTextField#{context}").value = '';

@@ -1,13 +1,16 @@
 ul.nav.mode-nav.ml-0
-  li.nav-item#home-nav
+  li.nav-item.user-nav-item#homeNav
     = link_to root_url do
       = icon 'fas', 'home'
-  li.nav-item#notifications-nav
+  - unless current_user.global?
+    li.nav-item.user-nav-item#exploreNav
+      = link_to explore_path do
+        = icon 'fas', 'globe'
+  li.nav-item.user-nav-item#notificationsNav
     = link_to notifications_path do
       = icon 'fas', 'bell'
       / ここには"notification.ts"が動いています！
       span.ml-1.badge.badge-pill.d-none#badgeUnreadNotifications
-  li.nav-item#likes-nav
 ul.nav.navbar-nav.mx-auto.navbar-center
   = link_to '#', class: "navbar-brand", id: "navbarBrandIcon" do
    = image_tag image_path('logomark_color.png'), height: '48px'
@@ -18,6 +21,6 @@ ul.nav.navbar-nav.mx-auto.navbar-center
         = icon_for(current_user, size: 40)
       .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
         .dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
-        .dropdown-item = link_to 'いいねした投稿', likes_user_path(current_user), class: 'nav-link'
         .dropdown-item = link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link'
+        .dropdown-item = link_to '設定', settings_path, class: 'nav-link'
         .dropdown-item = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link'

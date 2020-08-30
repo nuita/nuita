@@ -19,6 +19,10 @@ ja:
         password_confirmation: "パスワード(確認)"
         icon: "アイコン"
         biography: "ひとこと"
+        feed_scope: "タイムラインの表示範囲"
+      user/feed_scopes:
+        followees: "フォロー中のユーザーによる投稿のみ"
+        global: "すべての投稿"
   date:
     abbr_day_names:
     - 日

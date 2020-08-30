@@ -1,9 +1,13 @@
 r18g:
-  name: 'R18G'
+  name: 'R-18G'
   censored_by_default: true # fixtures don't use callbacks
 
 three_d:
   name: '3D'
+  censored_by_default: false
+
+scatoro:
+  name: 'スカトロ'
   censored_by_default: true
 
 kemo:

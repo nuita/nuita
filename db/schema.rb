@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_150925) do
+ActiveRecord::Schema.define(version: 2020_08_23_153905) do
 
-  create_table "badges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "badges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", limit: 255, null: false
     t.string "icon", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["name"], name: "index_badges_on_name", unique: true
   end
 
-  create_table "badges_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "badges_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "badge_id"
     t.bigint "user_id"
     t.index ["badge_id"], name: "index_badges_users_on_badge_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "link_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "link_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "link_id"
     t.bigint "tag_id"
     t.datetime "created_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["tag_id"], name: "index_link_tags_on_tag_id"
   end
 
-  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.text "title"
     t.text "description", limit: 16777215
     t.string "image"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["url"], name: "index_links_on_url", unique: true
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "origin_id"
     t.integer "destination_id"
     t.integer "action", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["nweet_id"], name: "index_nweet_links_on_nweet_id"
   end
 
-  create_table "nweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "nweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.datetime "did_at"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -96,16 +96,18 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["user_id"], name: "index_nweets_on_user_id"
   end
 
-  create_table "preferences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "preferences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "context", default: 0, null: false
     t.index ["tag_id"], name: "index_preferences_on_tag_id"
+    t.index ["user_id", "tag_id"], name: "index_preferences_on_user_id_and_tag_id", unique: true
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followee_id"
     t.datetime "created_at", null: false
@@ -115,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", limit: 30, null: false
     t.boolean "censored_by_default", default: false, null: false
     t.datetime "created_at", null: false
@@ -124,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150925) do
     t.boolean "autotweet_enabled", default: false
     t.string "autotweet_content", limit: 40, default: "射精しました！ #nuita [LINK]"
     t.string "biography", limit: 140
+    t.integer "feed_scope", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true

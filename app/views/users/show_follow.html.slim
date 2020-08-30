@@ -5,15 +5,10 @@
     .d-md-block.col-md-3
       = render 'users/user_info', {user: @user}
     .col-md.p-0.nweet-feed.row_top
-      - if @users.any?
-        .nweet-count
-          = @users.count
-          | 人の
-          = @topic
+      - if @feed_items.any?
+        ul.nweets-list
+          = render 'users/users'
       - else
-        .nweet-count = "まだ#{@topic}がありません……"
-      ul.nweets-list
-        = render @users
-      = will_paginate
+        = render 'pages/empty_feed'
     .d-none.d-lg-block.col-lg-3
       = render 'pages/recommend'

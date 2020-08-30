@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_create :set_url_digest
-  after_create :set_default_censoring
+  after_commit :set_default_censoring, on: :create
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -8,6 +8,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          #:confirmable, :lockable, :timeoutable #,
          #:omniauthable, omniauth_providers: [:twitter]
+         
+  enum feed_scope: [:followees, :global]
 
   has_many :nweets, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -20,21 +22,32 @@ class User < ApplicationRecord
   validates :biography, length: {maximum: 30}
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followees, through: :active_relationships
+  has_many :followees, -> {order('relationships.created_at DESC')}, through: :active_relationships
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
-  has_many :followers, through: :passive_relationships
+  has_many :followers, -> {order('relationships.created_at DESC')}, through: :passive_relationships
 
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
-  has_many :censorings, class_name: 'Preference', dependent: :destroy
+  has_many :censorings, -> {where context: Preference.contexts[:censoring]}, class_name: 'Preference', dependent: :destroy
   has_many :censored_tags, through: :censorings, source: :tag
+
+  has_many :preferrings, -> {where context: Preference.contexts[:preferring]}, class_name: 'Preference', dependent: :destroy
+  has_many :preferred_tags, through: :preferrings, source: :tag
 
   has_and_belongs_to_many :badges
 
-  # list nweets shown in timeline.
   def timeline
-    Nweet.all # currently it is global! (since FF is not implemented)
+    case feed_scope
+    when "followees"
+      followees_feed
+    when "global"
+      Nweet.global_feed
+    end
+  end
+
+  def followees_feed
+    Nweet.includes(links: :tags).joins(links: :tags).where("user_id IN (?) OR user_id = ? OR tags.id IN (?)", followee_ids, id, preferred_tag_ids)
   end
 
   def nweets_at_date(date)
@@ -95,28 +108,17 @@ class User < ApplicationRecord
 
   # censor, uncensor, censoring? can take both instances of String and Tag
   def censor(tag)
-    unless self.censoring?(tag)
-      unless tag.instance_of?(Tag)
-        tag = Tag.find_or_create_by(name: tag.upcase)
-      end
+    return if censoring?(tag)
 
-      self.censored_tags << tag
-    end
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    censored_tags << tag
   end
 
   def uncensor(tag)
-    if self.censoring?(tag)
-      if tag.instance_of?(String)
-        tag = Tag.find_by(name: tag)
-      end
+    return unless censoring?(tag)
 
-      self.censorings.find_by(tag_id: tag.id).destroy
-    end
-  end
-
-  def add_badge(badge)
-    # バッジは名前で指定することなくない？
-    self.badges << badge
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    self.censorings.find_by(tag_id: tag.id).destroy
   end
 
   def censoring?(tag)
@@ -131,6 +133,39 @@ class User < ApplicationRecord
     end
 
     self.censored_tags.pluck(:name) & tag_names
+  end
+
+  def prefer(tag)
+    return if preferring?(tag)
+
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    self.preferred_tags << tag
+  end
+
+  def disprefer(tag)
+    return unless preferring?(tag)
+
+    tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
+    self.preferrings.find_by(tag_id: tag.id).destroy
+  end
+
+  def preferring?(tag)
+    tag_name = tag.respond_to?(:name) ? tag.name : tag
+
+    self.preferred_tags.exists?(name: tag_name)
+  end
+
+  def preferring_tags?(tags)
+    tag_names = tags.map do |tag|
+      tag.respond_to?(:name) ? tag.name : tag
+    end
+
+    self.preferred_tags.pluck(:name) & tag_names
+  end
+
+  def add_badge(badge)
+    # バッジは名前で指定することなくない？
+    self.badges << badge
   end
 
   def liked?(nweet)
