@@ -1,0 +1,11 @@
+{
+	"name": "nuita",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/app",
+	"settings": {
+		"terminal.integrated.shell.linux": null
+	},
+	"extensions": [],
+	"postCreateCommand": "bundle install && yarn install --check-files",
+}
