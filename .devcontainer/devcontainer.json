@@ -6,6 +6,6 @@
 	"settings": {
 		"terminal.integrated.shell.linux": null
 	},
-	"extensions": [],
+	"extensions": ["sianglim.slim"],
 	"postCreateCommand": "bundle install && yarn install --check-files",
 }
