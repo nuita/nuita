@@ -1,11 +1,11 @@
 {
-	"name": "nuita",
-	"dockerComposeFile": "../docker-compose.yml",
-	"service": "app",
-	"workspaceFolder": "/app",
-	"settings": {
-		"terminal.integrated.shell.linux": null
-	},
-	"extensions": ["sianglim.slim"],
-	"postCreateCommand": "bundle install && yarn install --check-files",
+  "name": "nuita",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "settings": {
+    "terminal.integrated.shell.linux": null
+  },
+  "extensions": ["sianglim.slim"],
+  "postCreateCommand": "bundle install && yarn install --check-files"
 }
