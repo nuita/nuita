@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - bundle:/app/vendor/bundle
+      - node_modules:/app/node_modules
+    environment:
+      BUNDLE_PATH: vendor/bundle
+      MYSQL_HOST: db
+      HOST: 0.0.0.0
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "database:/var/lib/mysql"
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  bundle:
+  node_modules:
+  database:
