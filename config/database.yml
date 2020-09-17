@@ -9,7 +9,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  host: <%= ENV.fetch("MYSQL_HOST", "db") %>
+  host: <%= ENV.fetch("MYSQL_HOST", "localhost") %>
 
 development:
   <<: *default
