@@ -29,9 +29,9 @@ jobs:
         ruby-version: 2.6.2
     - name: Install dependencies
       run: |
-        bundle install
-        apt install -y yarn nodejs
+        sudo apt install -y yarn nodejs
         yarn install --check-files
+        bundle install
     - name: Set Database
       run: rails db:setup
     - name: Run tests
