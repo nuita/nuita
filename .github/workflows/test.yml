@@ -11,11 +11,14 @@ on:
 
 jobs:
   test:
+
     runs-on: ubuntu-latest
-    - services:
+    
+    services:
       mysql:
         image: mysql:5.7 # may need to change
-    steps:
+    
+        steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
