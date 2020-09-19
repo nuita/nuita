@@ -17,7 +17,7 @@ jobs:
     services:
       mysql:
         image: mysql:5.7 # may need to change
-    
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -33,6 +33,9 @@ jobs:
         yarn install --check-files
         bundle install
     - name: Set Database
-      run: rails db:setup
+      run: |
+        export MYSQL_HOST=mysql
+        export RAILS_ENV=development
+        rails db:setup
     - name: Run tests
       run: rails t
