@@ -17,7 +17,9 @@ jobs:
     services:
       mysql:
         image: mysql:5.7 # may need to change
-
+        env:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
