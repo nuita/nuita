@@ -44,7 +44,7 @@ jobs:
       run: |
         sudo apt install -y yarn nodejs
         yarn install --check-files
-        bundle install
+        bundle install --path vendor/bundle
     - name: Set Database
       run: |
         export MYSQL_HOST=127.0.0.1
