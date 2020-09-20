@@ -86,7 +86,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test 'show nweets by date' do
     # nweets(:christmas) 参照
     get user_path(@user, date: "2017-12-25".to_time)
-    assert_match ':pien:', response.body
+    puts @user.nweets.all
+    assert_match '😢', response.body
   end
 
   test 'can tweak settings' do
