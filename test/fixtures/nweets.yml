@@ -26,7 +26,7 @@ saytwo:
   url_digest: <%= SecureRandom.alphanumeric %>
 
 chirstmas:
-  did_at: <%= Time.mktime(2017, 12, 25, 22).utc %>
+  did_at: <%= Time.mktime(2017, 12, 25, 12) %>
   user: chikuwa
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: ':pien:'
