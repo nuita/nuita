@@ -26,7 +26,7 @@ saytwo:
   url_digest: <%= SecureRandom.alphanumeric %>
 
 chirstmas:
-  did_at: '2017-12-25 01:00 +09:00'
+  did_at: <%= Time.mktime(2017, 12, 25, 12).utc %>
   user: chikuwa
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: '😢'

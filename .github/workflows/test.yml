@@ -1,7 +1,7 @@
 # This workflow runs in a dockerless situation for now!
 # Adding flows for docker environment would be really appreciated.
 
-name: Ruby
+name: Testing
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  testing:
 
     runs-on: ubuntu-latest
     
