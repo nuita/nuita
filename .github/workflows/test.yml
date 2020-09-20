@@ -49,8 +49,8 @@ jobs:
       run: |
         export MYSQL_HOST=127.0.0.1
         export RAILS_ENV=development
-        rails db:setup
+        BUNDLE_PATH=vendor/bundle bundle exec rails db:setup
     - name: Run tests
       run: |
         export MYSQL_HOST=127.0.0.1
-        rails t
+        BUNDLE_PATH=vendor/bundle bundle exec rails t
