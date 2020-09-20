@@ -39,10 +39,9 @@ jobs:
         bundle install
     - name: Set Database
       run: |
-        export MYSQL_HOST=127.0.0.1
-        export RAILS_ENV=development
+        echo "::set-env name=MYSQL_HOST::127.0.0.1"
+        echo "::set-env name=RAILS_ENV::development"
         rails db:setup
     - name: Run tests
       run: |
-        export MYSQL_HOST=127.0.0.1
         rails t
