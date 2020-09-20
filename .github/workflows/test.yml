@@ -25,6 +25,14 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/cache@v2.1.1
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+    - uses: actions/cache@v2.1.1
+      with:
+        path: node_modules
+        key: yarn-${{ hashFiles('**/yarn.lock') }} 
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
@@ -36,13 +44,13 @@ jobs:
       run: |
         sudo apt install -y yarn nodejs
         yarn install --check-files
-        bundle install
+        bundle install --path vendor/bundle
     - name: Set Database
       run: |
         export MYSQL_HOST=127.0.0.1
         export RAILS_ENV=development
-        rails db:setup
+        BUNDLE_PATH=vendor/bundle bundle exec rails db:setup
     - name: Run tests
       run: |
         export MYSQL_HOST=127.0.0.1
-        rails t
+        BUNDLE_PATH=vendor/bundle bundle exec rails t
