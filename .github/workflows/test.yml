@@ -43,4 +43,6 @@ jobs:
         export RAILS_ENV=development
         rails db:setup
     - name: Run tests
-      run: rails t
+      run: |
+        export MYSQL_HOST=127.0.0.1
+        rails t
