@@ -42,7 +42,8 @@ jobs:
         ruby-version: 2.6.2
     - name: Install dependencies
       run: |
-        sudo apt install -y yarn nodejs
+        curl -sL https://deb.nodesource.com/setup_10.x | bash - && sudo apt install -y nodejs
+        sudo apt install -y yarn
         yarn install --check-files
         bundle install --path vendor/bundle
     - name: Set Database
