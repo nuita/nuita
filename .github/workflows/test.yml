@@ -13,12 +13,13 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
-    container: ahis1503/nuita
     
     services:
       mysql:
         image: mysql:5.7 # may need to change
         options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+        ports:
+          - 3306:3306
         env:
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
@@ -26,6 +27,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install dependencies
       run: |
+        sudo apt install -y yarn nodejs
         yarn install --check-files
         bundle install
     - name: Set Database
