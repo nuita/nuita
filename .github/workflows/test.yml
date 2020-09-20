@@ -1,0 +1,41 @@
+# This workflow runs in a dockerless situation for now!
+# Adding flows for docker environment would be really appreciated.
+
+name: Ruby
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:5.7 # may need to change
+        options: --health-cmd "mysqladmin ping -h localhost" --health-interval 20s --health-timeout 10s --health-retries 10
+        env:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+    # uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      with:
+        ruby-version: 2.6.2
+    - name: Install dependencies
+      run: |
+        sudo apt install -y yarn nodejs
+        yarn install --check-files
+        bundle install
+    - name: Set Database
+      run: rails db:setup
+    - name: Run tests
+      run: rails t
