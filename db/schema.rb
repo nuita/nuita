@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_153905) do
     t.index ["user_id"], name: "index_badges_users_on_user_id"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "nweet_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2020_08_23_153905) do
     t.index ["tag_id"], name: "index_link_tags_on_tag_id"
   end
 
-  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.text "title"
-    t.text "description", limit: 16777215
+  create_table "links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "title", limit: 255
+    t.text "description"
     t.string "image"
     t.string "card"
     t.string "url", null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_153905) do
     t.index ["destination_id"], name: "index_notifications_on_destination_id"
   end
 
-  create_table "nweet_links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "nweet_links", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "nweet_id"
     t.bigint "link_id"
     t.datetime "created_at", null: false
@@ -83,12 +83,12 @@ ActiveRecord::Schema.define(version: 2020_08_23_153905) do
     t.index ["nweet_id"], name: "index_nweet_links_on_nweet_id"
   end
 
-  create_table "nweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "nweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "did_at"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "statement"
+    t.text "statement", limit: 255
     t.string "url_digest"
     t.datetime "latest_liked_time"
     t.index ["url_digest"], name: "index_nweets_on_url_digest", unique: true
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_153905) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
