@@ -25,6 +25,14 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/cache@v2.1.1
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+    - uses: actions/cache@v2.1.1
+      with:
+        path: node_modules
+        key: yarn-${{ hashFiles('**/yarn.lock') }} 
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
