@@ -20,7 +20,6 @@ gem 'faker'
 gem "nokogiri", ">= 1.10.4"
 gem 'valid_url'
 gem 'fastimage'
-gem 'camo'
 gem 'panchira'
 
 gem 'mysql2'

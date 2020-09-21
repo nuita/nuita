@@ -63,7 +63,6 @@ GEM
     buftok (0.2.0)
     builder (3.2.4)
     byebug (11.1.3)
-    camo (0.1.0)
     capistrano (3.14.1)
       airbrussh (>= 1.0.0)
       i18n
@@ -361,7 +360,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap (>= 4.3.1)
   byebug
-  camo
   capistrano (= 3.14.1)
   capistrano-bundler
   capistrano-rails
