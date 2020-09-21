@@ -32,7 +32,7 @@ services:
     image: willnorris/imageproxy
     ports:
       - "8080:8080"
-    command: -addr 0.0.0.0:8080 -cache memory:200:4h -signatureKey "secret"
+    command: -addr 0.0.0.0:8080 -cache memory:200:4h -signatureKey ${IMAGEPROXY_KEY:-"secret"}
 
 volumes:
   bundle:
