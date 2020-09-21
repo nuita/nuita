@@ -26,6 +26,12 @@ services:
       - "database:/var/lib/mysql"
     command: --default-authentication-plugin=mysql_native_password
 
+  imageproxy:
+    image: willnorris/imageproxy
+    ports:
+      - "8080:8080"
+    command: -addr 0.0.0.0:8080 -cache memory:200:4h -signatureKey "secret"
+
 volumes:
   bundle:
   node_modules:
