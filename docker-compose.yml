@@ -10,6 +10,8 @@ services:
       BUNDLE_PATH: vendor/bundle
       MYSQL_HOST: db
       HOST: 0.0.0.0
+      IMAGEPROXY_KEY: ${IMAGEPROXY_KEY:-secret}
+      IMAGEPROXY_HOST: ${IMAGEPROXY_HOST:-http://localhost:8080}
     depends_on:
       - db
     ports:
@@ -25,6 +27,12 @@ services:
     volumes:
       - "database:/var/lib/mysql"
     command: --default-authentication-plugin=mysql_native_password
+
+  imageproxy:
+    image: willnorris/imageproxy
+    ports:
+      - "8080:8080"
+    command: -addr 0.0.0.0:8080 -cache memory:200:4h -signatureKey ${IMAGEPROXY_KEY:-"secret"}
 
 volumes:
   bundle:

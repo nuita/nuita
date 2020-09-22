@@ -27,10 +27,15 @@ module ApplicationHelper
     end
   end
 
-  # returns camo url only in production mode
-  def camo_url(url)
-    if Rails.env.production? && /http:\/\// =~ url 
-      camo(url)
+  # returns proxy url only in production mode
+  def proxy(url)
+    key = ENV["IMAGEPROXY_KEY"]
+    host = ENV["IMAGEPROXY_HOST"]
+
+    if key && host
+      digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), key, url)
+      signature = Base64.urlsafe_encode64(digest).strip()
+      "#{host}/s#{signature}/#{url}"
     else
       url
     end
