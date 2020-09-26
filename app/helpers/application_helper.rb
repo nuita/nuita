@@ -29,8 +29,8 @@ module ApplicationHelper
 
   # returns proxy url only in production mode
   def proxy(url)
-    key = ENV["IMAGEPROXY_KEY"]
-    host = ENV["IMAGEPROXY_HOST"]
+    host = Rails.application.config.x.imageproxy.host
+    key = Rails.application.config.x.imageproxy.secret_key
 
     if key && host
       digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), key, url)
