@@ -19,6 +19,9 @@ class Nweet < ApplicationRecord
   validate :have_enough_interval?, on: :create
 
   default_scope -> { order(did_at: :desc) }
+
+  scope :included, -> { includes(:user, :nweet_links, links: :tags) }
+
   self.per_page = 10
 
   def did_at_past?

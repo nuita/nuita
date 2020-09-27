@@ -59,4 +59,13 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.sass.inline_source_maps = true
+
+  config.after_initialize do
+    Bullet.enable = true
+    # Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    # Bullet.add_footer = true
+    Bullet.skip_html_injection = false
+  end
 end

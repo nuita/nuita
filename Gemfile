@@ -76,6 +76,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-rake'
+  gem 'bullet'
 end
 
 group :test do
