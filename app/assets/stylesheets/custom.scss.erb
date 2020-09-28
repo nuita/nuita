@@ -871,49 +871,51 @@ a.card {
 }
 
 /* contribution graph */
-.table-contribution {
-  font-size: x-small;
-  margin: 0 auto;
-  border-collapse: separate;
-  border-spacing: 1px;
+.contribution-graph {
+  $cell-width: 20px;
+  $cell-border: 2px;
+  $cell-border-width: $cell-border * 2;
+  $min-cell-width: 16px;
 
-  td {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin: 0px;
-    padding: 0px;
-    border: 2px solid #fcfcfc;
+  display: grid;
+  margin: 0 auto;
+
+  @include media-breakpoint-down(sm) {
+    grid-template-rows: repeat(7, minmax($min-cell-width, 1fr));
+    max-width: ($cell-width + $cell-border-width) * 12;
+    grid-auto-flow: column;
+  }
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(7, minmax($min-cell-width, 1fr));
+    max-width: ($cell-width + $cell-border-width) * 7;
+  }
+
+  .cell {
+    padding-top: calc(100% - #{$cell-border-width});
+
+    border: $cell-border solid #fcfcfc;
     background-color: $contribution-color-more;
 
+    position: relative;
     a {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      display: block;
     }
 
-    &:hover {
-      border: 2px;
+    &:not(.val-0):hover, &.active {
+      border-width: 0;
     }
-  }
 
-  td.val-1 {
-    background-color: $contribution-color-one;
-  }
-
-  td.val-0 {
-    background-color: $contribution-color-zero;
-
-    &:hover {
-      border: 2px solid #fcfcfc;
+    &.val-1 {
+      background-color: $contribution-color-one;
     }
-  }
 
-  td.active {
-    border: 4px;
-  }
-
-  tr {
-    margin: 0;
+    &.val-0 {
+      background-color: $contribution-color-zero;
+    }
   }
 }
 

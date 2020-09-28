@@ -4,10 +4,8 @@
   | グラフ
   span.small.pl-1 = "#{start_day} - #{Date.current}"
 
-table.table-contribution
+.contribution-graph
   - (start_day..Date.current).each do |date|
-    - if date.sunday?
-      tr
-    td class="val-#{hash[date].count}" id="cal#{date}"
+    .cell class="val-#{hash[date].count}" id="cal#{date}"
       - if hash[date].any?
         = link_to '', user_path(user, date: date)
