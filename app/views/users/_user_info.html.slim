@@ -2,7 +2,7 @@ section.side-section
   .media
     div class="icon"
       = icon_for(user, size: 60, htmlclass: 'usericon rounded-circle mr-3 mb-2')
-    .media-body.user-info-content
+    .media-body.user-info-content.mt-2.mt-md-0
       h3.handle_name = user.handle_name
       .screen_name = "@" + user.screen_name
   - if other_user?(user)
