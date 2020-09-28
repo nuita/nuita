@@ -878,9 +878,17 @@ a.card {
   $min-cell-width: 16px;
 
   display: grid;
-  max-width: ($cell-width + $cell-border-width) * 7;
-  grid-template-columns: repeat(7, minmax($min-cell-width, 1fr));
   margin: 0 auto;
+
+  @include media-breakpoint-down(sm) {
+    grid-template-rows: repeat(7, minmax($min-cell-width, 1fr));
+    max-width: ($cell-width + $cell-border-width) * 12;
+    grid-auto-flow: column;
+  }
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(7, minmax($min-cell-width, 1fr));
+    max-width: ($cell-width + $cell-border-width) * 7;
+  }
 
   .cell {
     padding-top: calc(100% - #{$cell-border-width});
