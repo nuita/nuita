@@ -13,8 +13,6 @@ li.nweet.notification
         - if notification.origin
           = link_to icon_for(notification.origin, size: 40, htmlclass:'user-icon'), notification.origin
         span.timestamp = notification.created_at
-        - if @timeline && other_user?(notification.origin)
-          = render 'nweets/follow_icon', user: notification.origin
       .content.clearfix
         .maincontent
           - if notification.origin
