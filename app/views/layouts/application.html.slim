@@ -37,4 +37,6 @@ html
         - key = "error" if key == "alert" || key == "danger"
         - [value].flatten.each do |message|
           javascript:
-            toastr['#{j key}']('#{j message}');
+            document.addEventListener('DOMContentLoaded', function(){
+              toastr['#{j key}']('#{j message}');
+            });
