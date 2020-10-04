@@ -19,8 +19,8 @@ html
     link rel="manifest" href="/manifest.json"
     link rel="apple-touch-icon" href="#{asset_url('logomark_color.png')}"
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_include_tag 'application'
-    = javascript_pack_tag 'application'
+    = javascript_include_tag 'application', defer: 'defer'
+    = javascript_pack_tag 'application', defer: 'defer'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
