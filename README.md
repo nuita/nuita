@@ -5,7 +5,7 @@
 # Nuita
 <img src="https://nuita.s3-ap-northeast-1.amazonaws.com/green.png" alt="Nuita">
 
-Nuitaは射精報告SNSです。Ruby on Railsで開発されています。
+NuitaはRuby on Rails製の射精報告SNSです。
 
 [https://nuita.net/](https://nuita.net/)
 
@@ -46,16 +46,20 @@ Docker上でもNuitaを起動させることができます。
 手元の環境を汚したくないあなたにおすすめです。
 
 1. このレポジトリをクローンし、ディレクトリに移動します。
+
 `$ git clone git@github.com:nuita/nuita.git`
 `$ cd nuita`
 
 2. コンテナ上で依存関係をインストールします。
+
 `docker-compose run --rm app bundle install && yarn install --check-files`
    
 3. コンテナ上でデータベースをセットアップします。
+
 `docker-compose run --rm app bundle exec rails db:setup`
 
 4. Nuitaを立ち上げます。
+
 `docker-compose up`
 
 ブラウザに`localhost:3000`にアクセスして、[かわいいチノちゃんの画像](https://www.pixiv.net/artworks/55434358)が表示されていたら成功です!  
