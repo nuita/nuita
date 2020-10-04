@@ -18,10 +18,10 @@ html
     = favicon_link_tag('favicon.ico')
     link rel="manifest" href="/manifest.json"
     link rel="apple-touch-icon" href="#{asset_url('logomark_color.png')}"
+    link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous"
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application', defer: 'defer'
     = javascript_pack_tag 'application', defer: 'defer'
-    = javascript_include_tag 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', defer: 'defer'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
