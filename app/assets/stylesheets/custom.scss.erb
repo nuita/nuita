@@ -619,21 +619,6 @@ h5.settings-label {
         color: #bbb;
       }
     }
-
-    .follow-icon {
-      padding-left: 0.5rem;
-      font-size: small;
-      color: #ddd;
-
-      &:hover {
-        transition: all 0.2s;
-        color: $brand-color-hover;
-      }
-    }
-
-    .follow-icon.unfollowable:hover {
-      color: $like-color-light;
-    }
   }
 }
 
@@ -885,6 +870,7 @@ a.card {
     max-width: ($cell-width + $cell-border-width) * 12;
     grid-auto-flow: column;
   }
+
   @include media-breakpoint-up(md) {
     grid-template-columns: repeat(7, minmax($min-cell-width, 1fr));
     max-width: ($cell-width + $cell-border-width) * 7;
@@ -897,6 +883,7 @@ a.card {
     background-color: $contribution-color-more;
 
     position: relative;
+
     a {
       position: absolute;
       top: 0;
@@ -905,7 +892,8 @@ a.card {
       height: 100%;
     }
 
-    &:not(.val-0):hover, &.active {
+    &:not(.val-0):hover,
+    &.active {
       border-width: 0;
     }
 

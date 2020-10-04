@@ -9,8 +9,6 @@ li.nweet id="nweet#{nweet.url_digest}"
         | @
         = link_to nweet.user.screen_name, nweet.user
       span.timestamp = nweet.did_at
-      - if @timeline && other_user?(nweet.user)
-        = render 'nweets/follow_icon', user: nweet.user
     .content
       .maincontent
         span.time = time_ago_in_japanese(nweet.did_at)

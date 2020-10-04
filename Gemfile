@@ -43,7 +43,6 @@ gem 'html2slim'
 
 gem 'bootstrap', '>= 4.3.1'
 gem 'jquery-rails'
-gem 'font-awesome-sass', '~> 5.9.0'
 gem 'toastr-rails'
 
 gem 'will_paginate'

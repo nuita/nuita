@@ -7,8 +7,6 @@ li.nweet
       span.screen_name
         | @
         = link_to user.screen_name, user
-      - if other_user?(user)
-        = render 'nweets/follow_icon', user: user
     .content
       .maincontent
         .user-status-in-list
