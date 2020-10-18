@@ -43,8 +43,7 @@ export function hideHeaderWhileScrolling() {
   }
 
   let navbar = document.getElementById("NavbarScrollable");
-  let t: number = null;
-  let lastOffset = null;
+  let lastOffset = 0;
 
   window.addEventListener("scroll", () => {
     let nowOffset = window.pageYOffset;
