@@ -21,10 +21,12 @@ $contribution-color-zero: rgb(235, 237, 240);
 $contribution-color-one: rgb(123, 201, 111);
 $contribution-color-more: rgb(25, 97, 39);
 
+$header-height: 56px;
+
 .navbar {
   background-color: #fcfcfc;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  height: 56px;
+  height: $header-height;
 
   .navbar-brand {
     font-size: 1rem;
@@ -124,6 +126,12 @@ $contribution-color-more: rgb(25, 97, 39);
     color: #fff;
     background-color: $brand-color;
   }
+
+  transition: transform 0.1s;
+}
+
+.navbar-faded-out {
+  transform: translateY(-$header-height);
 }
 
 @media screen and (max-width: 575px) {
