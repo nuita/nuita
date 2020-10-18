@@ -38,7 +38,7 @@ export function setHeaderButton() {
 
 // スクロール時にヘッダーが隠れる
 export function hideHeaderWhileScrolling() {
-  let navbar = document.getElementById("Navbar");
+  let navbar = document.getElementById("NavbarScrollable");
 
   window.addEventListener("scroll", () => {
     if (window.pageYOffset > window.innerHeight) {
