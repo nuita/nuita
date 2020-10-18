@@ -1,5 +1,5 @@
 // ロゴを押すとトップへ戻る
-export default function setHeaderButton() {
+export function setHeaderButton() {
   let topButton = document.getElementById('navbarBrandIcon');
 
   if (topButton) {
@@ -34,4 +34,19 @@ export default function setHeaderButton() {
       notificationsNav.classList.remove("active");
     }
   }
+}
+
+// スクロール時にヘッダーが隠れる
+export function hideHeaderWhileScrolling() {
+  let navbar = document.getElementById("Navbar");
+
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > window.innerHeight) {
+      navbar.classList.add("navbar-faded-out");
+    }
+
+    t = window.setTimeout(() => {
+      navbar.classList.remove("navbar-faded-out");
+    }, 2000)
+  });
 }
