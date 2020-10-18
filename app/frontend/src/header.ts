@@ -38,6 +38,10 @@ export function setHeaderButton() {
 
 // スクロール時にヘッダーが隠れる
 export function hideHeaderWhileScrolling() {
+  if (window.innerWidth >= 992) {
+    return;
+  }
+
   let navbar = document.getElementById("NavbarScrollable");
   let t: number = null;
   let lastOffset = null;
