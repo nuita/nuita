@@ -39,7 +39,6 @@ module ApplicationHelper
     else
       url
     end
-    url
   end
 
   # https://github.com/FortAwesome/font-awesome-sass/blob/master/lib/font_awesome/sass/rails/helpers.rb
