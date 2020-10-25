@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
   has_many :followers, -> {order('relationships.created_at DESC')}, through: :passive_relationships
 
+  has_many :mutes, foreign_key: 'muter_id', dependent: :destroy
+  has_many :muted_users, -> {order('mutes.created_at DESC')}, through: :mutes, source: :mutee
+
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
@@ -104,6 +107,18 @@ class User < ApplicationRecord
 
   def follower?(other_user)
     self.followers.include?(other_user)
+  end
+
+  def mute(other_user)
+    self.muted_users << other_user
+  end
+
+  def unmute(other_user)
+    self.mutes.find_by(mutee_id: other_user).destroy
+  end
+
+  def muted?(other_user)
+    self.muted_users.include?(other_user)
   end
 
   # censor, uncensor, censoring? can take both instances of String and Tag

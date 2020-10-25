@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   resource :censoring, only: [:create, :destroy]
   resource :preferring, only: [:create, :destroy]
   resource :relationship, only: [:create, :destroy]
+  resource :mute, only: [:create, :destroy]
 end
