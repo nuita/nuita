@@ -21,6 +21,9 @@ $contribution-color-zero: rgb(235, 237, 240);
 $contribution-color-one: rgb(123, 201, 111);
 $contribution-color-more: rgb(25, 97, 39);
 
+$graybtn-color: #ddd;
+$graybtn-color-hover: #bbb;
+
 $header-height: 56px;
 
 .navbar {
@@ -89,10 +92,10 @@ $header-height: 56px;
       padding-right: 1rem;
 
       a {
-        color: #ddd;
+        color: $graybtn-color;
 
         &:hover {
-          color: #aaa;
+          color: $graybtn-color-hover;
           transition-duration: 0.2s;
         }
       }
@@ -393,6 +396,7 @@ a {
   }
 }
 
+
 .handle_name {
   padding-right: 5px;
 
@@ -620,11 +624,11 @@ h5.settings-label {
     }
 
     a.nweet-delete {
-      color: #ddd;
+      color: $graybtn-color;
 
       &:hover {
         transition: all 0.2s;
-        color: #bbb;
+        color: $graybtn-color-hover;
       }
     }
   }
@@ -997,6 +1001,14 @@ table.table-contribution.detailed-true {
     background-color: $brand-color-light !important;
     border-color: $brand-color;
     outline: 0 !important;
+  }
+}
+
+a.graybtn {
+  color: $graybtn-color;
+
+  &:hover {
+    color: $graybtn-color-hover;
   }
 }
 
