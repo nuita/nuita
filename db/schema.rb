@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_153905) do
+ActiveRecord::Schema.define(version: 2020_10_31_163754) do
 
   create_table "badges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2020_08_23_153905) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "statement", limit: 255
+    t.text "statement"
     t.string "url_digest"
     t.datetime "latest_liked_time"
     t.index ["url_digest"], name: "index_nweets_on_url_digest", unique: true

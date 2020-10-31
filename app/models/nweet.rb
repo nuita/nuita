@@ -14,9 +14,9 @@ class Nweet < ApplicationRecord
 
   validates :user_id, presence: true
   validates :did_at, presence: true
-  validates :statement, length: {maximum: 100}
   validate :did_at_past?
   validate :have_enough_interval?, on: :create
+  validate :statement_under_max_length?
 
   default_scope -> { order(did_at: :desc) }
 
@@ -76,5 +76,15 @@ class Nweet < ApplicationRecord
   private
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
+    end
+
+    def statement_under_max_length?
+      return unless statement
+
+      clone_statement = statement.dup
+      URI.extract(clone_statement).uniq.each { |url| clone_statement.gsub!(url, '') }
+      if clone_statement.length > 200
+        errors.add(:statement, " except URLs must be 200 characters or less")
+      end
     end
 end

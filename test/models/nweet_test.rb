@@ -36,7 +36,7 @@ class NweetTest < ActiveSupport::TestCase
     @nweet.statement = nil
     assert @nweet.valid?
 
-    @nweet.statement = 'a' * 150
+    @nweet.statement = 'a' * 250
     assert_not @nweet.valid?
 
     @nweet.statement = '誰だ今の'
@@ -95,5 +95,15 @@ class NweetTest < ActiveSupport::TestCase
     link = nweet.links.first
 
     assert link.tags.exists?(name: 'pixiv')
+  end
+
+  test 'statement including urls is valid' do
+    statement = <<~message
+      https://github.com
+      #{'a'*195}
+      https://nuita.net
+    message
+    @nweet.statement = statement
+    assert @nweet.valid?
   end
 end
