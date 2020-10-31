@@ -7,6 +7,8 @@ class Link < ApplicationRecord
 
   validates :title, length: {maximum: 100}
   validates :description, length: {maximum: 500}
+  validates :author, length: {maximum: 50}
+  validates :circle, length: {maximum: 50}
 
   validates :url, :url => true
 
@@ -73,6 +75,8 @@ class Link < ApplicationRecord
     def hash_panchira(panchira)
       {
         title: panchira.title,
+        author: panchira.author,
+        circle: panchira.circle,
         description: panchira.description,
         image: panchira.image.url,
         image_width: panchira.image.width,
