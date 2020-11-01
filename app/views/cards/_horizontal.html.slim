@@ -7,6 +7,17 @@ div id="collapseHorizontal#{link.id}" class="#{'collapse' if tags.any?}"
       img.card-img-top.h-100 loading='lazy' src = proxy(link.image) height = link&.image_height width = link&.image_width
     .card-body
       h5.card-title = link.title
-      p.card-text = link.description
+      - if link.author.present? || link.circle.present?
+        h6.mb-2.card-subtitle.text-muted
+          - if link.author
+            span.pr-3
+              = icon 'fas', 'feather'
+              span.pl-1.link-author = link.author
+          - if link.circle
+            span.pr-3
+              = icon 'fas', 'users'
+              span.pl-1.link-circle = link.circle
+      - if link.description
+        p.card-text = link.description
   - unless local_assigns[:genre_hidden?]
     = render 'cards/tags', link: link
