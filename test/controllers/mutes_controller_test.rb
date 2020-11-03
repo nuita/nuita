@@ -15,10 +15,10 @@ class MutesControllerTest < ActionDispatch::IntegrationTest
     end
 
     login_as(@user)
-    post mute_path(user: @other_user), xhr: true
+    post mute_path(mutee: @other_user), xhr: true
     assert @user.muted?(@other_user)
 
-    delete mute_path(user: @other_user), xhr: true
+    delete mute_path(mutee: @other_user), xhr: true
     assert_not @user.muted?(@other_user)
   end
 end

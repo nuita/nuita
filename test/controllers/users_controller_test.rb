@@ -89,7 +89,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get root_path
     assert_match @shinji.screen_name, response.body
 
-    post mute_path(user: @shinji)
+    post mute_path(mutee: @shinji)
     get root_path
     assert_no_match @shinji.screen_name, response.body
   end
@@ -100,7 +100,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get root_path
     assert_match @shinji.screen_name, response.body
 
-    post mute_path(user: @shinji)
+    post mute_path(mutee: @shinji)
     get root_path
     assert_no_match @shinji.screen_name, response.body
   end
