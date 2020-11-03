@@ -14,6 +14,8 @@ class PagesController < ApplicationController
   def explore
     @timeline = true
 
+    nweets = current_user&.global_feed || Nweet.global_feed
+
     render_nweets(Nweet.global_feed, 'did_at < ?')
   end
 end

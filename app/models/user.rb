@@ -45,12 +45,18 @@ class User < ApplicationRecord
     when "followees"
       followees_feed
     when "global"
-      Nweet.global_feed
+      global_feed
     end
   end
 
   def followees_feed
-    Nweet.includes(links: :tags).references(links: :tags).where("user_id IN (?) OR user_id = ? OR tags.id IN (?)", followee_ids, id, preferred_tag_ids)
+    Nweet.includes(links: :tags).references(links: :tags)
+      .where("user_id IN (?) OR user_id = ? OR tags.id IN (?)", followee_ids, id, preferred_tag_ids)
+      .where.not(user_id: muted_user_ids)
+  end
+
+  def global_feed
+    Nweet.where.not(user_id: muted_user_ids)
   end
 
   def nweets_at_date(date)
