@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get '/explore', :to => 'pages#explore'
   get '/settings', :to => 'settings#root'
+  get '/settings/mutes', :to => 'settings#mutes'
   get '/auth/twitter/callback', :to => 'twitters#create'
   post '/auth/twitter/callback', :to => 'twitters#create'
   delete '/auth/twitter', :to => 'twitters#destroy'
