@@ -9,10 +9,10 @@ section.side-section
     - if other_user?(user)
       .mr-2.flex-grow-0
         - if current_user.muted?(user)
-          = link_to mute_path(user: user), method: :delete, class: "text-danger"
+          = link_to mute_path(mutee: user), method: :delete, class: "text-danger"
             = icon 'fas', 'eye-slash'
         - else
-          = link_to mute_path(user: user), method: :post, class: "graybtn"
+          = link_to mute_path(mutee: user), method: :post, class: "graybtn"
             = icon 'fas', 'eye-slash'
   - if other_user?(user)
     - if current_user.followee?(user)
