@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  USER_PER_PAGE = 20
 
   def tweet(content = render_tweet(current_user.autotweet_content))
     begin
@@ -34,6 +35,18 @@ class ApplicationController < ActionController::Base
       else
         @feed_items = nweets.included.limit(10)
         @before = @feed_items.last&.did_at&.to_i
+      end
+    end
+
+    def render_users(users, template)
+      @feed_items = users.paginate(page: params[:page], per_page: USER_PER_PAGE)
+
+      if params[:page]
+        @page = params[:page].to_i + 1 if @feed_items.any?
+        render partial: 'users/users'
+      else
+        @page = users.count > USER_PER_PAGE ? 2 : nil
+        render template
       end
     end
 end
