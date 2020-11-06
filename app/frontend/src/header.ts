@@ -48,12 +48,12 @@ export function hideHeaderWhileScrolling() {
   window.addEventListener("scroll", () => {
     let nowOffset = window.pageYOffset;
 
-    if (nowOffset >= lastOffset) {
+    if (nowOffset > 0 && nowOffset >= lastOffset) {
       navbar.classList.add("navbar-faded-out");
     } else {
       navbar.classList.remove("navbar-faded-out");
     }
 
-    lastOffset = Math.max(0, nowOffset);
+    lastOffset = nowOffset;
   });
 }
