@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get '/explore', :to => 'pages#explore'
   get '/settings', :to => 'settings#root'
+  get '/settings/mutes', :to => 'settings#mutes'
   get '/auth/twitter/callback', :to => 'twitters#create'
   post '/auth/twitter/callback', :to => 'twitters#create'
   delete '/auth/twitter', :to => 'twitters#destroy'
@@ -29,4 +30,5 @@ Rails.application.routes.draw do
   resource :censoring, only: [:create, :destroy]
   resource :preferring, only: [:create, :destroy]
   resource :relationship, only: [:create, :destroy]
+  resource :mute, only: [:create, :destroy]
 end

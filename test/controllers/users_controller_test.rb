@@ -83,6 +83,28 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_match @shinji.biography, response.body
   end
 
+  test 'can mute user in global feed' do
+    login_as @user
+    patch tweak_users_path, params: {user: {feed_scope: :global}}
+    get root_path
+    assert_match @shinji.screen_name, response.body
+
+    post mute_path(mutee: @shinji)
+    get root_path
+    assert_no_match @shinji.screen_name, response.body
+  end
+
+  test 'can mute user in followees feed' do
+    login_as @user
+    post relationship_path(followee: @shinji)
+    get root_path
+    assert_match @shinji.screen_name, response.body
+
+    post mute_path(mutee: @shinji)
+    get root_path
+    assert_no_match @shinji.screen_name, response.body
+  end
+
   test 'show nweets by date' do
     # nweets(:christmas) 参照
     get user_path(@user, date: "2017-12-25".to_time)

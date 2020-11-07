@@ -1,0 +1,12 @@
+- provide(:title, @topic)
+
+.container.wider-margintop
+  .jumbotron.not-so-jumbo.mx-auto.nweet-feed
+    h1.mb-2 = @topic
+    - if @feed_items.any?
+      ul.nweets-list
+        = render 'users/users'
+    - else
+      .p-3 = "#{@topic}がいません。"
+    .pt-2 = link_to "戻る", :back
+

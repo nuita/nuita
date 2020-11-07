@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :friend_user, only: [:likes, :followers, :followees]
-  USER_PER_PAGE = 20
 
   def show
     @user = User.find_by(url_digest: params[:url_digest])
@@ -27,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.find_by(url_digest: params[:url_digest])
     users = @user.followers.paginate(page: params[:page])
 
-    render_users(users)
+    render_users(users, 'users/show_follow')
   end
 
   def followees
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.find_by(url_digest: params[:url_digest])
     users = @user.followees.paginate(page: params[:page])
 
-    render_users(users)
+    render_users(users, 'users/show_follow')
   end
 
   # Update user without password confirmation. 
@@ -64,17 +63,5 @@ class UsersController < ApplicationController
     # Strong parameters. They can be set without password, so be careful.
     def tweak_params
       params.require(:user).permit(:feed_scope)
-    end
-
-    def render_users(users)
-      @feed_items = users.paginate(page: params[:page], per_page: USER_PER_PAGE)
-
-      if params[:page]
-        @page = params[:page].to_i + 1 if @feed_items.any?
-        render partial: 'users/users'
-      else
-        @page = users.count > USER_PER_PAGE ? 2 : nil
-        render 'show_follow'
-      end
     end
 end
