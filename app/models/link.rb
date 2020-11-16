@@ -24,6 +24,7 @@ class Link < ApplicationRecord
     return if url != canonical_url && Link.find_by(url: canonical_url)
 
     update_attributes(self.class.hash_panchira(panchira))
+    set_tags(panchira.tags, destroy_existing_tags: false)
     save
   end
 
@@ -66,7 +67,7 @@ class Link < ApplicationRecord
       link = Link.find_or_initialize_by(url: canonical_url)
 
       link.update_attributes(hash_panchira(panchira))
-      link.set_tags(panchira.tags)
+      link.set_tags(panchira.tags, destroy_existing_tags: false)
 
       link
     end
