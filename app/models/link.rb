@@ -28,8 +28,8 @@ class Link < ApplicationRecord
   end
 
   def set_tag(name)
-    if t = Tag.find_or_create_by(name: name.upcase)
-      self.tags << t
+    unless self.tags.exists?(name: name.upcase)
+      self.tags << Tag.find_or_create_by(name: name.upcase)
     end
   end
 
