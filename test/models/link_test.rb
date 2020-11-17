@@ -54,4 +54,12 @@ class LinkTest < ActiveSupport::TestCase
     link.remove_tags
     assert_equal 0, link.tags.count
   end
+
+  test 'user-set tag must not be removed by refetch' do
+    link = Link.fetch_from('https://www.pixiv.net/artworks/55434358')
+    link.set_tag('R-18G')
+    
+    link.refetch
+    assert link.tags.exists?(name: 'R-18G')
+  end
 end
