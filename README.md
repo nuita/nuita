@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Testing](https://github.com/nuita/nuita/workflows/Testing/badge.svg)
+![Test](https://github.com/nuita/nuita/workflows/Test/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/nuita/nuita)
 
 # Nuita
