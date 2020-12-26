@@ -51,4 +51,4 @@ jobs:
     - name: Run tests
       run: |
         export MYSQL_HOST=127.0.0.1
-        BUNDLE_PATH=vendor/bundle bundle exec rails t
+        CI=true BUNDLE_PATH=vendor/bundle bundle exec rails t
