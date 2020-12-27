@@ -12,7 +12,7 @@ on:
 env:
   MYSQL_HOST: 127.0.0.1
   BUNDLE_PATH: vendor/bundle
-  UPLOAD_COVERAGE: ${{ github.event_name == 'pull_request' }}
+  UPLOAD_COVERAGE: ${{ github.event_name == 'push' }}
 
 jobs:
   testing:
