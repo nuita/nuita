@@ -9,6 +9,11 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  MYSQL_HOST: 127.0.0.1
+  BUNDLE_PATH: vendor/bundle
+  UPLOAD_COVERAGE: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   testing:
 
@@ -44,11 +49,9 @@ jobs:
         yarn install --check-files
         bundle install --path vendor/bundle
     - name: Set Database
+      env:
+        RAILS_ENV: development
       run: |
-        export MYSQL_HOST=127.0.0.1
-        export RAILS_ENV=development
-        BUNDLE_PATH=vendor/bundle bundle exec rails db:setup
+        bundle exec rails db:setup
     - name: Run tests
-      run: |
-        export MYSQL_HOST=127.0.0.1
-        CI=true BUNDLE_PATH=vendor/bundle bundle exec rails t
+      run: bundle exec rails t

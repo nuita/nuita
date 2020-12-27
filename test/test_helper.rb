@@ -3,7 +3,7 @@ require_relative '../config/environment'
 require 'rails/test_help'
 
 SimpleCov.start 'rails'
-if ENV['CI'] == 'true'
+if ENV['UPLOAD_COVERAGE'] == 'true'
   require 'codecov'
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
