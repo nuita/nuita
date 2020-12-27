@@ -1,6 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Test](https://github.com/nuita/nuita/workflows/Test/badge.svg)
 ![Last Commit](https://img.shields.io/github/last-commit/nuita/nuita)
+[![codecov](https://codecov.io/gh/nuita/nuita/branch/master/graph/badge.svg?token=6QH4QOIWLW)](https://codecov.io/gh/nuita/nuita)
 
 # Nuita
 <img src="https://nuita.s3-ap-northeast-1.amazonaws.com/green.png" alt="Nuita">
