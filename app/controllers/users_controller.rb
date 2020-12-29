@@ -53,13 +53,6 @@ class UsersController < ApplicationController
       end
     end
 
-    def correct_user
-      user = User.find_by(url_digest: params[:url_digest])
-      unless user == current_user
-        redirect_to(new_user_session_url)
-      end
-    end
-
     # Strong parameters. They can be set without password, so be careful.
     def tweak_params
       params.require(:user).permit(:feed_scope)
