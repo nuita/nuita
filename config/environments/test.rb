@@ -46,7 +46,11 @@ Rails.application.configure do
 
   require 'simplecov'
 
-  SimpleCov.start 'rails'
+  SimpleCov.start 'rails' do
+    add_filter '/bin/'
+    add_filter '/db/'
+    add_filter '/test/'
+  end
   if ENV['UPLOAD_COVERAGE'] == 'true'
     require 'codecov'
     SimpleCov.formatter = SimpleCov::Formatter::Codecov
