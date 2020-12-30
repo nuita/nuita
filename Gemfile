@@ -3,21 +3,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.2'
 
-gem "devise", ">= 4.7.1"
+gem 'devise', '>= 4.7.1'
 gem 'carrierwave'
-gem "mini_magick", ">= 4.9.4"
+gem 'mini_magick', '>= 4.9.4'
 gem 'fog-aws'
 
 gem 'serviceworker-rails'
 
-gem 'omniauth', '~>1.9'
+gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'omniauth-rails_csrf_protection'
 gem 'twitter'
 
 gem 'faker'
 
-gem "nokogiri", ">= 1.10.4"
+gem 'nokogiri', '>= 1.10.4'
 gem 'valid_url'
 gem 'fastimage'
 gem 'panchira'
@@ -27,7 +27,7 @@ gem 'mysql2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -53,12 +53,12 @@ gem 'will_paginate-bootstrap4'
 # Use CoffeeScript for .coffee assets and views
 #gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'webpacker', '~> 5.1.1'
+gem 'webpacker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -68,10 +68,10 @@ end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '>= 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'capistrano', '3.14.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
@@ -84,7 +84,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'webdrivers', '~>3.0'
+  gem 'webdrivers'
   gem 'simplecov', require: false
   gem 'codecov', require: false
 end
