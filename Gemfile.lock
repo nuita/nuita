@@ -381,7 +381,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt_pbkdf
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.4.2)
   bootstrap (>= 4.3.1)
   bullet
   byebug
@@ -402,7 +402,7 @@ DEPENDENCIES
   html2slim
   jbuilder
   jquery-rails
-  listen (>= 3.0.5)
+  listen (~> 3.2)
   mini_magick (>= 4.9.4)
   mysql2
   nokogiri (>= 1.10.4)
@@ -411,7 +411,7 @@ DEPENDENCIES
   omniauth-twitter
   panchira
   puma
-  rails (~> 6.0.0)
+  rails (~> 6.0.3, >= 6.0.3.4)
   sassc-rails
   selenium-webdriver
   serviceworker-rails
