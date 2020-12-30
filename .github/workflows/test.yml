@@ -41,7 +41,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.2
+        ruby-version: 2.7.2
     - name: Install dependencies
       run: |
         curl -sL https://deb.nodesource.com/setup_10.x | bash - && sudo apt install -y nodejs

@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :liked_nweets, through: :likes, source: :nweet
   mount_uploader :icon, IconUploader
 
-  validates :screen_name, presence: true, uniqueness: true, length: {maximum: 20}
+  validates :screen_name, presence: true, uniqueness: {case_sensitive: true}, length: {maximum: 20}
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
   validates :handle_name, length: {maximum: 30}
   validates :biography, length: {maximum: 30}
@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def add_twitter_account(auth)
-    self.update_attributes(
+    self.update(
       twitter_url: auth.info.urls.Twitter,
       twitter_uid: auth.uid,
       twitter_screen_name: auth.info.nickname,
@@ -78,7 +78,7 @@ class User < ApplicationRecord
   end
 
   def delete_twitter_account
-    self.update_attributes(
+    self.update(
       twitter_url: nil,
       twitter_uid: nil,
       twitter_screen_name: nil,

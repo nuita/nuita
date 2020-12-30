@@ -15,7 +15,7 @@ NuitaはRuby on Rails製の射精報告SNSです。
 LinuxやMac上であれば、あなたのPC上でNuitaを動かすことができます。  
 ただし、事前に以下のものをインストールしておく必要があります。
 
-- Ruby 2.6.2
+- Ruby 2.7.2
 - MySQL 5.7.30
 - Yarn
   
