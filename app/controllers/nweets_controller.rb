@@ -44,7 +44,7 @@ class NweetsController < ApplicationController
   def update
     @nweet = Nweet.find_by(url_digest: params[:url_digest])
 
-    if @nweet.update_attributes(edit_nweet_params)
+    if @nweet.update(edit_nweet_params)
       flash[:success] = 'ヌイートを更新しました'
       redirect_to root_url
     else

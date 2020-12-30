@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   # Update user without password confirmation. 
   def tweak
-    current_user.update_attributes(tweak_params)
+    current_user.update(tweak_params)
     
     redirect_back(fallback_location: settings_path)
   end

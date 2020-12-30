@@ -9,6 +9,6 @@ class Like < ApplicationRecord
     unless nweet.user == user
       create_notification(origin_id: user.id, destination_id: nweet.user.id, action: :like)
     end
-    nweet.update_attributes(latest_liked_time: Time.zone.now)
+    nweet.update(latest_liked_time: Time.zone.now)
   end
 end
