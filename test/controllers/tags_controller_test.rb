@@ -5,7 +5,7 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     Warden.test_mode!
-    
+
     @user = users(:chikuwa)
     @link = links(:kanikama)
   end

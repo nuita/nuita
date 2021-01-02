@@ -74,6 +74,7 @@ class Nweet < ApplicationRecord
   end
 
   private
+
     def set_url_digest
       self.url_digest = SecureRandom.alphanumeric
     end

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   delete '/auth/twitter', :to => 'twitters#destroy'
   get '/notifications', :to => 'notifications#index'
   get '/notification/refresh', :to => 'notifications#refresh'
-  get '/links/recommend', :to=> 'links#recommend'
+  get '/links/recommend', :to => 'links#recommend'
 
   resources :users, except: [:index], param: :url_digest do
     member do

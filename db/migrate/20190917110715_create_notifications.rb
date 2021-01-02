@@ -5,7 +5,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.integer :destination_id, index: true
 
       t.integer :action, null: false
-      
+
       t.integer :like_id
       t.integer :relationship_id
 

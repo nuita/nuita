@@ -8,3 +8,17 @@ require:
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+# privated, protected 以下をインデント
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# ハッシュは内側の空白を省略
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space

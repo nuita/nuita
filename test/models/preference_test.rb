@@ -19,7 +19,7 @@ class PreferenceTest < ActiveSupport::TestCase
 
     preference = Preference.new(user: @user, tag: @tag, context: :censoring)
     assert_not preference.valid?
-    
+
     preference = Preference.new(user: @user, tag: @tag, context: :preferring)
     assert_not preference.valid?
   end
@@ -33,6 +33,6 @@ class PreferenceTest < ActiveSupport::TestCase
     Preference.create(user: @user, tag: @another_tag, context: :censoring)
     assert_difference 'Preference.count', -1 do
       @user.destroy
-    end    
+    end
   end
 end

@@ -21,7 +21,6 @@ class RelationshipTest < ActiveSupport::TestCase
     assert_not @relationship.valid?
   end
 
-
   test 'relationship creates and destroys notification' do
     notification = @relationship.notification
 

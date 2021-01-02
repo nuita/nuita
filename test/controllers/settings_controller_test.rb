@@ -30,5 +30,4 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     get settings_mutes_path
     assert_match @other_user.screen_name, response.body
   end
-
 end

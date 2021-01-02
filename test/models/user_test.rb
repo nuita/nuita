@@ -153,7 +153,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'followees feed can be include nweets without link' do
     nweet = @followee.nweets.create(did_at: Time.zone.now)
-    assert @user.followees_feed.include?(nweet) 
+    assert @user.followees_feed.include?(nweet)
   end
 
   test 'new follower should be first' do

@@ -8,7 +8,7 @@ class NotificationTest < ActiveSupport::TestCase
   end
 
   test 'users are associated correctly to notification' do
-    assert_difference ->{ @user.active_notifications.count } => 1, ->{ @other_user.passive_notifications.count} => 1 do
+    assert_difference -> { @user.active_notifications.count } => 1, -> { @other_user.passive_notifications.count } => 1 do
       like = Like.create!(user: @user, nweet: @nweet)
     end
   end

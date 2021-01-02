@@ -35,7 +35,6 @@ set :log_level, :debug
 
 # デプロイのタスク
 namespace :deploy do
-
   # unicornの再起動
   desc 'Restart application'
   task :restart do
@@ -48,13 +47,12 @@ namespace :deploy do
     on roles(:db) do |host|
       with rails_env: fetch(:rails_env) do
         within current_path do
-                  # データベース作成のsqlセット
-                # データベース名はdatabase.ymlに設定した名前で
-                  sql = "CREATE DATABASE IF NOT EXISTS nuita_production;"
-                  # クエリの実行。
-                # userとpasswordはmysqlの設定に合わせて
-                execute "mysql --user=#{Rails.application.credentials.mysql[:username]} --password=#{Rails.application.credentials.mysql[:password]} -e '#{sql}'"
-
+          # データベース作成のsqlセット
+          # データベース名はdatabase.ymlに設定した名前で
+          sql = "CREATE DATABASE IF NOT EXISTS nuita_production;"
+          # クエリの実行。
+          # userとpasswordはmysqlの設定に合わせて
+          execute "mysql --user=#{Rails.application.credentials.mysql[:username]} --password=#{Rails.application.credentials.mysql[:password]} -e '#{sql}'"
         end
       end
     end

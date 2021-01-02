@@ -24,7 +24,7 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
   test 'should get new' do
     share_text = 'This text should be appear in input form!'
     get new_nweet_path(@nweet, text: share_text)
-    # テストではredirectではなくunauthorized返される。deviseの仕様か? 
+    # テストではredirectではなくunauthorized返される。deviseの仕様か?
     # 他環境でのリダイレクトは既に確認済みのため、ここでは401でテストを通す
     # assert_redirected_to new_user_session_url
     assert_response :unauthorized
@@ -71,11 +71,11 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
   test 'logged-in user can edit their own nweet' do
     login_as(@user)
 
-    patch nweet_path(@nweet), params: {nweet: {statement: '誰だ今の'} }
+    patch nweet_path(@nweet), params: {nweet: {statement: '誰だ今の'}}
     @nweet.reload
     assert_equal '誰だ今の', @nweet.statement
 
-    patch nweet_path(@friend_nweet), params: {nweet: {statement: '誰だ今の'} }
+    patch nweet_path(@friend_nweet), params: {nweet: {statement: '誰だ今の'}}
     @friend_nweet.reload
     assert_not_equal '誰だ今の', @friend_nweet.statement
   end

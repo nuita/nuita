@@ -6,9 +6,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         #:confirmable, :lockable, :timeoutable #,
-         #:omniauthable, omniauth_providers: [:twitter]
-         
+  #:confirmable, :lockable, :timeoutable,
+  #:omniauthable, omniauth_providers: [:twitter]
+
   enum feed_scope: [:followees, :global]
 
   has_many :nweets, dependent: :destroy
@@ -22,20 +22,20 @@ class User < ApplicationRecord
   validates :biography, length: {maximum: 30}
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
-  has_many :followees, -> {order('relationships.created_at DESC')}, through: :active_relationships
+  has_many :followees, -> { order('relationships.created_at DESC') }, through: :active_relationships
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followee_id', dependent: :destroy
-  has_many :followers, -> {order('relationships.created_at DESC')}, through: :passive_relationships
+  has_many :followers, -> { order('relationships.created_at DESC') }, through: :passive_relationships
 
   has_many :mutes, foreign_key: 'muter_id', dependent: :destroy
-  has_many :muted_users, -> {order('mutes.created_at DESC')}, through: :mutes, source: :mutee
+  has_many :muted_users, -> { order('mutes.created_at DESC') }, through: :mutes, source: :mutee
 
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'origin_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'destination_id', dependent: :destroy
 
-  has_many :censorings, -> {where context: Preference.contexts[:censoring]}, class_name: 'Preference', dependent: :destroy
+  has_many :censorings, -> { where context: Preference.contexts[:censoring] }, class_name: 'Preference', dependent: :destroy
   has_many :censored_tags, through: :censorings, source: :tag
 
-  has_many :preferrings, -> {where context: Preference.contexts[:preferring]}, class_name: 'Preference', dependent: :destroy
+  has_many :preferrings, -> { where context: Preference.contexts[:preferring] }, class_name: 'Preference', dependent: :destroy
   has_many :preferred_tags, through: :preferrings, source: :tag
 
   has_and_belongs_to_many :badges
@@ -194,7 +194,7 @@ class User < ApplicationRecord
   end
 
   def check_notifications
-    self.passive_notifications.update_all(checked:true)
+    self.passive_notifications.update_all(checked: true)
   end
 
   def announce(statement)

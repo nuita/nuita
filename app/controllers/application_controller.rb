@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
     # strong parameters
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:handle_name, :screen_name, :icon])

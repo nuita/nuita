@@ -25,7 +25,7 @@ User.all.map do |user|
 end
 
 users = User.all
-first_user  = users.first
+first_user = users.first
 nweet = first_user.nweets.create(did_at: Time.zone.now, statement: 'https://www.pixiv.net/artworks/55434358')
 
 followees = users[2..50]
@@ -39,6 +39,5 @@ confident_users.each do |user|
   user.liked_nweets << nweet
   first_user.liked_nweets << user.nweets.first
 end
-
 
 Rake::Task["tag_task:init"].execute

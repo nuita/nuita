@@ -11,7 +11,7 @@ namespace :icon_task do
           user.save!
         end
       rescue => e
-        puts  "ERROR: User: #{user.id} -> #{e.to_s}"
+        puts "ERROR: User: #{user.id} -> #{e.to_s}"
       end
     end
     puts 'recreation done.'

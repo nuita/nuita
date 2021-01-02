@@ -28,7 +28,7 @@ class IconUploader < CarrierWave::Uploader::Base
   # process scale: [200, 300]
   #
   process resize_to_fit: [256, 256]
-  
+
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [60, 60]

@@ -41,8 +41,8 @@ class Link < ApplicationRecord
 
   def set_tags(names, destroy_existing_tags: true)
     remove_tags if destroy_existing_tags
-    
-    names.each{|name| set_tag(name)}
+
+    names.each { |name| set_tag(name) }
   end
 
   def remove_tags
@@ -51,12 +51,12 @@ class Link < ApplicationRecord
 
   class << self
     def recommend(displayable: false)
-      if(displayable)
-        link = Link.displayable  
+      if displayable
+        link = Link.displayable
       else
         link = Link.all
       end
-      
+
       link.offset(rand(link.count)).first
     end
 
