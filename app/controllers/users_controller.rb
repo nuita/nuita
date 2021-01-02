@@ -37,10 +37,10 @@ class UsersController < ApplicationController
     render_users(users, 'users/show_follow')
   end
 
-  # Update user without password confirmation. 
+  # Update user without password confirmation.
   def tweak
     current_user.update(tweak_params)
-    
+
     redirect_back(fallback_location: settings_path)
   end
 

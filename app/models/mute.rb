@@ -4,5 +4,5 @@ class Mute < ApplicationRecord
 
   validates :muter_id, presence: true
   validates :mutee_id, presence: true
-  validates_uniqueness_of :mutee_id, scope: :muter_id
+  validates :mutee_id, uniqueness: {scope: :muter_id}
 end

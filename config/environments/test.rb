@@ -66,12 +66,12 @@ Rails.application.configure do
       nickname: 'Nuita',
       urls: {
         Twitter: 'https://twitter.com/nuita_net'
-      },
+      }
     },
     credentials: {
       token: SecureRandom.alphanumeric,
       secret: SecureRandom.alphanumeric
     }
   })
-  Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+  Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
 end

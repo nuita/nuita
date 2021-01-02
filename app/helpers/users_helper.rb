@@ -1,7 +1,7 @@
 module UsersHelper
   # change str to screen_name format ("Screen Name" -> "Screen_Name")
   def self.screen_name_formatter(str)
-    str.gsub(/ /, '_')
+    str.tr(' ', '_')
   end
 
   # urlだけ返す 設定なしならデフォルト
@@ -24,7 +24,7 @@ module UsersHelper
       id = "usericon-#{user.id}"
     else
       alt = ''
-      id = "usericon-default"
+      id = 'usericon-default'
     end
     image_tag(icon_url(user, size), alt: alt, size: size.to_s, class: htmlclass, id: id)
   end
@@ -50,10 +50,10 @@ module UsersHelper
   def contribution_for(user, row)
     # カレンダーの内訳: (row - 1)行分の完全な週 + 日曜〜今日まで
     start_day = Date.current.beginning_of_week(:sunday) - (row - 1).week
-    nweets = user.nweets.where(:created_at=> start_day..Time.current)
+    nweets = user.nweets.where(created_at: start_day..Time.current)
 
     hash = calendarize_data(nweets, column: :did_at)
 
-    return hash, start_day
+    [hash, start_day]
   end
 end

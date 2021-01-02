@@ -28,7 +28,7 @@ class IconUploader < CarrierWave::Uploader::Base
   # process scale: [200, 300]
   #
   process resize_to_fit: [256, 256]
-  
+
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fit: [60, 60]
@@ -37,7 +37,7 @@ class IconUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    ['jpg', 'jpeg', 'gif', 'png']
   end
 
   def size_range

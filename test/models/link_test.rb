@@ -43,11 +43,11 @@ class LinkTest < ActiveSupport::TestCase
     assert_not link.tags.exists?(name: 'R-18G')
 
     # how about multiple tags?
-    link.set_tags(["R-18G", "ふたなり"])
+    link.set_tags(['R-18G', 'ふたなり'])
     assert link.tags.exists?(name: 'ふたなり')
     assert link.tags.exists?(name: 'R-18G')
 
-    link.set_tags(["リョナ"], destroy_existing_tags: false)
+    link.set_tags(['リョナ'], destroy_existing_tags: false)
     assert link.tags.exists?(name: 'リョナ')
     assert link.tags.exists?(name: 'ふたなり')
 
@@ -58,7 +58,7 @@ class LinkTest < ActiveSupport::TestCase
   test 'user-set tag must not be removed by refetch' do
     link = Link.fetch_from('https://www.pixiv.net/artworks/55434358')
     link.set_tag('R-18G')
-    
+
     link.refetch
     assert link.tags.exists?(name: 'R-18G')
   end

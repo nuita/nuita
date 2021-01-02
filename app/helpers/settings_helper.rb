@@ -8,7 +8,7 @@ module SettingsHelper
   end
 
   def tags_form_path(context, tag = nil)
-    "/#{context}" + (tag ? "?tag=#{tag}" : "")
+    "/#{context}" + (tag ? "?tag=#{tag}" : '')
   end
 
   def tags_form_items(context)

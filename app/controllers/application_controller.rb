@@ -3,14 +3,13 @@ class ApplicationController < ActionController::Base
   USER_PER_PAGE = 20
 
   def tweet(content = render_tweet(current_user.autotweet_content))
-    begin
-      current_user.tweet(content)
-    rescue
-      flash[:warning] = 'ツイートに失敗しました。Twitterアカウントの状態を確認してください。'
-    end
+    current_user.tweet(content)
+  rescue
+    flash[:warning] = 'ツイートに失敗しました。Twitterアカウントの状態を確認してください。'
   end
 
   protected
+
     # strong parameters
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:handle_name, :screen_name, :icon])

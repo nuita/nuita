@@ -14,7 +14,7 @@ Faker::Config.locale = :en
   screen_name = User.screen_name_formatter(handle_name)
   email = Faker::Internet.email
   password = Faker::Internet.password
-  user = User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
+  User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
 end
 
 User.all.map do |user|
@@ -25,7 +25,7 @@ User.all.map do |user|
 end
 
 users = User.all
-first_user  = users.first
+first_user = users.first
 nweet = first_user.nweets.create(did_at: Time.zone.now, statement: 'https://www.pixiv.net/artworks/55434358')
 
 followees = users[2..50]
@@ -40,5 +40,4 @@ confident_users.each do |user|
   first_user.liked_nweets << user.nweets.first
 end
 
-
-Rake::Task["tag_task:init"].execute
+Rake::Task['tag_task:init'].execute

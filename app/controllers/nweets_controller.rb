@@ -54,6 +54,7 @@ class NweetsController < ApplicationController
   end
 
   private
+
     # strong parameters
     def new_nweet_params
       params.require(:nweet).permit(:statement, :did_at)

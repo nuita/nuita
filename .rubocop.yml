@@ -1,0 +1,70 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+# privated, protected 以下をインデント
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# ハッシュは内側の空白を省略
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+# enumは配列で定義したほうが簡潔じゃない？
+Rails/EnumHash:
+  Enabled: false
+
+# 明らかに1000件以下のときはeachでよくない？
+Rails/FindEach:
+  Enabled: false
+
+# 将来的にはちゃんと英語化する必要がありそう
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+# 個人的に;があんまり好きじゃない
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# もうRuby3になるからいいよね……？
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 気持ち的にelsifじゃなくて入れ子なときがある
+Style/IfInsideElse:
+  Enabled: false
+
+# 条件文も
+Style/SoleNestedConditional:
+  Enabled: false
+
+# 文の複雑さで人間が判断すればよい
+Style/IfUnlessModifier:
+  Enabled: false
+
+# 文脈によって人間が使い分ける
+Style/NumericPredicate:
+  Enabled: false
+
+# %表記は正直分かりづらいと思っている……
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/SymbolArray:
+  EnforcedStyle: brackets

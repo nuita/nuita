@@ -1,14 +1,14 @@
-require "uri"
-require "nokogiri"
-require "open-uri"
+require 'uri'
+require 'nokogiri'
+require 'open-uri'
 
 module ApplicationHelper
   def text_url_to_link(text)
     safe_text = h(text)
 
     URI.extract(safe_text, ['http', 'https']).uniq.each do |url|
-      sub_text = ""
-      sub_text << "<a href=" << url << " target='_blank'>" << url << "</a>"
+      sub_text = ''
+      sub_text << '<a href=' << url << " target='_blank'>" << url << '</a>'
 
       safe_text.gsub!(url, sub_text)
     end
@@ -34,7 +34,7 @@ module ApplicationHelper
 
     if key && host
       digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), key, url)
-      signature = Base64.urlsafe_encode64(digest).strip()
+      signature = Base64.urlsafe_encode64(digest).strip
       "#{host}/s#{signature}/#{url}"
     else
       url
@@ -43,14 +43,17 @@ module ApplicationHelper
 
   # https://github.com/FortAwesome/font-awesome-sass/blob/master/lib/font_awesome/sass/rails/helpers.rb
   def icon(style, name, text = nil, html_options = {})
-    text, html_options = nil, text if text.is_a?(Hash)
+    if text.is_a?(Hash)
+      text = nil
+      html_options = text
+    end
 
     content_class = "#{style} fa-#{name}"
     content_class << " #{html_options[:class]}" if html_options.key?(:class)
     html_options[:class] = content_class
 
-    html = content_tag(:i, nil, html_options)
-    html << ' ' << text.to_s unless text.blank?
+    html = tag.i(nil, html_options)
+    html << ' ' << text.to_s if text.present?
     html
   end
 end

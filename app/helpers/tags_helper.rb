@@ -18,9 +18,9 @@ module TagsHelper
 
   def tag_icon(is_existing)
     if is_existing
-      "times"
+      'times'
     else
-      "plus"
+      'plus'
     end
   end
 end

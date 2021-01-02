@@ -10,7 +10,7 @@ class Link < ApplicationRecord
   validates :author, length: {maximum: 50}
   validates :circle, length: {maximum: 50}
 
-  validates :url, :url => true
+  validates :url, url: true
 
   scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:tags).where(tags: {censored_by_default: nil}) }
 
@@ -29,8 +29,8 @@ class Link < ApplicationRecord
   end
 
   def set_tag(name)
-    unless self.tags.exists?(name: name.upcase)
-      self.tags << Tag.find_or_create_by(name: name.upcase)
+    unless tags.exists?(name: name.upcase)
+      tags << Tag.find_or_create_by(name: name.upcase)
     end
   end
 
@@ -41,8 +41,8 @@ class Link < ApplicationRecord
 
   def set_tags(names, destroy_existing_tags: true)
     remove_tags if destroy_existing_tags
-    
-    names.each{|name| set_tag(name)}
+
+    names.each { |name| set_tag(name) }
   end
 
   def remove_tags
@@ -51,12 +51,8 @@ class Link < ApplicationRecord
 
   class << self
     def recommend(displayable: false)
-      if(displayable)
-        link = Link.displayable  
-      else
-        link = Link.all
-      end
-      
+      link = displayable ? Link.displayable : Link.all
+
       link.offset(rand(link.count)).first
     end
 
