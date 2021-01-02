@@ -9,7 +9,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:shinji)
   end
 
-  test "should get settings(root) when logged-in" do
+  test 'should get settings(root) when logged-in' do
     get settings_url
     assert_redirected_to new_user_session_path
 
@@ -18,7 +18,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get muted users when logged-in" do
+  test 'should get muted users when logged-in' do
     get settings_mutes_path
     assert_redirected_to new_user_session_path
 

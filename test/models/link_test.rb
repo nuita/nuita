@@ -43,11 +43,11 @@ class LinkTest < ActiveSupport::TestCase
     assert_not link.tags.exists?(name: 'R-18G')
 
     # how about multiple tags?
-    link.set_tags(["R-18G", "ふたなり"])
+    link.set_tags(['R-18G', 'ふたなり'])
     assert link.tags.exists?(name: 'ふたなり')
     assert link.tags.exists?(name: 'R-18G')
 
-    link.set_tags(["リョナ"], destroy_existing_tags: false)
+    link.set_tags(['リョナ'], destroy_existing_tags: false)
     assert link.tags.exists?(name: 'リョナ')
     assert link.tags.exists?(name: 'ふたなり')
 

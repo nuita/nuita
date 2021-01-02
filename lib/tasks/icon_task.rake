@@ -1,5 +1,5 @@
 namespace :icon_task do
-  desc "resize all usericons"
+  desc 'resize all usericons'
   task resize_all: :environment do
     User.find_each do |user|
       if user.icon.present?

@@ -7,7 +7,7 @@ class PreferenceTest < ActiveSupport::TestCase
     @another_tag = tags(:three_d)
   end
 
-  test "user and tag have to be present and unique, regardless of what the context is" do
+  test 'user and tag have to be present and unique, regardless of what the context is' do
     preference = Preference.create(user: @user, tag: @tag, context: :censoring)
     assert preference.valid?
 

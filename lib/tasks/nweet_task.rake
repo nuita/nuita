@@ -1,5 +1,5 @@
 namespace :nweet_task do
-  desc "Set random url-digest to existing nweets"
+  desc 'Set random url-digest to existing nweets'
   task set_url_digest: :environment do
     Nweet.all.each do |nweet|
       if nweet.url_digest.nil?

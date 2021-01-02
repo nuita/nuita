@@ -15,27 +15,27 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'screen name should be valid' do
-    @user.screen_name = " "
+    @user.screen_name = ' '
     assert_not @user.valid?
 
-    @user.screen_name = "a" * 100
+    @user.screen_name = 'a' * 100
     assert_not @user.valid?
 
-    @user.screen_name = "マイケル"
+    @user.screen_name = 'マイケル'
     assert_not @user.valid?
   end
 
   test 'handle name should be valid' do
-    @user.handle_name = "a" * 100
+    @user.handle_name = 'a' * 100
     assert_not @user.valid?
 
     # handle name can be blank
-    @user.handle_name = " "
+    @user.handle_name = ' '
     assert @user.valid?
   end
 
   test 'url_digest must be generated' do
-    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    new_user = User.new(screen_name: 'kaburanai', email: 'kaburan@gmail.com', password: 'hogehoge')
     new_user.save
     assert_not_empty new_user.url_digest
   end
@@ -110,7 +110,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'create censoring when a user is created' do
-    user = User.create(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    user = User.create(screen_name: 'kaburanai', email: 'kaburan@gmail.com', password: 'hogehoge')
 
     assert user.censoring?('R-18G')
     assert_not user.censoring?('KEMO')
@@ -134,7 +134,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'can change timeline content based on feed_scope' do
-    new_user = User.new(screen_name: "kaburanai", email: "kaburan@gmail.com", password: "hogehoge")
+    new_user = User.new(screen_name: 'kaburanai', email: 'kaburan@gmail.com', password: 'hogehoge')
     new_user.save
 
     # Feed scope should be set followees only by default, thus you can't see nweets by the others.

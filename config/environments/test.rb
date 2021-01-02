@@ -73,5 +73,5 @@ Rails.application.configure do
       secret: SecureRandom.alphanumeric
     }
   })
-  Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+  Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
 end

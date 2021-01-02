@@ -42,16 +42,16 @@ class User < ApplicationRecord
 
   def timeline
     case feed_scope
-    when "followees"
+    when 'followees'
       followees_feed
-    when "global"
+    when 'global'
       global_feed
     end
   end
 
   def followees_feed
     Nweet.includes(links: :tags).references(links: :tags)
-      .where("user_id IN (?) OR user_id = ? OR tags.id IN (?)", followee_ids, id, preferred_tag_ids)
+      .where('user_id IN (?) OR user_id = ? OR tags.id IN (?)', followee_ids, id, preferred_tag_ids)
       .where.not(user_id: muted_user_ids)
   end
 

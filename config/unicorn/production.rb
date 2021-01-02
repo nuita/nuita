@@ -3,7 +3,7 @@ $worker = 2
 # 何秒経過すればワーカーを削除するのかを決める
 $timeout = 30
 # 自分のアプリケーション名、currentがつくことに注意。
-$app_dir = "/var/www/nuita/current"
+$app_dir = '/var/www/nuita/current'
 # リクエストを受け取るポート番号を指定。後述
 $listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
 # PIDの管理ファイルディレクトリ
@@ -29,7 +29,7 @@ before_fork do |server, worker|
   old_pid = "#{server.config[:pid]}.oldbin"
   if old_pid != server.pid
     begin
-      Process.kill "QUIT", File.read(old_pid).to_i
+      Process.kill 'QUIT', File.read(old_pid).to_i
     rescue Errno::ENOENT, Errno::ESRCH
     end
   end

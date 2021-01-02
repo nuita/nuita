@@ -40,4 +40,4 @@ confident_users.each do |user|
   first_user.liked_nweets << user.nweets.first
 end
 
-Rake::Task["tag_task:init"].execute
+Rake::Task['tag_task:init'].execute

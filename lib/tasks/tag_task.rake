@@ -1,5 +1,5 @@
 namespace :tag_task do
-  desc "initialize tags"
+  desc 'initialize tags'
   task init: :environment do
     Preference.destroy_all
     Tag.destroy_all
@@ -13,11 +13,11 @@ namespace :tag_task do
         print "#{user.id} "
         user.censored_tags << tag
       end
-      puts ""
+      puts ''
     end
   end
 
-  desc "remove unnecessary(not censored by default) tags"
+  desc 'remove unnecessary(not censored by default) tags'
   task clean: :environment do
     Tag.where(censored_by_default: false).destroy_all
   end

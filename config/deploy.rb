@@ -1,7 +1,7 @@
-require File.expand_path("./environment", __dir__)
+require File.expand_path('./environment', __dir__)
 
 # capistranoのバージョン固定
-lock "3.14.1"
+lock '3.14.1'
 
 # デプロイするアプリケーション名
 set :application, 'nuita'
@@ -49,7 +49,7 @@ namespace :deploy do
         within current_path do
           # データベース作成のsqlセット
           # データベース名はdatabase.ymlに設定した名前で
-          sql = "CREATE DATABASE IF NOT EXISTS nuita_production;"
+          sql = 'CREATE DATABASE IF NOT EXISTS nuita_production;'
           # クエリの実行。
           # userとpasswordはmysqlの設定に合わせて
           execute "mysql --user=#{Rails.application.credentials.mysql[:username]} --password=#{Rails.application.credentials.mysql[:password]} -e '#{sql}'"

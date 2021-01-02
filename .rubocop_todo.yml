@@ -165,13 +165,6 @@ Style/RescueStandardError:
     - 'lib/tasks/link_task.rake'
     - 'lib/tasks/nweet_task.rake'
 
-# Offense count: 111
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Enabled: false
-
 # Offense count: 12
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

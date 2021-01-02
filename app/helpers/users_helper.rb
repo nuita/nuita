@@ -24,7 +24,7 @@ module UsersHelper
       id = "usericon-#{user.id}"
     else
       alt = ''
-      id = "usericon-default"
+      id = 'usericon-default'
     end
     image_tag(icon_url(user, size), alt: alt, size: size.to_s, class: htmlclass, id: id)
   end

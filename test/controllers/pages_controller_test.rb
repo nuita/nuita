@@ -9,12 +9,12 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     @not_followee = users(:emiya)
   end
 
-  test "should get home" do
+  test 'should get home' do
     get pages_home_url
     assert_response :success
   end
 
-  test "should get about" do
+  test 'should get about' do
     get pages_about_url
     assert_response :success
   end

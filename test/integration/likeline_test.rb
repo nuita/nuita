@@ -15,13 +15,13 @@ class LikelineTest < ActionDispatch::IntegrationTest
     post like_path, params: {nweet: @nweet.url_digest}
 
     get likes_user_path(url_digest: @user.url_digest)
-    assert_select "a[href=?]", nweet_path(@nweet)
+    assert_select 'a[href=?]', nweet_path(@nweet)
 
     deleted_nweet_path = nweet_path(@nweet)
 
     delete like_path, params: {nweet: @nweet.url_digest}
 
     get likes_user_path(url_digest: @user.url_digest)
-    assert_select "a[href=?]", deleted_nweet_path, false
+    assert_select 'a[href=?]', deleted_nweet_path, false
   end
 end

@@ -1,14 +1,14 @@
-require "uri"
-require "nokogiri"
-require "open-uri"
+require 'uri'
+require 'nokogiri'
+require 'open-uri'
 
 module ApplicationHelper
   def text_url_to_link(text)
     safe_text = h(text)
 
     URI.extract(safe_text, ['http', 'https']).uniq.each do |url|
-      sub_text = ""
-      sub_text << "<a href=" << url << " target='_blank'>" << url << "</a>"
+      sub_text = ''
+      sub_text << '<a href=' << url << " target='_blank'>" << url << '</a>'
 
       safe_text.gsub!(url, sub_text)
     end
