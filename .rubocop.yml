@@ -35,3 +35,36 @@ Rails/FindEach:
 Style/AsciiComments:
   Enabled: false
 
+Style/Documentation:
+  Enabled: false
+
+# 個人的に;があんまり好きじゃない
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# もうRuby3になるからいいよね……？
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 気持ち的にelsifじゃなくて入れ子なときがある
+Style/IfInsideElse:
+  Enabled: false
+
+# 条件文も
+Style/SoleNestedConditional:
+  Enabled: false
+
+# 文の複雑さで人間が判断すればよい
+Style/IfUnlessModifier:
+  Enabled: false
+
+# 文脈によって人間が使い分ける
+Style/NumericPredicate:
+  Enabled: false
+
+# %表記は正直分かりづらいと思っている……
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/SymbolArray:
+  EnforcedStyle: brackets

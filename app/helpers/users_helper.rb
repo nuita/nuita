@@ -50,10 +50,10 @@ module UsersHelper
   def contribution_for(user, row)
     # カレンダーの内訳: (row - 1)行分の完全な週 + 日曜〜今日まで
     start_day = Date.current.beginning_of_week(:sunday) - (row - 1).week
-    nweets = user.nweets.where(:created_at => start_day..Time.current)
+    nweets = user.nweets.where(created_at: start_day..Time.current)
 
     hash = calendarize_data(nweets, column: :did_at)
 
-    return hash, start_day
+    [hash, start_day]
   end
 end

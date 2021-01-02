@@ -18,7 +18,7 @@ namespace :announce_task do
   task :publish, ['filename'] => :environment do |task, args|
     dir = File.expand_path('lib/tasks/announces/', Rails.root)
 
-    path = dir + "/" + args[:filename]
+    path = "#{dir}/#{args[:filename]}"
     statement = ''
 
     File.open(path, 'r') do |f|
@@ -35,7 +35,7 @@ namespace :announce_task do
   end
 
   desc "Delete all the announces"
-  task :delete_all => :environment do
+  task delete_all: :environment do
     Notification.where(action: :announce).delete_all
     p "Delete success!"
   end

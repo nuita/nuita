@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def add_twitter_account(auth)
-    self.update(
+    update(
       twitter_url: auth.info.urls.Twitter,
       twitter_uid: auth.uid,
       twitter_screen_name: auth.info.nickname,
@@ -78,7 +78,7 @@ class User < ApplicationRecord
   end
 
   def delete_twitter_account
-    self.update(
+    update(
       twitter_url: nil,
       twitter_uid: nil,
       twitter_screen_name: nil,
@@ -92,39 +92,39 @@ class User < ApplicationRecord
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = Rails.application.credentials.twitter[:api_key]
       config.consumer_secret = Rails.application.credentials.twitter[:api_secret]
-      config.access_token = self.twitter_access_token
-      config.access_token_secret = self.twitter_access_secret
+      config.access_token = twitter_access_token
+      config.access_token_secret = twitter_access_secret
     end
 
     client.update(content)
   end
 
   def follow(other_user)
-    self.followees << other_user
+    followees << other_user
   end
 
   def unfollow(other_user)
-    self.active_relationships.find_by(followee_id: other_user).destroy
+    active_relationships.find_by(followee_id: other_user).destroy
   end
 
   def followee?(other_user)
-    self.followees.include?(other_user)
+    followees.include?(other_user)
   end
 
   def follower?(other_user)
-    self.followers.include?(other_user)
+    followers.include?(other_user)
   end
 
   def mute(other_user)
-    self.muted_users << other_user
+    muted_users << other_user
   end
 
   def unmute(other_user)
-    self.mutes.find_by(mutee_id: other_user).destroy
+    mutes.find_by(mutee_id: other_user).destroy
   end
 
   def muted?(other_user)
-    self.muted_users.include?(other_user)
+    muted_users.include?(other_user)
   end
 
   # censor, uncensor, censoring? can take both instances of String and Tag
@@ -139,13 +139,13 @@ class User < ApplicationRecord
     return unless censoring?(tag)
 
     tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
-    self.censorings.find_by(tag_id: tag.id).destroy
+    censorings.find_by(tag_id: tag.id).destroy
   end
 
   def censoring?(tag)
     tag_name = tag.respond_to?(:name) ? tag.name : tag
 
-    self.censored_tags.exists?(name: tag_name)
+    censored_tags.exists?(name: tag_name)
   end
 
   def censoring_tags?(tags)
@@ -153,27 +153,27 @@ class User < ApplicationRecord
       tag.respond_to?(:name) ? tag.name : tag
     end
 
-    self.censored_tags.pluck(:name) & tag_names
+    censored_tags.pluck(:name) & tag_names
   end
 
   def prefer(tag)
     return if preferring?(tag)
 
     tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
-    self.preferred_tags << tag
+    preferred_tags << tag
   end
 
   def disprefer(tag)
     return unless preferring?(tag)
 
     tag = Tag.find_or_create_by(name: tag.upcase) unless tag.instance_of?(Tag)
-    self.preferrings.find_by(tag_id: tag.id).destroy
+    preferrings.find_by(tag_id: tag.id).destroy
   end
 
   def preferring?(tag)
     tag_name = tag.respond_to?(:name) ? tag.name : tag
 
-    self.preferred_tags.exists?(name: tag_name)
+    preferred_tags.exists?(name: tag_name)
   end
 
   def preferring_tags?(tags)
@@ -181,24 +181,24 @@ class User < ApplicationRecord
       tag.respond_to?(:name) ? tag.name : tag
     end
 
-    self.preferred_tags.pluck(:name) & tag_names
+    preferred_tags.pluck(:name) & tag_names
   end
 
   def add_badge(badge)
     # バッジは名前で指定することなくない？
-    self.badges << badge
+    badges << badge
   end
 
   def liked?(nweet)
-    self.likes.exists?(nweet_id: nweet.id)
+    likes.exists?(nweet_id: nweet.id)
   end
 
   def check_notifications
-    self.passive_notifications.update_all(checked: true)
+    passive_notifications.update_all(checked: true)
   end
 
   def announce(statement)
-    self.passive_notifications.create(action: :announce, statement: statement)
+    passive_notifications.create(action: :announce, statement: statement)
   end
 
   class << self
@@ -215,7 +215,7 @@ class User < ApplicationRecord
 
     def set_default_censoring
       Tag.where(censored_by_default: true).each do |tag|
-        self.censor(tag)
+        censor(tag)
       end
     end
 end

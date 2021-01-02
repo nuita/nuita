@@ -45,13 +45,11 @@ class Nweet < ApplicationRecord
   end
 
   def create_link
-    if self.statement
-      URI.extract(self.statement, ['http', 'https']).uniq.each do |url|
-        begin
-          self.links << Link.fetch_from(url)
-        rescue
-          logger.debug "Creating Link for #{url} has failed."
-        end
+    if statement
+      URI.extract(statement, ['http', 'https']).uniq.each do |url|
+        links << Link.fetch_from(url)
+      rescue
+        logger.debug "Creating Link for #{url} has failed."
       end
     end
   end
@@ -59,9 +57,9 @@ class Nweet < ApplicationRecord
   def create_tag
     if links.any?
       # 本当は空白に置換したかったけどコールバックの前後関係で無理そう
-      self.statement.scan(/\s#\S*/) do |tag|
+      statement.scan(/\s#\S*/) do |tag|
         links.each do |link|
-          link.set_tag(tag[2..-1])
+          link.set_tag(tag[2..])
         end
       end
     end

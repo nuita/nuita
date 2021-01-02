@@ -3,5 +3,5 @@ if Rails.application.credentials.twitter
     provider :twitter, Rails.application.credentials.twitter[:api_key], Rails.application.credentials.twitter[:api_secret]
   end
 else
-  OmniAuth.config.test_mode = true;
+  OmniAuth.config.test_mode = true
 end

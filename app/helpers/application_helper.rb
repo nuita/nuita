@@ -34,7 +34,7 @@ module ApplicationHelper
 
     if key && host
       digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), key, url)
-      signature = Base64.urlsafe_encode64(digest).strip()
+      signature = Base64.urlsafe_encode64(digest).strip
       "#{host}/s#{signature}/#{url}"
     else
       url
@@ -43,7 +43,10 @@ module ApplicationHelper
 
   # https://github.com/FortAwesome/font-awesome-sass/blob/master/lib/font_awesome/sass/rails/helpers.rb
   def icon(style, name, text = nil, html_options = {})
-    text, html_options = nil, text if text.is_a?(Hash)
+    if text.is_a?(Hash)
+      text = nil
+      html_options = text
+    end
 
     content_class = "#{style} fa-#{name}"
     content_class << " #{html_options[:class]}" if html_options.key?(:class)

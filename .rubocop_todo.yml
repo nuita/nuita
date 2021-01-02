@@ -132,57 +132,6 @@ Rails/SkipsModelValidations:
     - 'test/integration/autotweet_test.rb'
     - 'test/models/user_test.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'test/test_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SingleLineConditionsOnly, IncludeTernaryExpressions.
-# SupportedStyles: assign_to_condition, assign_inside_condition
-Style/ConditionalAssignment:
-  Exclude:
-    - 'app/models/link.rb'
-
-# Offense count: 69
-Style/Documentation:
-  Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty, nil, both
-Style/EmptyElse:
-  Exclude:
-    - 'app/helpers/nweets_helper.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/pages_controller.rb'
-    - 'app/controllers/settings_controller.rb'
-    - 'app/models/nweet.rb'
-
-# Offense count: 152
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/GlobalStdStream:
-  Exclude:
-    - 'config/environments/production.rb'
-
 # Offense count: 16
 # Configuration parameters: AllowedVariables.
 Style/GlobalVars:
@@ -199,114 +148,10 @@ Style/GuardClause:
     - 'app/models/nweet.rb'
     - 'app/models/tag.rb'
 
-# Offense count: 25
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
-# SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
-Style/HashSyntax:
-  Exclude:
-    - 'app/helpers/users_helper.rb'
-    - 'app/models/link.rb'
-    - 'app/models/tag.rb'
-    - 'config/initializers/carrier_wave.rb'
-    - 'config/routes.rb'
-    - 'db/migrate/20191208010050_set_uniqueness_to_badges_names.rb'
-    - 'lib/tasks/announce_task.rake'
-    - 'lib/tasks/nweet_task.rake'
-    - 'lib/tasks/stats_task.rake'
-    - 'lib/tasks/twitter_task.rake'
-    - 'lib/tasks/user_task.rake'
-
 # Offense count: 2
 Style/IdenticalConditionalBranches:
   Exclude:
     - 'app/controllers/nweets_controller.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowIfModifier.
-Style/IfInsideElse:
-  Exclude:
-    - 'app/helpers/users_helper.rb'
-
-# Offense count: 5
-# Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
-    - 'app/models/like.rb'
-    - 'app/models/link.rb'
-    - 'app/models/nweet.rb'
-    - 'app/models/tag.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: IgnoredMethods.
-Style/MethodCallWithoutArgsParentheses:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: literals, strict
-Style/MutableConstant:
-  Exclude:
-    - 'app/models/tag.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IgnoredMethods.
-# SupportedStyles: predicate, comparison
-Style/NumericPredicate:
-  Exclude:
-    - 'app/helpers/nweets_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/ParallelAssignment:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'app/uploaders/icon_uploader.rb'
-    - 'config/deploy/production.rb'
-
-# Offense count: 8
-# Cop supports --auto-correct.
-Style/RedundantBegin:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/models/nweet.rb'
-    - 'lib/tasks/icon_task.rake'
-    - 'lib/tasks/link_task.rake'
-    - 'lib/tasks/nweet_task.rake'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: SafeForConstants.
-Style/RedundantFetchBlock:
-  Exclude:
-    - 'config/puma.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowMultipleReturnValues.
-Style/RedundantReturn:
-  Exclude:
-    - 'app/helpers/users_helper.rb'
-
-# Offense count: 29
-# Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - 'app/models/link.rb'
-    - 'app/models/nweet.rb'
-    - 'app/models/user.rb'
 
 # Offense count: 8
 # Cop supports --auto-correct.
@@ -320,62 +165,12 @@ Style/RescueStandardError:
     - 'lib/tasks/link_task.rake'
     - 'lib/tasks/nweet_task.rake'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowAsExpressionSeparator.
-Style/Semicolon:
-  Exclude:
-    - 'config/initializers/omniauth.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/SlicingWithRange:
-  Exclude:
-    - 'app/models/nweet.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowModifier.
-Style/SoleNestedConditional:
-  Exclude:
-    - 'app/models/nweet.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/StringConcatenation:
-  Exclude:
-    - 'app/helpers/nweets_helper.rb'
-    - 'lib/tasks/announce_task.rake'
-
 # Offense count: 111
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 21
-# Cop supports --auto-correct.
-# Configuration parameters: MinSize.
-# SupportedStyles: percent, brackets
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInHashLiteral:
-  Exclude:
-    - 'config/environments/test.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: WordRegex.
-# SupportedStyles: percent, brackets
-Style/WordArray:
-  EnforcedStyle: percent
-  MinSize: 3
 
 # Offense count: 12
 # Cop supports --auto-correct.

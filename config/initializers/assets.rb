@@ -13,4 +13,4 @@ Rails.application.config.assets.compile = true
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
+Rails.configuration.assets.precompile += ['serviceworker.js', 'manifest.json']

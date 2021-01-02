@@ -66,7 +66,7 @@ Rails.application.configure do
       nickname: 'Nuita',
       urls: {
         Twitter: 'https://twitter.com/nuita_net'
-      },
+      }
     },
     credentials: {
       token: SecureRandom.alphanumeric,

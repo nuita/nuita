@@ -5,7 +5,7 @@ module NweetsHelper
     if str.last(2) == "以内"
       str
     else
-      str + "前"
+      "#{str}前"
     end
   end
 
@@ -18,10 +18,6 @@ module NweetsHelper
   end
 
   def likes_number(nweet)
-    if nweet.likes.count > 0
-      nweet.likes.count
-    else
-      nil
-    end
+    nweet.likes.count if nweet.likes.count > 0
   end
 end
