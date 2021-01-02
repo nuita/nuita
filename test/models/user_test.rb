@@ -94,7 +94,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.followees_feed.include?(n)
 
     @user.prefer('KEMO')
-    assert @user.followees_feed.include?(n)
+    assert_includes @user.followees_feed, n
   end
 
   test 'nweets in timeline and followees feed must be distinct' do
@@ -153,7 +153,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'followees feed can be include nweets without link' do
     nweet = @followee.nweets.create(did_at: Time.zone.now)
-    assert @user.followees_feed.include?(nweet)
+    assert_includes @user.followees_feed, nweet
   end
 
   test 'new follower should be first' do

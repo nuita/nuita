@@ -56,12 +56,6 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 22
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Minitest/AssertIncludes:
-  Exclude:
-    - 'test/models/user_test.rb'
-
 # Offense count: 1
 Naming/AccessorMethodName:
   Exclude:
@@ -79,9 +73,9 @@ Naming/PredicateName:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Performance/StringReplacement:
-  Exclude:
-    - 'app/helpers/users_helper.rb'
+# Performance/StringReplacement:
+#   Exclude:
+#     - 'app/helpers/users_helper.rb'
 
 # Offense count: 12
 # Configuration parameters: Database, Include.
