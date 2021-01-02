@@ -14,7 +14,7 @@ Faker::Config.locale = :en
   screen_name = User.screen_name_formatter(handle_name)
   email = Faker::Internet.email
   password = Faker::Internet.password
-  user = User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
+  User.create!(handle_name: handle_name, screen_name: screen_name, email: email, password: password)
 end
 
 User.all.map do |user|

@@ -6,37 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Lint/BooleanSymbol:
-  Exclude:
-    - 'app/models/link_tag.rb'
-
-# Offense count: 1
-# Configuration parameters: AllowComments, AllowEmptyLambdas.
-Lint/EmptyBlock:
-  Exclude:
-    - 'config/deploy.rb'
-
-# Offense count: 4
-# Cop supports --auto-correct.
-Lint/EmptyEnsure:
-  Exclude:
-    - 'lib/tasks/link_task.rake'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/RedundantStringCoercion:
-  Exclude:
-    - 'lib/tasks/icon_task.rake'
-
-# Offense count: 1
-# Configuration parameters: AllowedMethods.
-# AllowedMethods: present?, blank?, presence, try, try!, in?
-Lint/SafeNavigationChain:
-  Exclude:
-    - 'config/environment.rb'
-
 # Offense count: 1
 # Configuration parameters: AllowComments.
 Lint/SuppressedException:
@@ -65,8 +34,6 @@ Lint/UnusedMethodArgument:
 Lint/UselessAssignment:
   Exclude:
     - 'app/controllers/pages_controller.rb'
-    - 'db/seeds.rb'
-    - 'test/models/notification_test.rb'
 
 # Offense count: 4
 # Configuration parameters: IgnoredMethods, CountRepeatedAttributes.

@@ -8,7 +8,6 @@ namespace :link_task do
       rescue => e
         puts "\n#{e}"
         p link
-      ensure
       end
     end
   end
@@ -22,7 +21,6 @@ namespace :link_task do
       rescue => e
         puts "\n#{e}"
         p link
-      ensure
       end
     end
   end
@@ -36,7 +34,6 @@ namespace :link_task do
       rescue => e
         puts "\n#{e}"
         p link
-      ensure
       end
     end
   end
@@ -50,7 +47,6 @@ namespace :link_task do
       rescue => e
         puts "\n#{e}"
         p link
-      ensure
       end
     end
   end
