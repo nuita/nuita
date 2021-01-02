@@ -3,7 +3,7 @@ class Like < ApplicationRecord
   belongs_to :user
   has_one :notification, dependent: :destroy
 
-  validates_uniqueness_of :nweet_id, scope: :user_id
+  validates :nweet_id, uniqueness: {scope: :user_id}
 
   after_create do
     unless nweet.user == user

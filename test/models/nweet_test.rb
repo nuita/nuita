@@ -85,7 +85,7 @@ class NweetTest < ActiveSupport::TestCase
 
   test 'nweet must be created even if url is not valid' do
     assert_difference 'Nweet.count', 1 do
-      @user.nweets.create(did_at: 1.minutes.ago, statement: "I like this vid! http://not-val.id/")
+      @user.nweets.create(did_at: 1.minute.ago, statement: "I like this vid! http://not-val.id/")
     end
   end
 

@@ -71,12 +71,6 @@ Naming/PredicateName:
   Exclude:
     - 'app/models/nweet.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Performance/StringReplacement:
-#   Exclude:
-#     - 'app/helpers/users_helper.rb'
-
 # Offense count: 12
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql
@@ -97,12 +91,6 @@ Rails/BulkChangeTable:
     - 'db/migrate/20201031155308_add_author_and_circle_to_links.rb'
 
 # Offense count: 1
-# Cop supports --auto-correct.
-Rails/ContentTag:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
-# Offense count: 1
 # Configuration parameters: Include.
 # Include: db/migrate/*.rb
 Rails/CreateTableWithTimestamps:
@@ -115,32 +103,6 @@ Rails/CreateTableWithTimestamps:
 Rails/Date:
   Exclude:
     - 'app/controllers/users_controller.rb'
-
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/EnumHash:
-  Exclude:
-    - 'app/models/notification.rb'
-    - 'app/models/preference.rb'
-    - 'app/models/user.rb'
-
-# Offense count: 1
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: slashes, arguments
-Rails/FilePath:
-  Exclude:
-    - 'config/environments/development.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: Include, IgnoredMethods.
-# Include: app/models/**/*.rb
-# IgnoredMethods: order, limit, select, lock
-Rails/FindEach:
-  Exclude:
-    - 'app/models/user.rb'
 
 # Offense count: 2
 # Configuration parameters: Include.
@@ -157,19 +119,6 @@ Rails/InverseOf:
   Exclude:
     - 'app/models/user.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Rails/PluralizationGrammar:
-  Exclude:
-    - 'test/models/nweet_test.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: NotNilAndNotEmpty, NotBlank, UnlessBlank.
-Rails/Present:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
 # Offense count: 8
 # Configuration parameters: ForbiddenMethods, AllowedMethods.
 # ForbiddenMethods: decrement!, decrement_counter, increment!, increment_counter, insert, insert!, insert_all, insert_all!, toggle!, touch, touch_all, update_all, update_attribute, update_column, update_columns, update_counters, upsert, upsert_all
@@ -182,20 +131,6 @@ Rails/SkipsModelValidations:
     - 'lib/tasks/user_task.rake'
     - 'test/integration/autotweet_test.rb'
     - 'test/models/user_test.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: Include.
-# Include: app/models/**/*.rb
-Rails/Validation:
-  Exclude:
-    - 'app/models/like.rb'
-    - 'app/models/mute.rb'
-
-# Offense count: 66
-# Configuration parameters: AllowedChars.
-Style/AsciiComments:
-  Enabled: false
 
 # Offense count: 1
 # Cop supports --auto-correct.

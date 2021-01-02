@@ -49,8 +49,8 @@ module ApplicationHelper
     content_class << " #{html_options[:class]}" if html_options.key?(:class)
     html_options[:class] = content_class
 
-    html = content_tag(:i, nil, html_options)
-    html << ' ' << text.to_s unless text.blank?
+    html = tag.i(nil, html_options)
+    html << ' ' << text.to_s if text.present?
     html
   end
 end

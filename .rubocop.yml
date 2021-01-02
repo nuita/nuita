@@ -22,3 +22,16 @@ Layout/MultilineMethodCallIndentation:
 # ハッシュは内側の空白を省略
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
+
+# enumは配列で定義したほうが簡潔じゃない？
+Rails/EnumHash:
+  Enabled: false
+
+# 明らかに1000件以下のときはeachでよくない？
+Rails/FindEach:
+  Enabled: false
+
+# 将来的にはちゃんと英語化する必要がありそう
+Style/AsciiComments:
+  Enabled: false
+
