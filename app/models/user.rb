@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :liked_nweets, through: :likes, source: :nweet
   mount_uploader :icon, IconUploader
 
-  validates :screen_name, presence: true, uniqueness: {case_sensitive: true}, length: {maximum: 20}
+  validates :screen_name, presence: true, uniqueness: {case_sensitive: false}, length: {maximum: 20}
   validates :screen_name, format: {with: /[0-9a-zA-Z_]/}
   validates :handle_name, length: {maximum: 30}
   validates :biography, length: {maximum: 30}
