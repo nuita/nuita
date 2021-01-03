@@ -25,6 +25,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test 'user name should be unique (case insensitive)' do
+    new_user = User.new(screen_name: 'CHiKUWA', email: 'abcdefg@hijkl.com', password: 'abcdefgh')
+    assert_not new_user.valid?
+
+    new_user.screen_name = '_chikuwa_'
+    assert new_user.valid?
+  end
+
   test 'handle name should be valid' do
     @user.handle_name = 'a' * 100
     assert_not @user.valid?

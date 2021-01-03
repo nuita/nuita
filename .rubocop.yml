@@ -8,6 +8,10 @@ require:
 AllCops:
   TargetRubyVersion: 2.7
   NewCops: enable
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - vendor/bundle/**/*
 
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
