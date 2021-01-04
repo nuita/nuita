@@ -1,0 +1,6 @@
+liked:
+  origin: emiya
+  destination: chikuwa
+  action: <%= Notification.actions[:like] %>
+  like: today
+  checked: false
