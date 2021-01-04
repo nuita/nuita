@@ -3,7 +3,7 @@ li.nweet.notification
     .action-icon
       - case notification.action
       - when 'like'
-        = icon 'fas', 'heart', class: 'like-color'
+        = icon 'fas', 'heart', nil, {class: 'like-color'}
       - when 'follow'
         = icon 'fas', 'user-plus'
       - when 'announce'
@@ -11,7 +11,7 @@ li.nweet.notification
     .media-body
       .user_info
         - if notification.origin
-          = link_to icon_for(notification.origin, size: 40, htmlclass:'user-icon'), notification.origin
+          = link_to icon_for(notification.origin, size: 40, htmlclass: 'user-icon'), notification.origin
         span.timestamp = notification.created_at
       .content.clearfix
         .maincontent
