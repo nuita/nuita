@@ -30,11 +30,6 @@ Lint/UnusedMethodArgument:
   Exclude:
     - 'app/controllers/application_controller.rb'
 
-# Offense count: 3
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/controllers/pages_controller.rb'
-
 # Offense count: 4
 # Configuration parameters: IgnoredMethods, CountRepeatedAttributes.
 Metrics/AbcSize:

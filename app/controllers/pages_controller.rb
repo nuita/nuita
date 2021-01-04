@@ -16,6 +16,6 @@ class PagesController < ApplicationController
 
     nweets = current_user&.global_feed || Nweet.global_feed
 
-    render_nweets(Nweet.global_feed, 'did_at < ?')
+    render_nweets(nweets, 'did_at < ?')
   end
 end

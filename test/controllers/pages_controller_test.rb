@@ -34,4 +34,14 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_match @followee.handle_name, response.body
     assert_match @not_followee.handle_name, response.body
   end
+
+  test 'can mute user in followees feed' do
+    login_as @user
+    get explore_path
+    assert_match @not_followee.screen_name, response.body
+
+    post mute_path(mutee: @not_followee)
+    get explore_path
+    assert_no_match @not_followee.screen_name, response.body
+  end
 end
