@@ -9,6 +9,7 @@ import setUserButtons from "../src/users";
 import { setLikeButtons } from "../src/nweets";
 import { setTagButtons } from "../src/tags";
 
+import "bootstrap";
 import "../css/application.scss";
 
 window.addEventListener("DOMContentLoaded", (event) => {
