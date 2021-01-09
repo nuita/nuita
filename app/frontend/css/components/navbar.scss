@@ -1,0 +1,32 @@
+.navbar {
+  background-color: $header-background-color;
+  height: 56px;
+}
+
+.mode-nav {
+  .nav-item {
+    a {
+      color: $inactive-font-color;
+      font-size: 140%;
+      margin-right: 1rem;
+
+      &:hover {
+        color: darken($inactive-font-color, $hover-background-darkener);
+      }
+    }
+
+    &.active {
+      a {
+        color: $brand-color;
+
+        &:hover {
+          color: darken($brand-color, $hover-background-darkener);
+        }
+
+        &:active {
+          color: lighten($brand-color, $active-color-lightener);
+        }
+      }
+    }
+  }
+}

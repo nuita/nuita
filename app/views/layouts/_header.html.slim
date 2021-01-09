@@ -1,6 +1,5 @@
-nav.navbar.navbar-expand-md.navbar-fixed-top.fixed-top.navbar-dark.py-0 id=("NavbarScrollable" if user_signed_in?)
-  .container-fluid
-    - if user_signed_in?
-      = render 'layouts/user_header'
-    - else
-      = render 'layouts/guest_header'
+nav.navbar.navbar-expand-md.navbar-light.fixed-top id=("NavbarScrollable" if user_signed_in?)
+  - if user_signed_in?
+    = render 'layouts/user_header'
+  - else
+    = render 'layouts/guest_header'
