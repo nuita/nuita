@@ -1,11 +1,14 @@
 .navbar {
   background-color: $header-background-color;
   height: 56px;
+  align-content: center;
 }
 
 .mode-nav {
   .nav-item {
     a {
+      line-height: 0px;
+
       color: $inactive-font-color;
       font-size: 140%;
       margin-right: 1rem;
@@ -28,5 +31,49 @@
         }
       }
     }
+  }
+}
+
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-toggle {
+  color: $inactive-font-color;
+
+  &:hover {
+    color: $inactive-font-color;
+  }
+
+  &:active {
+    color: lighten($inactive-font-color, $active-color-lightener);
+  }
+
+  &::after {
+    vertical-align: middle;
+  }
+}
+
+.dropdown-menu {
+  padding: 0;
+
+  a {
+    color: $body-font-color;
+
+    &:hover {
+      color: $body-font-color;
+    }
+
+    &:active {
+      color: lighten($body-font-color, $active-color-lightener);
+    }
+  }
+}
+
+.dropdown-item {
+  &:active {
+    background-color: $brand-color;
+    color: $column-background-color;
   }
 }
