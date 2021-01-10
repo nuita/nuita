@@ -56,4 +56,8 @@ module ApplicationHelper
     html << ' ' << text.to_s if text.present?
     html
   end
+
+  def bi(name, classname = '')
+    tag.i(nil, class: "bi-#{name} #{classname}")
+  end
 end
