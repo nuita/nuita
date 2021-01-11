@@ -5,10 +5,13 @@
 }
 
 .mode-nav {
-  .nav-item {
-    a {
-      line-height: 0px;
+  padding-left: 0.25rem;
 
+  .nav-item {
+    // bootstrap icons 上側に余白があるので荒療治
+    padding-bottom: 7px;
+
+    a {
       color: $inactive-font-color;
       font-size: 140%;
       margin-right: 1rem;
@@ -41,6 +44,7 @@
 
 .dropdown-toggle {
   color: $inactive-font-color;
+  padding-right: 0.5rem;
 
   &:hover {
     color: $inactive-font-color;
@@ -74,6 +78,12 @@
 .dropdown-item {
   &:active {
     background-color: $brand-color;
-    color: $column-background-color;
+    color: $body-background-color;
+  }
+
+  .nav-link {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

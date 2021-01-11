@@ -1,4 +1,4 @@
-.container-fluid
+.container
   ul.nav.mode-nav.ml-0
     li.nav_item
       = link_to root_url do
@@ -6,7 +6,7 @@
   ul.nav.ml-auto
     li.nav-item
       = link_to new_user_session_path, class: 'nav-link pr-1' do
-        .btn.btn-outline-primary = 'ログイン'
+        .btn.link-brand = 'ログイン'
     li.nav-item
       = link_to new_user_registration_path, class: 'nav-link px-0' do
         .btn.btn-primary = '新規登録'

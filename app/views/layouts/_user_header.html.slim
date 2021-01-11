@@ -1,5 +1,5 @@
-.container-fluid
-  ul.nav.mode-nav.ml-0
+.container
+  ul.nav.mode-nav.ml-0.user-home-nav
     li.nav-item.user-nav-item#homeNav
       = link_to root_url do
         = bi 'house-fill'
@@ -17,7 +17,7 @@
   ul.nav.ml-auto
     li.nav-item.dropdown
       a.nav-link.dropdown-toggle#navbarDropdownMenuLink href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
-        = icon_for(current_user, size: 40)
+        = icon_for(current_user, size: 35)
       ul.dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
         li.dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
         li.dropdown-item = link_to 'プロフィール変更', edit_user_registration_path, class: 'nav-link'
