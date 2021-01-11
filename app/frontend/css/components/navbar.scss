@@ -76,6 +76,8 @@
 }
 
 .dropdown-item {
+  text-align: right;
+
   &:active {
     background-color: $brand-color;
     color: $body-background-color;
