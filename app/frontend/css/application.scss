@@ -1,9 +1,7 @@
-@import 'bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400&display=swap');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 @import './variables';
-@import './utility';
+@import 'bootstrap';
 @import './global';
 
 @import './components/navbar.scss';

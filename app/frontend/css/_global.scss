@@ -7,6 +7,7 @@ body {
 
 a {
   color: $brand-color;
+  text-decoration: none;
   
   &:active {
     color: lighten($brand-color, $active-color-lightener);
@@ -14,5 +15,15 @@ a {
 
   &:hover {
     color: $brand-color;
+  }
+}
+
+.btn-primary {
+  color: white !important;
+}
+
+.btn-outline-primary {
+  &:hover, &:focus {
+    color: white !important;
   }
 }
