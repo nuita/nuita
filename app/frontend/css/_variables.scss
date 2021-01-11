@@ -1,6 +1,19 @@
+/* global */
 $body-background-color: #fcfcfc;
 $body-font-color: #252A30;
 $secondary-font-color: #8D9195;
+$inactive-font-color: #DFE4E6;
 
 $column-background-color: #fff;
 $brand-color: #36ca6c;
+
+$theme-colors: (
+  primary: $brand-color
+);
+
+/* modifiers */
+$active-color-lightener: 10%;
+$hover-background-darkener: 5%;
+
+/* headers */
+$header-background-color: $column-background-color;

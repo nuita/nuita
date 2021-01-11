@@ -1,0 +1,35 @@
+body {
+  background-color: $body-background-color;
+  color: $body-font-color; 
+  font-family: 'Mulish', 'Avenir Next', sans-serif;
+}
+
+a {
+  color: $brand-color;
+  text-decoration: none;
+  
+  &:active {
+    color: lighten($brand-color, $active-color-lightener);
+  }
+
+  &:hover {
+    color: $brand-color;
+    text-decoration: underline;
+  }
+}
+
+input, textarea {
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-primary {
+  color: white !important;
+}
+
+.btn-outline-primary {
+  &:hover, &:focus {
+    color: white !important;
+  }
+}

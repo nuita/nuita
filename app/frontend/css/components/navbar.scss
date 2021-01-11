@@ -1,0 +1,91 @@
+.navbar {
+  background-color: $header-background-color;
+  height: 56px;
+  align-content: center;
+}
+
+.mode-nav {
+  padding-left: 0.25rem;
+
+  .nav-item {
+    // bootstrap icons 上側に余白があるので荒療治
+    padding-bottom: 7px;
+
+    a {
+      color: $inactive-font-color;
+      font-size: 140%;
+      margin-right: 1rem;
+
+      &:hover {
+        color: darken($inactive-font-color, $hover-background-darkener);
+      }
+    }
+
+    &.active {
+      a {
+        color: $brand-color;
+
+        &:hover {
+          color: darken($brand-color, $hover-background-darkener);
+        }
+
+        &:active {
+          color: lighten($brand-color, $active-color-lightener);
+        }
+      }
+    }
+  }
+}
+
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-toggle {
+  color: $inactive-font-color;
+  padding-right: 0.5rem;
+
+  &:hover {
+    color: $inactive-font-color;
+  }
+
+  &:active {
+    color: lighten($inactive-font-color, $active-color-lightener);
+  }
+
+  &::after {
+    vertical-align: middle;
+  }
+}
+
+.dropdown-menu {
+  padding: 0;
+
+  a {
+    color: $body-font-color;
+
+    &:hover {
+      color: $body-font-color;
+    }
+
+    &:active {
+      color: lighten($body-font-color, $active-color-lightener);
+    }
+  }
+}
+
+.dropdown-item {
+  text-align: right;
+
+  &:active {
+    background-color: $brand-color;
+    color: $body-background-color;
+  }
+
+  .nav-link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
