@@ -12,6 +12,8 @@ import { setTagButtons } from "../src/tags";
 import "bootstrap";
 import "../css/application.scss";
 
+require.context('../images', true)
+
 window.addEventListener("DOMContentLoaded", (event) => {
   setHeaderButton();
   hideHeaderWhileScrolling();

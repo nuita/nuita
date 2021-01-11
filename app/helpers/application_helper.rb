@@ -3,6 +3,10 @@ require 'nokogiri'
 require 'open-uri'
 
 module ApplicationHelper
+  def image_pack_path(path)
+    asset_pack_path("media/images/#{path}")
+  end
+
   def text_url_to_link(text)
     safe_text = h(text)
 
