@@ -6,7 +6,7 @@
   ul.nav.ml-auto
     li.nav-item
       = link_to new_user_session_path, class: 'nav-link pr-1' do
-        .btn.link-brand = 'ログイン'
+        .btn.link-brand = t '.sign_in'
     li.nav-item
       = link_to new_user_registration_path, class: 'nav-link px-0' do
-        .btn.btn-primary = '新規登録'
+        .btn.btn-primary = t '.sign_up'
