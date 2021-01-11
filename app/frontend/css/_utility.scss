@@ -8,3 +8,7 @@
 .link-brand {
   @extend a;
 }
+
+.wrapper {
+  margin-top: $header-height;
+}
