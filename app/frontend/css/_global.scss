@@ -2,7 +2,6 @@ body {
   background-color: $body-background-color;
   color: $body-font-color; 
   font-family: 'Mulish', 'Avenir Next', sans-serif;
-  outline: none;
 }
 
 a {
@@ -16,6 +15,12 @@ a {
   &:hover {
     color: $brand-color;
     text-decoration: underline;
+  }
+}
+
+input, textarea {
+  &:focus {
+    outline: none;
   }
 }
 
