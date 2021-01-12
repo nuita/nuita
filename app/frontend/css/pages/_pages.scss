@@ -1,0 +1,23 @@
+.landing-wrapper {
+  background-color: rgba(0, 0, 40, 0.4);
+  background-image: url('../images/landing_background.png');
+  background-size: cover;
+  min-height: 820px;
+  padding-bottom: 60px;
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 80px;
+  }
+}
+
+.landing-container {
+  color: white;
+}
+
+.col-landing-lead {
+  .lead {
+    font-size: large;
+    margin-bottom: 0.5rem;
+  }
+}

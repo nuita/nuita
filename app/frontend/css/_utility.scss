@@ -5,6 +5,10 @@
   transform: translate(-50%, -50%);
 }
 
+.btn:hover {
+  text-decoration: none;
+}
+
 .link-brand {
   @extend a;
 }
