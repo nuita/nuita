@@ -1,8 +1,5 @@
 ja:
   layouts:
-    guest_header:
-      sign_in: ログイン
-      sign_up: 新規登録
     user_header:
       edit_profile: プロフィール変更
       settings: 設定
