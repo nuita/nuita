@@ -1,0 +1,16 @@
+.landing-wrapper {
+  @include media-breakpoint-up(md) {
+    padding-top: 80px;
+  }
+}
+
+.landing-container {
+  color: white;
+}
+
+.col-landing-lead {
+  .lead {
+    font-size: large;
+    margin-bottom: 0.5rem;
+  }
+}

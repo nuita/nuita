@@ -1,0 +1,31 @@
+$registration-jumbotron-width: 400px;
+
+.registration-wrapper {
+  padding-top: 0.5rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 80px;
+  }
+}
+
+.registration-jumbotron {
+  @extend .rounded;
+
+  margin: 20px 0.5rem;
+  width: calc(100% - 1rem);
+
+  background-color: $body-background-color;
+
+  @media screen and (min-width: #{$registration-jumbotron-width}) {
+    width: $registration-jumbotron-width;
+    margin: 20px auto;
+
+    min-height: 600px;
+  }
+}
+
+.registration-h1 {
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+}
