@@ -1,9 +1,9 @@
-- provide(:title, "新規登録")
+- provide(:title, t('.title'))
 
 .guest-wrapper.registration-wrapper
   .registration-jumbotron
     .container.p-4
-      h1.registration-h1.mb-4 Nuitaに登録する
+      h1.registration-h1.mb-4 = t('.form.title')
       = form_with(model: resource, as: resource_name, local: true, class: "form-group registration-form", url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         .mb-2

@@ -4,7 +4,8 @@ $registration-jumbotron-width: 400px;
   padding-top: 0.5rem;
 
   @include media-breakpoint-up(md) {
-    padding-top: 80px;
+    padding: 0;
+    position: relative;
   }
 }
 
@@ -18,9 +19,10 @@ $registration-jumbotron-width: 400px;
 
   @media screen and (min-width: #{$registration-jumbotron-width}) {
     width: $registration-jumbotron-width;
-    margin: 20px auto;
-
-    min-height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
   }
 }
 
