@@ -1,7 +1,7 @@
 - provide(:title, t('.title'))
 
 .guest-wrapper.registration-wrapper
-  .registration-jumbotron
+  .registration-jumbotron.absolute-center-on-wrapper
     .container.p-4
       h1.registration-h1.mb-4 = t('.form.title')
       = form_with(model: resource, class: 'form-group registration-form', as: resource_name, local: true, url: session_path(resource_name)) do |f|

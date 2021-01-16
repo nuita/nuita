@@ -25,3 +25,10 @@
   padding-bottom: 2rem;
   width: 100%;
 }
+
+.absolute-center-on-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
+}
