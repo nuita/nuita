@@ -1,0 +1,25 @@
+footer {
+  height: $footer-height;
+}
+
+$footer-list-width: 400px;
+
+.footer-list {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+
+  li {
+    display: inline-block;
+    flex-grow: 1;
+    margin: 0 0.25rem;
+    padding: 0;
+
+    text-align: center;
+    list-style: none;
+  }
+
+  max-width: $footer-list-width;
+}
