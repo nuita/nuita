@@ -1,24 +1,22 @@
-- provide(:title, 'ログイン')
+- provide(:title, t('.title'))
 
-.container.wider-margintop
-  .jumbotron.not-so-jumbo.mx-auto
-    h1.mb-4 ログイン
-    = form_with(model: resource, class: 'form-group', as: resource_name, local: true, url: session_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .form-group.row
-        .col-md-3
-          = f.label :email, class: 'col-form-label'
-        .col-md-9
+.guest-wrapper.registration-wrapper
+  .registration-jumbotron.absolute-center-on-wrapper
+    .container.p-4
+      h1.registration-h1.mb-4 = t('.form.title')
+      = form_with(model: resource, class: 'form-group registration-form', as: resource_name, local: true, url: session_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .mb-2
+          = f.label :email, class: 'form-label'
           = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
-      .form-group.row
-        .col-md-3
-          = f.label :password, class: 'col-form-label'
-        .col-md-9
+        .mb-2
+          = f.label :password, class: 'form-label'
           = f.password_field :password, autocomplete: "current-password", class: 'form-control'
-      .actions
-        = f.submit "ログイン", class: "btn btn-brandcolor registration_button"
-      - if devise_mapping.rememberable?
-        .form-check
-          = f.check_box :remember_me, class: 'form-check-input'
-          = f.label :remember_me, class: 'col-check-label'
-    = render "devise/shared/links"
+          span.mt-1.small
+            = link_to t('devise.passwords.new.forgot_your_password'), new_password_path(resource_name)
+        .mb-4
+          = f.submit t('ui.sign_in'), class: "btn btn-primary w-100"
+        .text-center.mb-2
+          .form-check.d-inline-block
+            = f.check_box :remember_me, class: 'form-check-input'
+            = f.label :remember_me, class: 'form-check-label'

@@ -16,3 +16,19 @@
 .wrapper {
   margin-top: $header-height;
 }
+
+.guest-wrapper {
+  background-color: rgba(0, 0, 40, 0.4);
+  background-image: url('../images/landing_background.png');
+  background-size: cover;
+  min-height: calc(100vh - (#{$header-height} + #{$footer-height}));
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.absolute-center-on-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
+}

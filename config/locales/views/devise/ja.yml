@@ -1,0 +1,12 @@
+ja:
+  devise:
+    registrations:
+      new:
+        title: Nuitaに登録する
+        form:
+          title: Nuitaに登録する
+    sessions:
+      new:
+        title: ログイン
+        form:
+          title: おかえりなさい！

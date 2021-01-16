@@ -11,7 +11,7 @@ ja:
       users: ユーザー
     attributes:
       user:
-        handle_name: "ハンドルネーム"
+        handle_name: "名前"
         screen_name: "ID"
         password: "パスワード"
         profile: "プロフィール文"
