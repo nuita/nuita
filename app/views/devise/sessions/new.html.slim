@@ -9,13 +9,14 @@
         .mb-2
           = f.label :email, class: 'form-label'
           = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
-        .mb-4
+        .mb-2
           = f.label :password, class: 'form-label'
           = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+          span.mt-1.small
+            = link_to t('devise.passwords.new.forgot_your_password'), new_password_path(resource_name)
         .mb-4
           = f.submit t('ui.sign_in'), class: "btn btn-primary w-100"
-        - if devise_mapping.rememberable?
-          .text-center
-            .form-check.d-inline-block
-              = f.check_box :remember_me, class: 'form-check-input'
-              = f.label :remember_me, class: 'form-check-label'
+        .text-center.mb-2
+          .form-check.d-inline-block
+            = f.check_box :remember_me, class: 'form-check-input'
+            = f.label :remember_me, class: 'form-check-label'
