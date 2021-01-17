@@ -6,4 +6,4 @@
       = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control", placeholder: t('.statement.placeholder'), value: params[:text]
     = f.hidden_field :did_at, value: @nweet.did_at
     div
-      = f.submit "投稿する！", class: "btn btn-nweet btn-submit-nweet my-2"
+      = f.submit t('helpers.submit.post'), class: "btn btn-nweet btn-submit-nweet my-2"
