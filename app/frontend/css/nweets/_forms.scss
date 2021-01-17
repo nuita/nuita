@@ -1,8 +1,10 @@
 $nweet-home-btn-height: 38px;
 
 .nweet-form {
-  @extend .mx-0;
+  @extend .mx-1;
   @extend .my-4;
+
+  box-sizing: border-box;
 }
 
 .btn-nweet-sizing {
@@ -27,10 +29,6 @@ $nweet-home-btn-height: 38px;
   height: $nweet-home-btn-height;
 }
 
-.new-nweet-form {
-  @extend .mx-2;
-}
-
 .new-nweet-form-top {
   @extend .btn;
   @extend .btn-nweet-home;
@@ -45,7 +43,6 @@ $nweet-home-btn-height: 38px;
 }
 
 .new-nweet-form-bottom {
-  box-sizing: border-box;
   border: 2px solid $secondary-font-color;
   border-radius: 0 0 #{$nweet-home-btn-height / 2} #{$nweet-home-btn-height / 2};
 }
