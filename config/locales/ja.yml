@@ -224,5 +224,6 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   ui:
+    nweet: ヌイート
     sign_in: ログイン
     sign_up: 新規登録
