@@ -18,15 +18,10 @@ a {
   }
 }
 
-.btn, .form-control {
+input, textarea {
   &:focus {
-    box-shadow: none;
-    border-color: $brand-color;
+    outline: none;
   }
-}
-
-textarea {
-  resize: none;
 }
 
 .btn-primary {
@@ -36,13 +31,5 @@ textarea {
 .btn-outline-primary {
   &:hover, &:focus {
     color: white !important;
-  }
-}
-
-.col-main {
-  padding: 0;
-  @include media-breakpoint-up(md) {
-    padding-right: calc(var(--bs-gutter-x) / 2);
-    padding-left: calc(var(--bs-gutter-x) / 2);
   }
 }

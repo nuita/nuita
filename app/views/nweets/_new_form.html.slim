@@ -1,9 +1,8 @@
-= form_with(model: @nweet, html: {class: 'nweet-form'}, local: true) do |f|
-  .new-nweet-form-top
-    = t('ui.nweet')
-  .new-nweet-form-bottom.px-2
-    .my-2
-      = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control", placeholder: t('.statement.placeholder'), value: params[:text]
-    = f.hidden_field :did_at, value: @nweet.did_at
-    div
-      = f.submit t('helpers.submit.post'), class: "btn btn-nweet btn-submit-nweet my-2"
+= form_with(model: @nweet, html: {class: 'nuita-form'}, local: true) do |f|
+  .row.mx-2.mx-md-0
+    = f.button "おめでとうございます🎉🎉🎉🎉🎉", disabled: true, class: "btn btn-block btn-nuita mt-0"
+  .row.mx-2.mx-md-0
+    = f.text_area :statement, maxlength: 100, rows: 2, class: "statement-textbox form-control col", placeholder: '感想・使用したオカズを入力', value: params[:text]
+  = f.hidden_field :did_at, value: @nweet.did_at
+  .row.mx-2.mx-md-0
+    = f.submit "投稿する！", class: "btn btn-block btn-nuita btn-edit wider-marginbottom"

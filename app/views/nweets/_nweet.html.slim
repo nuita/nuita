@@ -16,7 +16,7 @@ li.nweet id="nweet#{nweet.url_digest}"
       - if nweet.links.any?
         = render 'cards/horizontal', link: nweet.links.first
       - if nweet.statement?
-        .nweet-statement = text_url_to_link(nweet.statement).html_safe
+        .quote = text_url_to_link(nweet.statement).html_safe
       .nweet-bottom
         .float-left
           - if user_signed_in?
