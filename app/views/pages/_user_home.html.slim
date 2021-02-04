@@ -1,12 +1,12 @@
 - provide(:title, 'ホーム')
 
-.container-md
+.container-fluid
   .row
     .d-none.d-md-block.col-md-3
       = render 'users/user_info', {user: current_user}
-    .col.col-main
-      #nweetFormWrapper
+    .col.p-0
+      .wider-margintop
         = render 'nweets/home_form'
-      = render 'pages/timeline'
+        = render 'pages/timeline'
     .d-none.d-lg-block.col-lg-3
       = render 'pages/recommend'

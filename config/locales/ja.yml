@@ -163,7 +163,6 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
-      post: 投稿する
   number:
     currency:
       format:
@@ -225,6 +224,5 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   ui:
-    nweet: ヌイート
     sign_in: ログイン
     sign_up: 新規登録
