@@ -63,6 +63,12 @@ class Nweet < ApplicationRecord
     end
   end
 
+  def after_liked
+    featured = links.any? && links.first.featurable?
+
+    update(latest_liked_time: Time.zone.now, featured: featured)
+  end
+
   class << self
     def global_feed
       Nweet.all
