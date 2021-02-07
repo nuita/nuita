@@ -38,9 +38,6 @@ class Nweet < ApplicationRecord
     end
   end
 
-  def create
-  end
-
   def to_param
     url_digest
   end
