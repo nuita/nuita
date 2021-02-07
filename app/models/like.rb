@@ -12,4 +12,8 @@ class Like < ApplicationRecord
 
     nweet.after_liked
   end
+
+  after_destroy do
+    nweet.after_unliked
+  end
 end

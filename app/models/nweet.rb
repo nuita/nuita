@@ -69,6 +69,10 @@ class Nweet < ApplicationRecord
     update(latest_liked_time: Time.zone.now, featured: featured)
   end
 
+  def after_unliked
+    update(featured: false) if likes.count == 0
+  end
+
   class << self
     def global_feed
       Nweet.all
