@@ -25,13 +25,15 @@ class Nweet < ApplicationRecord
   self.per_page = 10
 
   def past?
-    if did_at # did at is not nil
-      errors.add(:did_at, ' is not in the past') unless did_at <= Time.zone.now
+    if did_at && did_at > Time.zone.now
+      errors.add(:did_at, ' is not in the past')
     end
   end
 
   def has_enough_interval?
-    if user.nweets.count != 0 && did_at && did_at < user.nweets.first.did_at + 3.minutes
+    return if user.nweets.count == 0 || did_at.nil?
+
+    if did_at < user.nweets.first.did_at + 3.minutes
       errors.add(:did_at, ' has not enough interval')
     end
   end
@@ -47,7 +49,7 @@ class Nweet < ApplicationRecord
     if statement
       URI.extract(statement, ['http', 'https']).uniq.each do |url|
         links << Link.fetch_from(url)
-      rescue
+      rescue StandardError
         logger.debug "Creating Link for #{url} has failed."
       end
     end
