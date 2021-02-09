@@ -53,6 +53,8 @@ class Link < ApplicationRecord
   end
 
   def legal?
+    return false unless resolver
+
     r = resolver.match(/Panchira::([a-zA-Z]*)Resolver/).to_a[1]
     UNSAFE_RESOLVERS.exclude?(r)
   end
@@ -91,7 +93,7 @@ class Link < ApplicationRecord
         image_width: panchira.image.width,
         image_height: panchira.image.height,
         url: panchira.canonical_url,
-        resolver: panchira.resolver
+        resolver: panchira.resolver || 'Panchira::Resolver'
       }
     end
   end
