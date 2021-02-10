@@ -64,12 +64,6 @@ class Link < ApplicationRecord
   end
 
   class << self
-    def recommend(displayable: false)
-      link = displayable ? Link.displayable : Link.all
-
-      link.offset(rand(link.count)).first
-    end
-
     # URLを正規化してfind_or_initialize_by + fetchしてくる
     def fetch_from(url)
       panchira = Panchira.fetch(url)
