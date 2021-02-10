@@ -77,6 +77,12 @@ class Nweet < ApplicationRecord
     def global_feed
       Nweet.all
     end
+
+    def recommend
+      # 将来十分recommend溜まった時点でcountの確認なくす
+      count = rand([100, Nweet.where(featured: true).count].min)
+      Nweet.where(featured: true).offset(count).first
+    end
   end
 
   private
