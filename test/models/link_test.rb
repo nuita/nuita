@@ -73,13 +73,18 @@ class LinkTest < ActiveSupport::TestCase
     link = Link.fetch_from('http://dokidokivisual.com/img/top/main_img.jpg')
     assert_not link.legal?
 
+    # 画像がないからlegalだけどfeaturableじゃない
+    link = Link.fetch_from('https://novel18.syosetu.com/n6323er/')
+    assert link.legal?
+    assert_not link.featurable?
+
     # og:imageつきの良いやつ
     link = Link.fetch_from('https://www.dlsite.com/maniax/work/=/product_id/RJ315784.html')
     assert link.legal?
     assert link.featurable?
 
-    # 画像がないからlegalだけどfeaturableじゃない
-    link = Link.fetch_from('https://novel18.syosetu.com/n6323er/')
+    # R-18Gとかcensored_by_defaultなタグつけるとダメになる
+    link.set_tag('R-18G')
     assert link.legal?
     assert_not link.featurable?
   end

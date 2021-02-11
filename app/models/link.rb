@@ -60,7 +60,7 @@ class Link < ApplicationRecord
   end
 
   def featurable?
-    legal? && image.present?
+    legal? && image.present? && !tags.exists?(censored_by_default: true)
   end
 
   class << self
