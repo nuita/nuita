@@ -79,10 +79,10 @@ class Link < ApplicationRecord
     # Convert PanchiraResult to Link attributes
     def hash_panchira(panchira)
       {
-        title: panchira.title,
-        author: panchira.author,
-        circle: panchira.circle,
-        description: panchira.description,
+        title: panchira.title&.truncate(100),
+        author: panchira.author&.truncate(50),
+        circle: panchira.circle&.truncate(50),
+        description: panchira.description&.truncate(500),
         image: panchira.image.url,
         image_width: panchira.image.width,
         image_height: panchira.image.height,
