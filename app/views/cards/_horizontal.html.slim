@@ -18,6 +18,6 @@ div id="collapseHorizontal#{link.id}" class="#{'collapse' if tags.any?}"
               = icon 'fas', 'users'
               span.pl-1.link-circle = link.circle
       - if link.description
-        p.card-text = link.description
+        p.card-text = link.description.truncate(200)
   - unless local_assigns[:genre_hidden?]
     = render 'cards/tags', link: link
