@@ -14,6 +14,9 @@ class Link < ApplicationRecord
 
   scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:tags).where(tags: {censored_by_default: nil}) }
 
+  # Resolvers where nweets might contain illegal contents.
+  UNSAFE_RESOLVERS = ['', 'Image'].freeze
+
   # Should be used only in link_task:refetch_all
   def refetch
     panchira = Panchira.fetch(url)
@@ -49,13 +52,18 @@ class Link < ApplicationRecord
     link_tags.destroy_all
   end
 
+  def legal?
+    return false unless resolver
+
+    r = resolver.match(/Panchira::([a-zA-Z]*)Resolver/).to_a[1]
+    UNSAFE_RESOLVERS.exclude?(r)
+  end
+
+  def featurable?
+    legal? && image.present? && !tags.exists?(censored_by_default: true)
+  end
+
   class << self
-    def recommend(displayable: false)
-      link = displayable ? Link.displayable : Link.all
-
-      link.offset(rand(link.count)).first
-    end
-
     # URLを正規化してfind_or_initialize_by + fetchしてくる
     def fetch_from(url)
       panchira = Panchira.fetch(url)
@@ -63,7 +71,7 @@ class Link < ApplicationRecord
       link = Link.find_or_initialize_by(url: canonical_url)
 
       link.update(hash_panchira(panchira))
-      link.set_tags(panchira.tags, destroy_existing_tags: false)
+      link.set_tags(panchira.tags, destroy_existing_tags: false) if panchira.tags
 
       link
     end
@@ -78,7 +86,8 @@ class Link < ApplicationRecord
         image: panchira.image.url,
         image_width: panchira.image.width,
         image_height: panchira.image.height,
-        url: panchira.canonical_url
+        url: panchira.canonical_url,
+        resolver: panchira.resolver || 'Panchira::Resolver'
       }
     end
   end

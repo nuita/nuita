@@ -28,6 +28,9 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Naming/AccessorMethodName:
+  Enabled: false
+
 # has_... は許す (Railsすらhas_manyとかあるし)
 Naming/PredicateName:
   ForbiddenPrefixes: is_, have_

@@ -63,9 +63,25 @@ class Nweet < ApplicationRecord
     end
   end
 
+  def after_liked
+    featured = links.any? && links.first.featurable?
+
+    update(latest_liked_time: Time.zone.now, featured: featured)
+  end
+
+  def after_unliked
+    update(featured: false) if likes.count == 0
+  end
+
   class << self
     def global_feed
       Nweet.all
+    end
+
+    def recommend
+      # 将来十分recommend溜まった時点でcountの確認なくす
+      count = rand([100, Nweet.where(featured: true).count].min)
+      Nweet.where(featured: true).offset(count).first
     end
   end
 
