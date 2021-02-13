@@ -9,7 +9,7 @@ services:
     environment:
       BUNDLE_PATH: vendor/bundle
       MYSQL_HOST: db
-      HOST: 0.0.0.0
+      BINDING: 0.0.0.0
       IMAGEPROXY_KEY: ${IMAGEPROXY_KEY:-secret}
       IMAGEPROXY_HOST: ${IMAGEPROXY_HOST:-http://localhost:8080}
     depends_on:
