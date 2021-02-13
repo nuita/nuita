@@ -21,27 +21,29 @@ function setTopButton() {
 
 function setNavButton() {
   const pathname: string = location.pathname;
-  const userNavItems = document.getElementsByClassName("user-home-nav");
+  const userNavItems = document.getElementsByClassName("user-nav-item");
   if (userNavItems.length === 0) {
     return;
   }
-
-  const homeNav = document.getElementById("homeNav");
-  const exploreNav = document.getElementById("exploreNav")
-  const notificationsNav = document.getElementById("notificationsNav");
 
   Array.from(userNavItems).forEach(e => {
     e.classList.remove("active")
   });
 
-  if (pathname == "/") {
-    homeNav.classList.add("active");
-  } else if (pathname == "/explore") {
-    exploreNav.classList.add("active");
-  } else if (pathname == "/notifications") {
-    notificationsNav.classList.add("active");
-  } else {
-    notificationsNav.classList.remove("active");
+  let navToSetActive: HTMLElement;
+  switch (pathname) {
+    case "/":
+      navToSetActive = document.getElementById("homeNav");
+      break;
+    case "/explore":
+      navToSetActive = document.getElementById("exploreNav");
+      break;
+    case "/notifications":
+      navToSetActive = document.getElementById("notificationsNav");
+      break;
+  }
+  if (navToSetActive !== null) {
+    navToSetActive.classList.add('active');
   }
 }
 
