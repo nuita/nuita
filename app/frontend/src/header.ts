@@ -1,38 +1,47 @@
 // ロゴを押すとトップへ戻る
 export function setHeaderButton() {
-  let topButton = document.getElementById('navbarBrandIcon');
+  setTopButton();
+  setNavButton();
+}
 
-  if (topButton) {
-    topButton.addEventListener('click', (event): void => {
-      event.preventDefault();
-      document.body.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    })
+function setTopButton() {
+  const topButton = document.getElementById('navbarBrandIcon');
+  if (topButton === null) {
+    return;
   }
 
-  let pathname: string = location.pathname;
-  let userNavItems = document.getElementsByClassName("user-home-nav")
-
-  if (userNavItems) {
-    let homeNav = document.getElementById("homeNav");
-    let exploreNav = document.getElementById("exploreNav")
-    let notificationsNav = document.getElementById("notificationsNav");
-
-    Array.from(userNavItems).forEach(e => {
-      e.classList.remove("active")
+  topButton.addEventListener('click', (event): void => {
+    event.preventDefault();
+    document.body.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
+  });
+}
 
-    if (pathname == "/") {
-      homeNav.classList.add("active");
-    } else if (pathname == "/explore") {
-      exploreNav.classList.add("active");
-    } else if (pathname == "/notifications") {
-      notificationsNav.classList.add("active");
-    } else {
-      notificationsNav.classList.remove("active");
-    }
+function setNavButton() {
+  const pathname: string = location.pathname;
+  const userNavItems = document.getElementsByClassName("user-home-nav");
+  if (userNavItems.length === 0) {
+    return;
+  }
+
+  const homeNav = document.getElementById("homeNav");
+  const exploreNav = document.getElementById("exploreNav")
+  const notificationsNav = document.getElementById("notificationsNav");
+
+  Array.from(userNavItems).forEach(e => {
+    e.classList.remove("active")
+  });
+
+  if (pathname == "/") {
+    homeNav.classList.add("active");
+  } else if (pathname == "/explore") {
+    exploreNav.classList.add("active");
+  } else if (pathname == "/notifications") {
+    notificationsNav.classList.add("active");
+  } else {
+    notificationsNav.classList.remove("active");
   }
 }
 
@@ -42,11 +51,14 @@ export function hideHeaderWhileScrolling() {
     return;
   }
 
-  let navbar = document.getElementById("NavbarScrollable");
-  let lastOffset = 0;
+  const navbar = document.getElementById("NavbarScrollable");
+  if (navbar === null) {
+    return;
+  }
 
+  let lastOffset = 0;
   window.addEventListener("scroll", () => {
-    let nowOffset = window.pageYOffset;
+    const nowOffset = window.pageYOffset;
 
     if (nowOffset > 0 && nowOffset >= lastOffset) {
       navbar.classList.add("navbar-faded-out");
