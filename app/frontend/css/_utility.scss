@@ -17,13 +17,23 @@
   margin-top: $header-height;
 }
 
+.fullsize-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  padding-top: $header-height;
+}
+
 .guest-wrapper {
+  @extend .fullsize-wrapper;
+
   background-color: rgba(0, 0, 40, 0.4);
   background-image: url('../images/landing_background.png');
   background-size: cover;
-  min-height: calc(100vh - (#{$header-height} + #{$footer-height}));
   padding-bottom: 2rem;
-  width: 100%;
 }
 
 .absolute-center-on-wrapper {

@@ -1,12 +1,13 @@
-.container
-  ul.nav.mode-nav.ml-0
-    li.nav_item
-      = link_to root_url do
-        = image_tag image_pack_path('logo_color.svg'), height: '48px'
-  ul.nav.ml-auto
-    li.nav-item
-      = link_to new_user_session_path, class: 'nav-link pr-1' do
-        .btn.link-brand = t 'ui.sign_in'
-    li.nav-item
-      = link_to new_user_registration_path, class: 'nav-link px-0' do
-        .btn.btn-primary = t 'ui.sign_up'
+nav.navbar.navbar-expand-md.navbar-light.fixed-top.landing-navbar
+  .container-md
+    ul.nav.ml-0
+      li.nav-item.navbar-guest-brand
+        = link_to root_url do
+          = image_tag image_pack_path('logo_white.svg'), height: '48px'
+    ul.nav.ml-auto
+      li.nav-item
+        = link_to new_user_session_path, class: 'nav-link' do
+          .btn.navbar-btn-landing.navbar-btn-signin = t 'ui.sign_in'
+      li.nav-item
+        = link_to new_user_registration_path, class: 'nav-link px-0' do
+          .btn.navbar-btn-landing.navbar-btn-signup = t 'ui.sign_up'

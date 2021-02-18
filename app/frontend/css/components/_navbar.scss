@@ -1,9 +1,40 @@
 .navbar {
-  background-color: $header-background-color;
   height: $header-height;
   align-content: center;
 }
 
+/* landing */
+.user-navbar {
+  background-color: $header-background-color;
+}
+
+.landing-navbar {
+  a {
+    color: #fff;
+  }
+
+  .nav-link {
+    padding: 0.5rem;
+  }
+}
+
+.navbar-btn-signup {
+  border-color: white;
+}
+
+.navbar-btn-landing {
+  color: white;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &:active {
+    color: white;
+  }
+}
+
+/* user */
 .mode-nav {
   padding-left: 0.25rem;
 

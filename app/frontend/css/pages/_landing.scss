@@ -1,4 +1,6 @@
 .landing-wrapper {
+  padding-top: $header-height;
+
   @include media-breakpoint-up(md) {
     padding-top: 80px;
   }

@@ -1,25 +1,26 @@
-.container
-  ul.nav.mode-nav.ml-0.user-home-nav
-    li.nav-item.user-nav-item#homeNav
-      = link_to root_url do
-        = bi 'house-fill'
-    - unless current_user.global?
-      li.nav-item.user-nav-item#exploreNav
-        = link_to explore_path do
-          = bi 'globe'
-    li.nav-item.user-nav-item#notificationsNav
-      = link_to notifications_path do
-        = bi 'bell-fill'
-        / ここには"notification.ts"が動いています！
-        span.ml-1.badge.badge-pill.d-none#badgeUnreadNotifications
-  = link_to '#', class: "absolute-center", id: "navbarBrandIcon" do
-    = image_tag image_pack_path('logomark_color.svg'), height: '48px'
-  ul.nav.ml-auto
-    li.nav-item.dropdown
-      a.nav-link.dropdown-toggle#navbarDropdownMenuLink href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
-        = icon_for(current_user, size: 35)
-      ul.dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
-        li.dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
-        li.dropdown-item = link_to t('.edit_profile'), edit_user_registration_path, class: 'nav-link'
-        li.dropdown-item = link_to t('.settings'), settings_path, class: 'nav-link'
-        li.dropdown-item = link_to t('.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
+nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrollable"
+  .container
+    ul.nav.mode-nav.ml-0.user-home-nav
+      li.nav-item.user-nav-item#homeNav
+        = link_to root_url do
+          = bi 'house-fill'
+      - unless current_user.global?
+        li.nav-item.user-nav-item#exploreNav
+          = link_to explore_path do
+            = bi 'globe'
+      li.nav-item.user-nav-item#notificationsNav
+        = link_to notifications_path do
+          = bi 'bell-fill'
+          / ここには"notification.ts"が動いています！
+          span.ml-1.badge.badge-pill.d-none#badgeUnreadNotifications
+    = link_to '#', class: "absolute-center", id: "navbarBrandIcon" do
+      = image_tag image_pack_path('logomark_color.svg'), height: '48px'
+    ul.nav.ml-auto
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle#navbarDropdownMenuLink href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
+          = icon_for(current_user, size: 35)
+        ul.dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
+          li.dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
+          li.dropdown-item = link_to t('.edit_profile'), edit_user_registration_path, class: 'nav-link'
+          li.dropdown-item = link_to t('.settings'), settings_path, class: 'nav-link'
+          li.dropdown-item = link_to t('.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
