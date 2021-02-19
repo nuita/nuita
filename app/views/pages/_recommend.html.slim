@@ -1,10 +1,7 @@
 section.side-section
   h5.section-title
-    | ランダムえっち
+    | おすすめの投稿
     button#buttonRenewRecommend.btn.btn-sm.btn-outline-secondary.btn-brandcolor-hover.py-0.px-1
       = icon 'fas', 'sync-alt'
-    button.btn.btn-sm.btn-outline-secondary.btn-brandcolor-hover.py-0.px-1 data-toggle="tooltip" data-placement="top" title="全ユーザーのヌイートからランダムで1つオカズが選ばれます。射精した本人と紐づくことはありません。"
-      = icon 'fas', 'question'
-  - displayable = local_assigns[:landing?] # ユーザーがラジカル検閲要求するようになったらこのコードは変える
-  - if link = Link.recommend(displayable: displayable)
+  - if link = Nweet.recommend.links.first
     #recommendCard = render 'cards/horizontal', link: link, genre_hidden?: local_assigns[:landing?]

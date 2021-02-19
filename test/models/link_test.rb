@@ -10,6 +10,7 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 'HikakinTV', @link.title
     assert_match 'ヒカキン', @link.description
     assert_not_empty @link.image
+    assert_equal 'Panchira::Resolver', @link.resolver
 
     # instagram
     url = 'https://www.instagram.com/'
@@ -61,5 +62,30 @@ class LinkTest < ActiveSupport::TestCase
 
     link.refetch
     assert link.tags.exists?(name: 'R-18G')
+  end
+
+  test 'certain platform is legal and featurable' do
+    # 汎用Resolverだとだめ
+    link = Link.fetch_from('https://nuita.net')
+    assert_not link.legal?
+
+    # 画像直リンもおすすめには出さない。個人的にはおすすめです
+    link = Link.fetch_from('http://dokidokivisual.com/img/top/main_img.jpg')
+    assert_not link.legal?
+
+    # 画像がないからlegalだけどfeaturableじゃない
+    link = Link.fetch_from('https://novel18.syosetu.com/n6323er/')
+    assert link.legal?
+    assert_not link.featurable?
+
+    # og:imageつきの良いやつ
+    link = Link.fetch_from('https://www.dlsite.com/maniax/work/=/product_id/RJ315784.html')
+    assert link.legal?
+    assert link.featurable?
+
+    # R-18Gとかcensored_by_defaultなタグつけるとダメになる
+    link.set_tag('R-18G')
+    assert link.legal?
+    assert_not link.featurable?
   end
 end

@@ -42,3 +42,10 @@ kemo:
   user: emiya
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: 'https://twitter.com/aoi_nishimata/status/831825876899635200'
+
+featured:
+  did_at: <%= 22.hours.ago.utc %>
+  user: emiya
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: 'https://www.dlsite.com/books/work/=/product_id/BJ280495.html'
+  featured: true

@@ -28,6 +28,13 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Naming/AccessorMethodName:
+  Enabled: false
+
+# has_... は許す (Railsすらhas_manyとかあるし)
+Naming/PredicateName:
+  ForbiddenPrefixes: is_, have_
+
 # enumは配列で定義したほうが簡潔じゃない？
 Rails/EnumHash:
   Enabled: false
@@ -49,6 +56,10 @@ Style/EmptyMethod:
 
 # もうRuby3になるからいいよね……？
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 気持ち的にGuardじゃないときがある
+Style/GuardClause:
   Enabled: false
 
 # 気持ち的にelsifじゃなくて入れ子なときがある
