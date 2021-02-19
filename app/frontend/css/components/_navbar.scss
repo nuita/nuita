@@ -1,13 +1,10 @@
 .navbar {
   height: $header-height;
   align-content: center;
+  z-index: 1;
 }
 
 /* landing */
-.user-navbar {
-  background-color: $header-background-color;
-}
-
 .landing-navbar {
   a {
     color: #fff;
@@ -35,6 +32,10 @@
 }
 
 /* user */
+.user-navbar {
+  background-color: $header-background-color;
+}
+
 .mode-nav {
   padding-left: 0.25rem;
 
