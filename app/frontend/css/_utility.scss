@@ -27,18 +27,15 @@
   padding-top: $header-height;
 }
 
-.guest-wrapper {
-  @extend .fullsize-wrapper;
-
-  background-color: rgba(0, 0, 40, 0.4);
-  background-image: url('../images/landing_background.png');
-  background-size: cover;
-  padding-bottom: 2rem;
-}
-
 .absolute-center-on-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
+}
+
+// bootstrap iconが微妙に下にズレている気がするので修正する
+.search-icon {
+  position: relative;
+  top: -0.1em;
 }

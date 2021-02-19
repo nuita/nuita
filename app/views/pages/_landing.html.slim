@@ -1,23 +1,14 @@
 - provide(:title, t('.title'))
 
-.guest-wrapper.landing-wrapper
+.landing-wrapper
   .container.landing-container
     .row
-      .col.col-md-8.col-landing-lead
-        h1.my-4.mt-md-0 賢者のためのSNS。
-        .lead 好みの作品を見つけたとき。
-        .lead 新たな世界の扉を開いたとき。
-        .lead 誰かに言うには恥ずかしいけど、
-        .lead 一人で抱え込むのは、もったいない。
-        .lead
-          | さあ、あなたも
-          span.logo-font.font-weight-bold Nuita
-          | で
-        .lead
-          span.fw-bold 射精報告
-          | をはじめよう。
-        .lead.mt-4
-          = link_to t('ui.sign_up'), new_user_registration_path, class: 'btn btn-primary btn-lg'
-      .col-md-4.mt-4.mt-md-0
-          = render 'pages/recommend', landing?: true
-/ TODO: 登録フォームをhome内右端に作る
+      .col
+        = form_with url: '#', remote: true do |f|
+          .input-group.my-3
+            = f.search_field :query, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
+            .input-group-append
+              = f.button bi('search', 'search-icon'), type: :submit, class: 'btn btn-primary'
+    .row
+      .col
+        = render 'pages/recommend', landing?: true
