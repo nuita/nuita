@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
     def render_nweets(nweets, query)
       nweet_limit = 10
-      
+
       if params[:before]
         date = Time.zone.at(params[:before].to_i)
         @feed_items = nweets.relations_included.where(query, date).limit(nweet_limit)
