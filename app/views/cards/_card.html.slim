@@ -1,6 +1,7 @@
+- link = nweet.links.first
 - tags = censored_tags(link)
-= render 'cards/collapse_button', link: link, tags: tags
 
+= render 'cards/collapse_button', link: link, tags: tags
 div id="collapseCard#{link.id}" class="#{'collapse' if tags.any?}"
   = link_to link.url, target: '_blank', class: 'card my-1' do
     - if link.image?
@@ -11,5 +12,6 @@ div id="collapseCard#{link.id}" class="#{'collapse' if tags.any?}"
         h6.mb-2.card-subtitle.text-muted = subtitle
       - if link.description
         p.card-text = link.description.truncate(200)
-  - unless local_assigns[:genre_hidden?]
+  - unless local_assigns[:hide_genres?]
     = render 'cards/tags', link: link
+/ ここにヌイートの情報が入る
