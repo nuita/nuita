@@ -17,6 +17,17 @@
   }
 }
 
+.landing-search-form-input {
+  margin-top: 1rem;
+  margin-bottom: calc(1rem + 8px); // ヘッダーの余白分との調整
+}
+
+.landing-recommendation {
+  .btn {
+    color: white;
+  }
+}
+
 ul.popular-tags-list {
   padding: 0;
 

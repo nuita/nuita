@@ -1,25 +1,25 @@
 - provide(:title, t('.title'))
 
 .landing-wrapper
-  .container.landing-container
+  .container-md.landing-container
     .row
       .col
         = form_with url: '#', remote: true do |f|
-          .input-group.my-3
+          .input-group.landing-search-form-input
             = f.search_field :query, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
             .input-group-append
               = f.button bi('search', 'search-icon'), type: :submit, class: 'btn btn-primary'
-    #landingSearchResult
-      .row
-        .col
-          h6 = t('.search_with_popular_tags')
-          ul.popular-tags-list
-            - @tags.pluck(:name).each do |tag_name|
-              li.btn.btn-sm.btn-outline-white.rounded-pill
-                span.small = icon 'fas', 'hashtag'
-                span.pr-1 = tag_name
-      .row
-        .col
+    .row
+      .col
+        h6.mb-3 = t('.search_with_popular_tags')
+        ul.popular-tags-list.mb-2
+          - @tags.pluck(:name).each do |tag_name|
+            li.btn.btn-sm.btn-outline-white.rounded-pill
+              span.small = icon 'fas', 'hashtag'
+              span.pr-1 = tag_name
+    .row
+      .col
+        .landing-recommendation
           = render 'pages/recommend', landing?: true
 
   = render 'layouts/guest_footer'
