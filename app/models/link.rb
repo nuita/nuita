@@ -12,8 +12,6 @@ class Link < ApplicationRecord
 
   validates :url, url: true
 
-  scope :displayable, -> { where.not(image: [nil, '']).left_outer_joins(:tags).where(tags: {censored_by_default: nil}) }
-
   # Resolvers where nweets might contain illegal contents.
   UNSAFE_RESOLVERS = ['', 'Image'].freeze
 
