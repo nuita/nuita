@@ -20,7 +20,7 @@ class Nweet < ApplicationRecord
 
   default_scope -> { order(did_at: :desc) }
 
-  scope :included, -> { includes(:user, :nweet_links, links: :tags) }
+  scope :relations_included, -> { includes(:user, :nweet_links, links: :tags) }
 
   self.per_page = 10
 
