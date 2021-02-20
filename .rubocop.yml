@@ -28,6 +28,10 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+# =の数間違えるの言うほどあるか？
+Lint/AssignmentInCondition:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 

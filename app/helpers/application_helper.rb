@@ -64,4 +64,12 @@ module ApplicationHelper
   def bi(name, classname = '')
     tag.i(nil, class: "bi-#{name} #{classname}")
   end
+
+  def author_info(link)
+    if link.author && link.circle
+      "#{link.author} (#{link.circle})"
+    elsif info = (link.author || link.circle)
+      info.to_s
+    end
+  end
 end
