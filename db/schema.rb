@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_153957) do
+ActiveRecord::Schema.define(version: 2021_02_20_030222) do
 
   create_table "badges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_02_07_153957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description", limit: 200
+    t.boolean "featured", default: false, null: false
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
