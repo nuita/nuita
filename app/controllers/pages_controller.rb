@@ -5,6 +5,8 @@ class PagesController < ApplicationController
       @timeline = true
 
       render_nweets(current_user.timeline, 'did_at < ?')
+    else
+      @tags = Tag.where(featured: true)
     end
   end
 

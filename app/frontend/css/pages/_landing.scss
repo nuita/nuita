@@ -4,7 +4,6 @@
   background-color: rgba(0, 0, 40, 0.4);
   background-image: url('../images/landing_background.png');
   background-size: cover;
-  padding-bottom: 2rem;
 }
 
 .landing-container {
@@ -15,5 +14,13 @@
   .lead {
     font-size: large;
     margin-bottom: 0.5rem;
+  }
+}
+
+ul.popular-tags-list {
+  padding: 0;
+
+  li {
+    margin-right: 0.25rem;
   }
 }

@@ -5,3 +5,4 @@ ja:
       search:
         query:
           placeholder: Nuitaでオカズを探す
+      search_with_popular_tags: 人気のタグで検索

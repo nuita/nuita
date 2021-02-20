@@ -9,8 +9,17 @@
             = f.search_field :query, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
             .input-group-append
               = f.button bi('search', 'search-icon'), type: :submit, class: 'btn btn-primary'
-    .row
-      .col
-        = render 'pages/recommend', landing?: true
+    #landingSearchResult
+      .row
+        .col
+          h6 = t('.search_with_popular_tags')
+          ul.popular-tags-list
+            - @tags.pluck(:name).each do |tag_name|
+              li.badge.bg-primary
+                span.small = icon 'fas', 'hashtag'
+                span.pr-1 = tag_name
+      .row
+        .col
+          = render 'pages/recommend', landing?: true
 
-  = render 'layouts/footer'
+  = render 'layouts/guest_footer'
