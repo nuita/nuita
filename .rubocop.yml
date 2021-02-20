@@ -39,6 +39,10 @@ Naming/PredicateName:
 Rails/EnumHash:
   Enabled: false
 
+# update_allに関しては速度上のメリットがあるので許す
+Rails/SkipsModelValidations:
+  AllowedMethods: update_all
+
 # 明らかに1000件以下のときはeachでよくない？
 Rails/FindEach:
   Enabled: false
