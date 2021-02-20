@@ -5,7 +5,7 @@ export default function setRecommendButton() {
   }
 
   recommendButton.addEventListener("click", () => {
-    fetch('/links/recommend')
+    fetch('/nweets/recommend')
       .then((response) => {
         return response.text();
       })
