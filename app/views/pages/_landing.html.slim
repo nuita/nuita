@@ -15,7 +15,7 @@
           h6 = t('.search_with_popular_tags')
           ul.popular-tags-list
             - @tags.pluck(:name).each do |tag_name|
-              li.badge.bg-primary
+              li.btn.btn-sm.btn-outline-white.rounded-pill
                 span.small = icon 'fas', 'hashtag'
                 span.pr-1 = tag_name
       .row

@@ -9,6 +9,16 @@
   text-decoration: none;
 }
 
+.btn-outline-white {
+  @include button-outline-variant(#fff);
+
+  &:hover {
+    border-color: $brand-color;
+    background-color: $brand-color;
+    color: white;
+  }
+}
+
 .link-brand {
   @extend a;
 }
