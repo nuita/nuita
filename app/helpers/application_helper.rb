@@ -66,9 +66,13 @@ module ApplicationHelper
   end
 
   def author_info(link)
-    if link.author && link.circle
+    # 空文字の場合はauthor, circleにnilが入るようにする
+    author = link.author if link.author.present?
+    circle = link.circle if link.circle.present?
+
+    if author && circle
       "#{link.author} (#{link.circle})"
-    elsif info = (link.author || link.circle)
+    elsif info = (author || circle)
       info.to_s
     end
   end
