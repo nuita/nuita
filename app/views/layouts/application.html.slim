@@ -31,7 +31,6 @@ html
       = yield
 
     / = debug(params) if Rails.env.development?
-    = render 'layouts/footer'
 
     - if flash.any?
       - flash.each do |key, value|
