@@ -12,6 +12,15 @@ div id="collapseCard#{link.id}" class="#{'collapse' if tags.any?}"
         h6.mb-2.card-subtitle.text-muted = subtitle
       - if link.description
         p.card-text = link.description.truncate(200)
-  - unless local_assigns[:hide_genres?]
-    = render 'cards/tags', link: link
-/ ここにヌイートの情報が入る
+  = render 'cards/tags', link: link
+.sub-card-info 
+  .sub-card-grid
+    .sub-card-user-icon
+      = link_to nweet.user do 
+        = icon_for(nweet.user, size: 25)
+    .sub-card-user-right
+      strong = link_to nweet.user.handle_name, nweet.user
+      = t('.is_nweeting_on_this_link')
+    .sub-card-statement-bar
+    .sub-card-statement-text
+      = text_url_to_link(nweet.statement).html_safe

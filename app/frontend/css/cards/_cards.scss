@@ -13,3 +13,21 @@ a.card {
 .tags-list-item {
   margin: 0 0.25rem 0.25rem 0;
 }
+
+.sub-card-grid {
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  column-gap: 0.25rem;
+}
+
+.sub-card-statement-bar {
+  width: 0px;
+  margin: 0 auto;
+  margin-top: 4px;
+  padding: 2px 0;
+  border: 1px solid $brand-color;
+}
+
+.sub-card-statement-text {
+  word-break: break-all;
+}
