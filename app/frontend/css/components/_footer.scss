@@ -1,8 +1,7 @@
 footer {
-  margin-top: 1rem;
-  padding: 1rem 0;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
+  height: $footer-height;
 }
 
 .footer-container {
