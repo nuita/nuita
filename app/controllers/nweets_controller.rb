@@ -1,6 +1,6 @@
 class NweetsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :recommend]
-  before_action :correct_user, only: [:update, :destroy]
+  before_action :correct_user, only: [:destroy]
 
   def new
     @nweet = current_user.nweets.build(did_at: Time.zone.now)
