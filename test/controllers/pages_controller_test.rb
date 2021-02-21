@@ -15,7 +15,12 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get about' do
-    get pages_about_url
+    get about_url
+    assert_response :success
+  end
+
+  test 'should get privacy policy' do
+    get policy_path
     assert_response :success
   end
 
