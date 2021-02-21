@@ -64,4 +64,16 @@ module ApplicationHelper
   def bi(name, classname = '')
     tag.i(nil, class: "bi-#{name} #{classname}")
   end
+
+  def author_info(link)
+    # 空文字の場合はauthor, circleにnilが入るようにする
+    author = link.author if link.author.present?
+    circle = link.circle if link.circle.present?
+
+    if author && circle
+      "#{link.author} (#{link.circle})"
+    elsif info = (author || circle)
+      info.to_s
+    end
+  end
 end

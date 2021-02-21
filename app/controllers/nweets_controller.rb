@@ -1,6 +1,6 @@
 class NweetsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
-  before_action :correct_user, only: [:update, :destroy]
+  before_action :authenticate_user!, except: [:show, :recommend]
+  before_action :correct_user, only: [:destroy]
 
   def new
     @nweet = current_user.nweets.build(did_at: Time.zone.now)
@@ -40,17 +40,8 @@ class NweetsController < ApplicationController
     redirect_to root_url
   end
 
-  # obsolete
-  def update
-    @nweet = Nweet.find_by(url_digest: params[:url_digest])
-
-    if @nweet.update(edit_nweet_params)
-      flash[:success] = 'ヌイートを更新しました'
-      redirect_to root_url
-    else
-      flash[:danger] = @nweet.errors.full_messages
-      redirect_to root_url
-    end
+  def recommend
+    render partial: 'cards/card', locals: {nweet: Nweet.recommend}
   end
 
   private

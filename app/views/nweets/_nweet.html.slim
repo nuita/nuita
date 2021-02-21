@@ -14,7 +14,7 @@ li.nweet id="nweet#{nweet.url_digest}"
         span.time = time_ago_in_japanese(nweet.did_at)
         | に射精しました。
       - if nweet.links.any?
-        = render 'cards/horizontal', link: nweet.links.first
+        = render 'cards/card', nweet: nweet
       - if nweet.statement?
         .quote = text_url_to_link(nweet.statement).html_safe
       .nweet-bottom

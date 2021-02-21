@@ -23,25 +23,27 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     login_as(@user)
 
     get root_path
-    assert_match @followee.handle_name, response.body
-    assert_no_match @not_followee.handle_name, response.body
+    assert_select 'div.nweet-feed a[href=?]', user_path(@followee)
+    assert_select 'div.nweet-feed a[href=?]', user_path(@not_followee), count: 0
   end
 
   test 'show every tweet in global timeline' do
     login_as(@user)
 
     get explore_path
-    assert_match @followee.handle_name, response.body
-    assert_match @not_followee.handle_name, response.body
+    assert_select 'div.nweet-feed a[href=?]', user_path(@followee)
+    assert_select 'div.nweet-feed a[href=?]', user_path(@not_followee)
   end
 
   test 'can mute user in followees feed' do
     login_as @user
     get explore_path
-    assert_match @not_followee.screen_name, response.body
+    assert_select 'div.nweet-feed a[href=?]', user_path(@not_followee)
 
     post mute_path(mutee: @not_followee)
     get explore_path
-    assert_no_match @not_followee.screen_name, response.body
+    # TODO: おすすめでもミュート機能を適用
+    # assert_no_match user_path(@not_followee), response.body
+    assert_select 'div.nweet-feed a[href=?]', user_path(@not_followee), count: 0
   end
 end

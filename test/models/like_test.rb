@@ -3,6 +3,7 @@ require 'test_helper'
 class LikeTest < ActiveSupport::TestCase
   def setup
     @user = users(:chikuwa)
+    @other_user = users(:emiya)
     @nweet = nweets(:today)
     @other_nweet = nweets(:saytwo)
   end
@@ -34,11 +35,25 @@ class LikeTest < ActiveSupport::TestCase
     end
   end
 
-  test 'create like set latest time on nweets' do
-    assert_nil @nweet.latest_liked_time
-    @user.likes.create!(nweet: @nweet)
+  test 'update liked nweet status' do
+    featurable_url = 'https://www.melonbooks.co.jp/detail/detail.php?product_id=537453&adult_view=1'
+    nweet = @user.nweets.create(did_at: Time.zone.now, statement: "👍 #{featurable_url}")
 
-    assert @nweet.latest_liked_time > 1.minute.ago
+    assert_nil nweet.latest_liked_time
+    assert_not nweet.featured?
+
+    first_like = @user.likes.create!(nweet: nweet)
+
+    assert nweet.latest_liked_time > 1.minute.ago
+    assert nweet.featured?
+
+    second_like = @other_user.likes.create!(nweet: nweet)
+
+    first_like.destroy
+    assert nweet.featured?
+
+    second_like.destroy
+    assert_not nweet.featured?
   end
 
   test 'do not notify when user notify nweets by himself' do

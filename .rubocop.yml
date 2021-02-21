@@ -28,9 +28,24 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+# =の数間違えるの言うほどあるか？
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+# has_... は許す (Railsすらhas_manyとかあるし)
+Naming/PredicateName:
+  ForbiddenPrefixes: is_, have_
+
 # enumは配列で定義したほうが簡潔じゃない？
 Rails/EnumHash:
   Enabled: false
+
+# update_allに関しては速度上のメリットがあるので許す
+Rails/SkipsModelValidations:
+  AllowedMethods: update_all
 
 # 明らかに1000件以下のときはeachでよくない？
 Rails/FindEach:
@@ -49,6 +64,10 @@ Style/EmptyMethod:
 
 # もうRuby3になるからいいよね……？
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 気持ち的にGuardじゃないときがある
+Style/GuardClause:
   Enabled: false
 
 # 気持ち的にelsifじゃなくて入れ子なときがある

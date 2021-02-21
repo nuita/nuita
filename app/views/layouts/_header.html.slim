@@ -1,5 +1,4 @@
-nav.navbar.navbar-expand-md.navbar-light.fixed-top id=("NavbarScrollable" if user_signed_in?)
-  - if user_signed_in?
-    = render 'layouts/user_header'
-  - else
-    = render 'layouts/guest_header'
+- if user_signed_in?
+  = render 'layouts/user_header'
+- else
+  = render 'layouts/guest_header'

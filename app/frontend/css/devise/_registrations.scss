@@ -1,21 +1,14 @@
 $registration-jumbotron-width: 400px;
 
-.registration-wrapper {
-  padding-top: 0.5rem;
-
-  @include media-breakpoint-up(md) {
-    padding: 0;
-    position: relative;
-  }
-}
-
 .registration-jumbotron {
   @extend .rounded;
 
   margin: 10px auto;
-  width: calc(100% - 1rem);
+  width: calc(100% - 40px);
+  height: fit-content;
 
   background-color: $body-background-color;
+  color: $body-font-color;
 
   @media screen and (min-width: #{$registration-jumbotron-width}) {
     position: absolute;

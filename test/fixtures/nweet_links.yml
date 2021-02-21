@@ -5,3 +5,7 @@ one:
 two:
   nweet: kemo
   link: kemo
+
+three:
+  nweet: featured
+  link: featured

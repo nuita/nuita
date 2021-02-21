@@ -1,16 +1,20 @@
 export default function setRecommendButton() {
-  let recommendButton = document.getElementById("buttonRenewRecommend");
-  if (recommendButton) {
-    recommendButton.addEventListener("click", () => {
-      fetch('/links/recommend') // landingでも更新ボタン押すとR18Gとか出てくるけどまあいいでしょ・・・
-        .then((response) => {
-          return response.text();
-        })
-        .then((partial: string) => {
-          let card = document.getElementById("recommendCard");
-          card.textContent = "";
-          card.insertAdjacentHTML("afterbegin", partial);
-        });
-    });
+  const recommendButton = document.getElementById("buttonRenewRecommend");
+  if (recommendButton === null) {
+    return;
   }
+
+  recommendButton.addEventListener("click", () => {
+    fetch('/nweets/recommend')
+      .then((response) => {
+        return response.text();
+      })
+      .then((partial: string) => {
+        const card = document.getElementById("recommendCard");
+        card.textContent = "";
+        card.insertAdjacentHTML("afterbegin", partial);
+      }).catch((e) => {
+        console.error(e);
+      });
+  });
 }

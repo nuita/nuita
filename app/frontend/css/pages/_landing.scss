@@ -1,16 +1,45 @@
 .landing-wrapper {
-  @include media-breakpoint-up(md) {
-    padding-top: 80px;
-  }
-}
+  @extend .fullsize-wrapper;
 
-.landing-container {
+  background-color: rgba(0, 0, 40, 0.4);
+  background-image: url('../images/landing_background.png');
+  background-size: cover;
+
   color: white;
 }
 
-.col-landing-lead {
-  .lead {
-    font-size: large;
-    margin-bottom: 0.5rem;
+.landing-container {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 0;
+  }
+
+  .row {
+    height: 100%;
+    min-height: calc(100vh - #{$header-height + $footer-height});
+  }
+}
+
+.landing-lead-h1 {
+  margin-bottom: 1rem;
+}
+
+.landing-search-form-input {
+  margin-top: 1rem;
+  margin-bottom: calc(1rem + 8px); // ヘッダーの余白分との調整
+}
+
+.landing-recommendation {
+  .btn {
+    color: white;
+  }
+}
+
+ul.popular-tags-list {
+  padding: 0;
+
+  li {
+    margin: 0 0.25rem 0.5rem 0;
   }
 }

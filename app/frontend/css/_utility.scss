@@ -9,6 +9,16 @@
   text-decoration: none;
 }
 
+.btn-outline-white {
+  @include button-outline-variant(#fff);
+
+  &:hover {
+    border-color: $brand-color;
+    background-color: $brand-color;
+    color: white;
+  }
+}
+
 .link-brand {
   @extend a;
 }
@@ -17,13 +27,14 @@
   margin-top: $header-height;
 }
 
-.guest-wrapper {
-  background-color: rgba(0, 0, 40, 0.4);
-  background-image: url('../images/landing_background.png');
-  background-size: cover;
-  min-height: calc(100vh - (#{$header-height} + #{$footer-height}));
-  padding-bottom: 2rem;
-  width: 100%;
+.fullsize-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+
+  padding-top: $header-height;
 }
 
 .absolute-center-on-wrapper {
@@ -31,4 +42,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
+}
+
+// bootstrap iconが微妙に下にズレている気がするので修正する
+.search-icon {
+  position: relative;
+  top: -0.1em;
 }

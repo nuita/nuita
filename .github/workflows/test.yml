@@ -7,7 +7,6 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
 
 env:
   MYSQL_HOST: 127.0.0.1
