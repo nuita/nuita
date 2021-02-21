@@ -4,7 +4,10 @@ ja:
       edit_profile: プロフィール変更
       settings: 設定
       sign_out: ログアウト
-    footer:
-      blog: Blog
-      github: Github
+    guest_footer:
+      about: Nuitaについて
+      privacy_policy: プライバシーポリシー
+      for_creators: クリエイターの方へ
+      blog: 開発ブログ
+      github: GitHub
       twitter: Twitter
