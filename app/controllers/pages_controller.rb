@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   def about
   end
 
-  def privacy
+  def policy
   end
 
   def explore
