@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'pages/home'
   get 'pages/about', as: :about
-  get 'pages/policy', as: :policy
+  get 'terms/privacy', as: :privacy
   get '/explore', to: 'pages#explore'
   get '/settings', to: 'settings#root'
   get '/settings/mutes', to: 'settings#mutes'

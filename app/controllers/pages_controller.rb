@@ -12,10 +12,7 @@ class PagesController < ApplicationController
 
   def about
   end
-
-  def policy
-  end
-
+  
   def explore
     @timeline = true
 

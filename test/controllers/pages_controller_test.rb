@@ -19,11 +19,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get privacy policy' do
-    get policy_path
-    assert_response :success
-  end
-
   test 'show followees tweet only in timeline' do
     login_as(@user)
 
