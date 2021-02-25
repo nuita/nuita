@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get 'pages/home'
-  get 'pages/about'
+  get 'pages/about', as: :about
+  get 'terms/privacy', as: :privacy
   get '/explore', to: 'pages#explore'
   get '/settings', to: 'settings#root'
   get '/settings/mutes', to: 'settings#mutes'
