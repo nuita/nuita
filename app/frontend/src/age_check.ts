@@ -8,6 +8,7 @@ export function setAgeCheckModal() {
 
   const btn = document.getElementById('setAgeCheckedBtn');
   btn.addEventListener('click', () => {
-    document.cookie = 'age_checked= 1';
+    const maxAge = 60 * 60 * 24 * 365 * 10;
+    document.cookie = `age_checked=true; path=/; max-age=${maxAge}`;
   });
 }
