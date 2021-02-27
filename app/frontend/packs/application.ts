@@ -8,7 +8,7 @@ import setInfiniteScroll from "../src/infinite_scroll";
 import setUserButtons from "../src/users";
 import { setLikeButtons } from "../src/nweets";
 import { setTagButtons } from "../src/tags";
-import { setAgeCheckModal } from "../src/check_age";
+import { setAgeCheckModal } from "../src/age_check";
 
 import "bootstrap";
 import "../css/application.scss";
