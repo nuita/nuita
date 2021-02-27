@@ -8,6 +8,7 @@ import setInfiniteScroll from "../src/infinite_scroll";
 import setUserButtons from "../src/users";
 import { setLikeButtons } from "../src/nweets";
 import { setTagButtons } from "../src/tags";
+import { setAgeCheckModal } from "../src/check_age";
 
 import "bootstrap";
 import "../css/application.scss";
@@ -23,4 +24,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setUserButtons();
   setLikeButtons();
   setTagButtons();
+  setAgeCheckModal();
 });

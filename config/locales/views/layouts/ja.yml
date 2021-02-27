@@ -11,3 +11,7 @@ ja:
       blog: 開発ブログ
       github: GitHub
       twitter: Twitter
+    age_check_modal:
+      title: あなたは18歳以上ですか？
+      message: Nuitaは成人向けソーシャルプラットフォームです。18歳未満の方は閲覧しないでください。
+      proceed: Nuitaを表示する
