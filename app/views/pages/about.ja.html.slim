@@ -1,0 +1,51 @@
+- provide(:title, 'Nuitaについて')
+
+.landing-wrapper
+  .landing-container
+    .row
+      .document-jumbotron
+        .container-md.py-4.px-2
+          h1 Nuitaについて
+          h4 Nuitaとは？
+          p Nuitaは自慰や成人向けコンテンツに特化したソーシャルプラットフォームです。
+          h4 主な機能
+          p
+            | Nuitaに
+            = link_to '会員登録', new_user_registration_path
+            | または
+            = link_to 'ログイン', new_user_session_path
+            | することで次のような機能を使うことができます。
+          ul
+            li
+              strong ヌイート
+              | を投稿できます。ヌイートはNuitaでのユーザーの投稿の呼び方で、自慰の感想や使用したオカズ等を記録・共有することができます。
+            li
+              | 好みのユーザーやタグを
+              strong フォロー
+              | できます。フォローしたユーザーやタグの投稿は
+              strong タイムライン
+              | に表示されるため、自分の好みのコンテンツをたくさん見ることができます。
+            li
+              | お気に入りのヌイートを
+              strong いいね
+              | できます。いいねしたヌイートはまとめて見返せるため、オカズに困ったときに便利です。
+          h4 開発について
+          p
+            | Nuitaのソースコードは
+            = link_to 'Github', 'https://github.com/nuita/nuita'
+            | 上で公開されており、誰でも開発に参加することができます。
+            | Nuitaの改善にあなたの力を貸していただけませんか？
+          p
+            | また、Nuitaの開発に関する技術的な側面については
+            = link_to '開発ブログ', 'https://blog.nuita.net'
+            | もご覧ください。
+          h4 お問い合わせ先
+          p 
+            | Nuitaに関するお問い合わせは
+            = link_to 'Twitter', 'https://twitter.com/nuita_net'
+            | または
+            = mail_to 'nuita.net@gmail.com', 'メール'
+            | でお寄せください。
+
+
+  = render 'layouts/guest_footer'      
