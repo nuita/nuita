@@ -1,0 +1,13 @@
+button.btn.d-none#toggleAgeCheckModalBtn data-bs-toggle="modal" data-bs-target="#ageCheckModal"
+
+#ageCheckModal.modal.fade data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true"
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5.modal-title = t('.title')
+      .modal-body
+        = t('.message')
+      .modal-footer
+        = link_to :back do
+          button.btn.btn-secondary type="button" = t('ui.back')
+        button.btn.btn-primary#setAgeCheckedBtn data-bs-dismiss="modal" type="button" = t('.proceed')
