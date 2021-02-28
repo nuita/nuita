@@ -4,7 +4,7 @@
   .container-md.landing-container
     .row.align-items-center
       .col
-        h1.d-none.d-md-block.landing-lead-h1 = t('.find_your_like_in_nuita')
+        h1.d-none.d-lg-block.landing-lead-h1 = t('.find_your_like_in_nuita')
         = form_with url: '#', remote: true do |f|
           .input-group.landing-search-form-input
             = f.search_field :query, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
