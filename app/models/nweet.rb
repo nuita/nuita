@@ -83,6 +83,15 @@ class Nweet < ApplicationRecord
       count = rand([100, Nweet.where(featured: true).count].min)
       Nweet.where(featured: true).offset(count).first
     end
+
+    # 検索エンジン用意するまでの仮
+    def search(query)
+      if query
+        Nweet.left_outer_joins(links: :tags).where('nweets.statement LIKE ? OR tags.name LIKE ?', "%#{query}%", "%#{query}%").distinct
+      else
+        Nweet.all
+      end
+    end
   end
 
   private
