@@ -5,11 +5,11 @@
     .row.align-items-center
       .col
         h1.d-none.d-lg-block.landing-lead-h1 = t('.find_your_like_in_nuita')
-        = form_with url: '#', remote: true do |f|
+        = form_with url: explore_path, method: :get, local: true do |f|
           .input-group.landing-search-form-input
-            = f.search_field :query, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
+            = f.search_field :q, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
             .input-group-append
-              = f.button bi('search', 'search-icon'), type: :submit, class: 'btn btn-primary'
+              = f.button bi('search', 'search-icon'), name: nil, type: :submit, class: 'btn btn-primary'
         h6.mb-3 = t('.search_with_popular_tags')
         ul.popular-tags-list.mb-2
           - @tags.pluck(:name).each do |tag_name|
