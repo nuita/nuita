@@ -13,3 +13,7 @@ scatoro:
 kemo:
   name: 'KEMO'
   censored_by_default: false
+
+femdom:
+  name: '男性受け'
+  censored_by_default: false

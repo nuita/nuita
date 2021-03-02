@@ -46,4 +46,13 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     # assert_no_match user_path(@not_followee), response.body
     assert_select 'div.nweet-feed a[href=?]', user_path(@not_followee), count: 0
   end
+
+  test 'can search nweets in explore feed' do
+    nweet_with_tag = nweets(:featured)
+    nweet_with_statement = nweets(:femdom_statement)
+
+    get explore_path(q: '男性受け')
+    assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_tag)
+    assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_statements)
+  end
 end
