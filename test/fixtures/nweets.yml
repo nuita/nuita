@@ -49,3 +49,9 @@ featured:
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: 'https://www.dlsite.com/books/work/=/product_id/BJ280495.html'
   featured: true
+
+femdom_statement:
+  did_at: <%= 100.days.ago.utc %>
+  user: zoken
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: '男性受け最高'
