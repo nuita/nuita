@@ -31,6 +31,18 @@
   }
 }
 
+/* guest */
+.guest-navbar {
+  background-color: $header-background-color;
+
+  .navbar-btn-landing {
+    @extend .link-brand;
+  }
+
+  .navbar-btn-signup {
+    @extend .btn-outline-primary;
+  }
+}
 
 /* user */
 .user-navbar {
