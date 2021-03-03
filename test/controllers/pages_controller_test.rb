@@ -53,6 +53,6 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
 
     get explore_path(q: '男性受け')
     assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_tag)
-    assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_statements)
+    assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_statement)
   end
 end
