@@ -1,9 +1,11 @@
-nav.navbar.navbar-expand-md.navbar-light class = navbar_type(yield(:landing))
+- landing = yield(:landing)
+
+nav.navbar.navbar-expand-md.navbar-light class = navbar_type(landing)
   .container-md
     ul.nav.ml-0
       li.nav-item.navbar-guest-brand
         = link_to root_url do
-          = image_tag image_pack_path('logo_white.svg'), height: '48px'
+          = image_tag image_pack_path(navbar_logo(landing)), height: '48px'
     ul.nav.ml-auto
       li.nav-item
         = link_to new_user_session_path, class: 'nav-link' do
