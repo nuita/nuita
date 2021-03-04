@@ -34,6 +34,7 @@
 /* guest */
 .guest-navbar {
   background-color: $header-background-color;
+  box-shadow: 0px 1px 4px rgba(0.5, 0.5, 0.5, 0.1);
 
   .navbar-btn-landing {
     @extend .link-brand;
