@@ -1,7 +1,7 @@
 .nweet-feed
   - if @feed_items.any?
     /.nweet-count タイムライン
-    ol.nweets-list
+    ol.nweet-list
       = render "nweets/nweets"
   - else
     = render "empty_feed"

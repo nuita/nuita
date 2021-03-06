@@ -1,0 +1,88 @@
+li.nweet {
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.nweet-statement {
+  width: 100%;
+  word-break: break-word;
+}
+
+.nweet {
+  border-bottom: 1px solid $section-border-color;
+}
+
+.nweet-header {
+  display: flex;
+  align-content: center;
+  align-items: center;
+
+  margin-bottom: 0.5rem;
+}
+
+.nweet-header-left {
+  flex-shrink: 0;
+}
+
+.nweet-header-right {
+  flex-grow: 1;
+  padding-left: 0.5rem;
+}
+
+.nweet-user-info {
+  width: 100%;
+}
+
+a.nweet-handle-name {
+  color: $body-font-color;
+  font-weight: bold;
+
+  &:hover, &:focus, &:active {
+    color: $body-font-color;
+  }
+}
+
+a.nweet-screen-name {
+  margin-left: 0.25rem;
+
+  color: $secondary-font-color;
+
+  &:hover, &:focus, &:active {
+    color: $secondary-font-color;
+  }
+}
+
+.nweet-statement {
+  word-break: break-all;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+  border-left: 1px solid $brand-color;
+}
+
+.nweet-bottom {
+  display: flex;
+}
+
+.nweet-bottom-left {
+  flex-grow: 1;
+  margin-top: 0.25rem;
+}
+
+.liked-color {
+  color: $like-btn-color;
+}
+
+.btn-like {
+  padding-left: 0;
+  padding-right: 0;
+
+  color: $secondary-font-color;
+
+  &:hover, &:active, &.liked {
+    @extend .liked-color;
+  }
+}
+
+.btn-external {
+  padding-right: 0;
+}

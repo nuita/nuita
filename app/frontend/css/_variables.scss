@@ -5,6 +5,7 @@ $secondary-font-color: #8D9195;
 $inactive-font-color: #DFE4E6;
 
 $column-background-color: #fff;
+$section-border-color: $inactive-font-color;
 $brand-color: #36ca6c;
 
 $theme-colors: (
@@ -21,3 +22,6 @@ $header-height: 56px;
 
 /* footers */
 $footer-height: 56px;
+
+/* nweets */
+$like-btn-color: #c73b31;
