@@ -3,4 +3,4 @@ h6.section-title.mb-3
   button#buttonRenewRecommend.btn.btn-sm.btn-outline-secondary.btn-brandcolor-hover.py-0.px-1
     = icon 'fas', 'sync-alt'
 - if nweet = Nweet.recommend
-  #recommendCard = render 'cards/card', nweet: nweet, hide_genres?: true
+  #recommendCard = render 'nweets/display', nweet: nweet

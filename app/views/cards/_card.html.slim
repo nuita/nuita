@@ -1,4 +1,3 @@
-- link = nweet.links.first
 - tags = censored_tags(link)
 
 = render 'cards/collapse_button', link: link, tags: tags
@@ -13,14 +12,3 @@ div id="collapseCard#{link.id}" class="#{'collapse' if tags.any?}"
       - if link.description
         p.card-text = link.description.truncate(200)
   = render 'cards/tags', link: link
-.sub-card-info 
-  .sub-card-grid
-    .sub-card-user-icon
-      = link_to nweet.user do 
-        = icon_for(nweet.user, size: 25)
-    .sub-card-user-right
-      strong = link_to nweet.user.handle_name, nweet.user
-      = t('.is_nweeting_on_this_link')
-    .sub-card-statement-bar
-    .sub-card-statement-text
-      = text_url_to_link(nweet.statement).html_safe

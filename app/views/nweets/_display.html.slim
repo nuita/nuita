@@ -1,0 +1,13 @@
+= render 'cards/card', link: nweet.links.first
+
+.sub-card-info 
+  .sub-card-grid
+    .sub-card-user-icon
+      = link_to nweet.user do 
+        = icon_for(nweet.user, size: 25)
+    .sub-card-user-right
+      strong = link_to nweet.user.handle_name, nweet.user
+      = t('.is_nweeting_on_this_link')
+    .sub-card-statement-bar
+    .sub-card-statement-text
+      = text_url_to_link(nweet.statement).html_safe
