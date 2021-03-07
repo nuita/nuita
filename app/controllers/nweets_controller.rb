@@ -41,7 +41,7 @@ class NweetsController < ApplicationController
   end
 
   def recommend
-    render partial: 'cards/card', locals: {nweet: Nweet.recommend}
+    render partial: 'nweets/display', locals: {nweet: Nweet.recommend}
   end
 
   private

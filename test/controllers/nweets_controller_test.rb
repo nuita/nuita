@@ -67,4 +67,9 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
       delete nweet_path(@nweet)
     end
   end
+
+  test 'should get recommend' do
+    get recommend_path
+    assert_response :success
+  end
 end
