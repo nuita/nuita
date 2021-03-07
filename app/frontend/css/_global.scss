@@ -24,6 +24,18 @@ input, textarea {
   }
 }
 
+.btn {
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
 .btn-primary {
-  color: white !important;
+  color: $body-background-color !important;
+}
+
+.btn-outline-primary {
+  &:hover {
+    color: $body-background-color;
+  }
 }

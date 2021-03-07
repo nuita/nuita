@@ -22,7 +22,7 @@ li.nweet.notification
             | さんがいいねしました。
             .pt-1
               = link_to notification.like.nweet, class: 'quoted-nweet' do
-                = time_ago_in_japanese(notification.like.nweet.did_at)
+                = time_ago(notification.like.nweet.did_at)
                 | に射精しました。
                 - if notification.like.nweet.statement
                   .quote.mt-1

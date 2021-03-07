@@ -13,21 +13,35 @@
   .nav-link {
     padding: 0.5rem;
   }
-}
 
-.navbar-btn-signup {
-  border-color: white;
-}
-
-.navbar-btn-landing {
-  color: white;
-
-  &:hover {
-    color: rgba(255, 255, 255, 0.8);
+  .navbar-btn-signup {
+    border-color: white;
   }
 
-  &:active {
+  .navbar-btn-landing {
     color: white;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    &:active {
+      color: white;
+    }
+  }
+}
+
+/* guest */
+.guest-navbar {
+  background-color: $header-background-color;
+  box-shadow: 0px 1px 4px rgba(0.5, 0.5, 0.5, 0.1);
+
+  .navbar-btn-landing {
+    @extend .link-brand;
+  }
+
+  .navbar-btn-signup {
+    @extend .btn-outline-primary;
   }
 }
 

@@ -4,4 +4,4 @@ span.small
   - if nweet.latest_liked_time
     span.text-muted 最新のいいね:
     span.text-muted.pl-1#latestLikedTime
-      = time_ago_in_japanese(nweet.latest_liked_time)
+      = time_ago(nweet.latest_liked_time)

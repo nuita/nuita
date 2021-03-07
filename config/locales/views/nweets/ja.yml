@@ -1,0 +1,6 @@
+ja:
+  nweets:
+    display:
+      is_nweeting_on_this_link: さんがヌイートしています
+    nweet:
+      sentence: "%{time}にヌイートしました。"

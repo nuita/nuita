@@ -1,30 +1,27 @@
 li.nweet id="nweet#{nweet.url_digest}"
-  div class="icon"
-    = link_to icon_for(nweet.user, size: 50), nweet.user
-  .right
-    .user_info
-      span.handle_name
-        = link_to nweet.user.handle_name, nweet.user
-      span.screen_name
-        | @
-        = link_to nweet.user.screen_name, nweet.user
-      span.timestamp = nweet.did_at
-    .content
-      .maincontent
-        span.time = time_ago_in_japanese(nweet.did_at)
-        | に射精しました。
-      - if nweet.links.any?
-        = render 'cards/card', nweet: nweet
-      - if nweet.statement?
-        .quote = text_url_to_link(nweet.statement).html_safe
-      .nweet-bottom
-        .float-left
-          - if user_signed_in?
-            = render 'nweets/like_form', nweet: nweet
-        .text-right
-          - if delete_possible?(nweet.did_at, nweet.user)
-            = link_to nweet, method: :delete, class: "nweet-delete btn", data: { confirm: "本当に削除しますか？この機能は誤操作時にのみ使用してください。" } do
-              = icon 'fas', 'trash'
-          - unless @detail
-            = link_to nweet, class: "nweet-delete btn pr-0" do
-              = icon 'fas', 'external-link-alt'
+  .nweet-header
+    .nweet-header-left
+      = link_to icon_for(nweet.user, size: 50), nweet.user
+    .nweet-header-right
+      .nweet-user-info
+        = link_to nweet.user.handle_name, nweet.user, {class: 'nweet-handle-name'}
+        = link_to "@#{nweet.user.screen_name}", nweet.user, {class: 'nweet-screen-name'}
+      .content
+        .nweet-sentence
+          = t('.sentence', time: time_ago(nweet.did_at))
+  .nweet-main
+    - if nweet.links.any?
+      = render 'cards/card', link: nweet.links.first
+    - if nweet.statement?
+      .nweet-statement = text_url_to_link(nweet.statement).html_safe
+  .nweet-bottom
+    .nweet-bottom-left
+      - if user_signed_in?
+        = render 'nweets/like_form', nweet: nweet
+    .nweet-bottom-right
+      - if delete_possible?(nweet.did_at, nweet.user)
+        = link_to nweet, method: :delete, class: "btn btn-ui btn-ui-secondary", data: { confirm: t('.delete_confirmation') } do
+          = bi 'trash'
+      - unless @detail
+        = link_to nweet, class: "btn btn-ui btn-external btn-ui-secondary" do
+          = bi 'box-arrow-up-right'
