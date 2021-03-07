@@ -14,9 +14,10 @@
         h6.mb-3 = t('.search_with_popular_tags')
         ul.popular-tags-list.mb-2
           - @tags.pluck(:name).each do |tag_name|
-            li.btn.btn-sm.btn-outline-white.rounded-pill
-              span.small = icon 'fas', 'hashtag'
-              span.pr-1 = tag_name
+            = link_to explore_path(q: tag_name) do
+              li.btn.btn-sm.btn-outline-white.rounded-pill
+                span.small = icon 'fas', 'hashtag'
+                span.pr-1 = tag_name
       .offset-xl-1.col-lg-4.col-xl-3
         .landing-recommendation
           = render 'pages/recommend', landing?: true
