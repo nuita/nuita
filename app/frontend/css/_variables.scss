@@ -1,10 +1,10 @@
 /* global */
-$body-background-color: #fcfcfc;
+$body-background-color: #fff;
 $body-font-color: #252A30;
 $secondary-font-color: #8D9195;
 $inactive-font-color: #DFE4E6;
 
-$column-background-color: #fff;
+$section-background-color: #fcfcfc;
 $section-border-color: $inactive-font-color;
 $brand-color: #36ca6c;
 
@@ -17,7 +17,7 @@ $active-color-lightener: 10%;
 $hover-background-darkener: 5%;
 
 /* headers */
-$header-background-color: $column-background-color;
+$header-background-color: $body-background-color;
 $header-height: 56px;
 
 /* footers */
