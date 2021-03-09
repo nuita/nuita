@@ -34,7 +34,11 @@
 /* guest */
 .guest-navbar {
   background-color: $header-background-color;
-  box-shadow: 0px 1px 4px rgba(0.5, 0.5, 0.5, 0.1);
+  box-shadow: 0px 1px 4px $section-border-color;
+  border-bottom: 1px solid $section-border-color;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 
   .navbar-btn-landing {
     @extend .link-brand;

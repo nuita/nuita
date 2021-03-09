@@ -24,7 +24,7 @@
 }
 
 .wrapper {
-  margin-top: $header-height;
+  margin-top: calc(#{$header-height} + 1.5rem);
 }
 
 .fullsize-wrapper {
