@@ -3,7 +3,7 @@
 .container-md
   .row
     .d-none.d-md-block.col-md-3
-      = render 'users/user_info', {user: current_user} if user_signed_in?
+      = render 'layouts/left_section'
     .col
       = render 'pages/explore_form'
       = render 'pages/timeline'

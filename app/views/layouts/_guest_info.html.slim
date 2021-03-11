@@ -1,0 +1,6 @@
+.left-section-jumbotron
+  h4 = t('.register_now')
+  p  = t('.register_description')
+  ul
+    li = link_to t('ui.sign_up'), new_user_registration_path
+    li = link_to t('.about'), about_path

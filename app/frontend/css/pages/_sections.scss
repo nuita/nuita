@@ -1,0 +1,22 @@
+.side-section {
+  min-height: 100vh;
+  margin: 0;
+}
+
+.left-section {
+  border-right: 1px solid $section-border-color;
+}
+
+.left-section-jumbotron {
+  @extend .rounded;
+
+  background-color: $section-background-color;
+  padding: 0.5rem;
+  margin-right: 1rem;
+
+  h4 {
+    font-size: medium;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}
