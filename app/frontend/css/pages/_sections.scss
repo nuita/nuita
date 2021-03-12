@@ -4,15 +4,14 @@
 }
 
 .left-section {
-  border-right: 1px solid $section-border-color;
+  padding-right: 1.5rem;
 }
 
-.left-section-jumbotron {
-  @extend .rounded;
-
-  background-color: $section-background-color;
-  padding: 0.5rem;
-  margin-right: 1rem;
+.side-section-container {
+  background-color: $secondary-background-color;
+  padding-top: 1.5rem;
+  margin: 0;
+  height: 100vh;
 
   h4 {
     font-size: medium;
@@ -22,6 +21,5 @@
 }
 
 .right-section {
-  border-left: 1px solid $section-border-color;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }

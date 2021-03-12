@@ -1,5 +1,5 @@
 body {
-  background-color: $body-background-color;
+  background-color: $secondary-background-color;
   color: $body-font-color; 
   font-family: 'Mulish', 'Avenir Next', sans-serif;
 }
@@ -31,11 +31,11 @@ input, textarea {
 }
 
 .btn-primary {
-  color: $body-background-color !important;
+  color: $main-background-color !important;
 }
 
 .btn-outline-primary {
   &:hover {
-    color: $body-background-color;
+    color: $main-background-color;
   }
 }

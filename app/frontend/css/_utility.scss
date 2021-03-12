@@ -24,7 +24,7 @@
 }
 
 .wrapper {
-  margin-top: calc(#{$header-height} + 1.5rem);
+  margin-top: $header-height;
 }
 
 .fullsize-wrapper {
@@ -42,6 +42,44 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
+}
+
+.threepane-container {
+  @include media-breakpoint-down(md) {
+    padding: 0;
+  }
+}
+
+$main-col-gutter-width: 40px;
+$wider-main-col-width: $main-col-width + $main-col-gutter-width * 2;
+
+.main-col {
+  background-color: $main-background-color;
+  padding: 1.5rem 1rem 0;
+  margin: 0 auto;
+  max-width: $main-col-width;
+  flex: 0 0 auto;
+
+  @media screen and (min-width: $wider-main-col-width) {
+    max-width: $wider-main-col-width;
+    padding: 1.5rem $main-col-gutter-width 0;
+  }
+}
+
+.left-col {
+  display: flex;
+
+  @media screen and (max-width: $twopane-width) {
+    display: none;
+  }
+}
+
+.right-col {
+  display: flex;
+
+  @media screen and (max-width: $threepane-width) {
+    display: none;
+  }
 }
 
 // bootstrap iconが微妙に下にズレている気がするので修正する

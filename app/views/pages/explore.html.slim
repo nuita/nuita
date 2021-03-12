@@ -1,11 +1,11 @@
 - provide(:title, 'グローバルタイムライン')
 
-.container-md
-  .row
-    .d-none.d-md-block.col-md-3
+.container-md.threepane-container
+  .row.g-0
+    .col.left-col
       = render 'layouts/left_section'
-    .col
+    .col.main-col
       = render 'pages/explore_form'
       = render 'pages/timeline'
-    .d-none.d-lg-block.col-lg-3
+    .col.right-col
       = render 'layouts/right_section'

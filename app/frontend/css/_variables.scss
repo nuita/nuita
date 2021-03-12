@@ -1,10 +1,10 @@
 /* global */
-$body-background-color: #fff;
+$main-background-color: #fff;
 $body-font-color: #252A30;
 $secondary-font-color: #8D9195;
 $inactive-font-color: #DFE4E6;
 
-$section-background-color: #fcfcfc;
+$secondary-background-color: #fcfcfc;
 $section-border-color: $inactive-font-color;
 $brand-color: #36ca6c;
 
@@ -17,11 +17,16 @@ $active-color-lightener: 10%;
 $hover-background-darkener: 5%;
 
 /* headers */
-$header-background-color: $body-background-color;
+$header-background-color: $main-background-color;
 $header-height: 56px;
 
 /* footers */
 $footer-height: 56px;
+
+/* layout */
+$main-col-width: 640px;
+$twopane-width: 1000px;
+$threepane-width: 1200px;
 
 /* nweets */
 $like-btn-color: #c73b31;

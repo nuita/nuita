@@ -1,3 +1,7 @@
 @import 'nweet';
 @import 'timeline';
 @import 'display';
+
+.nweet-feed {
+  background-color: $main-background-color;
+}
