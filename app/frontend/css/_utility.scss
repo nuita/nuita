@@ -66,6 +66,12 @@ $wider-main-col-width: $main-col-width + $main-col-gutter-width * 2;
   }
 }
 
+.sidebar {
+  position: sticky;
+  height: 100vh;
+  top: $header-height;
+}
+
 .left-col {
   display: flex;
 
