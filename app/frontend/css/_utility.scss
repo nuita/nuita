@@ -50,8 +50,7 @@
   }
 }
 
-$main-col-gutter-width: 40px;
-$wider-main-col-width: $main-col-width + $main-col-gutter-width * 2;
+$wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 
 .main-col {
   background-color: $main-background-color;
@@ -62,7 +61,8 @@ $wider-main-col-width: $main-col-width + $main-col-gutter-width * 2;
 
   @media screen and (min-width: $wider-main-col-width) {
     max-width: $wider-main-col-width;
-    padding: 1.5rem $main-col-gutter-width 0;
+    padding: 1.5rem $pane-padding-width 0;
+    border: 1px solid $section-border-color;
   }
 }
 
