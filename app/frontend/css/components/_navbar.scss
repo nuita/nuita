@@ -55,7 +55,7 @@
 .mode-nav {
   .nav-item {
     // bootstrap icons 上側に余白があるので荒療治
-    padding-bottom: 7px;
+    transform: translateY(-3px);
 
     a {
       color: $secondary-font-color;
@@ -93,14 +93,28 @@
   }
 }
 
-.navbar-search-input {
-  &::placeholder, &::-webkit-input-placeholder {
-    text-align: right;
+#badgeUnreadNotifications {
+  font-size: small;
+}
+
+.navbar-search-input-group {
+  &:focus-within {
+    .navbar-search-input {
+      border-color: $brand-color;
+    }
+
+    .navbar-btn-search {
+      border-color: $brand-color;
+      color: $brand-color;
+    }
   }
 }
 
-#badgeUnreadNotifications {
-  font-size: small;
+.btn-outline-subtle.navbar-btn-search {
+  &:hover {
+    background-color: $brand-color;
+    color: $main-background-color;
+  }
 }
 
 .dropdown-menu-right {

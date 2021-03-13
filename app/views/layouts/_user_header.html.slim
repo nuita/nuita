@@ -20,7 +20,7 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrolla
       = form_with url: explore_path, method: :get, local: true do |f|
         .input-group.navbar-search-input-group
           = f.search_field :q, class: 'form-control navbar-search-input'
-          = f.button bi('search', 'search-icon'), name: nil, type: :submit, class: 'btn btn-outline-subtle'
+          = f.button bi('search', 'search-icon'), name: nil, type: :submit, class: 'btn btn-outline-subtle navbar-btn-search'
     ul.nav
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdownMenuLink href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
