@@ -3,16 +3,17 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrolla
     ul.nav.mode-nav.ml-0.user-home-nav
       li.nav-item.user-nav-item#homeNav
         = link_to root_url do
-          = bi 'house-fill'
-      - unless current_user.global?
-        li.nav-item.user-nav-item#exploreNav
-          = link_to explore_path do
-            = bi 'globe'
+          = bi 'house'
+          span.nav-label = t('.nav.home')
+      li.nav-item.user-nav-item#exploreNav
+        = link_to explore_path do
+          = bi 'globe'
+          span.nav-label = t('.nav.explore')
       li.nav-item.user-nav-item#notificationsNav
         = link_to notifications_path do
-          = bi 'bell-fill'
-          / ここには"notification.ts"が動いています！
+          = bi 'bell'
           span.ml-1.badge.badge-pill.d-none#badgeUnreadNotifications
+          span.nav-label = t('.nav.notification')
     = link_to '#', class: "absolute-center", id: "navbarBrandIcon" do
       = image_tag image_pack_path('logomark_color.svg'), height: '48px'
     ul.nav.ml-auto

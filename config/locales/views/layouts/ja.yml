@@ -5,6 +5,10 @@ ja:
       message: Nuitaには成人向けの表現やコンテンツが含まれます。未成年や苦手な方は閲覧しないでください。
       proceed: Nuitaを表示する
     user_header:
+      nav:
+        home: ホーム
+        explore: 見つける
+        notification: 通知
       edit_profile: プロフィール変更
       settings: 設定
       sign_out: ログアウト
