@@ -1,8 +1,7 @@
 .guest-info-top
   h4 = t('.register_now')
   p  = t('.register_description')
-  ul
-    li = link_to t('ui.sign_up'), new_user_registration_path
+  = link_to t('ui.sign_up'), new_user_registration_path
 .guest-info-bottom
   ul.side-footer-list
     = render 'layouts/footer_list'
