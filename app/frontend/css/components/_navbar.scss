@@ -93,6 +93,12 @@
   }
 }
 
+.navbar-search-input {
+  &::placeholder, &::-webkit-input-placeholder {
+    text-align: right;
+  }
+}
+
 #badgeUnreadNotifications {
   font-size: small;
 }

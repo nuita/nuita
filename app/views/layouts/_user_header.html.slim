@@ -1,6 +1,6 @@
 nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrollable"
   .container
-    ul.nav.mode-nav.ml-0.user-home-nav
+    ul.nav.mode-nav.ml-0.user-home-nav.flex-grow-1
       li.nav-item.user-nav-item#homeNav
         = link_to root_url do
           = bi 'house'
@@ -16,7 +16,12 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrolla
           span.badge.bg-primary.rounded-pill.d-none#badgeUnreadNotifications
     = link_to '#', class: "absolute-center", id: "navbarBrandIcon" do
       = image_tag image_pack_path('logomark_color.svg'), height: '48px'
-    ul.nav.ml-auto
+    .d-none.d-lg-flex
+      = form_with url: explore_path, method: :get, local: true do |f|
+        .input-group.navbar-search-input-group
+          = f.search_field :q, class: 'form-control navbar-search-input'
+          = f.button bi('search', 'search-icon'), name: nil, type: :submit, class: 'btn btn-outline-subtle'
+    ul.nav
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdownMenuLink href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
           = icon_for(current_user, size: 35)
