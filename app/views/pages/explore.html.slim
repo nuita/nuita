@@ -1,11 +1,11 @@
 - provide(:title, 'グローバルタイムライン')
 
-.container-md
+.container-md.threepane-container
   .row
-    .d-none.d-md-block.col-md-3
-      = render 'users/user_info', {user: current_user} if user_signed_in?
-    .col
+    .col.sidebar.left-col
+      = render 'layouts/left_section'
+    .col.main-col
       = render 'pages/explore_form'
       = render 'pages/timeline'
-    .d-none.d-lg-block.col-lg-3
-      = render 'pages/recommend'
+    .col.sidebar.right-col
+      = render 'layouts/right_section'

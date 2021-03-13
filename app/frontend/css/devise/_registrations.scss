@@ -7,7 +7,7 @@ $registration-jumbotron-width: 400px;
   width: calc(100% - 40px);
   height: fit-content;
 
-  background-color: $body-background-color;
+  background-color: $main-background-color;
   color: $body-font-color;
 
   @media screen and (min-width: #{$registration-jumbotron-width}) {
