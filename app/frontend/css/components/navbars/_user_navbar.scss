@@ -69,15 +69,15 @@
 }
 
 .dropdown-toggle {
-  color: $inactive-font-color;
+  color: $secondary-font-color;
   padding-right: 0.5rem;
 
   &:hover {
-    color: $inactive-font-color;
+    color: $secondary-font-color;
   }
 
   &:active {
-    color: lighten($inactive-font-color, $active-color-lightener);
+    color: lighten($secondary-font-color, $active-color-lightener);
   }
 
   &::after {
