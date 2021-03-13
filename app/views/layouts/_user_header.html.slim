@@ -12,8 +12,8 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrolla
       li.nav-item.user-nav-item#notificationsNav
         = link_to notifications_path do
           = bi 'bell'
-          span.ml-1.badge.badge-pill.d-none#badgeUnreadNotifications
           span.nav-label = t('.nav.notification')
+          span.badge.bg-primary.rounded-pill.d-none#badgeUnreadNotifications
     = link_to '#', class: "absolute-center", id: "navbarBrandIcon" do
       = image_tag image_pack_path('logomark_color.svg'), height: '48px'
     ul.nav.ml-auto
