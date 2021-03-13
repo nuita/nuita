@@ -19,6 +19,12 @@
   }
 }
 
+.navbar-search-input-group {
+  &:focus-within {
+    color: $secondary-font-color;
+  }
+}
+
 .link-brand {
   @extend a;
 }

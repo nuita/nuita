@@ -1,45 +1,8 @@
-.navbar {
-  height: $header-height;
-  align-content: center;
-  z-index: 1;
-}
-
-/* landing */
-.landing-navbar {
-  a {
-    color: #fff;
-  }
-
-  .nav-link {
-    padding: 0.5rem;
-  }
-
-  .navbar-btn-signup {
-    border-color: white;
-  }
-
-  .navbar-btn-landing {
-    color: white;
-
-    &:hover {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    &:active {
-      color: white;
-    }
-  }
-}
+@import './navbars/guest_navbars';
+@import './navbars/user_navbar';
 
 /* guest */
 .guest-navbar {
-  background-color: $header-background-color;
-  box-shadow: 0px 1px 4px $section-border-color;
-  border-bottom: 1px solid $section-border-color;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-
   .navbar-btn-landing {
     @extend .link-brand;
   }
@@ -49,93 +12,12 @@
   }
 }
 
-/* user */
-.user-navbar {
+/* main navbars */
+.guest-navbar, .user-navbar {
   background-color: $header-background-color;
-}
-
-.mode-nav {
-  padding-left: 0.25rem;
-
-  .nav-item {
-    // bootstrap icons 上側に余白があるので荒療治
-    padding-bottom: 7px;
-
-    a {
-      color: $inactive-font-color;
-      font-size: 140%;
-      margin-right: 1rem;
-
-      &:hover {
-        color: darken($inactive-font-color, $hover-background-darkener);
-      }
-    }
-
-    &.active {
-      a {
-        color: $brand-color;
-
-        &:hover {
-          color: darken($brand-color, $hover-background-darkener);
-        }
-
-        &:active {
-          color: lighten($brand-color, $active-color-lightener);
-        }
-      }
-    }
-  }
-}
-
-.dropdown-menu-right {
-  left: auto;
-  right: 0;
-}
-
-.dropdown-toggle {
-  color: $inactive-font-color;
-  padding-right: 0.5rem;
-
-  &:hover {
-    color: $inactive-font-color;
-  }
-
-  &:active {
-    color: lighten($inactive-font-color, $active-color-lightener);
-  }
-
-  &::after {
-    vertical-align: middle;
-  }
-}
-
-.dropdown-menu {
-  padding: 0;
-
-  a {
-    color: $body-font-color;
-
-    &:hover {
-      color: $body-font-color;
-    }
-
-    &:active {
-      color: lighten($body-font-color, $active-color-lightener);
-    }
-  }
-}
-
-.dropdown-item {
-  text-align: right;
-
-  &:active {
-    background-color: $brand-color;
-    color: $main-background-color;
-  }
-
-  .nav-link {
-    &:hover {
-      text-decoration: none;
-    }
-  }
+  box-shadow: 0px 1px 4px $section-border-color;
+  border-bottom: 1px solid $section-border-color;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 }
