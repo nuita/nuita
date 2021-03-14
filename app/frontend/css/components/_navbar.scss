@@ -1,6 +1,12 @@
 @import './navbars/guest_navbars';
 @import './navbars/user_navbar';
 
+.navbar {
+  height: $header-height;
+  align-content: center;
+  z-index: 10;
+}
+
 /* guest */
 .guest-navbar {
   .navbar-btn-landing {
