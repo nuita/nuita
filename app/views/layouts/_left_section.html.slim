@@ -4,3 +4,6 @@ section.side-section.left-section
       = render 'users/user_info', {user: current_user} if user_signed_in?
     - else
       = render 'layouts/guest_info'
+  .side-pane-bottom
+    ul.side-footer-list
+      = render 'layouts/footer_list'
