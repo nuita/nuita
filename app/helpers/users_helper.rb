@@ -5,15 +5,11 @@ module UsersHelper
   end
 
   # urlだけ返す 設定なしならデフォルト
-  def icon_url(user = current_user, size = 60)
-    if !user || user.icon.url.blank?
-      asset_path('icon_default')
+  def icon_url(user, size)
+    if user.present? && user.icon.url.present?
+      size <= 60 ? user.icon.thumb.url : user.icon.url
     else
-      if size <= 60
-        user.icon.thumb.url
-      else
-        user.icon.url
-      end
+      image_pack_path('icon_default.png')
     end
   end
 
