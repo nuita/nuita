@@ -1,3 +1,5 @@
+@import './sections/user_info';
+
 .side-section {
   min-height: 100vh;
   margin: 0;
@@ -46,22 +48,4 @@
 
 .right-recommend-container {
   margin-left: 0.5rem;
-}
-
-/* user-info */
-.user-info-top {
-  display: flex;
-  align-items: center;
-}
-
-.user-info-top-left {
-  margin-right: 0.5rem;
-}
-
-h4.user-info-handle-name {
-  margin-bottom: 0;
-}
-
-.user-info-screen-name {
-  color: $secondary-font-color;
 }

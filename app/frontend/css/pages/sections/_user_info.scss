@@ -1,0 +1,71 @@
+/* user-info */
+.user-info {
+  a {
+    color: $body-font-color;
+  }
+}
+
+.user-info-top {
+  display: flex;
+  align-items: center;
+}
+
+.user-info-top-left {
+  margin-right: 0.5rem;
+}
+
+h4.user-info-handle-name {
+  margin-bottom: 0;
+}
+
+.user-info-screen-name {
+  color: $secondary-font-color;
+}
+
+/* contribution graph */
+$contribution-color-zero: rgba(127, 127, 127, 0.2);
+$contribution-color-one: $brand-color;
+$contribution-color-more: darken($brand-color, 20%);
+
+$cell-width: 30px;
+$cell-border: 2px;
+$cell-border-width: $cell-border * 2;
+$min-cell-width: 16px;
+
+.contribution-graph {
+  display: grid;
+  margin: 0 auto;
+
+  grid-template-rows: repeat(7, minmax($min-cell-width, 1fr));
+  max-width: ($cell-width + $cell-border-width) * 12;
+  grid-auto-flow: column;
+}
+
+.contribution-cell {
+  position: relative;
+
+  border: $cell-border solid $secondary-background-color;
+  border-radius: 100%;
+  padding-top: calc(100% - #{$cell-border-width});
+
+  background-color: $contribution-color-more;
+
+  &:not(.val-0):hover, &.active {
+    border-width: 0;
+  }
+
+  &.val-1 {
+    background-color: $contribution-color-one;
+  }
+
+  &.val-0 {
+    background-color: $contribution-color-zero;
+  }
+
+  a {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
