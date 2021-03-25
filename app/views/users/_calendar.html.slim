@@ -5,6 +5,6 @@
 
 .contribution-graph
   - (start_day..Date.current).each do |date|
-    .contribution-cell.has-tooltip class="val-#{hash[date].count}" id="cal#{date}" data-bs-toggle="tooltip" data-bs-html="true" title="<span class='text-subtle'>#{date}</span> #{hash[date].count}件"
+    .contribution-cell.has-tooltip class="val-#{hash[date].count}" id="cal#{date}" data-bs-toggle="tooltip" data-bs-html="true" title = calendar_tooltip(date, hash[date].count)
       - if hash[date].any?
         = link_to '', user_path(user, date: date)

@@ -52,4 +52,8 @@ module UsersHelper
 
     [hash, start_day]
   end
+
+  def calendar_tooltip(date, count)
+    "<span class='calendar-tooltip'>#{t('.nweet_count', count: count)} <span class='text-secondary'>#{date}</span></span>"
+  end
 end

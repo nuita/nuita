@@ -40,4 +40,4 @@
     = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
       = t '.list.followers'
       span.badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
-  = render 'users/calendar', user: user, row: 5
+  = render 'users/calendar', user: user
