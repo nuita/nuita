@@ -27,17 +27,17 @@
       - if !@detail && friend?(user) && user.twitter_url?
         .mb-1 = link_to user.twitter_url do
           = icon('fab', 'twitter', '@' + user.twitter_screen_name)
-  .list-group.w-100
+  .list-group.user-info-list.w-100
     = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-      |  ヌイート
-      span.badge.badge-brand.badge-pill#badgeNweets = user.nweets.count
-      = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | いいね
-        span.badge.badge-brand.badge-pill#badgeLikes = user.liked_nweets.count
-      = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | フォロー
-        span.badge.badge-brand.badge-pill#badgeFollowees = user.followees.count
-      = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | フォロワー
-        span.badge.badge-brand.badge-pill#badgeFollowers = user.followers.count
+      = t '.list.nweets'
+      span.badge.bg-primary.rounded-pill#badgeNweets = user.nweets.count
+    = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = t '.list.likes'
+      span.badge.bg-primary.rounded-pill#badgeLikes = user.liked_nweets.count
+    = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = t '.list.followees'
+      span.badge.bg-primary.rounded-pill#badgeFollowees = user.followees.count
+    = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = t '.list.followers'
+      span.badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
   = render 'users/calendar', user: user, row: 5
