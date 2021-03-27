@@ -1,11 +1,10 @@
 - (hash, start_day = contribution_for(user, 12))
 
 .mt-3.mb-2.label-calendar
-  | グラフ
-  span.small.pl-1 = "#{start_day} - #{Date.current}"
+  = t '.recent_posts'
 
 .contribution-graph
   - (start_day..Date.current).each do |date|
-    .cell class="val-#{hash[date].count}" id="cal#{date}"
+    .contribution-cell.has-tooltip class="val-#{hash[date].count}" id="cal#{date}" data-bs-toggle="tooltip" data-bs-html="true" title = calendar_tooltip(date, hash[date].count)
       - if hash[date].any?
         = link_to '', user_path(user, date: date)

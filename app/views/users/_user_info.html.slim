@@ -1,11 +1,10 @@
-section.side-section
-  .d-flex.align-items-center
-    .media.flex-grow-1
-      div class="icon"
-        = icon_for(user, size: 60, htmlclass: 'usericon rounded-circle mr-3 mb-2')
-      .media-body.user-info-content.mt-2.mt-md-0
-        h3.handle_name = user.handle_name
-        .screen_name = "@" + user.screen_name
+.user-info
+  .user-info-top.mb-3
+    .user-info-top-left
+      = icon_for(user, size: 50, htmlclass: 'usericon rounded-circle mr-3 mb-2')
+    .user-info-top-right
+      h4.user-info-handle-name = user.handle_name
+      .user-info-screen-name = "@" + user.screen_name
     - if other_user?(user)
       .mr-2.flex-grow-0
         - if current_user.muted?(user)
@@ -22,26 +21,23 @@ section.side-section
     - if current_user.follower?(user)
       .my-1#you-are-followed
         span.label-muted フォローされています
-  - if user.biography
-      .my-2
-        = text_url_to_link(user.biography).html_safe
-  .list-group.userinfo-nav-list
+    .my-2.user-biography
+      - if user.biography
+        .mb-1 = text_url_to_link(user.biography).html_safe
+      - if !@detail && friend?(user) && user.twitter_url?
+        .mb-1 = link_to user.twitter_url do
+          = icon('fab', 'twitter', '@' + user.twitter_screen_name)
+  .list-group.user-info-list.w-100
     = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-      |  ヌイート
-      span.badge.badge-brand.badge-pill#badgeNweets = user.nweets.count
-    - if friend?(user)
-      = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | いいね
-        span.badge.badge-brand.badge-pill#badgeLikes = user.liked_nweets.count
-      = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | フォロー
-        span.badge.badge-brand.badge-pill#badgeFollowees = user.followees.count
-      = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | フォロワー
-        span.badge.badge-brand.badge-pill#badgeFollowers = user.followers.count
-  .user_links
-    - if !@detail && friend?(user) && user.twitter_url?
-      = link_to user.twitter_url do
-        = icon('fab', 'twitter', '@' + user.twitter_screen_name)
-  = render 'users/calendar', user: user, row: 5
-  = render 'users/badges', user: user
+      = t '.list.nweets'
+      span.badge.bg-primary.rounded-pill#badgeNweets = user.nweets.count
+    = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = t '.list.likes'
+      span.badge.bg-primary.rounded-pill#badgeLikes = user.liked_nweets.count
+    = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = t '.list.followees'
+      span.badge.bg-primary.rounded-pill#badgeFollowees = user.followees.count
+    = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+      = t '.list.followers'
+      span.badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
+  = render 'users/calendar', user: user

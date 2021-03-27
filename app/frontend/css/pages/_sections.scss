@@ -1,10 +1,11 @@
+@import './sections/user_info';
+
 .side-section {
   min-height: 100vh;
   margin: 0;
 }
 
 .side-section-container {
-  background-color: $secondary-background-color;
   padding-top: 1.5rem;
   margin: 0;
   height: 100vh;
@@ -12,11 +13,10 @@
   h4 {
     font-size: medium;
     font-weight: bold;
-    margin-bottom: 1rem;
   }
 }
 
-.guest-info-bottom {
+.side-pane-bottom {
   position: absolute;
   bottom: 0;
   transform: translateY(-50%);
@@ -39,6 +39,11 @@
       padding: 0 0.25em;
     }
   }
+}
+
+.left-section {
+  margin-right: 0.5rem;
+  width: 100%;
 }
 
 .right-recommend-container {
