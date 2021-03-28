@@ -1,4 +1,4 @@
-.mb-2
+.main-col-inner.main-col-top
   = form_with url: explore_path, method: :get, local: true do |f|
     .input-group.explore-search-form-input
       = f.text_field :q, {placeholder: t('.placeholder'), value: params[:q], class: 'form-control', id: 'exploreQueryInput'}

@@ -60,16 +60,28 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 
 .main-col {
   background-color: $main-background-color;
-  padding: 1.5rem 1rem 0;
+  flex: 0 0 auto;
   margin: 0 auto;
   max-width: $main-col-width;
-  flex: 0 0 auto;
+  padding: 1.5rem 0 0;
 
   @media screen and (min-width: $wider-main-col-width) {
     max-width: $wider-main-col-width;
-    padding: 1.5rem $pane-padding-width 0;
     border: 1px solid $section-border-color;
   }
+}
+
+.main-col-inner {
+  padding: 0 1rem;
+
+  @media screen and (min-width: $wider-main-col-width) {
+    padding: 0 $pane-padding-width;
+  }
+}
+
+.main-col-top {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $section-border-color;
 }
 
 .sidebar {
