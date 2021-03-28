@@ -1,0 +1,29 @@
+.new-nweet-form {
+  background-color: lighten($brand-color, 45%);
+}
+
+.new-nweet-form-wrapper {
+  border: 1px solid $brand-color;
+  border-radius: 0.25rem; 
+
+  &:focus-within {
+    border-color: rgba($component-active-bg, $input-btn-focus-color-opacity);
+    box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
+  }
+}
+
+.new-nweet-form-textbox {
+  border: none;
+  border-bottom: solid 1px $section-border-color;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.new-nweet-form-bottom {
+  padding: 0.25rem 0.25rem 0.25rem 0;
+  border-radius: 0 0 0.25rem 0.25rem;
+  text-align: right;
+  background-color: $main-background-color;
+}

@@ -63,7 +63,7 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
   flex: 0 0 auto;
   margin: 0 auto;
   max-width: $main-col-width;
-  padding: 1.5rem 0 0;
+  padding: 0;
 
   @media screen and (min-width: $wider-main-col-width) {
     max-width: $wider-main-col-width;
@@ -72,7 +72,8 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 }
 
 .main-col-inner {
-  padding: 0 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @media screen and (min-width: $wider-main-col-width) {
     padding: 0 $pane-padding-width;
@@ -80,6 +81,7 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 }
 
 .main-col-top {
+  padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid $section-border-color;
 }
