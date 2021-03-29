@@ -72,12 +72,8 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 }
 
 .main-col-inner {
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  @media screen and (min-width: $wider-main-col-width) {
-    padding: 0 $pane-padding-width;
-  }
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .main-col-top {
