@@ -10,10 +10,8 @@ $brand-color: #36ca6c;
 
 $primary: $brand-color;
 
-$theme-colors: (
-  primary: $brand-color,
-  subtle: #CED4DA,
-  secondary: #8D9195
+$custom-colors: (
+  "subtle": #CED4DA
 );
 
 /* modifiers */
