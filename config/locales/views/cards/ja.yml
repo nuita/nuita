@@ -1,2 +1,9 @@
 ja:
   cards:
+    edit_modal:
+      title: タグを編集
+      tag_input:
+        placeholder: タグ名
+      registered_tags: 登録済みのタグ
+    edit_modal_tags:
+      no_tags_registered: 登録されたタグはありません

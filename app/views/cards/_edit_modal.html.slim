@@ -2,17 +2,15 @@
   .modal-dialog.modal-dialog-centered
     .modal-content
       .modal-header
-        h5.modal-title タグを編集
+        h5.modal-title = t('.title')
         button.close type="buttton" data-dismiss="modal"
           span &times;
       .modal-body
         = form_with url: tag_path(link: link), remote: true do |f|  
           .input-group.mb-4
-            .input-group-prepend
-              span.input-group-text = icon 'fas', 'hashtag'
-            = f.text_field :name, {placeholder: 'タグ名', class: 'form-control', id: "modalNewTagTextField#{link.id}"}
-            .input-group-append
-              = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-brandcolor'
-        h6.mb-2 既存のタグ
+            span.input-group-text = icon 'fas', 'hashtag'
+            = f.text_field :name, {rows: 1, placeholder: t('.tag_input.placeholder'), class: 'form-control', id: "modalNewTagTextField#{link.id}"}
+            = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-primary input-group-text'
+        h6.mb-2 = t('.registered_tags')
         .edit-modal-tag-list id="editModalTagList#{link.id}"
           = render 'cards/edit_modal_tags', link: link

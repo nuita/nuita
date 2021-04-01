@@ -1,8 +1,8 @@
 - if (tags = link.tags.pluck(:name)).any?
   - tags.each do |tag_name|
     = link_to tag_path(link: link, name: tag_name), {method: :delete, remote: true} do
-      .btn.btn-sm.btn-secondary.mr-2.mb-2
-        span.pr-2 = tag_name
+      .btn.btn-sm.btn-secondary.rounded-pill.edit-modal-tag-list-item
+        span.edit-modal-tag-name = tag_name
         = icon 'fas', 'times'
 - else
-  span.text-muted 設定されたタグはありません
+  span.text-muted = t('.no_tags_registered')
