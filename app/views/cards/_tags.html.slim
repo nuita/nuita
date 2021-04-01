@@ -1,8 +1,9 @@
 .tag-link.nweet-tag-link.mb-1
   - link.tags.pluck(:name).each do |tag_name|
-    span.badge.bg-primary.rounded-pill.tags-list-item
-      span.small = icon 'fas', 'hashtag'
-      span = tag_name
+    = link_to explore_path(q: tag_name)
+      .badge.bg-primary.rounded-pill.tags-list-item
+        span.small = icon 'fas', 'hashtag'
+        span = tag_name
   - if user_signed_in?
     button class="badge badge-tag mx-1" data-toggle="modal" data-target="#cardEditModal#{link.id}"
       span.small = icon 'fas', 'pencil-alt'
