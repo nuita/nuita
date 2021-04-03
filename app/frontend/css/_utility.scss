@@ -19,6 +19,13 @@
   }
 }
 
+.btn-no-outline {
+  &:hover, &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 .navbar-search-input-group {
   &:focus-within {
     color: $secondary-font-color;

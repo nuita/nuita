@@ -21,8 +21,8 @@ li.nweet id="nweet#{nweet.url_digest}"
           = render 'nweets/like_form', nweet: nweet
       .nweet-bottom-right
         - if delete_possible?(nweet.did_at, nweet.user)
-          = link_to nweet, method: :delete, class: "btn btn-ui btn-ui-secondary", data: { confirm: t('.delete_confirmation') } do
+          = link_to nweet, method: :delete, class: "btn btn-no-outline nweet-bottom-btn", data: { confirm: t('.delete_confirmation') } do
             = bi 'trash'
         - unless @detail
-          = link_to nweet, class: "btn btn-ui btn-external btn-ui-secondary" do
+          = link_to nweet, class: "btn btn-no-outline btn-external nweet-bottom-btn" do
             = bi 'box-arrow-up-right'

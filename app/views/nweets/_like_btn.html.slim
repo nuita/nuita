@@ -1,8 +1,8 @@
 - if current_user.liked?(nweet)
-  = link_to like_path(nweet: nweet), class: 'btn btn-like liked', method: :delete, remote: true do
+  = link_to like_path(nweet: nweet), class: 'btn btn-like btn-no-outline liked', method: :delete, remote: true do
     = bi 'heart-fill'
 - else
-  = link_to like_path(nweet: nweet), class: 'btn btn-like', method: :post, remote: :true do
+  = link_to like_path(nweet: nweet), class: 'btn btn-like btn-no-outline', method: :post, remote: :true do
     = bi 'heart'
 
 span.px-1
