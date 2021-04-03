@@ -33,6 +33,9 @@ html
     - unless cookies[:age_checked]
       = render('layouts/age_check_modal')
 
+    - if user_signed_in?
+      = render('layouts/user_footer')
+
     / = debug(params) if Rails.env.development?
 
     - if flash.any?

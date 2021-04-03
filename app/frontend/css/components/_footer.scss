@@ -1,33 +1,6 @@
+@import 'footers/guest_footer';
+@import 'footers/user_footer';
+
 footer {
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-  height: $footer-height;
-}
-
-.footer-container {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-$footer-list-width: 400px;
-
-.footer-list {
-  font-size: small;
-
-  li {
-    margin: 0 0.25rem;
-    padding: 0;
-    list-style: none;
-    float: left;
-
-    a {
-      color: white;
-
-      &:hover, &:active, &:focus {
-        color: white;
-      }
-    }
-  }
 }

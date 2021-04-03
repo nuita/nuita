@@ -1,0 +1,10 @@
+.footer.user-footer.d-block.d-md-none
+  .user-footer-list
+    = link_to root_path, class: 'user-footer-list-item' do 
+      = bi 'house'
+    = link_to explore_path, class: 'user-footer-list-item' do 
+      = bi 'globe'
+    = link_to likes_user_path(current_user), class: 'user-footer-list-item' do 
+      = bi 'heart'
+    = link_to user_path(current_user), class: 'user-footer-list-item' do 
+      = bi 'person'   
