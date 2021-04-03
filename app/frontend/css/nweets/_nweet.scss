@@ -64,21 +64,26 @@ a.nweet-screen-name {
   margin-top: 0.25rem;
 }
 
-.liked-color {
-  color: $like-btn-color;
-}
-
 .btn-like {
   padding-left: 0;
-  padding-right: 0;
-
   color: $secondary-font-color;
 
-  &:hover, &:active, &.liked {
-    @extend .liked-color;
+
+  &.liked {
+    color: $like-btn-color;
+  }
+
+  &:hover {
+    color: darken($like-btn-color, $hover-background-darkener);
+  }
+
+  &:active {
+    box-shadow: none;
+    outline: none;
   }
 }
 
 .btn-external {
+  color: $secondary-font-color;
   padding-right: 0;
 }

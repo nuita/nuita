@@ -105,7 +105,7 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 }
 
 // bootstrap iconが微妙に下にズレている気がするので修正する
-.search-icon {
+.bi-search, .bi-heart, .bi-heart-fill, .bi-pencil-fill {
   position: relative;
   top: -0.1em;
 }

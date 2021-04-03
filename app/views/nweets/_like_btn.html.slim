@@ -1,0 +1,13 @@
+- if current_user.liked?(nweet)
+  = link_to like_path(nweet: nweet), class: 'btn btn-like liked', method: :delete, remote: true do
+    = bi 'heart-fill'
+- else
+  = link_to like_path(nweet: nweet), class: 'btn btn-like', method: :post, remote: :true do
+    = bi 'heart'
+
+span.px-1
+  span.small
+    - if nweet.latest_liked_time
+      span.text-muted 最新のいいね:
+      span.text-muted.pl-1#latestLikedTime
+        = time_ago(nweet.latest_liked_time)

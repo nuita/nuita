@@ -7,7 +7,6 @@ import setRecommendButton from "../src/recommend";
 import setInfiniteScroll from "../src/infinite_scroll";
 import setUserButtons from "../src/users";
 import setCalendar from "../src/calendar";
-import { setLikeButtons } from "../src/nweets";
 import { setTagButtons } from "../src/tags";
 import { setAgeCheckModal } from "../src/age_check";
 
@@ -22,7 +21,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setRecommendButton();
   setInfiniteScroll();
   setUserButtons();
-  setLikeButtons();
   setTagButtons();
   setAgeCheckModal();
   setCalendar();
