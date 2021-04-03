@@ -7,6 +7,4 @@
   - if user_signed_in?
     .tags-list-item.badge.bg-primary.rounded-pill.edit-modal-toggle-btn data-toggle="modal" data-target="#cardEditModal#{link.id}"
       span.small.edit-modal-toggle-btn-bi = bi 'pencil-fill'
-      
-- if user_signed_in?
-  = render 'cards/edit_modal', link: link
+    = render 'cards/edit_modal', link: link
