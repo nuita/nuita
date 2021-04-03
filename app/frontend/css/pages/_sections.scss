@@ -21,10 +21,13 @@
   bottom: 0;
   transform: translateY(-50%);
   margin-bottom: 0.25rem;
+  margin-right: 0.75rem;
 }
 
 .side-footer-list {
   list-style: none;
+  padding-left: 0;
+
   li {
     display: inline-block;
     font-size: small;
@@ -42,10 +45,10 @@
 }
 
 .left-section {
-  margin-right: 0.5rem;
   width: 100%;
+  margin-right: 0.75rem;
 }
 
 .right-recommend-container {
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
 }

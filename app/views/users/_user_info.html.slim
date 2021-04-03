@@ -28,16 +28,16 @@
         .mb-1 = link_to user.twitter_url do
           = icon('fab', 'twitter', '@' + user.twitter_screen_name)
   .list-group.user-info-list.w-100
-    = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+    = link_to(user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.nweets'
       span.badge.bg-primary.rounded-pill#badgeNweets = user.nweets.count
-    = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+    = link_to(likes_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.likes'
       span.badge.bg-primary.rounded-pill#badgeLikes = user.liked_nweets.count
-    = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+    = link_to(followees_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.followees'
       span.badge.bg-primary.rounded-pill#badgeFollowees = user.followees.count
-    = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
+    = link_to(followers_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.followers'
       span.badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
   = render 'users/calendar', user: user

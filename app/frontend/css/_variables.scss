@@ -8,10 +8,11 @@ $secondary-background-color: #fcfcfc;
 $section-border-color: $inactive-font-color;
 $brand-color: #36ca6c;
 
-$theme-colors: (
-  primary: $brand-color,
-  subtle: #CED4DA,
-  secondary: #8D9195
+$primary: $brand-color;
+
+$custom-colors: (
+  "subtle": #CED4DA,
+  "like": #C73B31
 );
 
 /* modifiers */

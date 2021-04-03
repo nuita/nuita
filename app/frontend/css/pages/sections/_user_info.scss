@@ -22,6 +22,19 @@ h4.user-info-handle-name {
   color: $secondary-font-color;
 }
 
+.user-info-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: $main-background-color;
+
+  &:hover {
+    text-decoration: none;
+    background-color: darken($main-background-color, $hover-background-darkener);
+  }
+}
+
 /* contribution graph */
 $contribution-color-zero: rgba(127, 127, 127, 0.2);
 $contribution-color-one: $brand-color;

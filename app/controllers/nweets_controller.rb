@@ -18,6 +18,8 @@ class NweetsController < ApplicationController
 
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
+    @nweet.did_at ||= Time.zone.now
+
     if @nweet.save
       flash[:success] = 'ヌイートを投稿しました！'
       tweet if current_user.autotweet_enabled

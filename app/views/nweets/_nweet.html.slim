@@ -1,27 +1,28 @@
 li.nweet id="nweet#{nweet.url_digest}"
-  .nweet-header
-    .nweet-header-left
-      = link_to icon_for(nweet.user, size: 50), nweet.user
-    .nweet-header-right
-      .nweet-user-info
-        = link_to nweet.user.handle_name, nweet.user, {class: 'nweet-handle-name'}
-        = link_to "@#{nweet.user.screen_name}", nweet.user, {class: 'nweet-screen-name'}
-      .content
-        .nweet-sentence
-          = t('.sentence', time: time_ago(nweet.did_at))
-  .nweet-main
-    - if nweet.links.any?
-      = render 'cards/card', link: nweet.links.first
-    - if nweet.statement?
-      .nweet-statement = text_url_to_link(nweet.statement).html_safe
-  .nweet-bottom
-    .nweet-bottom-left
-      - if user_signed_in?
-        = render 'nweets/like_form', nweet: nweet
-    .nweet-bottom-right
-      - if delete_possible?(nweet.did_at, nweet.user)
-        = link_to nweet, method: :delete, class: "btn btn-ui btn-ui-secondary", data: { confirm: t('.delete_confirmation') } do
-          = bi 'trash'
-      - unless @detail
-        = link_to nweet, class: "btn btn-ui btn-external btn-ui-secondary" do
-          = bi 'box-arrow-up-right'
+  .main-col-inner
+    .nweet-header
+      .nweet-header-left
+        = link_to icon_for(nweet.user, size: 50), nweet.user
+      .nweet-header-right
+        .nweet-user-info
+          = link_to nweet.user.handle_name, nweet.user, {class: 'nweet-handle-name'}
+          = link_to "@#{nweet.user.screen_name}", nweet.user, {class: 'nweet-screen-name'}
+        .content
+          .nweet-sentence
+            = t('.sentence', time: time_ago(nweet.did_at))
+    .nweet-main
+      - if nweet.links.any?
+        = render 'cards/card', link: nweet.links.first
+      - if nweet.statement?
+        .nweet-statement = text_url_to_link(nweet.statement).html_safe
+    .nweet-bottom
+      .nweet-bottom-left
+        - if user_signed_in?
+          = render 'nweets/like_form', nweet: nweet
+      .nweet-bottom-right
+        - if delete_possible?(nweet.did_at, nweet.user)
+          = link_to nweet, method: :delete, class: "btn btn-no-outline nweet-bottom-btn", data: { confirm: t('.delete_confirmation') } do
+            = bi 'trash'
+        - unless @detail
+          = link_to nweet, class: "btn btn-no-outline btn-external nweet-bottom-btn" do
+            = bi 'box-arrow-up-right'

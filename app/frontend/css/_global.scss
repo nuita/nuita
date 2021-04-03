@@ -19,9 +19,7 @@ a {
 }
 
 input, textarea {
-  &:focus {
-    outline: none;
-  }
+  resize: none;
 }
 
 .btn {

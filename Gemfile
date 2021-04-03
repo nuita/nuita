@@ -49,6 +49,8 @@ gem 'toastr-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 
+gem 'mimemagic', '~> 0.3.6'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
