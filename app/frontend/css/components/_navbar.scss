@@ -26,4 +26,10 @@
   position: fixed;
   top: 0;
   width: 100vw;
+
+  transition: 0.5s;
+}
+
+.navbar-faded-out {
+  top: -$header-height;
 }
