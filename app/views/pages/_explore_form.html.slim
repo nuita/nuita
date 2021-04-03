@@ -3,4 +3,4 @@
     .input-group.explore-search-form-input
       = f.text_field :q, {placeholder: t('.placeholder'), value: params[:q], class: 'form-control', id: 'exploreQueryInput'}
       .input-group-append
-        = f.button bi('search', 'search-icon'), name: nil, type: :submit, class: 'btn btn-primary'
+        = f.button bi('search', classname: 'search-icon'), name: nil, type: :submit, class: 'btn btn-primary'

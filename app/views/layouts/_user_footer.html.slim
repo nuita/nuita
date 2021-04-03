@@ -1,10 +1,10 @@
-.footer.user-footer.d-block.d-md-none
+.footer.user-footer.d-block.d-md-none#userFooter
   .user-footer-list
     = link_to root_path, class: 'user-footer-list-item' do 
-      = bi 'house'
+      = bi 'house', id: 'userFooterListItemHome'
     = link_to explore_path, class: 'user-footer-list-item' do 
-      = bi 'globe'
+      = bi 'globe', id: 'userFooterListItemExplore'
     = link_to likes_user_path(current_user), class: 'user-footer-list-item' do 
-      = bi 'heart'
+      = bi 'heart', id: 'userFooterListItemLikes'
     = link_to user_path(current_user), class: 'user-footer-list-item' do 
-      = bi 'person'   
+      = bi 'person', id: 'userFooterListItemProfile'

@@ -27,5 +27,9 @@ $user-footer-icon-size: 18px;
     position: relative;
     width: 100%;
     top: -0.1em;
+
+    &.active {
+      color: $brand-color;
+    }
   }
 }

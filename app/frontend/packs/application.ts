@@ -2,6 +2,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 import { setHeaderButton, hideHeaderWhileScrolling } from "../src/header";
+import { setFooterButtons } from "../src/footer";
 import fetchNotification from "../src/notification";
 import setRecommendButton from "../src/recommend";
 import setInfiniteScroll from "../src/infinite_scroll";
@@ -16,6 +17,7 @@ require.context('../images', true)
 
 window.addEventListener("DOMContentLoaded", (event) => {
   setHeaderButton();
+  setFooterButtons();
   hideHeaderWhileScrolling();
   fetchNotification();
   setRecommendButton();

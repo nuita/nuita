@@ -20,7 +20,7 @@ function setTopButton() {
 }
 
 function setNavButton() {
-  const pathname: string = location.pathname;
+  const pathname = location.pathname;
   const userNavItems = document.getElementsByClassName("user-nav-item");
   if (userNavItems.length === 0) {
     return;
