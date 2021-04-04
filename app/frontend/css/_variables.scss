@@ -9,9 +9,10 @@ $section-border-color: $inactive-font-color;
 $brand-color: #36ca6c;
 
 $primary: $brand-color;
+$subtle-color: #CED4DA;
 
 $custom-colors: (
-  "subtle": #CED4DA,
+  "subtle": $subtle-color,
   "like": #C73B31
 );
 

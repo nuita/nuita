@@ -19,6 +19,16 @@
   }
 }
 
+.btn-outline-subtle {
+  @include button-outline-variant($subtle-color);
+
+  &:hover {
+    border-color: $brand-color;
+    background-color: $brand-color;
+    color: white;
+  }  
+}
+
 .btn-no-outline {
   &:hover, &:focus, &:active {
     outline: none;
