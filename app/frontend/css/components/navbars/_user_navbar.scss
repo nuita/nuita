@@ -44,15 +44,20 @@
 }
 
 .navbar-search-input-group {
+  border-radius: 0.25rem;
+
   &:focus-within {
     .navbar-search-input {
       border-color: $brand-color;
+      box-shadow: none;
     }
 
     .navbar-btn-search {
       border-color: $brand-color;
       color: $brand-color;
     }
+
+    box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
   }
 }
 

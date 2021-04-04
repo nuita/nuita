@@ -1,6 +1,6 @@
 .main-col-inner.main-col-top
   = form_with url: explore_path, method: :get, local: true do |f|
-    .input-group.explore-search-form-input
-      = f.text_field :q, {placeholder: t('.placeholder'), value: params[:q], class: 'form-control', id: 'exploreQueryInput'}
+    .input-group.explore-form-wrapper
+      = f.text_field :q, {placeholder: t('.placeholder'), value: params[:q], class: 'form-control explore-form-query-input', id: 'exploreQueryInput'}
       .input-group-append
-        = f.button bi('search', classname: 'search-icon'), name: nil, type: :submit, class: 'btn btn-primary'
+        = f.button bi('search', classname: 'search-icon'), name: nil, type: :submit, class: 'btn btn-primary explore-form-search-btn'

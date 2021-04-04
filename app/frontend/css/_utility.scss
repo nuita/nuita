@@ -109,6 +109,7 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid $section-border-color;
+  background-color: lighten($brand-color, 45%);
 }
 
 .sidebar {
