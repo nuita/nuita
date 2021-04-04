@@ -24,8 +24,23 @@
 .new-nweet-form-bottom {
   padding: 0.25rem 0.25rem 0.25rem 0;
   border-radius: 0 0 0.25rem 0.25rem;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   background-color: $main-background-color;
+}
+
+.new-nweet-text-count {
+  padding-right: 1rem;
+  color: $secondary-font-color;
+}
+
+#nweetFormBottomTextLengthCount {
+  margin-right: 1px;
+}
+
+#nweetTextCountLimit {
+  font-size: small;
 }
 
 .explore-form-query-input {
