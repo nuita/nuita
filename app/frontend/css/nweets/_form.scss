@@ -27,3 +27,25 @@
   text-align: right;
   background-color: $main-background-color;
 }
+
+.explore-form-query-input {
+  border: 1px solid $brand-color;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.explore-form-search-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.explore-form-wrapper {
+  border-radius: 0.25rem;
+
+  &:focus-within {
+    border-color: rgba($component-active-bg, $input-btn-focus-color-opacity);
+    box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
+  }
+}

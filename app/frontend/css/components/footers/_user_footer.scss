@@ -1,0 +1,35 @@
+.user-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $main-background-color;
+  border-top: 1px solid $section-border-color;
+}
+
+.user-footer-list {
+  display: flex;
+  height: $user-footer-height;
+  justify-content: space-around;
+  justify-items: center;
+  text-align: center;
+}
+
+$user-footer-icon-size: 18px;
+
+.user-footer-list-item {
+  line-height: $user-footer-height;
+  color: $secondary-font-color;
+  font-size: 140%;
+  flex-grow: 1;
+
+  i {
+    position: relative;
+    width: 100%;
+    top: -0.1em;
+
+    &.active {
+      color: $brand-color;
+    }
+  }
+}

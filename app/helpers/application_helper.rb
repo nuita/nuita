@@ -61,8 +61,8 @@ module ApplicationHelper
     html
   end
 
-  def bi(name, classname = '')
-    tag.i(nil, class: "bi-#{name} #{classname}")
+  def bi(name, classname: '', id: '')
+    tag.i(nil, class: "bi-#{name} #{classname}", id: id)
   end
 
   def author_info(link)

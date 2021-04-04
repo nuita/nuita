@@ -1,11 +1,11 @@
 nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrollable"
-  .container
+  .container-md
     ul.nav.mode-nav.ml-0.user-home-nav.flex-grow-1
-      li.nav-item.user-nav-item#homeNav
+      li.nav-item.user-nav-item.d-none.d-md-block#homeNav
         = link_to root_url do
           = bi 'house'
           span.nav-label = t('.nav.home')
-      li.nav-item.user-nav-item#exploreNav
+      li.nav-item.user-nav-item.d-none.d-md-block#exploreNav
         = link_to explore_path do
           = bi 'globe'
           span.nav-label = t('.nav.explore')
@@ -20,7 +20,7 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrolla
       = form_with url: explore_path, method: :get, local: true do |f|
         .input-group.navbar-search-input-group
           = f.search_field :q, class: 'form-control navbar-search-input'
-          = f.button bi('search', 'search-icon'), name: nil, type: :submit, class: 'btn btn-outline-subtle navbar-btn-search'
+          = f.button bi('search', id: 'search-icon'), name: nil, type: :submit, class: 'btn btn-outline-subtle navbar-btn-search'
     ul.nav
       li.nav-item.dropdown
         a.nav-link.dropdown-toggle#navbarDropdownMenuLink href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"
