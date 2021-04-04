@@ -7,8 +7,8 @@
     .col.main-col
       .nweet-feed
         - if @notifications.count.zero?
-          .nweet-count = "まだ通知がありません……"
-        ol.nweets-list
+          .nweet-count = t('.no_notifications')
+        ol.nweet-list
           = render @notifications
     .col.sidebar.right-col
       = render 'layouts/right_section'
