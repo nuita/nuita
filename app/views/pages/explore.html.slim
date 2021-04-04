@@ -1,4 +1,5 @@
-- provide(:title, 'グローバルタイムライン')
+- title = params[:q] ? t('.title_with_query', query: params[:q]) : t('.title')
+- provide(:title, title)
 
 .container-md.threepane-container
   .row

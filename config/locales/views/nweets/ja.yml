@@ -1,8 +1,10 @@
 ja:
   nweets:
+    new:
+      title: ヌイートを投稿する
     display:
       is_nweeting_on_this_link: さんがヌイートしています
     new_form:
-      placeholder: 感想・使用したオカズを入力（100文字以内）
+      placeholder: 感想・使用したオカズを入力
     nweet:
       sentence: "%{time}にヌイートしました。"
