@@ -10,6 +10,7 @@ import setUserButtons from "../src/users";
 import setCalendar from "../src/calendar";
 import { setTagButtons } from "../src/tags";
 import { setAgeCheckModal } from "../src/age_check";
+import { setNewNweetForm } from "../src/new_nweet_form";
 
 import "../css/application.scss";
 
@@ -26,4 +27,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setTagButtons();
   setAgeCheckModal();
   setCalendar();
+  setNewNweetForm();
 });
