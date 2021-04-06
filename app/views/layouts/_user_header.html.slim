@@ -1,15 +1,15 @@
 nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrollable"
   .container-md
     ul.nav.mode-nav.ml-0.user-home-nav.flex-grow-1
-      li.nav-item.user-nav-item.d-none.d-md-block#homeNav
+      li.nav-item.user-nav-item.d-none.d-md-block#userHeaderNavHome
         = link_to root_url do
           = bi 'house'
           span.nav-label = t('.nav.home')
-      li.nav-item.user-nav-item.d-none.d-md-block#exploreNav
+      li.nav-item.user-nav-item.d-none.d-md-block#userHeaderNavExplore
         = link_to explore_path do
           = bi 'globe'
           span.nav-label = t('.nav.explore')
-      li.nav-item.user-nav-item#notificationsNav
+      li.nav-item.user-nav-item#userHeaderNavNotifications
         = link_to notifications_path do
           = bi 'bell'
           span.nav-label = t('.nav.notification')
