@@ -1,0 +1,8 @@
+ja:
+  notifications:
+    index:
+      title: 最近の通知
+      no_notifications: まだ通知がありません。
+    notification:
+      liked: さんがいいねしました。
+      followed: さんがあなたをフォローしました。

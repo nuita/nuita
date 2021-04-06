@@ -1,13 +1,14 @@
-- provide(:title, "最近の通知")
+- provide(:title, t('.title'))
 
-.container-fluid
+.container-md.threepane-container
   .row
-    .d-none.d-md-block.col-md-3
-      = render 'users/user_info', {user: current_user}
-    .col.p-0.nweet-feed.row_top
-      - if @notifications.count.zero?
-        .nweet-count = "まだ通知がありません……"
-      ol.nweets-list
-        = render @notifications
-    .d-none.d-lg-block.col-lg-3
-      = render 'pages/recommend'
+    .col.sidebar.left-col
+      = render 'layouts/left_section'
+    .col.main-col
+      .nweet-feed
+        - if @notifications.count.zero?
+          .nweet-count = t('.no_notifications')
+        ol.nweet-list
+          = render @notifications
+    .col.sidebar.right-col
+      = render 'layouts/right_section'

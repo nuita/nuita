@@ -7,5 +7,10 @@ ja:
         query:
           placeholder: Nuitaでオカズを探す
       search_with_popular_tags: 人気のタグで検索
+    user_home:
+      title: ホーム
+    explore:
+      title: 見つける
+      title_with_query: "%{query}の検索結果"
     explore_form:
       placeholder: キーワードやタグで検索
