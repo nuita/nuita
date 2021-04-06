@@ -1,20 +1,16 @@
 export function setFooterButtons() {
-  const houseIcon = document.getElementById('userFooterListItemHome');
-  if (houseIcon === null) {
+  const activeModeDetector = document.getElementById('activeModeDetector');
+  if (activeModeDetector === null) {
     return;
   }
 
-  const pathname = location.pathname;
-  let navToSetActive: HTMLElement;
-  if (pathname == '/') {
-    navToSetActive = houseIcon;
-  } else if (pathname.match('/explore')) {
-    navToSetActive = document.getElementById('userFooterListItemExplore');
-  } else if (pathname.match('/likes')) {
-    navToSetActive = document.getElementById('userFooterListItemLikes');
-  } else if (pathname.match('/users/')) {
-    navToSetActive = document.getElementById('userFooterListItemProfile');
+  const pageNavMode = activeModeDetector.getAttribute('data-nav-mode');
+  if (pageNavMode === null) {
+    return;
   }
 
-  navToSetActive?.classList?.add('active');
+  const icon = document.getElementById(`userFooterListItem${pageNavMode}`);
+  if (icon !== null) {
+    icon.classList.add('active');
+  }
 }

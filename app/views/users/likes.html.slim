@@ -8,3 +8,6 @@
       = render 'pages/likeline'
     .d-none.d-lg-block.col-lg-3
       = render 'pages/recommend'
+
+- if current_user?(@user)
+  #activeModeDetector data-nav-mode="Likes"
