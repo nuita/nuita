@@ -1,5 +1,7 @@
 ja:
   users:
+    show:
+      title: "%{handle_name} (@%{screen_name}) さんのヌイート"
     calendar:
       recent_posts: 最近の投稿
       nweet_count: "%{count}件"
