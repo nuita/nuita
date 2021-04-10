@@ -1,0 +1,7 @@
+- if current_user.followee?(user)
+  = link_to t('.following'), relationship_path(followee: user), method: :delete, class: 'btn btn-outline-primary', id: 'buttonUnfollow'
+- else
+  = link_to t('.follow'), relationship_path(followee: user), method: :post, class: 'btn btn-primary', id: 'buttonFollow'
+- if current_user.follower?(user)
+  .my-1#you-are-followed
+    span.label-muted = t('.followed')

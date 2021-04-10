@@ -11,3 +11,7 @@ ja:
         likes: いいね
         followees: フォロー
         followers: フォロワー
+    follow_btn:
+      following: フォロー中
+      follow: フォローする
+      followed: フォローされています

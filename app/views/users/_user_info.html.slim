@@ -14,13 +14,7 @@
           = link_to mute_path(mutee: user), method: :post, class: "graybtn"
             = icon 'fas', 'eye-slash'
   - if other_user?(user)
-    - if current_user.followee?(user)
-      = render 'users/unfollow', user: user
-    - else
-      = render 'users/follow', user: user
-    - if current_user.follower?(user)
-      .my-1#you-are-followed
-        span.label-muted フォローされています
+    = render 'users/follow_btn', user: user
     .my-2.user-biography
       - if user.biography
         .mb-1 = text_url_to_link(user.biography).html_safe

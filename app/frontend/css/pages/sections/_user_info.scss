@@ -1,10 +1,4 @@
 /* user-info */
-.user-info {
-  a {
-    color: $body-font-color;
-  }
-}
-
 .user-info-top {
   display: flex;
   align-items: center;
@@ -28,9 +22,12 @@ h4.user-info-handle-name {
   align-items: center;
 
   background-color: $main-background-color;
+  color: $body-font-color;
 
   &:hover {
+    transition: 0.15s;
     text-decoration: none;
+    color: $body-font-color;
     background-color: darken($main-background-color, $hover-background-darkener);
   }
 }
