@@ -32,6 +32,14 @@ h4.user-info-handle-name {
   }
 }
 
+.bg-primary.user-info-list-badge {
+  &.active {
+    background-color: $main-background-color !important;
+    color: $brand-color;
+    border: 1px solid $brand-color;
+  }
+}
+
 /* contribution graph */
 $contribution-color-zero: rgba(127, 127, 127, 0.2);
 $contribution-color-one: $brand-color;
