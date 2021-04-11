@@ -15,12 +15,12 @@
             = icon 'fas', 'eye-slash'
   - if other_user?(user)
     = render 'users/follow_btn', user: user
-    .my-2.user-biography
-      - if user.biography
-        .mb-1 = text_url_to_link(user.biography).html_safe
-      - if !@detail && friend?(user) && user.twitter_url?
-        .mb-1 = link_to user.twitter_url do
-          = icon('fab', 'twitter', '@' + user.twitter_screen_name)
+  .my-2.user-info-biography
+    - if user.biography
+      .mb-1 = text_url_to_link(user.biography).html_safe
+    - if !@detail && user.twitter_url?
+      .mb-1 = link_to user.twitter_url do
+        = icon('fab', 'twitter', '@' + user.twitter_screen_name)
   .list-group.user-info-list.w-100
     = link_to(user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.nweets'

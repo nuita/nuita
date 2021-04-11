@@ -3,5 +3,5 @@
 - else
   = link_to t('.follow'), relationship_path(followee: user), method: :post, class: 'btn btn-primary', id: 'buttonFollow'
 - if current_user.follower?(user)
-  .my-1#you-are-followed
-    span.label-muted = t('.followed')
+  #you-are-followed
+    .badge.badge-secondary = t('.followed')

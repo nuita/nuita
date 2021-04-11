@@ -134,6 +134,11 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
   }
 }
 
+.badge-secondary {
+  background-color: $inactive-font-color;
+  color: $secondary-font-color;
+}
+
 // bootstrap iconが微妙に下にズレている気がするので修正する
 .bi-search, .bi-heart, .bi-heart-fill, .bi-pencil-fill {
   position: relative;
