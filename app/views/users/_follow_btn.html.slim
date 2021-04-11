@@ -5,3 +5,7 @@
 - if current_user.follower?(user)
   #you-are-followed
     .badge.badge-secondary = t('.followed')
+- if current_user.muted?(user)
+  .small.mt-1
+    = t('.this_user_is_muted')
+    = link_to t('.unmute'), mute_path(mutee: user), method: :delete

@@ -11,7 +11,12 @@ ja:
         likes: いいね
         followees: フォロー
         followers: フォロワー
+      options:
+        mute: ミュートする
+        unmute: ミュートを解除する
     follow_btn:
       following: フォロー中
       follow: フォローする
       followed: フォローされています
+      this_user_is_muted: このユーザーをミュートしています。
+      unmute: ミュートを解除する

@@ -71,6 +71,10 @@
 .dropdown-menu-right {
   left: auto;
   right: 0;
+
+  .dropdown-item {
+    text-align: right;
+  }
 }
 
 .dropdown-toggle {
@@ -107,8 +111,6 @@
 }
 
 .dropdown-item {
-  text-align: right;
-
   &:active {
     background-color: $brand-color;
     color: $main-background-color;
