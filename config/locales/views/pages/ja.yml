@@ -14,3 +14,5 @@ ja:
       title_with_query: "%{query}の検索結果"
     explore_form:
       placeholder: キーワードやタグで検索
+    likeline:
+      no_likes_yet: まだいいねがありません

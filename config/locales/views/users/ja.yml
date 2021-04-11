@@ -2,6 +2,8 @@ ja:
   users:
     show:
       title: "%{handle_name} (@%{screen_name}) さんのヌイート"
+    likes:
+      title: "%{handle_name} (@%{screen_name}) さんのいいね一覧"
     calendar:
       recent_posts: 最近の投稿
       nweet_count: "%{count}件"
@@ -20,3 +22,5 @@ ja:
       followed: フォローされています
       this_user_is_muted: このユーザーをミュートしています。
       unmute: ミュートを解除する
+    feed:
+      no_nweets_yet: まだヌイートがありません。
