@@ -114,8 +114,22 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 
 .sidebar {
   position: sticky;
-  height: 100vh;
   top: $header-height;
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: $twopane-width) {
+    height: 100vh;
+    margin-bottom: 0;
+  }
+}
+
+.left-col-responsive {
+  display: flex;
+
+  position: sticky;
+  @media screen and (max-width: $twopane-width) {
+    position: static;
+  }
 }
 
 .left-col {

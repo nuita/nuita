@@ -1,9 +1,9 @@
 section.side-section.left-section
   .side-section-container
-    - if user_signed_in?
-      = render 'users/user_info', {user: user ||= current_user}
+    - if u = (user ||= current_user)
+      = render 'users/user_info', {user: u}
     - else
       = render 'layouts/guest_info'
-  .side-pane-bottom
+  .side-pane-bottom.left-pane-mobile-hidden
     ul.side-footer-list
       = render 'layouts/footer_list'

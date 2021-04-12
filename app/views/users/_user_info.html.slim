@@ -1,5 +1,5 @@
 .user-info
-  .user-info-top.mb-2
+  .user-info-top
     .user-info-top-left
       = icon_for(user, size: 50, htmlclass: 'usericon rounded-circle mr-3 mb-2')
     .user-info-top-middle
@@ -18,7 +18,7 @@
                 = link_to t('.options.mute'), mute_path(mutee: user), method: :post, class: 'dropdown-item'
   - if other_user?(user)
     = render 'users/follow_btn', user: user
-  .my-2.user-info-biography
+  .mb-2.user-info-biography
     - if user.biography
       .mb-1 = text_url_to_link(user.biography).html_safe
     - if !@detail && user.twitter_url?
@@ -37,4 +37,5 @@
     = link_to(followers_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.followers'
       span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
-  = render 'users/calendar', user: user
+  .left-pane-mobile-hidden
+    = render 'users/calendar', user: user
