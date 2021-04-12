@@ -115,11 +115,13 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 .sidebar {
   position: sticky;
   top: $header-height;
-  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $section-border-color;
 
   @media screen and (min-width: $twopane-width) {
     height: 100vh;
-    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
   }
 }
 
