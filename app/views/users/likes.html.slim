@@ -1,10 +1,13 @@
-- provide(:title, 'いいねした投稿の一覧')
+- provide(:title, t('.title', handle_name: @user.handle_name, screen_name: @user.screen_name))
 
-.container-fluid
+.container-md.threepane-container
   .row
-    .d-md-block.col-md-3
-      = render 'users/user_info', {user: @user}
-    .col-md.p-0
+    .col.sidebar.left-col-responsive
+      = render 'layouts/left_section', {user: @user}
+    .col.main-col
       = render 'pages/likeline'
-    .d-none.d-lg-block.col-lg-3
-      = render 'pages/recommend'
+    .col.sidebar.right-col
+      = render 'layouts/right_section'
+
+- if current_user?(@user)
+  #activeModeDetector data-nav-mode="Likes"

@@ -114,8 +114,24 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
 
 .sidebar {
   position: sticky;
-  height: 100vh;
   top: $header-height;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $section-border-color;
+
+  @media screen and (min-width: $twopane-width) {
+    height: 100vh;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.left-col-responsive {
+  display: flex;
+
+  position: sticky;
+  @media screen and (max-width: $twopane-width) {
+    position: static;
+  }
 }
 
 .left-col {
@@ -132,6 +148,11 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
   @media screen and (max-width: $threepane-width) {
     display: none;
   }
+}
+
+.badge-secondary {
+  background-color: $inactive-font-color;
+  color: $secondary-font-color;
 }
 
 // bootstrap iconが微妙に下にズレている気がするので修正する

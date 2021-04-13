@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :friend_user, only: [:likes, :followers, :followees]
-
   def show
     @user = User.find_by(url_digest: params[:url_digest])
 

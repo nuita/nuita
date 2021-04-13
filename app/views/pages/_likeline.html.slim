@@ -1,9 +1,6 @@
-.nweet-feed.row_top
+.nweet-feed
   - if @user.liked_nweets.any?
-    .nweet-count
-      = @user.liked_nweets.count
-      | 件のいいね
-    ol.nweets-list
+    ol.nweet-list
       = render "nweets/nweets"
   - else
-    p まだ「いいね！」した投稿はありません (T_T)
+    .pt-3 = t('.no_likes_yet')

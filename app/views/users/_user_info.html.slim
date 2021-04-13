@@ -1,43 +1,41 @@
 .user-info
-  .user-info-top.mb-3
+  .user-info-top
     .user-info-top-left
       = icon_for(user, size: 50, htmlclass: 'usericon rounded-circle mr-3 mb-2')
-    .user-info-top-right
+    .user-info-top-middle
       h4.user-info-handle-name = user.handle_name
       .user-info-screen-name = "@" + user.screen_name
     - if other_user?(user)
-      .mr-2.flex-grow-0
-        - if current_user.muted?(user)
-          = link_to mute_path(mutee: user), method: :delete, class: "text-danger"
-            = icon 'fas', 'eye-slash'
-        - else
-          = link_to mute_path(mutee: user), method: :post, class: "graybtn"
-            = icon 'fas', 'eye-slash'
+      .user-info-top-right
+        .dropdown
+          button.btn.dropdown-toggle.user-option-dropdown-btn#userOptionDropdownBtn type="button" data-bs-toggle="dropdown"
+            = bi 'three-dots'
+          ul.dropdown-menu.dropdown-menu-end aria-labelledby="userOptionDropdownBtn"
+            li
+              - if current_user.muted?(user)
+                = link_to t('.options.unmute'), mute_path(mutee: user), method: :delete, class: 'dropdown-item'
+              - else
+                = link_to t('.options.mute'), mute_path(mutee: user), method: :post, class: 'dropdown-item'
   - if other_user?(user)
-    - if current_user.followee?(user)
-      = render 'users/unfollow', user: user
-    - else
-      = render 'users/follow', user: user
-    - if current_user.follower?(user)
-      .my-1#you-are-followed
-        span.label-muted フォローされています
-    .my-2.user-biography
-      - if user.biography
-        .mb-1 = text_url_to_link(user.biography).html_safe
-      - if !@detail && friend?(user) && user.twitter_url?
-        .mb-1 = link_to user.twitter_url do
-          = icon('fab', 'twitter', '@' + user.twitter_screen_name)
+    = render 'users/follow_btn', user: user
+  .mb-2.user-info-biography
+    - if user.biography
+      .mb-1 = text_url_to_link(user.biography).html_safe
+    - if !@detail && user.twitter_url?
+      .mb-1 = link_to user.twitter_url do
+        = icon('fab', 'twitter', '@' + user.twitter_screen_name)
   .list-group.user-info-list.w-100
     = link_to(user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.nweets'
-      span.badge.bg-primary.rounded-pill#badgeNweets = user.nweets.count
+      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeNweets = user.nweets.count
     = link_to(likes_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.likes'
-      span.badge.bg-primary.rounded-pill#badgeLikes = user.liked_nweets.count
+      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeLikes = user.liked_nweets.count
     = link_to(followees_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.followees'
-      span.badge.bg-primary.rounded-pill#badgeFollowees = user.followees.count
+      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeFollowees = user.followees.count
     = link_to(followers_user_path(user), class: "list-group-item user-info-list-item") do
       = t '.list.followers'
-      span.badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
-  = render 'users/calendar', user: user
+      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
+  .left-pane-mobile-hidden
+    = render 'users/calendar', user: user

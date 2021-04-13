@@ -1,10 +1,4 @@
 /* user-info */
-.user-info {
-  a {
-    color: $body-font-color;
-  }
-}
-
 .user-info-top {
   display: flex;
   align-items: center;
@@ -12,6 +6,35 @@
 
 .user-info-top-left {
   margin-right: 0.5rem;
+}
+
+.user-info-top-middle {
+  flex-grow: 1;
+}
+
+.user-info-top-right {
+  .dropdown-menu {
+    min-width: 8em;
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+}
+
+.user-option-dropdown-btn {
+  width: 30px;
+  height: 30px;
+  line-height: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid $brand-color;
+  color: $brand-color;
+  text-align: center;
 }
 
 h4.user-info-handle-name {
@@ -28,10 +51,30 @@ h4.user-info-handle-name {
   align-items: center;
 
   background-color: $main-background-color;
+  color: $body-font-color;
 
   &:hover {
+    transition: 0.15s;
     text-decoration: none;
+    color: $body-font-color;
     background-color: darken($main-background-color, $hover-background-darkener);
+  }
+}
+
+.bg-primary.user-info-list-badge {
+  &.active {
+    background-color: $main-background-color !important;
+    color: $brand-color;
+    border: 1px solid $brand-color;
+  }
+}
+
+.user-info-biography {
+  border-left: 1px solid $brand-color;
+  padding-left: 0.5rem;
+
+  a {
+    color: $body-font-color;
   }
 }
 
