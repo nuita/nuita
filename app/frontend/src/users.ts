@@ -8,13 +8,13 @@ export default function setUserInfoButtons() {
     element = document.getElementById('cal' + unescape(matchData[0]));
   } else {
     if (~pathname.indexOf('likes')) {
-      element = document.getElementById('badgeLikes');
+      element = document.getElementById('userInfoLikes');
     } else if (~pathname.indexOf('followers')) {
-      element = document.getElementById('badgeFollowers');
+      element = document.getElementById('userInfoFollowers');
     } else if (~pathname.indexOf('followees')) {
-      element = document.getElementById('badgeFollowees');
+      element = document.getElementById('userInfoFollowees');
     } else if (~pathname.indexOf('users')) {
-      element = document.getElementById('badgeNweets');
+      element = document.getElementById('userInfoNweets');
     } else {
       element = null
     }

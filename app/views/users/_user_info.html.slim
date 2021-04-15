@@ -25,17 +25,17 @@
       .mb-1 = link_to user.twitter_url do
         = icon('fab', 'twitter', '@' + user.twitter_screen_name)
   .list-group.user-info-list.w-100
-    = link_to(user_path(user), class: "list-group-item user-info-list-item") do
+    = link_to(user_path(user), class: "list-group-item user-info-list-item", id: "userInfoNweets") do
       = t '.list.nweets'
-      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeNweets = user.nweets.count
-    = link_to(likes_user_path(user), class: "list-group-item user-info-list-item") do
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.nweets.count
+    = link_to(likes_user_path(user), class: "list-group-item user-info-list-item", id: "userInfoLikes") do
       = t '.list.likes'
-      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeLikes = user.liked_nweets.count
-    = link_to(followees_user_path(user), class: "list-group-item user-info-list-item") do
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.liked_nweets.count
+    = link_to(followees_user_path(user), class: "list-group-item user-info-list-item", id: "userInfoFollowees") do
       = t '.list.followees'
-      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeFollowees = user.followees.count
-    = link_to(followers_user_path(user), class: "list-group-item user-info-list-item") do
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.followees.count
+    = link_to(followers_user_path(user), class: "list-group-item user-info-list-item", id: "userInfoFollowers") do
       = t '.list.followers'
-      span.badge.user-info-list-badge.bg-primary.rounded-pill#badgeFollowers = user.followers.count
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.followers.count
   .left-pane-mobile-hidden
     = render 'users/calendar', user: user

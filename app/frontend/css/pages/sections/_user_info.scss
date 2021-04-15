@@ -61,11 +61,11 @@ h4.user-info-handle-name {
   }
 }
 
-.bg-primary.user-info-list-badge {
-  &.active {
+.user-info-list-item.active {
+  .user-info-list-badge {
     background-color: $main-background-color !important;
     color: $brand-color;
-    border: 1px solid $brand-color;
+    border: 1px solid $brand-color;    
   }
 }
 
