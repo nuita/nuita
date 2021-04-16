@@ -1,0 +1,33 @@
+.settings-left-col {
+  border-right: 1px solid $section-border-color;
+  padding-top: 1.5rem;
+}
+
+.settings-main-col {
+  background-color: $main-background-color;
+  padding-top: 1.5rem;
+
+  @include media-breakpoint-up(md) {
+    min-height: calc(100vh - #{$header-height});
+  }
+}
+
+.settings-btn {
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: lighten($brand-color, 40%);
+    color: $brand-color;
+  }
+
+  &:active {
+    color: $brand-color;
+  }
+}
+
+.settings-back-btn-arrow {
+  position: relative;
+  top: -2px;
+  margin-right: 0.25rem;
+}

@@ -24,3 +24,9 @@ ja:
       about: Nuitaについて
       register_now: Nuitaに登録しませんか？
       register_description: Nuitaのアカウントを作成して、毎日のオカズを記録したり、好みのタグやユーザーの投稿を見つけましょう。
+    settings_left_section:
+      back_to_home: ホームに戻る
+      menu:
+        profile: プロフィール
+        contents: コンテンツ設定
+        security: セキュリティ

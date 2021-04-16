@@ -5,6 +5,9 @@ ja:
         title: Nuitaに登録する
         form:
           title: Nuitaに登録する
+      edit:
+        title: プロフィールを編集する
+        edit_profile: プロフィールを編集する
     sessions:
       new:
         title: ログイン
