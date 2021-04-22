@@ -165,3 +165,7 @@ $wider-main-col-width: $main-col-width + $pane-padding-width * 2;
   position: relative;
   top: -0.05em;
 }
+
+.pl-2 {
+  padding-left: 0.5rem;
+}

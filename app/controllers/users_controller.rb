@@ -53,6 +53,6 @@ class UsersController < ApplicationController
 
     # Strong parameters. They can be set without password, so be careful.
     def tweak_params
-      params.require(:user).permit(:feed_scope)
+      params.require(:user).permit(:icon, :handle_name, :screen_name, :biography, :feed_scope)
     end
 end

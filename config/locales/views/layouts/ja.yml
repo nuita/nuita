@@ -28,5 +28,6 @@ ja:
       back_to_home: ホームに戻る
       menu:
         profile: プロフィール
-        contents: コンテンツ設定
+        account: アカウント
+        contents: コンテンツ
         security: セキュリティ
