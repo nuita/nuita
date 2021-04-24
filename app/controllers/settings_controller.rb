@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
   before_action :authenticate_user!
 
-  def root
+  def account
   end
 
   def mutes

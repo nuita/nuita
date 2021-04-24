@@ -1,0 +1,28 @@
+= provide(:title, t('.title'))
+
+.container-md
+  .row
+    .d-none.d-md-block.col.col-3.settings-left-col
+      = render 'layouts/settings_left_section'
+    .col.settings-main-col
+      = form_with(model: current_user, url: tweak_users_path, class: "form-group") do |f|
+        = render "devise/shared/error_messages", resource: current_user
+        h1.settings-h1 Twitter連携
+        - if current_user.twitter_screen_name.present? 
+          .row.mb-2
+            .col-lg-6
+              = link_to "@#{current_user.twitter_screen_name}", current_user.twitter_url
+              span.pl-2 = link_to "連携を解除する", "/auth/twitter", method: :delete
+          .row.mb-2
+            .col
+              .form-check
+                = f.check_box :autotweet_enabled, class: "form-check-input"
+                = f.label :autotweet_enabled, class: "form-check-label"
+          .row.mb-2
+            .col
+              .form-label ツイート内容
+              = f.text_area :autotweet_content, rows: 3, class: "form-control"
+              .text-muted.small.pl-1
+                | [LINK]はヌイートのURLに置換されます。削除は可能ですが、文面の重複によりツイートが失敗する可能性があります。
+        - else
+          p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter", method: :post

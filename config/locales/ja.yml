@@ -20,6 +20,7 @@ ja:
         icon: "アイコン"
         biography: "ひとこと"
         feed_scope: "タイムラインの表示範囲"
+        autotweet_enabled: "Nuitaに投稿した際に自動的にツイートする"
       user/feed_scopes:
         followees: "フォロー中のユーザーによる投稿のみ"
         global: "すべての投稿"
