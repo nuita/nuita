@@ -3,7 +3,7 @@
     span.settings-back-btn-arrow = bi 'arrow-left'
     = t('.back_to_home')
 .list-group
-  = link_to t('.menu.profile'), edit_user_registration_path, class: 'list-group-item list-group-item-action active'
-  = link_to t('.menu.account'), settings_account_path, class: 'list-group-item list-group-item-action'
-  = link_to t('.menu.contents'), '#', class: 'list-group-item list-group-item-action'
-  = link_to t('.menu.security'), '#', class: 'list-group-item list-group-item-action'
+  = link_to t('.menu.profile'), edit_user_registration_path, class: 'list-group-item list-group-item-action', id: 'settingsItemProfile'
+  = link_to t('.menu.account'), settings_account_path, class: 'list-group-item list-group-item-action', id: 'settingsItemAccount'
+  = link_to t('.menu.contents'), '#', class: 'list-group-item list-group-item-action', id: 'settingsItemContents'
+  = link_to t('.menu.security'), '#', class: 'list-group-item list-group-item-action', id: 'settingsItemSecurity'
