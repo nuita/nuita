@@ -17,10 +17,14 @@
           .form-label = t('.preferring_tags')
           .small.mb-2 = t('.preferring_tags_description')
           = render 'tags_form', context: :preferring
-      .row.mb-2
+      .row.mb-4
         .col
           .form-label = t('.censoring_tags')
           .small.mb-2 = t('.censoring_tags_description')
           = render 'tags_form', context: :censoring
-
+      h1.settings-h1 = t('.mute_settings')
+      .row.mb-2
+        .col
+          .mb-2 = t('.muting_users_count', count: current_user.mutes.count)
+          p = link_to t('.check_muting_users'), settings_mutes_path if current_user.mutes.count > 0
 #activeModeDetector data-settings-item="Contents"

@@ -14,6 +14,13 @@ ja:
       censoring_tags: 検閲中のタグ
       preferring_tags_description: タグをお気に入りに設定すると、そのタグのついた投稿がたくさん表示されるようになります。
       censoring_tags_description: タグを検閲すると、そのタグのついた投稿はサムネイルが表示されなくなります（「展開」を押すことで表示できます）。
+      mute_settings: ミュート設定
+      muting_users_count: "現在%{count}人のユーザーをミュートしています。"
+      check_muting_users: ミュート中のユーザーを確認する
+    show_users:
+      title: "%{topic}"
+      no_topic_items_set: "%{topic}は設定されていません。"
+      back_to_contents_settings: コンテンツ設定に戻る
     tags_form:
       tag_name: タグ名
     tags_form_taglist:
