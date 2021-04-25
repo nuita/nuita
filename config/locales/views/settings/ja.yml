@@ -17,6 +17,14 @@ ja:
       mute_settings: ミュート設定
       muting_users_count: "現在%{count}人のユーザーをミュートしています。"
       check_muting_users: ミュート中のユーザーを確認する
+    security:
+      title: セキュリティ設定
+      edit_confidentials: 機密情報の編集
+      new_password: 新しいパスワード（変更しない場合は空欄にしてください）
+      other_operations: その他の操作
+      delete_account: アカウントを削除する
+      delete_account_description: アカウントと全ての投稿を削除します。一度削除したデータは二度と復元できません。
+      delete_confirmation: ユーザーの削除を実行すると、ヌイートなどの全ての記録が復元できなくなります。本当にアカウントの削除を実行しますか？
     show_users:
       title: "%{topic}"
       no_topic_items_set: "%{topic}は設定されていません。"

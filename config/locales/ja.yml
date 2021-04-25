@@ -16,7 +16,7 @@ ja:
         password: "パスワード"
         profile: "プロフィール文"
         email: "メールアドレス"
-        password_confirmation: "パスワード(確認)"
+        password_confirmation: "パスワード（確認）"
         icon: "アイコン"
         biography: "ひとこと"
         feed_scope: "タイムラインの表示範囲"

@@ -3,29 +3,6 @@
 .container.wider-margintop
   .jumbotron.not-so-jumbo.mx-auto
     h1.mb-2 設定
-    ul.settings-list
-      li.settings-list-item
-        h5.settings-label タイムライン設定
-        = form_with(model: current_user, url: tweak_users_path) do |f|
-          .form-group
-            = f.label :feed_scope
-            = f.select :feed_scope, feed_scope_options, {value: current_user.feed_scope}, {class: 'form-control', onchange: "this.form.submit();"}
-      li.settings-list-item
-        h5.settings-label お気に入りのタグ
-        .settings-description.mb-2 好きなタグのついた投稿をたくさん表示できます。
-        = render 'tags_form', context: :preferring
-      li.settings-list-item
-        h5.settings-label 検閲タグ
-        .settings-description.mb-2 苦手なタグのついた投稿を展開表示にできます。
-        = render 'tags_form', context: :censoring
-      li.settings-list-item
-        h5.settings-label ミュート設定
-        .settings-description.mb-2
-          = link_to settings_mutes_path, class: "quiet-link" do
-            | 現在
-            = current_user.mutes.count
-            | 人のユーザーをミュートしています。 
-        = link_to "ミュート中のユーザーを確認する", settings_mutes_path
       li.settings-list-item
         h5.settings-label アカウント設定
         .settings-description.mb-2 すべての投稿（と思い出）が削除されます。この操作は取り消しできません。

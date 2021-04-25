@@ -7,6 +7,9 @@ class SettingsController < ApplicationController
   def contents
   end
 
+  def security
+  end
+
   def mutes
     @user = current_user
     @users = current_user.muted_users
