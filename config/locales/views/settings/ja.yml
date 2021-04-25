@@ -2,3 +2,8 @@ ja:
   settings:
     account:
       title: アカウント設定
+      link_with_twitter: Twitter連携
+      disconnect: 連携を解除する
+      autotweet_content_description: "[LINK]はヌイートのURLに置換されます。削除は可能ですが、文面の重複によりツイートが失敗する可能性があります。"
+      register_twitter_account: Twitterアカウントを登録
+      register_description: Twitterアカウントを登録すると、ヌイートを自動でTwitterにも投稿できるようになります。

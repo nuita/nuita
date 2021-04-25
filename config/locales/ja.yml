@@ -21,6 +21,7 @@ ja:
         biography: "ひとこと"
         feed_scope: "タイムラインの表示範囲"
         autotweet_enabled: "Nuitaに投稿した際に自動的にツイートする"
+        autotweet_content: "ツイート内容"
       user/feed_scopes:
         followees: "フォロー中のユーザーによる投稿のみ"
         global: "すべての投稿"
@@ -231,3 +232,4 @@ ja:
     nweet: ヌイート
     sign_in: ログイン
     sign_up: 新規登録
+    update_settings: 設定を更新する
