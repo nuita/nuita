@@ -4,6 +4,9 @@ class SettingsController < ApplicationController
   def account
   end
 
+  def contents
+  end
+
   def mutes
     @user = current_user
     @users = current_user.muted_users

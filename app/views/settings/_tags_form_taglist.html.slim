@@ -1,9 +1,9 @@
 - if (tags = tags_form_items(context)).any?
   - tags.pluck(:name).each do |tag_name|
     = link_to tags_form_path(context, tag_name), {method: :delete, remote: true} do
-      .btn.btn-sm.btn-secondary.mr-2.mt-1
+      .btn.btn-sm.btn-secondary.rounded-pill.mr-1.mt-1
         span.pr-1 = icon 'fas', 'hashtag'
         span.pr-2 = tag_name
         = icon 'fas', 'times'
 - else
-  span.text-muted 設定されたタグはありません
+  span.text-muted = t('.no_tags_set')

@@ -1,10 +1,8 @@
 .card.p-2.settings-card
   = form_with url: tags_form_path(context), remote: true do |f|  
     .input-group.mb-1
-      .input-group-prepend
-        span.input-group-text = icon 'fas', 'hashtag'
-      = f.text_field :tag, {placeholder: 'タグ名', class: 'form-control', id: "modalNewTagTextField#{context}"}
-      .input-group-append
-        = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-brandcolor'
+      .input-group-text = icon 'fas', 'hashtag'
+      = f.text_field :tag, {placeholder: t('.tag_name'), class: 'form-control', id: "modalNewTagTextField#{context}"}
+      = f.button icon('fas', 'plus'), type: :submit, class: 'btn btn-primary input-group-text'
   div id = taglist_id(context)
     = render 'tags_form_taglist', context: context

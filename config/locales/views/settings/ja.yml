@@ -7,3 +7,14 @@ ja:
       autotweet_content_description: "[LINK]はヌイートのURLに置換されます。削除は可能ですが、文面の重複によりツイートが失敗する可能性があります。"
       register_twitter_account: Twitterアカウントを登録
       register_description: Twitterアカウントを登録すると、ヌイートを自動でTwitterにも投稿できるようになります。
+    contents:
+      title: コンテンツ設定
+      timeline_settings: タイムライン設定
+      preferring_tags: お気に入りのタグ
+      censoring_tags: 検閲中のタグ
+      preferring_tags_description: タグをお気に入りに設定すると、そのタグのついた投稿がたくさん表示されるようになります。
+      censoring_tags_description: タグを検閲すると、そのタグのついた投稿はサムネイルが表示されなくなります（「展開」を押すことで表示できます）。
+    tags_form:
+      tag_name: タグ名
+    tags_form_taglist:
+      no_tags_set: 設定されたタグはありません
