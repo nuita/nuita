@@ -1,89 +1,39 @@
-= provide(:title, "プロフィールを編集する")
+= provide(:title, t('.title'))
 
-.container.wider-margintop
-  .jumbotron.not-so-jumbo.mx-auto
-    h1 プロフィールを編集する
-    = form_with(model: resource, as: resource_name, url: registration_path(resource_name), method: :put, local: true, class: "form-group") do |f|
-      = render "devise/shared/error_messages", resource: resource
-      .form-group.row.align-items-center
-        .col-md-3
-          = icon_for(current_user, size: 120)
-        .col-md-9
-          /= f.label :remove_icon
-          /= f.check_box :remove_icon
-          = f.file_field :icon, class: "custom-file-field"
-          = f.hidden_field :icon_cache
-      .form-group.row
-        .col-md-3
-          = f.label :handle_name, class: "col-form-label"
-        .col-md-9
-          = f.text_field :handle_name, autofocus: true, autocomplete: "nickname", class: "form-control"
-      .form-group.row
-        .col-md-3
-          = f.label :screen_name, class: "col-form-label"
-        .col-md-9.input-group
-          .input-group-prepend
-            .input-group-text @
-          = f.text_field :screen_name, autocomplete: "username", class: "form-control"
-      .form-group.row
-        .col-md-3
-          = f.label :email, class: "col-form-label"
-        .col-md-9
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
-      .form-group.row
-        .col-md-3
-          = f.label :biography, class: "col-form-label"
-          i
-            | (30文字以内)
-        .col-md-9
-          = f.text_area :biography, maxlength: 30, rows: 1, class: "form-control"
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        div
-          | Currently waiting confirmation for:
-          = resource.unconfirmed_email
-      .form-group.row
-        .col-md-3
-          = f.label :password, class: "col-form-label"
-          - if @minimum_password_length
-            i
-              | (#{@minimum_password_length} 文字以上)
-        .col-md-9
-          = f.password_field :password, autocomplete: "new-password", class: "form-control"
-          em
-            | 変更したくない場合は空欄のままにしてください
-      .form-group.row
-        .col-md-3
-          = f.label :password_confirmation, class: "col-form-label"
-        .col-md-9
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
-      - if current_user.twitter_screen_name.present?
-        h5.font-weight-bold.pt-2 Twitter連携
-        .form-group.row.align-items-center
-          .col-md-3
-            .col-form-label = link_to "@#{current_user.twitter_screen_name}", current_user.twitter_url
-          .col-md-9
-            = link_to "連携を解除", "/auth/twitter", method: :delete
-        .form-group.row
-          .col-md-3
-            .col-form-label 自動ツイートをON
-          .col-md-9
-            = f.check_box :autotweet_enabled, class: "form-control"
-        .form-group.row
-          .col-md-3
-            .col-form-label ツイート内容
-          .col-md-9
-            = f.text_area :autotweet_content, rows: 3, class: "form-control"
-            .text-muted.small.pl-1
-              | [LINK]はヌイートのURLに置換されます。削除は可能ですが、文面の重複によりツイートが失敗する可能性があります。
-      h5.font-weight-bold.pt-2 確認
-      .form-group.row
-        .col-md-3
-          = f.label :current_password, class: "col-form-label"
-          i
-            | (必須)
-        .col-md-9
-          = f.password_field :current_password, autocomplete: "current-password", class: "form-control"
-      .actions
-        = f.submit "更新する", class: "btn btn-brandcolor registration_button"
-    - if current_user.twitter_screen_name.nil?
-      p = link_to "twitterアカウントを登録", "/auth/twitter", class: "btn btn-twitter", method: :post
+.container-md
+  .row
+    .d-none.d-md-block.col.col-3.settings-left-col
+      = render 'layouts/settings_left_section'
+    .col.settings-main-col
+      h1.settings-h1 = t('.edit_profile')
+      = form_with(model: current_user, url: tweak_users_path, class: "form-group") do |f|
+        = render "devise/shared/error_messages", resource: current_user
+        .row.mb-2
+          .col-lg-6
+            = f.label :icon, class: "form-label"
+            .mb-2
+              = icon_for(current_user, size: 60)
+            = f.file_field :icon, {class: "form-control", onchange: "this.form.submit();"}
+            = f.hidden_field :icon_cache
+        .row.mb-2
+          .col-lg-6
+            = f.label :handle_name, class: "form-label"
+            = f.text_field :handle_name, autofocus: true, autocomplete: "nickname", class: "form-control"
+        .row
+          = f.label :screen_name, class: "form-label"
+        .row.mb-2.align-items-center
+          .col-lg-6
+            .input-group
+              .input-group-prepend
+                .input-group-text @
+              = f.text_field :screen_name, autocomplete: "username", class: "form-control"
+          .col-lg-6.d-none.d-md-block
+            .small = t('.id_has_to_be_unique')
+        .row.mb-4
+          .col-lg-6
+            = f.label :biography, t('.biography_long'), class: "form-label"
+            = f.text_area :biography, maxlength: 30, rows: 2, class: "form-control"
+        .actions
+          = f.submit t('.update_profile'), class: "btn btn-primary"
+
+#activeModeDetector data-settings-item="Profile"

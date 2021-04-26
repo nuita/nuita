@@ -9,7 +9,6 @@ ja:
         home: ホーム
         explore: 見つける
         notification: 通知
-      edit_profile: プロフィール変更
       settings: 設定
       sign_out: ログアウト
     footer_list:
@@ -24,3 +23,10 @@ ja:
       about: Nuitaについて
       register_now: Nuitaに登録しませんか？
       register_description: Nuitaのアカウントを作成して、毎日のオカズを記録したり、好みのタグやユーザーの投稿を見つけましょう。
+    settings_left_section:
+      back_to_home: ホームに戻る
+      menu:
+        profile: プロフィール
+        account: アカウント
+        contents: コンテンツ
+        security: セキュリティ

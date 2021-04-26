@@ -9,12 +9,12 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:shinji)
   end
 
-  test 'should get settings(root) when logged-in' do
+  test 'should get account settings when logged-in' do
     get settings_url
     assert_redirected_to new_user_session_path
 
     login_as(@user)
-    get settings_url
+    get settings_account_path
     assert_response :success
   end
 

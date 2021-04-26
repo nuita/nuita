@@ -11,6 +11,7 @@ import setCalendar from "../src/calendar";
 import { setTagButtons } from "../src/tags";
 import { setAgeCheckModal } from "../src/age_check";
 import { setNewNweetForm } from "../src/new_nweet_form";
+import { setSettingsMenu } from "../src/settings";
 
 import "../css/application.scss";
 
@@ -28,4 +29,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setAgeCheckModal();
   setCalendar();
   setNewNweetForm();
+  setSettingsMenu();
 });

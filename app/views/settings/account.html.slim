@@ -1,0 +1,37 @@
+= provide(:title, t('.title'))
+
+.container-md
+  .row
+    .d-none.d-md-block.col.col-3.settings-left-col
+      = render 'layouts/settings_left_section'
+    .col.settings-main-col
+      = form_with(model: current_user, url: tweak_users_path, class: "form-group") do |f|
+        = render "devise/shared/error_messages", resource: current_user
+        h1.settings-h1 = t('.link_with_twitter')
+        - if current_user.twitter_screen_name.present? 
+          .row.mb-2
+            .col-lg-6
+              = link_to "@#{current_user.twitter_screen_name}", current_user.twitter_url
+              span.pl-2 = link_to t('.disconnect'), auth_twitter_path, method: :delete
+          .row
+            .col
+              .form-check
+                = f.check_box :autotweet_enabled, class: "form-check-input"
+                = f.label :autotweet_enabled, class: "form-check-label"
+          .row.mb-4
+            .col
+              = f.label :autotweet_content, class: "form-label"
+              = f.text_area :autotweet_content, rows: 3, class: "form-control"
+              .text-muted.small.mt-2
+                = t('.autotweet_content_description')
+          .actions
+            = f.submit t('ui.update_settings'), class: "btn btn-primary"
+        - else
+          .row.mb-2
+            .col
+              = link_to t('.register_twitter_account'), auth_twitter_path, class: "btn btn-primary", method: :post
+              .text-muted.small.mt-2 
+                = t('.register_description')
+        
+
+#activeModeDetector data-settings-item="Account"

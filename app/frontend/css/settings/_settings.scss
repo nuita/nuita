@@ -1,0 +1,51 @@
+.settings-left-col {
+  border-right: 1px solid $section-border-color;
+  padding-top: 1.5rem;
+  padding-right: 2rem;
+}
+
+.settings-main-col {
+  background-color: $main-background-color;
+  padding-top: 1.5rem;
+
+  @include media-breakpoint-up(md) {
+    min-height: calc(100vh - #{$header-height});
+    padding-left: 2rem;
+  }
+
+  h1 {
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    font-size: small;
+    margin-top: 0.5rem;
+  }
+}
+
+.settings-item {
+  margin-bottom: 1rem;
+  max-width: 480px;
+}
+
+.settings-btn {
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: lighten($brand-color, 40%);
+    color: $brand-color;
+  }
+
+  &:active {
+    color: $brand-color;
+  }
+}
+
+.settings-back-btn-arrow {
+  position: relative;
+  top: -2px;
+  margin-right: 0.25rem;
+}
