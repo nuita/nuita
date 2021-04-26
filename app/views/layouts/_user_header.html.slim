@@ -27,6 +27,5 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.user-navbar id="NavbarScrolla
           = icon_for(current_user, size: 35)
         ul.dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
           li.dropdown-item = link_to current_user.handle_name, user_path(current_user), class: 'nav-link'
-          li.dropdown-item = link_to t('.edit_profile'), edit_user_registration_path, class: 'nav-link'
-          li.dropdown-item = link_to t('.settings'), settings_account_path, class: 'nav-link'
+          li.dropdown-item = link_to t('.settings'), edit_user_registration_path, class: 'nav-link'
           li.dropdown-item = link_to t('.sign_out'), destroy_user_session_path, method: :delete, class: 'nav-link'
