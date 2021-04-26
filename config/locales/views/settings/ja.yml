@@ -20,6 +20,7 @@ ja:
     security:
       title: セキュリティ設定
       edit_confidentials: 機密情報の編集
+      change_password: パスワードを変更する
       new_password: 新しいパスワード（変更しない場合は空欄にしてください）
       other_operations: その他の操作
       delete_account: アカウントを削除する

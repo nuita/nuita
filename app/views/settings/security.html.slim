@@ -7,14 +7,14 @@
     .col.settings-main-col
       = render "devise/shared/error_messages", resource: current_user
       h1 = t('.edit_confidentials')
-      = form_with(model: current_user, url: user_registration_path, method: :put, class: "form-group") do |f|
+      = form_with(model: current_user, url: user_registration_path, method: :put, local: true, class: "form-group") do |f|
         .row.mb-2
           .col-md-6
             = f.label :email, class: "form-label"
             = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
         .row.mb-2
           .col-md-6
-            .small#toggleNewPasswordInput = link_to "パスワードを変更する", "#"
+            .small#toggleNewPasswordInput = link_to t('.change_password'), "#"
             .d-none#newPasswordInput
               = f.label :password, t('.new_password'), class: "form-label"
               = f.password_field :password, autocomplete: "new-password", class: "form-control"
