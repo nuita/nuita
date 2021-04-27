@@ -37,3 +37,16 @@ input, textarea {
     color: $main-background-color;
   }
 }
+
+.toast-wrapper {
+  z-index: 10;
+  position: fixed;
+  right: 0;
+  top: $header-height;
+}
+
+.toast {
+  margin-top: 0.25rem;
+
+  color: #fff;
+}

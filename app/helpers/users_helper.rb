@@ -6,10 +6,10 @@ module UsersHelper
 
   # urlだけ返す 設定なしならデフォルト
   def icon_url(user, size)
-    if user.present? && user.icon.url.present?
-      size <= 60 ? user.icon.thumb.url : user.icon.url
-    else
+    if Rails.env.development? || user.nil? || user.icon.url.nil?
       image_pack_path('icon_default.png')
+    else
+      size <= 60 ? user.icon.thumb.url : user.icon.url
     end
   end
 
