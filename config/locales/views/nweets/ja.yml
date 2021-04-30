@@ -8,3 +8,4 @@ ja:
       placeholder: 感想・使用したオカズを入力
     nweet:
       sentence: "%{time}にヌイートしました。"
+      delete_confirmation: "一度削除したヌイートは復元できません。本当に削除しますか？"

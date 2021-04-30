@@ -233,3 +233,12 @@ ja:
     sign_in: ログイン
     sign_up: 新規登録
     update_settings: 設定を更新する
+  toasts:
+    mute:
+      create: ユーザーをミュートしました。
+      delete: ミュートを解除しました。
+    nweet:
+      post: ヌイートを投稿しました！
+      delete: ヌイートを削除しました。
+    tweet:
+      failed: ツイートに失敗しました。Twitterアカウントの状態を確認してください。
