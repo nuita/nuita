@@ -14,10 +14,10 @@ html
       meta name="twitter:description" content="#{yield(:description)}"
     - else
       meta name="twitter:description" content="Nuitaは射精報告SNSです。あなたもNuitaで射精報告を始めてみませんか？"
-    meta name="twitter:image" content="#{asset_url('og_image_default.png')}"
-    = favicon_link_tag('favicon.ico')
+    meta name="twitter:image" content="#{image_pack_path('og_image_default.png')}"
+    link rel="icon" href="#{image_pack_path('favicon.ico')}"
     link rel="manifest" href="/manifest.json"
-    link rel="apple-touch-icon" href="#{asset_url('logomark_color.png')}"
+    link rel="apple-touch-icon" href="#{image_pack_path('apple-touch-icon.png')}"
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous"
     = stylesheet_packs_with_chunks_tag 'application'
     = javascript_packs_with_chunks_tag 'application'
