@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def tweet(content = render_tweet(current_user.autotweet_content))
     current_user.tweet(content)
   rescue
-    flash[:warning] = 'ツイートに失敗しました。Twitterアカウントの状態を確認してください。'
+    flash[:warning] = t('toasts.tweet.failed')
   end
 
   protected

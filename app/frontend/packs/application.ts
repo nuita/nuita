@@ -13,6 +13,7 @@ import { setTagButtons } from "../src/tags";
 import { setAgeCheckModal } from "../src/age_check";
 import { setNewNweetForm } from "../src/new_nweet_form";
 import { setSettingsMenu } from "../src/settings";
+import { setToasts } from "../src/toasts";
 
 import "../css/application.scss";
 
@@ -34,6 +35,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setCalendar();
   setNewNweetForm();
   setSettingsMenu();
+  setToasts();
 });
 
 const setPWA = () => {

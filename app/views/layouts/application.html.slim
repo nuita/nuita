@@ -37,11 +37,11 @@ html
     / = debug(params) if Rails.env.development?
 
     - if flash.any?
-      - flash.each do |key, value|
-        - key = "info" if key == "notice"
-        - key = "error" if key == "alert" || key == "danger"
-        - [value].flatten.each do |message|
-          javascript:
-            document.addEventListener('DOMContentLoaded', function(){
-              toastr['#{j key}']('#{j message}');
-            });
+      .toast-wrapper
+        - flash.each do |key, value|
+          - color = (key == "alert" || key == "danger") ? "danger" : "primary"
+          - [value].flatten.each do |message|
+            div class="toast bg-#{color} border-0 d-flex align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+              .toast-body
+                = message
+              button.btn-close.btn-close-white.ms-auto.me-2 data-bs-dismiss="toast" aria-label="Close"

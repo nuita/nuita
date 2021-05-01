@@ -23,6 +23,7 @@
     "webpacker-pwa": "^0.1.2"
   },
   "devDependencies": {
+    "@types/bootstrap": "^5.0.12",
     "@types/webpack-env": "^1.16.0",
     "webpack-dev-server": "^3.8.1"
   },
