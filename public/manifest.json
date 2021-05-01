@@ -1,0 +1,59 @@
+{
+  "name": "Nuita",
+  "short_name": "Nuita",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/icon16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon24.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#36ca6c",
+  "background_color": "#36ca6c",
+  "display": "standalone",
+  "orientation": "portrait",
+  "share_target": {
+    "action": "/nweets/new",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "text": "text"
+    }
+  }
+}

@@ -6,6 +6,7 @@ default: &default
   public_root_path: public
   public_output_path: packs
   cache_path: tmp/cache/webpacker
+  service_workers_entry_path: service_workers
   check_yarn_integrity: false
   webpack_compile_output: false
 

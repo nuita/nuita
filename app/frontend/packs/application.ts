@@ -21,6 +21,7 @@ require.context('../images', true);
 Rails.start();
 
 window.addEventListener("DOMContentLoaded", (event) => {
+  setPWA();
   setHeaderButton();
   setFooterButtons();
   hideHeaderWhileScrolling();
@@ -34,3 +35,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setNewNweetForm();
   setSettingsMenu();
 });
+
+const setPWA = () => {
+  navigator.serviceWorker.register('/serviceworker.js').then(registration => {
+    console.log('ServiceWorker registered: ', registration)
+  });
+};

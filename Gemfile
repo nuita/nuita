@@ -37,15 +37,13 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'sprockets', '3.7.2' # 4への移行作業するよりwebpack使うべき……？
 gem 'webpacker'
+gem 'webpacker-pwa'
 
 gem 'bcrypt_pbkdf'
 gem 'ed25519'
 
-gem 'bootstrap', '>= 4.3.1'
 gem 'html2slim'
-gem 'jquery-rails'
 gem 'slim-rails'
-gem 'toastr-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 
