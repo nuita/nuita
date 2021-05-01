@@ -1,5 +1,6 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import Rails from "rails-ujs";
 
 import { setHeaderButton, hideHeaderWhileScrolling } from "../src/header";
 import { setFooterButtons } from "../src/footer";
@@ -15,7 +16,9 @@ import { setSettingsMenu } from "../src/settings";
 
 import "../css/application.scss";
 
-require.context('../images', true)
+require.context('../images', true);
+
+Rails.start();
 
 window.addEventListener("DOMContentLoaded", (event) => {
   setHeaderButton();
