@@ -41,10 +41,9 @@ html
     - if flash.any?
       .toast-wrapper
         - flash.each do |key, value|
-          - toast_color = "bg-primary" if key == "notice"
-          - toast_color = "bg-danger" if key == "alert" || key == "danger"
+          - color = (key == "alert" || key == "danger") ? "danger" : "primary"
           - [value].flatten.each do |message|
-            div class="toast #{toast_color} border-0 d-flex align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+            div class="toast bg-#{color} border-0 d-flex align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
               .toast-body
                 = message
               button.btn-close.btn-close-white.ms-auto.me-2 data-bs-dismiss="toast" aria-label="Close"
