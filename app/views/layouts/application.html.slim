@@ -19,7 +19,6 @@ html
     link rel="manifest" href="/manifest.json"
     link rel="apple-touch-icon" href="#{asset_url('logomark_color.png')}"
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous"
-    / = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application', defer: 'defer'
     = stylesheet_packs_with_chunks_tag 'application' 
     = javascript_packs_with_chunks_tag 'application'
@@ -39,11 +38,11 @@ html
     / = debug(params) if Rails.env.development?
 
     - if flash.any?
-      - flash.each do |key, value|
-        - key = "info" if key == "notice"
-        - key = "error" if key == "alert" || key == "danger"
-        - [value].flatten.each do |message|
-          javascript:
-            document.addEventListener('DOMContentLoaded', function(){
-              toastr['#{j key}']('#{j message}');
-            });
+      .toast-wrapper
+        - flash.each do |key, value|
+          - color = (key == "alert" || key == "danger") ? "danger" : "primary"
+          - [value].flatten.each do |message|
+            div class="toast bg-#{color} border-0 d-flex align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+              .toast-body
+                = message
+              button.btn-close.btn-close-white.ms-auto.me-2 data-bs-dismiss="toast" aria-label="Close"

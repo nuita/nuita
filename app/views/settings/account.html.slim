@@ -5,7 +5,7 @@
     .d-none.d-md-block.col.col-3.settings-left-col
       = render 'layouts/settings_left_section'
     .col.settings-main-col
-      = form_with(model: current_user, url: tweak_users_path, class: "form-group") do |f|
+      = form_with(model: current_user, url: tweak_users_path, local: true, class: "form-group") do |f|
         = render "devise/shared/error_messages", resource: current_user
         h1.settings-h1 = t('.link_with_twitter')
         - if current_user.twitter_screen_name.present? 

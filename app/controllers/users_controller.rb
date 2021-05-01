@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   def tweak
     current_user.update(tweak_params)
 
+    flash[:success] = t('toasts.settings.tweak')
     redirect_back(fallback_location: edit_user_registration_path)
   end
 

@@ -4,7 +4,7 @@ class MutesController < ApplicationController
   def create
     user = User.find_by(url_digest: params[:mutee])
     current_user.mute(user)
-    flash[:success] = 'このユーザーをミュートしました'
+    flash[:success] = t('toasts.mute.create')
     if request.xhr?
       head :no_content
     else
@@ -15,7 +15,7 @@ class MutesController < ApplicationController
   def destroy
     user = User.find_by(url_digest: params[:mutee])
     current_user.unmute(user)
-    flash[:success] = 'ミュートを解除しました'
+    flash[:success] = t('toasts.mute.delete')
     if request.xhr?
       head :no_content
     else

@@ -6,7 +6,7 @@
       = render 'layouts/settings_left_section'
     .col.settings-main-col
       h1.settings-h1 = t('.edit_profile')
-      = form_with(model: current_user, url: tweak_users_path, class: "form-group") do |f|
+      = form_with(model: current_user, url: tweak_users_path, local: true, class: "form-group") do |f|
         = render "devise/shared/error_messages", resource: current_user
         .row.mb-2
           .col-lg-6

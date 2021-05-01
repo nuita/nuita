@@ -21,7 +21,7 @@ class NweetsController < ApplicationController
     @nweet.did_at ||= Time.zone.now
 
     if @nweet.save
-      flash[:success] = 'ヌイートを投稿しました！'
+      flash[:success] = t('toasts.nweet.post')
       tweet if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
@@ -38,7 +38,7 @@ class NweetsController < ApplicationController
   def destroy
     @nweet = Nweet.find_by(url_digest: params[:url_digest])
     @nweet.destroy
-    flash[:success] = 'ヌイートを削除しました'
+    flash[:success] = t('toasts.nweet.delete')
     redirect_to root_url
   end
 

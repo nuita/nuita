@@ -7,7 +7,7 @@
     .col.settings-main-col
       = render "devise/shared/error_messages", resource: current_user
       h1.settings-h1 = t('.timeline_settings')
-      = form_with(model: current_user, url: tweak_users_path, class: "form-group") do |f|
+      = form_with(model: current_user, url: tweak_users_path, local: true, class: "form-group") do |f|
         .row.mb-2
           .col-md-6
             = f.label :feed_scope, class: 'form-label'
