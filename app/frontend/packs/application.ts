@@ -1,5 +1,6 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import Rails from "rails-ujs";
 
 import { setHeaderButton, hideHeaderWhileScrolling } from "../src/header";
 import { setFooterButtons } from "../src/footer";
@@ -16,9 +17,12 @@ import { setToasts } from "../src/toasts";
 
 import "../css/application.scss";
 
-require.context('../images', true)
+require.context('../images', true);
+
+Rails.start();
 
 window.addEventListener("DOMContentLoaded", (event) => {
+  setPWA();
   setHeaderButton();
   setFooterButtons();
   hideHeaderWhileScrolling();
@@ -33,3 +37,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setSettingsMenu();
   setToasts();
 });
+
+const setPWA = () => {
+  navigator.serviceWorker.register('/serviceworker.js').then(registration => {
+    console.log('ServiceWorker registered: ', registration)
+  });
+};
