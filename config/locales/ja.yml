@@ -240,5 +240,8 @@ ja:
     nweet:
       post: ヌイートを投稿しました！
       delete: ヌイートを削除しました。
+    settings:
+      tweak: 設定の変更に成功しました。
     tweet:
       failed: ツイートに失敗しました。Twitterアカウントの状態を確認してください。
+  
