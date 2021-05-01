@@ -45,7 +45,6 @@ gem 'bootstrap', '>= 4.3.1'
 gem 'html2slim'
 gem 'jquery-rails'
 gem 'slim-rails'
-gem 'toastr-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 
