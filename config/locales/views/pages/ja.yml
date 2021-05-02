@@ -16,3 +16,5 @@ ja:
       placeholder: キーワードやタグで検索
     likeline:
       no_likes_yet: まだいいねがありません
+    recommend:
+      section_title: おすすめの投稿
