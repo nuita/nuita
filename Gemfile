@@ -35,7 +35,11 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-gem 'sprockets', '3.7.2' # 4への移行作業するよりwebpack使うべき……？
+# bootstrapが動かない問題への一時的な対応策
+gem 'bootstrap', '4.6.0'
+gem 'jquery-rails'
+gem 'sprockets', '3.7.2' 
+
 gem 'webpacker'
 gem 'webpacker-pwa'
 
