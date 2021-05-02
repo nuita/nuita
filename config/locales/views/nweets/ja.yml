@@ -2,6 +2,8 @@ ja:
   nweets:
     new:
       title: ヌイートを投稿する
+    show:
+      title: "%{handle_name} (@%{screen_name})さんのヌイート"
     display:
       is_nweeting_on_this_link: さんがヌイートしています
     new_form:
