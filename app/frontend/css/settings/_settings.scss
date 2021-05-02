@@ -1,16 +1,21 @@
 .settings-left-col {
   border-right: 1px solid $section-border-color;
-  padding-top: 1.5rem;
-  padding-right: 2rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 1.5rem;
+    padding-right: 2rem;
+  }
 }
 
 .settings-main-col {
   background-color: $main-background-color;
   padding-top: 1.5rem;
+  margin-bottom: calc(#{$user-footer-height} + 0.5rem);
 
   @include media-breakpoint-up(md) {
     min-height: calc(100vh - #{$header-height});
     padding-left: 2rem;
+    margin-bottom: 0;
   }
 
   h1 {
