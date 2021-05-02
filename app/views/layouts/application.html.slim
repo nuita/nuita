@@ -19,6 +19,8 @@ html
     link rel="manifest" href="/manifest.json"
     link rel="apple-touch-icon" href="#{image_pack_path('apple-touch-icon.png')}"
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous"
+    // bootstrapが正常に動かない問題への一時的な対応
+    = javascript_include_tag 'application', defer: 'defer'
     = stylesheet_packs_with_chunks_tag 'application'
     = javascript_packs_with_chunks_tag 'application'
     = analytics_init if Rails.env.production?
