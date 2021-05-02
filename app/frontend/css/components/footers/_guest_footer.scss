@@ -1,6 +1,13 @@
 .guest-footer {
   background-color: rgba(0, 0, 0, 0.5);
   height: $guest-footer-height;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: $guest-footer-height;
+    height: fit-content;
+  }
 }
 
 .guest-footer-container {
