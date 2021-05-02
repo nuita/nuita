@@ -17,7 +17,6 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
     get nweet_path(@nweet)
     assert_response :success
 
-    assert_select 'a[href=?]', root_path
     assert_select 'a[href=?]', user_path(@user)
   end
 
