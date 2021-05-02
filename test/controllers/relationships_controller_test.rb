@@ -18,11 +18,5 @@ class RelationshipsControllerTest < ActionDispatch::IntegrationTest
 
     delete relationship_path(followee: @other_user)
     assert_redirected_to root_path
-
-    post relationship_path(followee: @other_user), xhr: true
-    assert_response :no_content
-
-    delete relationship_path(followee: @other_user), xhr: true
-    assert_response :no_content
   end
 end
