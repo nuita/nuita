@@ -7,6 +7,10 @@
       "esnext",
       "dom",
     ],
+    "types": [
+      "node",
+      "webpack-env"
+    ],
     "module": "es6",
     "moduleResolution": "node",
     "baseUrl": ".",
