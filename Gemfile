@@ -38,7 +38,7 @@ gem 'uglifier', '>= 1.3.0'
 # bootstrapが動かない問題への一時的な対応策
 gem 'bootstrap', '4.6.0'
 gem 'jquery-rails'
-gem 'sprockets', '3.7.2' 
+gem 'sprockets', '3.7.2'
 
 gem 'webpacker'
 gem 'webpacker-pwa'
