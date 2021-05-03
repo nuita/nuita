@@ -22,7 +22,7 @@ class NweetsController < ApplicationController
 
     if @nweet.save
       flash[:success] = t('toasts.nweet.post')
-      tweet if current_user.autotweet_enabled
+      tweet(generate_tweet_content(@nweet)) if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
     end
@@ -60,5 +60,10 @@ class NweetsController < ApplicationController
     def correct_user
       @nweet = current_user.nweets.find_by(url_digest: params[:url_digest])
       redirect_to root_url if @nweet.nil?
+    end
+
+    # generate content of tweet from user-specific template
+    def generate_tweet_content(nweet)
+      current_user.autotweet_content.gsub(/\[LINK\]/, nweet_url(nweet))
     end
 end
