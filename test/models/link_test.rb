@@ -73,10 +73,7 @@ class LinkTest < ActiveSupport::TestCase
     link = Link.fetch_from('http://dokidokivisual.com/img/top/main_img.jpg')
     assert_not link.legal?
 
-    # 画像がないからlegalだけどfeaturableじゃない
-    link = Link.fetch_from('https://novel18.syosetu.com/n6323er/')
-    assert link.legal?
-    assert_not link.featurable?
+    # TODO: Resolverで取得してるけど画像がないテストケースを追加する
 
     # og:imageつきの良いやつ
     link = Link.fetch_from('https://www.dlsite.com/maniax/work/=/product_id/RJ315784.html')
