@@ -5,7 +5,7 @@
     "experimentalDecorators": true,
     "lib": [
       "esnext",
-      "dom",
+      "dom"
     ],
     "types": [
       "node",
@@ -17,17 +17,17 @@
     "paths": {
       "*": [
         "node_modules/*",
-        "app/frontend/*",
+        "app/frontend/*"
       ]
     },
     "sourceMap": true,
-    "target": "es6"
+    "target": "es6",
   },
   "exclude": [
     "**/*.spec.ts",
     "node_modules",
     "vendor",
-    "public",
+    "public"
   ],
   "compileOnSave": false
 }
