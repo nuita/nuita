@@ -45,30 +45,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not @user.autotweet_enabled
   end
 
-  test 'should redirect followees view to not-friend' do
-    get followees_user_path(@user)
-    assert_redirected_to new_user_session_url
-
-    login_as(@user)
-    # shinjiはフォロワー0人. フォローはしてる
-    get followees_user_path(@shinji)
-    assert_redirected_to user_path(@shinji)
-
-    post relationship_path(followee: @shinji)
+  test 'anyone can see followees and followers' do
     get followees_user_path(@shinji)
     assert_response :success
-  end
 
-  test 'should redirect followers view to not-friend' do
-    get followers_user_path(@user)
-    assert_redirected_to new_user_session_url
-
-    login_as(@user)
-    # shinjiはフォロワー0人. フォローはしてる
-    get followers_user_path(@shinji)
-    assert_redirected_to user_path(@shinji)
-
-    post relationship_path(followee: @shinji)
     get followers_user_path(@shinji)
     assert_response :success
   end

@@ -14,29 +14,36 @@ html
       meta name="twitter:description" content="#{yield(:description)}"
     - else
       meta name="twitter:description" content="Nuitaは射精報告SNSです。あなたもNuitaで射精報告を始めてみませんか？"
-    meta name="twitter:image" content="#{asset_url('og_image_default.png')}"
-    = favicon_link_tag('favicon.ico')
+    meta name="twitter:image" content="#{image_pack_path('og_image_default.png')}"
+    link rel="icon" href="#{image_pack_path('favicon.ico')}"
     link rel="manifest" href="/manifest.json"
-    link rel="apple-touch-icon" href="#{asset_url('logomark_color.png')}"
+    link rel="apple-touch-icon" href="#{image_pack_path('apple-touch-icon.png')}"
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous"
-    = stylesheet_link_tag 'application', media: 'all'
+    // bootstrapが正常に動かない問題への一時的な対応
     = javascript_include_tag 'application', defer: 'defer'
-    = javascript_pack_tag 'application', defer: 'defer'
+    = stylesheet_packs_with_chunks_tag 'application'
+    = javascript_packs_with_chunks_tag 'application'
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
 
-    = yield
+    .wrapper
+      = yield
 
-    = debug(params) if Rails.env.development?
-    = render 'layouts/footer'
+    - unless cookies[:age_checked]
+      = render('layouts/age_check_modal')
+
+    - if user_signed_in?
+      = render('layouts/user_footer')
+
+    / = debug(params) if Rails.env.development?
 
     - if flash.any?
-      - flash.each do |key, value|
-        - key = "info" if key == "notice"
-        - key = "error" if key == "alert" || key == "danger"
-        - [value].flatten.each do |message|
-          javascript:
-            document.addEventListener('DOMContentLoaded', function(){
-              toastr['#{j key}']('#{j message}');
-            });
+      .toast-wrapper
+        - flash.each do |key, value|
+          - color = (key == "alert" || key == "danger") ? "danger" : "primary"
+          - [value].flatten.each do |message|
+            div class="toast bg-#{color} border-0 d-flex align-items-center" role="alert" aria-live="assertive" aria-atomic="true"
+              .toast-body
+                = message
+              button.btn-close.btn-close-white.ms-auto.me-2 data-bs-dismiss="toast" aria-label="Close"

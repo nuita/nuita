@@ -1,0 +1,124 @@
+.mode-nav {
+  .nav-item {
+    // bootstrap icons 上側に余白があるので荒療治
+    transform: translateY(-3px);
+
+    a {
+      color: $secondary-font-color;
+      font-size: 140%;
+      margin-right: 1rem;
+
+      &:hover {
+        color: darken($secondary-font-color, $hover-background-darkener);
+        text-decoration: none;
+      }
+    }
+
+    &.active {
+      a {
+        color: $brand-color;
+
+        &:hover {
+          color: darken($brand-color, $hover-background-darkener);
+        }
+
+        &:active {
+          color: lighten($brand-color, $active-color-lightener);
+        }
+      }
+    }
+  }
+
+  .nav-label {
+    font-size: small;
+    padding: 0 0.5rem;
+
+    @include media-breakpoint-down(lg) {
+      display: none;
+    }
+  }
+}
+
+#badgeUnreadNotifications {
+  font-size: small;
+}
+
+.navbar-search-input-group {
+  border-radius: 0.25rem;
+
+  &:focus-within {
+    .navbar-search-input {
+      border-color: $brand-color;
+      box-shadow: none;
+    }
+
+    .navbar-btn-search {
+      border-color: $brand-color;
+      color: $brand-color;
+    }
+
+    box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
+  }
+}
+
+.btn-outline-subtle.navbar-btn-search {
+  &:hover {
+    background-color: $brand-color;
+    color: $main-background-color;
+  }
+}
+
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
+
+  .dropdown-item {
+    text-align: right;
+  }
+}
+
+.dropdown-toggle {
+  color: $secondary-font-color;
+  padding-right: 0;
+
+  &:hover {
+    color: $secondary-font-color;
+  }
+
+  &:active {
+    color: lighten($secondary-font-color, $active-color-lightener);
+  }
+
+  &::after {
+    vertical-align: middle;
+  }
+}
+
+.dropdown-menu {
+  padding: 0;
+
+  a {
+    color: $body-font-color;
+
+    &:hover {
+      color: $body-font-color;
+    }
+
+    &:active {
+      color: lighten($body-font-color, $active-color-lightener);
+    }
+  }
+}
+
+.dropdown-item {
+  &:active {
+    background-color: $brand-color;
+    color: $main-background-color;
+  }
+
+  .nav-link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

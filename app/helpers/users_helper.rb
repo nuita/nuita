@@ -5,20 +5,16 @@ module UsersHelper
   end
 
   # urlだけ返す 設定なしならデフォルト
-  def icon_url(user = current_user, size = 60)
-    if !user || user.icon.url.blank?
-      asset_path('icon_default')
+  def icon_url(user, size)
+    if Rails.env.development? || user.nil? || user.icon.url.nil?
+      image_pack_path('icon_default.png')
     else
-      if size <= 60
-        user.icon.thumb.url
-      else
-        user.icon.url
-      end
+      size <= 60 ? user.icon.thumb.url : user.icon.url
     end
   end
 
   # さらにicon_urlをimageタグを返してくれる
-  def icon_for(user, size: 80, htmlclass: 'usericon')
+  def icon_for(user, size: 80, htmlclass: 'rounded-circle')
     if user.present?
       alt = user.handle_name
       id = "usericon-#{user.id}"
@@ -55,5 +51,9 @@ module UsersHelper
     hash = calendarize_data(nweets, column: :did_at)
 
     [hash, start_day]
+  end
+
+  def calendar_tooltip(date, count)
+    "<span class='calendar-tooltip'>#{t('.nweet_count', count: count)} <span class='text-secondary'>#{date}</span></span>"
   end
 end

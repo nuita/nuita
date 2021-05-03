@@ -1,7 +1,6 @@
-section.side-section
-  h5.section-title
-    | おすすめの投稿
-    button#buttonRenewRecommend.btn.btn-sm.btn-outline-secondary.btn-brandcolor-hover.py-0.px-1
-      = icon 'fas', 'sync-alt'
-  - if link = Nweet.recommend.links.first
-    #recommendCard = render 'cards/horizontal', link: link, genre_hidden?: local_assigns[:landing?]
+h6.section-title.mb-2
+  = t('.section_title')
+  button#buttonRenewRecommend.btn.btn-sm.btn-no-outline
+    = icon 'fas', 'sync-alt'
+- if nweet = Nweet.recommend
+  #recommendCard = render 'nweets/display', nweet: nweet

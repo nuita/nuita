@@ -1,6 +1,6 @@
 class NweetsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
-  before_action :correct_user, only: [:update, :destroy]
+  before_action :authenticate_user!, except: [:show, :recommend]
+  before_action :correct_user, only: [:destroy]
 
   def new
     @nweet = current_user.nweets.build(did_at: Time.zone.now)
@@ -18,8 +18,10 @@ class NweetsController < ApplicationController
 
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
+    @nweet.did_at ||= Time.zone.now
+
     if @nweet.save
-      flash[:success] = 'ヌイートを投稿しました！'
+      flash[:success] = t('toasts.nweet.post')
       tweet(generate_tweet_content(@nweet)) if current_user.autotweet_enabled
     else
       flash[:danger] = @nweet.errors.full_messages
@@ -36,21 +38,12 @@ class NweetsController < ApplicationController
   def destroy
     @nweet = Nweet.find_by(url_digest: params[:url_digest])
     @nweet.destroy
-    flash[:success] = 'ヌイートを削除しました'
+    flash[:success] = t('toasts.nweet.delete')
     redirect_to root_url
   end
 
-  # obsolete
-  def update
-    @nweet = Nweet.find_by(url_digest: params[:url_digest])
-
-    if @nweet.update(edit_nweet_params)
-      flash[:success] = 'ヌイートを更新しました'
-      redirect_to root_url
-    else
-      flash[:danger] = @nweet.errors.full_messages
-      redirect_to root_url
-    end
+  def recommend
+    render partial: 'nweets/display', locals: {nweet: Nweet.recommend}
   end
 
   private

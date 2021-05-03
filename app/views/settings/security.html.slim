@@ -1,0 +1,42 @@
+= provide(:title, t('.title'))
+
+.container-md
+  .row
+    .col-md-3.settings-left-col
+      = render 'layouts/settings_left_section'
+    .col.settings-main-col
+      = render "devise/shared/error_messages", resource: current_user
+      h1 = t('.edit_confidentials')
+      = form_with(model: current_user, url: user_registration_path, method: :put, local: true, class: "form-group") do |f|
+        .row.mb-2
+          .col-md-6
+            = f.label :email, class: "form-label"
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+        .row.mb-2
+          .col-md-6
+            .small#toggleNewPasswordInput = link_to t('.change_password'), "#"
+            .d-none#newPasswordInput
+              = f.label :password, t('.new_password'), class: "form-label"
+              = f.password_field :password, autocomplete: "new-password", class: "form-control"
+        .row.mb-3
+          .col-md-6 
+            = f.label :password_confirmation, class: "form-label"
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+        .row.mb-4
+          .actions 
+            = f.submit t('helpers.submit.update'), class: "btn btn-primary"
+      h1.settings-h1 = t('.other_operations')
+      .row.mb-2
+        .col
+          .mb-2
+            = link_to t('.delete_account'), user_registration_path(current_user), data: {confirm: t('.delete_confirmation')}, method: :delete, id: "deleteAccountBtn", class: "btn btn-danger"
+          .text-muted.small = t('.delete_account_description')
+
+#activeModeDetector data-settings-item="Security"
+
+javascript:
+  const toggler = document.getElementById('toggleNewPasswordInput');
+  toggler.addEventListener('click', () => {
+    const target = document.getElementById('newPasswordInput');
+    target.classList.toggle('d-none');
+  });

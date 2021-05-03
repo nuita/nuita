@@ -9,12 +9,30 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     @other_user = users(:shinji)
   end
 
-  test 'should get settings(root) when logged-in' do
-    get settings_url
+  test 'should get account settings when logged-in' do
+    get settings_account_path
     assert_redirected_to new_user_session_path
 
     login_as(@user)
-    get settings_url
+    get settings_account_path
+    assert_response :success
+  end
+
+  test 'should get contents settings when logged-in' do
+    get settings_contents_path
+    assert_redirected_to new_user_session_path
+
+    login_as(@user)
+    get settings_contents_path
+    assert_response :success
+  end
+
+  test 'should get security settings when logged-in' do
+    get settings_security_path
+    assert_redirected_to new_user_session_path
+
+    login_as(@user)
+    get settings_security_path
     assert_response :success
   end
 

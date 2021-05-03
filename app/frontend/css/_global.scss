@@ -1,0 +1,53 @@
+body {
+  background-color: $secondary-background-color;
+  color: $body-font-color; 
+  font-family: 'Mulish', 'Avenir Next', sans-serif;
+}
+
+a {
+  color: $brand-color;
+  text-decoration: none;
+  
+  &:active {
+    color: lighten($brand-color, $active-color-lightener);
+  }
+
+  &:hover {
+    color: $brand-color;
+    text-decoration: underline;
+  }
+}
+
+input, textarea {
+  resize: none;
+}
+
+.btn {
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.btn-primary {
+  color: $main-background-color !important;
+}
+
+.btn-outline-primary {
+  &:hover {
+    color: $main-background-color;
+  }
+}
+
+.toast-wrapper {
+  z-index: 10;
+  position: fixed;
+  right: 0;
+  top: $header-height;
+}
+
+.toast {
+  margin-top: 0.25rem;
+  margin-right: 0.25rem;
+
+  color: #fff;
+}

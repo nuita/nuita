@@ -3,6 +3,10 @@ require 'nokogiri'
 require 'open-uri'
 
 module ApplicationHelper
+  def image_pack_path(path)
+    asset_pack_path("media/images/#{path}")
+  end
+
   def text_url_to_link(text)
     safe_text = h(text)
 
@@ -55,5 +59,21 @@ module ApplicationHelper
     html = tag.i(nil, html_options)
     html << ' ' << text.to_s if text.present?
     html
+  end
+
+  def bi(name, classname: '', id: '')
+    tag.i(nil, class: "bi-#{name} #{classname}", id: id)
+  end
+
+  def author_info(link)
+    # 空文字の場合はauthor, circleにnilが入るようにする
+    author = link.author if link.author.present?
+    circle = link.circle if link.circle.present?
+
+    if author && circle
+      "#{link.author} (#{link.circle})"
+    elsif info = (author || circle)
+      info.to_s
+    end
   end
 end

@@ -1,17 +1,14 @@
 li.nweet
-  .icon
-    = link_to icon_for(user, size: 50), user
-  .right
-    .user_info
-      span.handle_name = link_to user.handle_name, user
-      span.screen_name
-        | @
-        = link_to user.screen_name, user
-    .content
-      .maincontent
-        .user-status-in-list
-          .pb-2
-            span.font-weight-bold = user.nweets.count
-            span.pl-1.small ヌイート
-          - if user.biography
-            .quote = user.biography
+  .main-col-inner
+    .nweet-header
+      .nweet-header-left
+        = link_to icon_for(user, size: 50), user
+      .nweet-header-right.flex-grow-1
+        .nweet-user_info
+          = link_to user.handle_name, user, {class: 'nweet-handle-name'}
+          = link_to "@#{user.screen_name}", user, {class: 'nweet-screen-name'}
+        span.user-nweet-count = user.nweets.count
+        span.small = t('ui.nweet')
+    .nweet-main
+      - if user.biography
+        .nweet-statement = user.biography

@@ -48,3 +48,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /vendor/bundle
+
+# ignore tags list
+/lib/tasks/tags/tags.yml

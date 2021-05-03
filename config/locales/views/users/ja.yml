@@ -1,0 +1,28 @@
+ja:
+  users:
+    show:
+      title: "%{handle_name} (@%{screen_name}) さんのヌイート"
+    likes:
+      title: "%{handle_name} (@%{screen_name}) さんのいいね一覧"
+    show_follow:
+      title: "%{handle_name} (@%{screen_name}) さんの%{topic}一覧"
+    calendar:
+      recent_posts: 最近の投稿
+      nweet_count: "%{count}件"
+    user_info:
+      list:
+        nweets: ヌイート
+        likes: いいね
+        followees: フォロー
+        followers: フォロワー
+      options:
+        mute: ミュートする
+        unmute: ミュートを解除する
+    follow_btn:
+      following: フォロー中
+      follow: フォローする
+      followed: フォローされています
+      this_user_is_muted: このユーザーをミュートしています。
+      unmute: ミュートを解除する
+    feed:
+      no_nweets_yet: まだヌイートがありません。

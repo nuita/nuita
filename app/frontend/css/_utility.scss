@@ -1,0 +1,183 @@
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn-outline-white {
+  @include button-outline-variant(#fff);
+
+  &:hover {
+    border-color: $brand-color;
+    background-color: $brand-color;
+    color: white;
+  }
+}
+
+.btn-outline-subtle {
+  @include button-outline-variant($subtle-color);
+
+  &:hover {
+    border-color: $brand-color;
+    background-color: $brand-color;
+    color: white;
+  }  
+}
+
+.btn-no-outline {
+  &:hover, &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.navbar-search-input-group {
+  &:focus-within {
+    color: $secondary-font-color;
+  }
+}
+
+.link-brand {
+  @extend a;
+}
+
+.wrapper {
+  padding-top: $header-height;
+}
+
+.fullsize-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+
+  padding-top: $header-height;
+}
+
+.absolute-center-on-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(-#{$header-height / 2});
+}
+
+$wider-main-col-width: $main-col-width + $pane-padding-width * 2;
+
+.threepane-container {
+  @media screen and (max-width: $wider-main-col-width) {
+    padding: 0;
+    margin: 0;
+
+    .row {
+      margin: 0;
+    }
+  }
+}
+
+.main-col {
+  background-color: $main-background-color;
+  flex: 0 0 auto;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  @media screen and (min-width: $wider-main-col-width) {
+    max-width: $wider-main-col-width;
+    border: 1px solid $section-border-color;
+  }
+}
+
+.main-col-inner {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+
+  @media screen and (min-width: $wider-main-col-width) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.main-col-top {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $section-border-color;
+  background-color: lighten($brand-color, 45%);
+}
+
+.sidebar {
+  position: sticky;
+  top: $header-height;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid $section-border-color;
+
+  @media screen and (min-width: $twopane-width) {
+    height: 100vh;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.left-col-responsive {
+  display: flex;
+
+  position: sticky;
+  @media screen and (max-width: $twopane-width) {
+    position: static;
+  }
+}
+
+.left-col {
+  display: flex;
+
+  @media screen and (max-width: $twopane-width) {
+    display: none;
+  }
+}
+
+.right-col {
+  display: flex;
+
+  @media screen and (max-width: $threepane-width) {
+    display: none;
+  }
+}
+
+.badge-secondary {
+  background-color: $inactive-font-color;
+  color: $secondary-font-color;
+}
+
+// bootstrap iconが微妙に下にズレている気がするので修正する
+.bi-search, .bi-heart, .bi-heart-fill, .bi-pencil-fill {
+  position: relative;
+  top: -0.1em;
+}
+
+.bi-box-arrow-up-right {
+  position: relative;
+  top: -0.05em;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pr-1 {
+  padding-right: 0.25rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}

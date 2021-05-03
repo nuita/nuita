@@ -1,0 +1,34 @@
+$document-jumbotron-width: 800px;
+
+.document-jumbotron {
+  @extend .rounded;
+
+  margin: 10px auto;
+  width: calc(100% - 40px);
+  max-width: $document-jumbotron-width;
+  height: fit-content;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  p {
+    text-indent: 1em;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: medium;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}

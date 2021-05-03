@@ -14,6 +14,9 @@ AllCops:
     - vendor/bundle/**/*
     - node_modules/**/**/*
 
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
@@ -28,6 +31,10 @@ Layout/MultilineMethodCallIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+# =の数間違えるの言うほどあるか？
+Lint/AssignmentInCondition:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false
 
@@ -38,6 +45,10 @@ Naming/PredicateName:
 # enumは配列で定義したほうが簡潔じゃない？
 Rails/EnumHash:
   Enabled: false
+
+# update_allに関しては速度上のメリットがあるので許す
+Rails/SkipsModelValidations:
+  AllowedMethods: update_all
 
 # 明らかに1000件以下のときはeachでよくない？
 Rails/FindEach:

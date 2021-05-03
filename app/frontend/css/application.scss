@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+@import './variables';
+@import 'bootstrap';
+@import './utility';
+@import './global';
+
+@import './components/navbar';
+@import './components/footer';
+
+@import './pages/pages';
+@import './devise/devise';
+@import './cards/cards';
+@import './nweets/nweets';
+@import './users/users';
+@import './notifications/notifications';
+@import './settings/settings';

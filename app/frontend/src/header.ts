@@ -20,31 +20,14 @@ function setTopButton() {
 }
 
 function setNavButton() {
-  const pathname: string = location.pathname;
-  const userNavItems = document.getElementsByClassName("user-nav-item");
-  if (userNavItems.length === 0) {
+  const activeModeDetector = document.getElementById('activeModeDetector');
+  const pageNavMode = activeModeDetector?.getAttribute('data-nav-mode');
+  if (pageNavMode === null) {
     return;
   }
 
-  Array.from(userNavItems).forEach(e => {
-    e.classList.remove("active")
-  });
-
-  let navToSetActive: HTMLElement;
-  switch (pathname) {
-    case "/":
-      navToSetActive = document.getElementById("homeNav");
-      break;
-    case "/explore":
-      navToSetActive = document.getElementById("exploreNav");
-      break;
-    case "/notifications":
-      navToSetActive = document.getElementById("notificationsNav");
-      break;
-  }
-  if (navToSetActive !== null) {
-    navToSetActive.classList.add('active');
-  }
+  const icon = document.getElementById(`userHeaderNav${pageNavMode}`);
+  icon?.classList?.add('active');
 }
 
 // スクロール時にヘッダーが隠れる

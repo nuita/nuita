@@ -12,14 +12,14 @@ class LikelineTest < ActionDispatch::IntegrationTest
   end
 
   test 'likeline test' do
-    post like_path, params: {nweet: @nweet.url_digest}
+    post like_path, params: {nweet: @nweet.url_digest}, xhr: true
 
     get likes_user_path(url_digest: @user.url_digest)
     assert_select 'a[href=?]', nweet_path(@nweet)
 
     deleted_nweet_path = nweet_path(@nweet)
 
-    delete like_path, params: {nweet: @nweet.url_digest}
+    delete like_path, params: {nweet: @nweet.url_digest}, xhr: true
 
     get likes_user_path(url_digest: @user.url_digest)
     assert_select 'a[href=?]', deleted_nweet_path, false

@@ -2,16 +2,19 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get 'pages/home'
-  get 'pages/about'
+  get '/about', to: 'pages#about'
+  get 'terms/privacy', as: :privacy
   get '/explore', to: 'pages#explore'
-  get '/settings', to: 'settings#root'
+  get '/settings/account', to: 'settings#account'
+  get '/settings/contents', to: 'settings#contents'
   get '/settings/mutes', to: 'settings#mutes'
+  get '/settings/security', to: 'settings#security'
   get '/auth/twitter/callback', to: 'twitters#create'
   post '/auth/twitter/callback', to: 'twitters#create'
   delete '/auth/twitter', to: 'twitters#destroy'
   get '/notifications', to: 'notifications#index'
   get '/notification/refresh', to: 'notifications#refresh'
-  get '/links/recommend', to: 'links#recommend'
+  get '/nweets/recommend', to: 'nweets#recommend', as: :recommend
 
   resources :users, except: [:index], param: :url_digest do
     member do

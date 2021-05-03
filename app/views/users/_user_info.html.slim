@@ -1,47 +1,41 @@
-section.side-section
-  .d-flex.align-items-center
-    .media.flex-grow-1
-      div class="icon"
-        = icon_for(user, size: 60, htmlclass: 'usericon rounded-circle mr-3 mb-2')
-      .media-body.user-info-content.mt-2.mt-md-0
-        h3.handle_name = user.handle_name
-        .screen_name = "@" + user.screen_name
+.user-info
+  .user-info-top
+    .user-info-top-left
+      = icon_for(user, size: 50, htmlclass: 'usericon rounded-circle mr-3 mb-2')
+    .user-info-top-middle
+      h4.user-info-handle-name = user.handle_name
+      .user-info-screen-name = "@" + user.screen_name
     - if other_user?(user)
-      .mr-2.flex-grow-0
-        - if current_user.muted?(user)
-          = link_to mute_path(mutee: user), method: :delete, class: "text-danger"
-            = icon 'fas', 'eye-slash'
-        - else
-          = link_to mute_path(mutee: user), method: :post, class: "graybtn"
-            = icon 'fas', 'eye-slash'
+      .user-info-top-right
+        .dropdown
+          button.btn.dropdown-toggle.user-option-dropdown-btn#userOptionDropdownBtn type="button" data-bs-toggle="dropdown"
+            = bi 'three-dots'
+          ul.dropdown-menu.dropdown-menu-end aria-labelledby="userOptionDropdownBtn"
+            li
+              - if current_user.muted?(user)
+                = link_to t('.options.unmute'), mute_path(mutee: user), method: :delete, class: 'dropdown-item'
+              - else
+                = link_to t('.options.mute'), mute_path(mutee: user), method: :post, class: 'dropdown-item'
   - if other_user?(user)
-    - if current_user.followee?(user)
-      = render 'users/unfollow', user: user
-    - else
-      = render 'users/follow', user: user
-    - if current_user.follower?(user)
-      .my-1#you-are-followed
-        span.label-muted フォローされています
-  - if user.biography
-      .my-2
-        = text_url_to_link(user.biography).html_safe
-  .list-group.userinfo-nav-list
-    = link_to(user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-      |  ヌイート
-      span.badge.badge-brand.badge-pill#badgeNweets = user.nweets.count
-    - if friend?(user)
-      = link_to(likes_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | いいね
-        span.badge.badge-brand.badge-pill#badgeLikes = user.liked_nweets.count
-      = link_to(followees_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | フォロー
-        span.badge.badge-brand.badge-pill#badgeFollowees = user.followees.count
-      = link_to(followers_user_path(user), class: "list-group-item d-flex justify-content-between align-items-center") do
-        | フォロワー
-        span.badge.badge-brand.badge-pill#badgeFollowers = user.followers.count
-  .user_links
-    - if !@detail && friend?(user) && user.twitter_url?
-      = link_to user.twitter_url do
+    = render 'users/follow_btn', user: user
+  .mb-2.user-info-biography
+    - if user.biography
+      .mb-1 = text_url_to_link(user.biography).html_safe
+    - if !@detail && user.twitter_url?
+      .mb-1 = link_to user.twitter_url do
         = icon('fab', 'twitter', '@' + user.twitter_screen_name)
-  = render 'users/calendar', user: user, row: 5
-  = render 'users/badges', user: user
+  .list-group.user-info-list.w-100
+    = link_to(user_path(user), class: "list-group-item user-info-list-item", id: "userInfoNweets") do
+      = t '.list.nweets'
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.nweets.count
+    = link_to(likes_user_path(user), class: "list-group-item user-info-list-item", id: "userInfoLikes") do
+      = t '.list.likes'
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.liked_nweets.count
+    = link_to(followees_user_path(user), class: "list-group-item user-info-list-item", id: "userInfoFollowees") do
+      = t '.list.followees'
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.followees.count
+    = link_to(followers_user_path(user), class: "list-group-item user-info-list-item", id: "userInfoFollowers") do
+      = t '.list.followers'
+      span.badge.user-info-list-badge.bg-primary.rounded-pill = user.followers.count
+  .left-pane-mobile-hidden
+    = render 'users/calendar', user: user

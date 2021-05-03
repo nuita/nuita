@@ -1,0 +1,32 @@
+ja:
+  layouts:
+    age_check_modal:
+      title: あなたは18歳以上ですか？
+      message: Nuitaには成人向けの表現やコンテンツが含まれます。未成年や苦手な方は閲覧しないでください。
+      proceed: Nuitaを表示する
+    user_header:
+      nav:
+        home: ホーム
+        explore: 見つける
+        notification: 通知
+      settings: 設定
+      sign_out: ログアウト
+    footer_list:
+      about: Nuitaについて
+      privacy_policy: プライバシーポリシー
+      for_creators: クリエイターの方へ
+      blog: 開発ブログ
+      github: GitHub
+      twitter: Twitter
+      inquiry: お問い合わせ
+    guest_info:
+      about: Nuitaについて
+      register_now: Nuitaに登録しませんか？
+      register_description: Nuitaのアカウントを作成して、毎日のオカズを記録したり、好みのタグやユーザーの投稿を見つけましょう。
+    settings_left_section:
+      back_to_home: ホームに戻る
+      menu:
+        profile: プロフィール
+        account: アカウント
+        contents: コンテンツ
+        security: セキュリティ

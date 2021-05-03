@@ -1,0 +1,9 @@
+section.side-section.left-section
+  .side-section-container
+    - if u = (user ||= current_user)
+      = render 'users/user_info', {user: u}
+    - else
+      = render 'layouts/guest_info'
+  .side-pane-bottom.left-pane-mobile-hidden
+    ul.side-footer-list
+      = render 'layouts/footer_list'

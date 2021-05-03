@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :friend_user, only: [:likes, :followers, :followees]
-
   def show
     @user = User.find_by(url_digest: params[:url_digest])
 
@@ -41,7 +39,8 @@ class UsersController < ApplicationController
   def tweak
     current_user.update(tweak_params)
 
-    redirect_back(fallback_location: settings_path)
+    flash[:success] = t('toasts.settings.tweak')
+    redirect_back(fallback_location: edit_user_registration_path)
   end
 
   private
@@ -55,6 +54,6 @@ class UsersController < ApplicationController
 
     # Strong parameters. They can be set without password, so be careful.
     def tweak_params
-      params.require(:user).permit(:feed_scope)
+      params.require(:user).permit(:icon, :handle_name, :screen_name, :biography, :feed_scope, :autotweet_enabled, :autotweet_content)
     end
 end

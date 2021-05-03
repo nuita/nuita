@@ -1,33 +1,30 @@
-li.nweet.notification
-  .media
-    .action-icon
+li.notification
+  .main-col-inner
+    .notification-header
+      .notification-type
+        - case notification.action
+        - when 'like'
+          span.like-color = bi 'heart-fill'
+        - when 'follow'
+          = bi 'person-plus-fill'
+        - when 'announce'
+          = bi 'chat-text'
+      .nweet-user-info
+        - if notification.origin
+          = link_to icon_for(notification.origin, size: 40), notification.origin
+    .nweet-main
+      - if notification.origin
+        span.notification-handle-name = link_to notification.origin.handle_name, notification.origin
       - case notification.action
       - when 'like'
-        = icon 'fas', 'heart', nil, {class: 'like-color'}
+        = t '.liked'
+        .pt-1
+          = link_to notification.like.nweet, class: 'notification-nweet' do
+            = t('nweets.nweet.sentence', time: time_ago(notification.like.nweet.did_at))
+            - if notification.like.nweet.statement
+              .notification-nweet-quote
+                = notification.like.nweet.statement
       - when 'follow'
-        = icon 'fas', 'user-plus'
+        = t '.followed'
       - when 'announce'
-        = icon 'fas', 'info-circle'
-    .media-body
-      .user_info
-        - if notification.origin
-          = link_to icon_for(notification.origin, size: 40, htmlclass: 'user-icon'), notification.origin
-        span.timestamp = notification.created_at
-      .content.clearfix
-        .maincontent
-          - if notification.origin
-            span.handle-name = link_to notification.origin.handle_name, notification.origin
-          - case notification.action
-          - when 'like'
-            | さんがいいねしました。
-            .pt-1
-              = link_to notification.like.nweet, class: 'quoted-nweet' do
-                = time_ago_in_japanese(notification.like.nweet.did_at)
-                | に射精しました。
-                - if notification.like.nweet.statement
-                  .quote.mt-1
-                    = notification.like.nweet.statement
-          - when 'follow'
-            | さんがあなたをフォローしました。
-          - when 'announce'
-            = notification.statement.html_safe
+        = notification.statement.html_safe

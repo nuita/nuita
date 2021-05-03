@@ -1,0 +1,20 @@
+ja:
+  pages:
+    landing:
+      title: 射精報告SNS Nuitaへようこそ!
+      find_your_like_in_nuita: Nuitaで「好き」を見つけよう
+      search:
+        query:
+          placeholder: Nuitaでオカズを探す
+      search_with_popular_tags: 人気のタグで検索
+    user_home:
+      title: ホーム
+    explore:
+      title: 見つける
+      title_with_query: "%{query}の検索結果"
+    explore_form:
+      placeholder: キーワードやタグで検索
+    likeline:
+      no_likes_yet: まだいいねがありません
+    recommend:
+      section_title: おすすめの投稿

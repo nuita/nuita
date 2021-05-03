@@ -1,0 +1,35 @@
+@import './navbars/guest_navbars';
+@import './navbars/user_navbar';
+
+.navbar {
+  height: $header-height;
+  align-content: center;
+  z-index: 10;
+}
+
+/* guest */
+.guest-navbar {
+  .navbar-btn-landing {
+    @extend .link-brand;
+  }
+
+  .navbar-btn-signup {
+    @extend .btn-outline-primary;
+  }
+}
+
+/* main navbars */
+.guest-navbar, .user-navbar {
+  background-color: $header-background-color;
+  box-shadow: 0px 1px 4px $section-border-color;
+  border-bottom: 1px solid $section-border-color;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  transition: 0.2s;
+}
+
+.navbar-faded-out {
+  top: -$header-height;
+}

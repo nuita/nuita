@@ -1,0 +1,49 @@
+li.notification {
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.notification {
+  border-bottom: 1px solid $section-border-color;  
+}
+
+.notification-header {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.like-color {
+  color: $like-btn-color;
+}
+
+.notification-type {
+  margin-right: 0.5rem;
+}
+
+.notification-nweet {
+  color: $secondary-font-color;
+
+  &:hover, &:focus {
+    color: $secondary-font-color;
+  }
+}
+
+.notification-nweet-quote {
+  word-break: break-all;
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+  border-left: 1px solid $secondary-font-color;
+}
+
+.nweet-main {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.notification-handle-name {
+  font-weight: bold;
+}

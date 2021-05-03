@@ -7,7 +7,6 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
 
 env:
   MYSQL_HOST: 127.0.0.1
@@ -17,7 +16,7 @@ env:
 jobs:
   testing:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     
     services:
       mysql:
@@ -45,7 +44,7 @@ jobs:
     - name: Install dependencies
       run: |
         curl -sL https://deb.nodesource.com/setup_10.x | bash - && sudo apt install -y nodejs
-        sudo apt install -y yarn
+        sudo apt install -y yarn shared-mime-info
         yarn install --check-files
         bundle install --path vendor/bundle
     - name: Set Database

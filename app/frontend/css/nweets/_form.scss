@@ -1,0 +1,66 @@
+.new-nweet-form {
+  background-color: lighten($brand-color, 45%);
+}
+
+.new-nweet-form-wrapper {
+  border: 1px solid $brand-color;
+  border-radius: 0.25rem; 
+
+  &:focus-within {
+    border-color: rgba($component-active-bg, $input-btn-focus-color-opacity);
+    box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
+  }
+}
+
+.new-nweet-form-textbox {
+  border: none;
+  border-bottom: solid 1px $section-border-color;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.new-nweet-form-bottom {
+  padding: 0.25rem 0.25rem 0.25rem 0;
+  border-radius: 0 0 0.25rem 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: $main-background-color;
+}
+
+.new-nweet-text-count {
+  padding-right: 1rem;
+  color: $secondary-font-color;
+}
+
+#nweetFormBottomTextLengthCount {
+  margin-right: 1px;
+}
+
+#nweetTextCountLimit {
+  font-size: small;
+}
+
+.explore-form-query-input {
+  border: 1px solid $brand-color;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.explore-form-search-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.explore-form-wrapper {
+  border-radius: 0.25rem;
+
+  &:focus-within {
+    border-color: rgba($component-active-bg, $input-btn-focus-color-opacity);
+    box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
+  }
+}

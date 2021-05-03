@@ -1,12 +1,13 @@
-- provide(:title, @topic)
+- provide(:title, t('.title', topic: @topic))
 
-.container.wider-margintop
-  .jumbotron.not-so-jumbo.mx-auto.nweet-feed
-    h1.mb-2 = @topic
-    - if @feed_items.any?
-      ul.nweets-list
+.container-md
+  .row
+    .col-md-3.settings-left-col
+      = render 'layouts/settings_left_section'
+    .col.settings-main-col
+      .pt-3 = link_to t('.back_to_contents_settings'), settings_contents_path
+      - if @feed_items.any?
         = render 'users/users'
-    - else
-      .p-3 = "#{@topic}がいません。"
-    .pt-2 = link_to "戻る", :back
+      - else
+        .pt-3 = t('.no_topic_items_set', topic: @topic)
 

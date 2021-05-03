@@ -1,0 +1,29 @@
+a.card {
+  color: $body-font-color;
+  line-break: anywhere;
+}
+
+.card-subtitle-item {
+  padding-right: 1rem;
+}
+
+.card-subtitle-item-icon {
+  margin-right: 0.25rem;
+}
+
+.tags-list-item {
+  margin: 0 0.25rem 0 0;
+}
+
+.edit-modal-toggle-btn {
+  border: none;
+  cursor: pointer;
+}
+
+.edit-modal-tag-name {
+  margin-right: 0.25rem;
+}
+
+.edit-modal-tag-list-item {
+  margin: 0 0.25rem 0.5rem 0;
+}

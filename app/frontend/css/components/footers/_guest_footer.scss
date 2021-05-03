@@ -1,0 +1,39 @@
+.guest-footer {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: $guest-footer-height;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: $guest-footer-height;
+    height: fit-content;
+  }
+}
+
+.guest-footer-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+$guest-footer-list-width: 400px;
+
+.guest-footer-list {
+  font-size: small;
+
+  li {
+    margin: 0 0.25rem;
+    padding: 0;
+    list-style: none;
+    float: left;
+
+    a {
+      color: white;
+
+      &:hover, &:active, &:focus {
+        color: white;
+      }
+    }
+  }
+}

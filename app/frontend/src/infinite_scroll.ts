@@ -1,4 +1,3 @@
-import { setLikeButtons } from './nweets';
 import { setTagButtons } from './tags';
 
 function handleInfiniteScroll(scroll: HTMLElement) {
@@ -27,7 +26,6 @@ function handleInfiniteScroll(scroll: HTMLElement) {
     if (partial && partial != " ") {
       container.insertAdjacentHTML('beforeend', partial);
       setInfiniteScroll();
-      setLikeButtons();
       setTagButtons();
     }
   });

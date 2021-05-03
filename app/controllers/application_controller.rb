@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     current_user.tweet(content)
   rescue StandardError
-    flash[:warning] = 'ツイートに失敗しました。Twitterアカウントの状態を確認してください。'
+    flash[:warning] = t('toasts.tweet.failed')
   end
 
   protected

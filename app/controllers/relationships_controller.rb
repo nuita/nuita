@@ -4,20 +4,12 @@ class RelationshipsController < ApplicationController
   def create
     user = User.find_by(url_digest: params[:followee])
     current_user.follow(user)
-    if request.xhr?
-      head :no_content
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     user = User.find_by(url_digest: params[:followee])
     current_user.unfollow(user)
-    if request.xhr?
-      head :no_content
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path)
   end
 end

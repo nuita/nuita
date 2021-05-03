@@ -1,0 +1,18 @@
+ja:
+  devise:
+    registrations:
+      new:
+        title: Nuitaに登録する
+        form:
+          title: Nuitaに登録する
+      edit:
+        title: プロフィールを編集する
+        edit_profile: プロフィールを編集する
+        biography_long: ひとこと(30文字以内)
+        id_has_to_be_unique: IDはユニークな英数字である必要があります。
+        update_profile: プロフィールを更新する
+    sessions:
+      new:
+        title: ログイン
+        form:
+          title: おかえりなさい！

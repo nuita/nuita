@@ -1,23 +1,25 @@
-- provide(:title, '射精報告SNS Nuitaへようこそ!')
+- provide(:title, t('.title'))
+- provide(:landing, true)
 
-.container-fluid#landingContainer
-  .row.h-100.pb-4.max-1200
-    .col.col-md-7
-      .landing
-        h1 賢者のためのSNS。
-        .lead 好みの作品を見つけたとき。
-        .lead 新たな世界の扉を開いたとき。
-        .lead 誰かに言うには恥ずかしいけど、
-        .lead 一人で抱え込むのは、もったいない。
-        .lead
-          | さあ、あなたも
-          span.logo-font.font-weight-bold Nuita
-          | で
-        .lead
-          span.font-weight-bold 射精報告
-          | をはじめよう。
-        .lead.mt-3
-          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary btn-lg bg-brand'
-    .col-md-4.my-0.pt-4
-        = render 'pages/recommend', landing?: true
-/ TODO: 登録フォームをhome内右端に作る
+.landing-wrapper
+  .container-md.landing-container
+    .row.align-items-center
+      .col
+        h1.d-none.d-lg-block.landing-lead-h1 = t('.find_your_like_in_nuita')
+        = form_with url: explore_path, method: :get, local: true do |f|
+          .input-group.landing-search-form-input
+            = f.search_field :q, {placeholder: t('.search.query.placeholder'), class: 'form-control', id: 'landingQueryInput'}
+            .input-group-append
+              = f.button bi('search', classname: 'search-icon'), name: nil, type: :submit, class: 'btn btn-primary'
+        h6.mb-3 = t('.search_with_popular_tags')
+        ul.popular-tags-list.mb-2
+          - @tags.pluck(:name).each do |tag_name|
+            = link_to explore_path(q: tag_name) do
+              li.btn.btn-sm.btn-outline-white.rounded-pill
+                span.small = icon 'fas', 'hashtag'
+                span.pr-1 = tag_name
+      .offset-xl-1.col-lg-4.col-xl-3
+        .landing-recommendation
+          = render 'pages/recommend', landing?: true
+
+  = render 'layouts/guest_footer'
