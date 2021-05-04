@@ -15,9 +15,14 @@ featured:
   url: 'https://www.dlsite.com/books/work/=/product_id/BJ064601.html'
   title: 'Girls ForM Vol.10'
   resolver: 'Panchira::DLsiteResolver'
+  image: 'https://fake-img.to-make-this-image-featurable.example.com'
 
 mesugaki:
   url: 'https://www.dlsite.com/books/work/=/product_id/BJ266236.html'
   title: '二次元コミックマガジン メスガキvs優しいお姉さんVol.1'
   resolver: 'Panchira::DLsiteResolver'
-  image: 'https://fake-img.to-make-this-image-featurable.example.com'
+  image: 'https://fake-img.this.should.be.featurable.too.example.com'
+
+image:
+  url: 'http://dokidokivisual.com/img/top/main_img.jpg'
+  resolver: 'Panchira::ImageResolver'
