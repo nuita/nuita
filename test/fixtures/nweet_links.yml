@@ -9,3 +9,7 @@ two:
 three:
   nweet: featured
   link: featured
+
+four:
+  nweet: not_yet_featured
+  link: mesugaki

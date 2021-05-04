@@ -70,17 +70,20 @@ class LinkTest < ActiveSupport::TestCase
     assert_not link.legal?
 
     # 画像直リンもおすすめには出さない。個人的にはおすすめです
-    link = Link.fetch_from('http://dokidokivisual.com/img/top/main_img.jpg')
+    link = links(:image)
     assert_not link.legal?
 
-    # TODO: Resolverで取得してるけど画像がないテストケースを追加する
-
-    # og:imageつきの良いやつ
-    link = Link.fetch_from('https://www.dlsite.com/maniax/work/=/product_id/RJ315784.html')
+    # og:imageつきでDLSiteから取得してるいい感じのやつ
+    link = links(:mesugaki)
     assert link.legal?
     assert link.featurable?
 
-    # R-18Gとかcensored_by_defaultなタグつけるとダメになる
+    image = link.image
+    link.image = nil
+    assert link.legal?
+    assert_not link.featurable?
+
+    link.image = image
     link.set_tag('R-18G')
     assert link.legal?
     assert_not link.featurable?
