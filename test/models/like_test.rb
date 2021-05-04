@@ -9,9 +9,12 @@ class LikeTest < ActiveSupport::TestCase
   end
 
   test 'user can like nweet only once' do
+    assert_nil @nweet.latest_liked_time
+
     # user can like
     like = @user.likes.create!(nweet: @nweet)
     assert @user.liked?(@nweet)
+    assert @nweet.latest_liked_time > 1.minute.ago
 
     # but not twice
     another_like = @user.likes.build(nweet: @nweet)
@@ -35,16 +38,10 @@ class LikeTest < ActiveSupport::TestCase
     end
   end
 
-  test 'update liked nweet status' do
-    featurable_url = 'https://www.melonbooks.co.jp/detail/detail.php?product_id=537453&adult_view=1'
-    nweet = @user.nweets.create(did_at: Time.zone.now, statement: "👍 #{featurable_url}")
-
-    assert_nil nweet.latest_liked_time
-    assert_not nweet.featured?
+  test 'like makes nweet featurable' do
+    nweet = nweets(:not_yet_featured)
 
     first_like = @user.likes.create!(nweet: nweet)
-
-    assert nweet.latest_liked_time > 1.minute.ago
     assert nweet.featured?
 
     second_like = @other_user.likes.create!(nweet: nweet)

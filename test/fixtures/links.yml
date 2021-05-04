@@ -5,6 +5,7 @@ kanikama:
   image: 'https://pixiv.cat/59554738-1.jpg'
   image_width: 700
   image_height: 480
+  resolver: 'Panchira::PixivResolver'
 
 kemo:
   url: 'https://twitter.com/aoi_nishimata/status/831825876899635200'
@@ -13,3 +14,10 @@ kemo:
 featured:
   url: 'https://www.dlsite.com/books/work/=/product_id/BJ064601.html'
   title: 'Girls ForM Vol.10'
+  resolver: 'Panchira::DLsiteResolver'
+
+mesugaki:
+  url: 'https://www.dlsite.com/books/work/=/product_id/BJ266236.html'
+  title: '二次元コミックマガジン メスガキvs優しいお姉さんVol.1'
+  resolver: 'Panchira::DLsiteResolver'
+  image: 'https://fake-img.to-make-this-image-featurable.example.com'
