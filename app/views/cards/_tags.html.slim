@@ -5,6 +5,6 @@
         span.small = icon 'fas', 'hashtag'
         span = tag_name
   - if user_signed_in?
-    .tags-list-item.badge.bg-primary.rounded-pill.edit-modal-toggle-btn data-toggle="modal" data-target="#cardEditModal#{link.id}"
+    .tags-list-item.badge.bg-primary.rounded-pill.edit-modal-toggle-btn data-bs-toggle="modal" data-bs-target="#cardEditModal#{link.id}"
       span.small.edit-modal-toggle-btn-bi = bi 'pencil-fill'
     = render 'cards/edit_modal', link: link

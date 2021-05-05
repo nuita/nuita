@@ -14,6 +14,7 @@ import { setAgeCheckModal } from "../src/age_check";
 import { setNewNweetForm } from "../src/new_nweet_form";
 import { setSettingsMenu } from "../src/settings";
 import { setToasts } from "../src/toasts";
+import { setTagsModal } from "../src/modal";
 
 import "../css/application.scss";
 
@@ -35,4 +36,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
   setNewNweetForm();
   setSettingsMenu();
   setToasts();
+  setTagsModal();
 });
