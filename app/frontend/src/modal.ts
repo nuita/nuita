@@ -8,9 +8,6 @@ export function setTagsModal() {
       const modal = document.getElementById(target.slice(1));
 
       document.body.appendChild(modal);
-      modal.addEventListener('hidden.bs.modal', () => {
-        document.body.removeChild(modal);
-      });
     });
   });
 }
