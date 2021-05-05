@@ -12,15 +12,6 @@ class LinkTest < ActiveSupport::TestCase
     assert_not_empty @link.image
     assert_equal 'Panchira::Resolver', @link.resolver
 
-    # instagram
-    url = 'https://www.instagram.com/'
-    @link = Link.fetch_from(url)
-    assert_not_nil @link
-
-    assert_equal 'Instagram', @link.title
-    assert_match 'Instagram', @link.description
-    assert_not_empty @link.image
-
     # example.com (カード情報ない)
     url = 'http://example.com'
     @link = Link.fetch_from(url)
