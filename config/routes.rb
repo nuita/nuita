@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get '/about', to: 'pages#about'
   get 'terms/privacy', as: :privacy
+  get 'terms/for_creators', as: :for_creators
   get '/explore', to: 'pages#explore'
   get '/settings/account', to: 'settings#account'
   get '/settings/contents', to: 'settings#contents'
