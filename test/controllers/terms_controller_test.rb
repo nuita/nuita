@@ -5,4 +5,9 @@ class TermsControllerTest < ActionDispatch::IntegrationTest
     get privacy_path
     assert_response :success
   end
+
+  test 'get for creators' do
+    get for_creators_path
+    assert_response :success
+  end
 end
