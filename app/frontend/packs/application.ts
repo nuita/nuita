@@ -1,6 +1,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import Rails from "rails-ujs";
+import Turbolinks from "turbolinks";
 
 import { setHeaderButton, hideHeaderWhileScrolling } from "../src/header";
 import { setFooterButtons } from "../src/footer";
@@ -21,8 +22,9 @@ import "../css/application.scss";
 require.context('../images', true);
 
 Rails.start();
+Turbolinks.start();
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("turbolinks:load", (event) => {
   setHeaderButton();
   setFooterButtons();
   hideHeaderWhileScrolling();
