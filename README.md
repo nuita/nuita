@@ -53,7 +53,7 @@ Docker上でもNuitaを起動させることができます。
 
 2. コンテナ上で依存関係をインストールします。
 
-`$ docker-compose run --rm app bundle install && yarn install --check-files`
+`$ docker-compose run --rm app sh -c 'bundle install && yarn install --check-files'`
    
 3. コンテナ上でデータベースをセットアップします。
 
