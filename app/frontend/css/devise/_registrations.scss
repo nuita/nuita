@@ -3,8 +3,8 @@ $registration-jumbotron-width: 400px;
 .registration-jumbotron {
   @extend .rounded;
 
-  margin: 10px auto;
-  width: calc(100% - 40px);
+  margin: 1rem auto;
+  width: calc(100% - 3rem);
   height: fit-content;
 
   background-color: $main-background-color;
