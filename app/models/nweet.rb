@@ -14,7 +14,7 @@ class Nweet < ApplicationRecord
 
   validates :user_id, presence: true
   validates :did_at, presence: true
-  validates :statement, length: {maximum: 100}
+  validates :statement, length: {maximum: 200}
   validate :past?
   validate :has_enough_interval?, on: :create
 
