@@ -36,7 +36,7 @@ class NweetTest < ActiveSupport::TestCase
     @nweet.statement = nil
     assert @nweet.valid?
 
-    @nweet.statement = 'a' * 150
+    @nweet.statement = 'a' * 250
     assert_not @nweet.valid?
 
     @nweet.statement = '誰だ今の'
