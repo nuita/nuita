@@ -1,7 +1,9 @@
 self.addEventListener('install', function (event) {
+  console.log('Service worker is installed!')
 });
 
 self.addEventListener('activate', function (event) {
+  console.log('Service worker is activated!')
 });
 
 self.addEventListener('fetch', function (event) {
