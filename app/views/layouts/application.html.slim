@@ -22,7 +22,7 @@ html
     // bootstrapが正常に動かない問題への一時的な対応
     = javascript_include_tag 'application', defer: 'defer'
     = stylesheet_packs_with_chunks_tag 'application'
-    = javascript_packs_with_chunks_tag 'application'
+    = javascript_packs_with_chunks_tag 'application', defer: true
     = analytics_init if Rails.env.production?
   body
     = render 'layouts/header'
