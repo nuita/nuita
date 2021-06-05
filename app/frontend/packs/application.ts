@@ -40,3 +40,7 @@ window.addEventListener("turbolinks:load", (event) => {
   setToasts();
   setTagsModal();
 });
+
+window.addEventListener("load", () => {
+  navigator.serviceWorker.register('/serviceworker.js');
+});
