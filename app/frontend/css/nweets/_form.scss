@@ -22,25 +22,66 @@
 }
 
 .new-nweet-form-bottom {
-  padding: 0.25rem 0.25rem 0.25rem 0;
+  padding: 0.25rem 0.25rem 0.25rem 0.75rem;
   border-radius: 0 0 0.25rem 0.25rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   background-color: $main-background-color;
+  color: $secondary-font-color;
+}
+
+.new-nweet-form-bottom-left {
+  flex-grow: 1;
+  margin-left: 0;
+}
+
+.new-nweet-form-clock-icon {
+  margin-right: 0.5rem;
+  position: relative;
+  top: -0.1em;
 }
 
 .new-nweet-text-count {
-  padding-right: 1rem;
-  color: $secondary-font-color;
+  padding-right: 1rem; 
+}
+
+#newNweetDatetimePrompt {
+  display: flex;
+  align-items: center;
+}
+
+.new-nweet-datetime-group {
+  button {
+    background-color: none;
+    color: $secondary-font-color;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+
+    &:hover {
+      text-decoration: underline;
+      color: inherit;
+
+      .new-nweet-datetime-prompt-message {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.new-nweet-datetime-form-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.new-nweet-datetime-form {
+  max-width: 12em;
+  margin-right: 1rem;
 }
 
 #nweetFormBottomTextLengthCount {
   margin-right: 1px;
-}
-
-#nweetTextCountLimit {
-  font-size: small;
 }
 
 .explore-form-query-input {

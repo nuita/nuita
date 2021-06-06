@@ -1,4 +1,9 @@
 export function setNewNweetForm() {
+  setTextCount();
+  setDatetimeForm();
+}
+
+const setTextCount = () => {
   const textarea = document.getElementById('newNweetFormTextarea');
   if (textarea === null || !(textarea instanceof HTMLTextAreaElement)) {
     return;
@@ -13,3 +18,27 @@ export function setNewNweetForm() {
     lengthCountDiv.innerText = count;
   });
 }
+
+const setDatetimeForm = () => {
+  const prompt = document.getElementById('newNweetDatetimePrompt');
+  if (prompt === null || prompt === undefined) {
+    return;
+  }
+
+  const form = document.getElementById('newNweetDatetimeFormWrapper');
+
+  prompt.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    form.classList.remove('d-none');
+    prompt.classList.add('d-none');
+  });
+
+  const closeButton = document.getElementById('newNweetDatetimeFormCloseBtn');
+  closeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    prompt.classList.remove('d-none');
+    form.classList.add('d-none');
+  });
+};

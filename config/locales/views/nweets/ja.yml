@@ -8,6 +8,7 @@ ja:
       is_nweeting_on_this_link: さんがヌイートしています
     new_form:
       placeholder: 感想・使用したオカズを入力
+      designate_time: 時刻を指定
     nweet:
       sentence: "%{time}にヌイートしました。"
       delete_confirmation: "一度削除したヌイートは復元できません。本当に削除しますか？"
