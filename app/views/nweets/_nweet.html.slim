@@ -7,6 +7,7 @@ li.nweet id="nweet#{nweet.url_digest}"
         .nweet-user-info
           = link_to nweet.user.handle_name, nweet.user, {class: 'nweet-handle-name'}
           = link_to "@#{nweet.user.screen_name}", nweet.user, {class: 'nweet-screen-name'}
+          .d-none.d-md-block.nweet-time = nweet.did_at
         .content
           .nweet-sentence
             = t('.sentence', time: time_ago(nweet.did_at))
