@@ -76,12 +76,18 @@
 }
 
 .new-nweet-datetime-form {
-  max-width: 12em;
+  width: fit-content;
+  font-size: small;
   margin-right: 1rem;
 }
 
 #nweetFormBottomTextLengthCount {
   margin-right: 1px;
+}
+
+#newNweetDatetimeFormCloseBtn {
+  width: 0.65em;
+  height: 0.65em;
 }
 
 .explore-form-query-input {
