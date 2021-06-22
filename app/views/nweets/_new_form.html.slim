@@ -12,7 +12,8 @@
           .new-nweet-datetime-form-wrapper#newNweetDatetimeFormWrapper.d-none
             = f.label class: 'form-label'
               = bi 'clock', classname: 'new-nweet-form-clock-icon'
-            = f.datetime_field :did_at, class: 'form-control new-nweet-datetime-form'
+            / 投稿ボタンが押された場合、jsによって現在時刻が挿入される
+            = f.datetime_field :did_at, value: @nweet.did_at, class: 'form-control new-nweet-datetime-form', id: 'newNweetDatetimeFormInput'
             button#newNweetDatetimeFormCloseBtn
               = bi 'x'
       .new-nweet-text-count.small
