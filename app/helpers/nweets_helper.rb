@@ -7,8 +7,8 @@ module NweetsHelper
     time > current_user.nweets.first.did_at + 3.minutes
   end
 
-  def delete_possible?(did_at, user)
-    did_at > 1.hour.ago && user == current_user
+  def delete_possible?(created_at, user)
+    created_at > 1.hour.ago && user == current_user
   end
 
   def likes_number(nweet)
