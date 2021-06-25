@@ -55,4 +55,13 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_tag)
     assert_select 'div.nweet-feed a[href=?]', nweet_path(nweet_with_statement)
   end
+
+  test 'scroll test' do
+    nweet = nweets(:chirstmas)
+    next_nweet = nweets(:eve)
+    before = nweet.did_at
+
+    get explore_path(before: before.to_i)
+    assert_select 'li.nweet a[href=?]', nweet_path(next_nweet)
+  end
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   USER_PER_PAGE = 20
+  NWEET_PER_PAGE = 10
 
   def tweet(content)
     return if content.blank?
@@ -19,17 +20,17 @@ class ApplicationController < ActionController::Base
     end
 
     def render_nweets(nweets, query)
-      nweet_limit = 10
+      @feed_items = nweets.relations_included.limit(NWEET_PER_PAGE)
 
       if params[:before]
         date = Time.zone.at(params[:before].to_i)
-        @feed_items = nweets.relations_included.where(query, date).limit(nweet_limit)
-        @before = @feed_items.last&.did_at&.to_i
-        render partial: 'nweets/nweets'
-      else
-        @feed_items = nweets.relations_included.limit(nweet_limit)
-        @before = @feed_items.last&.did_at&.to_i
+        @feed_items = @feed_items.where(query, date)
       end
+
+      # 遅延評価のためfeed_itemsが確定してから算出
+      @before = @feed_items.last&.did_at&.to_i
+
+      render partial: 'nweets/nweets' if params[:before]
     end
 
     def render_users(users, template)
