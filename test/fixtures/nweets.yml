@@ -68,3 +68,10 @@ femdom_statement:
   user: zoken
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: '男性受け最高'
+
+omoidashi:
+  did_at: <%= 1.weeks.ago.utc %>
+  created_at: <%= 10.seconds.ago.utc %>
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: '思い出した'
+  user: shinji

@@ -19,13 +19,16 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:handle_name, :screen_name, :icon, :autotweet_enabled, :autotweet_content, :biography])
     end
 
-    def render_nweets(nweets, query)
+    def render_nweets(nweets, query, order_by_created_at: false)
       @feed_items = nweets.relations_included.limit(NWEET_PER_PAGE)
 
       if params[:before]
         date = Time.zone.at(params[:before].to_i)
         @feed_items = @feed_items.where(query, date)
       end
+
+      # 通常射精時刻順に並ぶが、タイムラインのみヌイートの作成順に並ぶ
+      @feed_items = @feed_items.reorder(created_at: :desc) if order_by_created_at
 
       # 遅延評価のためfeed_itemsが確定してから算出
       @before = @feed_items.last&.did_at&.to_i
