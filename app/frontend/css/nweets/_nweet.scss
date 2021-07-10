@@ -31,6 +31,8 @@ li.nweet {
 
 .nweet-user-info {
   width: 100%;
+  display: flex;
+  align-items: baseline;
 }
 
 a.nweet-handle-name {
@@ -44,8 +46,14 @@ a.nweet-handle-name {
 
 a.nweet-screen-name {
   margin-left: 0.25rem;
+  flex-grow: 1;
 
   color: $secondary-font-color;
+}
+
+.nweet-time {
+  color: $secondary-font-color;
+  font-size: small;
 }
 
 .nweet-sub-info {
