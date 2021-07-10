@@ -33,7 +33,7 @@ class Nweet < ApplicationRecord
   def has_enough_interval?
     return if user.nweets.count == 0 || did_at.nil?
 
-    if did_at < user.nweets.first.did_at + 3.minutes
+    if user.nweets.where(did_at: (did_at - 3.minutes)...did_at).any?
       errors.add(:did_at, ' has not enough interval')
     end
   end

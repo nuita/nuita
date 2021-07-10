@@ -96,4 +96,15 @@ class NweetTest < ActiveSupport::TestCase
 
     assert link.tags.exists?(name: 'pixiv')
   end
+
+  test 'nweet should have enough interval in did_at' do
+    @user.nweets.create(did_at: Time.zone.now - 1.minute)
+
+    nweet = @user.nweets.build(did_at: Time.zone.now)
+    assert_not nweet.valid?
+
+    @user.nweets.create!(did_at: 100.hours.ago)
+    nweet = @user.nweets.build(did_at: 100.hours.ago + 1.minute)
+    assert_not nweet.valid?
+  end
 end

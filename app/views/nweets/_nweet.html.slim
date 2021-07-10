@@ -11,6 +11,9 @@ li.nweet id="nweet#{nweet.url_digest}"
         .content
           .nweet-sentence
             = t('.sentence', time: time_ago(nweet.did_at))
+            - if nweet.did_at != nweet.created_at
+              span.nweet-sub-info
+                = t('.posted', time: time_ago(nweet.created_at))
     .nweet-main
       - if nweet.links.any?
         = render 'cards/card', link: nweet.links.first
@@ -21,7 +24,7 @@ li.nweet id="nweet#{nweet.url_digest}"
         - if user_signed_in?
           = render 'nweets/like_form', nweet: nweet
       .nweet-bottom-right
-        - if delete_possible?(nweet.did_at, nweet.user)
+        - if delete_possible?(nweet.created_at, nweet.user)
           = link_to nweet, method: :delete, class: "btn btn-no-outline nweet-bottom-btn", data: { confirm: t('.delete_confirmation') } do
             = bi 'trash'
         - unless @detail

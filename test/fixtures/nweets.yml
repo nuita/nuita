@@ -31,6 +31,12 @@ chirstmas:
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: '😢'
 
+eve:
+  did_at: <%= Time.mktime(2017, 12, 24, 12).utc %>
+  user: chikuwa
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: 'good evening'
+
 r18g:
   did_at: <%= 3.days.ago.utc %>
   user: chikuwa
@@ -62,3 +68,10 @@ femdom_statement:
   user: zoken
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: '男性受け最高'
+
+omoidashi:
+  did_at: <%= 1.weeks.ago.utc %>
+  created_at: <%= 10.seconds.ago.utc %>
+  url_digest: <%= SecureRandom.alphanumeric %>
+  statement: '思い出した'
+  user: chikuwa

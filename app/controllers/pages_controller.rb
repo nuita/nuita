@@ -4,7 +4,7 @@ class PagesController < ApplicationController
       @nweet = current_user.nweets.build
       @timeline = true
 
-      render_nweets(current_user.timeline, 'did_at < ?')
+      render_nweets(current_user.timeline, 'did_at < ?', order_by_created_at: true)
     else
       @tags = Tag.where(featured: true)
     end

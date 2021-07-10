@@ -3,6 +3,19 @@
     = f.text_area :statement, maxlength: 200, rows: 2, class: 'new-nweet-form-textbox form-control', id: 'newNweetFormTextarea', placeholder: t('.placeholder'), value: params[:text]
     = f.hidden_field :did_at, value: @nweet.did_at
     .new-nweet-form-bottom
+      .new-nweet-form-bottom-left.small
+        .form-group.new-nweet-datetime-group          
+          #newNweetDatetimePrompt
+            button.btn.new-nweet-datetime-prompt
+              = bi 'clock', classname: 'new-nweet-form-clock-icon'
+              span.new-nweet-datetime-prompt-message = t('.designate_time')
+          .new-nweet-datetime-form-wrapper#newNweetDatetimeFormWrapper.d-none
+            = f.label class: 'form-label'
+              = bi 'clock', classname: 'new-nweet-form-clock-icon'
+            / 投稿ボタンが押された場合、jsによって現在時刻が挿入される
+            = f.datetime_field :did_at, value: @nweet.did_at, class: 'form-control new-nweet-datetime-form', id: 'newNweetDatetimeFormInput', size: '1'
+            button.small#newNweetDatetimeFormCloseBtn aria-label='Close'
+              = bi 'x'
       .new-nweet-text-count.small
         span#nweetFormBottomTextLengthCount 0
         | /200
