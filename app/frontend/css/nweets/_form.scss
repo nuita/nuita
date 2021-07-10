@@ -76,18 +76,32 @@
 }
 
 .new-nweet-datetime-form {
-  width: fit-content;
   font-size: small;
-  margin-right: 1rem;
+  width: fit-content;
+  min-width: 12em;
 }
 
 #nweetFormBottomTextLengthCount {
   margin-right: 1px;
 }
 
-#newNweetDatetimeFormCloseBtn {
+button#newNweetDatetimeFormCloseBtn {
   width: 0.65em;
   height: 0.65em;
+  margin: 0 1rem;
+  line-height: 1em;
+
+  position: relative;
+
+  background: none;
+  border: none;
+
+  .bi-x {
+    display: inline-block;
+    position: absolute;
+    top: -0.25em;
+    left: -0.3em;
+  }
 }
 
 .explore-form-query-input {
