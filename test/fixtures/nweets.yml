@@ -74,4 +74,4 @@ omoidashi:
   created_at: <%= 10.seconds.ago.utc %>
   url_digest: <%= SecureRandom.alphanumeric %>
   statement: '思い出した'
-  user: shinji
+  user: chikuwa
