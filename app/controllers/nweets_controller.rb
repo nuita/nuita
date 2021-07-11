@@ -18,7 +18,7 @@ class NweetsController < ApplicationController
 
   def create
     @nweet = current_user.nweets.build(new_nweet_params)
-    @nweet.did_at ||= Time.zone.now
+    set_did_at
 
     if @nweet.save
       flash[:success] = t('toasts.nweet.post')
@@ -65,5 +65,12 @@ class NweetsController < ApplicationController
     # generate content of tweet from user-specific template
     def generate_tweet_content(nweet)
       current_user.autotweet_content.gsub(/\[LINK\]/, nweet_url(nweet))
+    end
+
+    # did_atが空か、指定された時刻が現在から3分以内の場合に現在時刻を挿入する
+    def set_did_at
+      if @nweet.did_at.nil? || @nweet.did_at > 3.minutes.ago
+        @nweet.did_at = Time.zone.now
+      end
     end
 end

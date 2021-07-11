@@ -71,4 +71,11 @@ class NweetsControllerTest < ActionDispatch::IntegrationTest
     get recommend_path
     assert_response :success
   end
+
+  test 'did_at should be equal to created at if the diff is smaller than 3 minutes' do
+    login_as(@user)
+    post nweets_path, params: {nweet: {did_at: 1.minute.ago}}
+
+    assert_equal Nweet.first.created_at, Nweet.first.did_at
+  end
 end
